@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.16.1 -->
+<interface>
+  <requires lib="gtk+" version="3.10"/>
+  <object class="GtkTreeStore" id="add_plugin_treestore">
+    <columns>
+      <!-- column-name plugin_name -->
+      <column type="gchararray"/>
+      <!-- column-name already_used -->
+      <column type="gboolean"/>
+      <!-- column-name summary -->
+      <column type="gchararray"/>
+      <!-- column-name arguments -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkDialog" id="add_plugin_block">
+    <property name="name">add_plugin_block</property>
+    <property name="can_focus">False</property>
+    <property name="default_width">800</property>
+    <property name="default_height">600</property>
+    <property name="type_hint">dialog</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox1">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area1">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="btn_add_plugin">
+                <property name="label" translatable="yes">Add plugin</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_add_plugin" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTreeView" id="add_plugin_treeview">
+            <property name="name">add_plugin_treeview</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="model">add_plugin_treestore</property>
+            <property name="enable_grid_lines">horizontal</property>
+            <child internal-child="selection">
+              <object class="GtkTreeSelection" id="treeview-selection3"/>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="col_plugin_name">
+                <property name="title" translatable="yes">Plugin</property>
+                <property name="reorderable">True</property>
+                <property name="sort_indicator">True</property>
+                <child>
+                  <object class="GtkCellRendererText" id="cr_plugin_name"/>
+                  <attributes>
+                    <attribute name="text">0</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="col_plugin_used">
+                <property name="title" translatable="yes">Present</property>
+                <property name="reorderable">True</property>
+                <property name="sort_indicator">True</property>
+                <child>
+                  <object class="GtkCellRendererToggle" id="cr_already_used"/>
+                  <attributes>
+                    <attribute name="activatable">1</attribute>
+                    <attribute name="active">1</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="col_plugin_summary">
+                <property name="title" translatable="yes">Summary</property>
+                <child>
+                  <object class="GtkCellRendererText" id="cr_summary"/>
+                  <attributes>
+                    <attribute name="text">2</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="col_plugin_args">
+                <property name="max_width">1</property>
+                <property name="title" translatable="yes">Arguments</property>
+                <child>
+                  <object class="GtkCellRendererText" id="cr_arguments"/>
+                  <attributes>
+                    <attribute name="text">3</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
