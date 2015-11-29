@@ -50,4 +50,10 @@ HEADERS += \
     is_a.h
 
 DISTFILES += \
-    doxygen_config
+    doxygen_config \
+    resources/dlg_commands.glade \
+    resources/editor.glade \
+    resources/add_plugin_treeview.glade \
+    resources/wnd_commands.glade \
+    resources/about_box.glade \
+    resources/plugins.template

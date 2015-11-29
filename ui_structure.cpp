@@ -83,7 +83,7 @@ Gtk::Widget* locate_by_name(Gtk::Widget* w, std::string name, int deep) {
 }
 
 std::string get_resource_path(std::string what, std::string ext) {
-    return "../resources/" + what + "." + ext;
+    return "../collectdcp/resources/" + what + "." + ext;
 }
 
 }
