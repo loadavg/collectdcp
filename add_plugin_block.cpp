@@ -82,44 +82,69 @@ inline string plugin_id(const RANGE &r, kstring t) {
                 return r[HEAD_l][HARGS_l][0](t);
     return string();
 }
+
+struct plugins_t : std::map<string, RANGE::path_t, iless> {
+    const AST *ast;
+    plugins_t(const AST *ast) : ast(ast) {
+        depth_first df;
+        df.visit(ast->elements, [&](const RANGE &r) {
+            if (r.type == XML_LIKE_t) {
+                auto id = plugin_id(r, ast->text);
+                if (!id.empty())
+                    ((*this)[id] = df).push_back(&r);
+                return false;
+            }
+            return true;
+        });
+    }
+};
+
+struct plugin_to_store {
+
+    kstring text;
+    Glib::RefPtr<Gtk::TreeStore> treestore;
+
+    plugin_to_store(kstring text, Glib::RefPtr<Gtk::TreeStore> treestore) :
+        text(text), treestore(treestore) { }
+
+    void append(const RANGE &s, Gtk::TreeStore::iterator parent) {
+        g_assert(s.type == XML_LIKE_t);
+        for (auto e: s[BODY_l].nesting) {
+            if (e.type == XML_LIKE_t) {
+                Gtk::TreeStore::iterator c = treestore->append(parent->children());
+                c->set_value(0, e[HEAD_l][HTAG_l](text));
+                append(e, c);
+            }
+            if (e.type == KEY_VALUES_t) {
+                Gtk::TreeStore::iterator c = treestore->append(parent->children());
+                c->set_value(0, e[KEY_l](text));
+                vector<string> args;
+                for (auto a: e[VALUES_l].nesting)
+                    args.push_back(a(text));
+                c->set_value(3, join(args, ','));
+            }
+        }
+    }
+};
+
 }
 
 void add_plugin_block::set_editor(view_ast *editor) {
     this->editor = editor;
     using namespace implementation;
 
-    typedef std::map<string, RANGE::path_t> plugins_t;
-    iless I;
-    depth_first df;
+    plugins_t tem_map(editor->ast_template);
+    plugins_t bi_map(editor->get_AST());
 
-    auto tem = editor->ast_template;
-    plugins_t tem_map(I);
-    df.visit(tem->elements, [&](const RANGE &r) {
-        if (r.type == XML_LIKE_t) {
-            auto id = plugin_id(r, tem->text);
-            if (!id.empty())
-                (tem_map[id] = df).push_back(&r);
-            return false;
-        }
-        return true;
-    });
+    plugin_to_store p2s(tem_map.ast->text, treestore);
 
-    auto ast = editor->get_AST();
-    plugins_t bi_map(I);
-    df.visit(ast->elements, [&](const RANGE &r) {
-        if (r.type == XML_LIKE_t) {
-            auto id = plugin_id(r, ast->text);
-            if (!id.empty())
-                (bi_map[id] = df).push_back(&r);
-            return false;
-        }
-        return true;
-    });
     for (auto e: tem_map) {
         Gtk::TreeStore::iterator i = treestore->append();
         auto p = e.second.back();
-        auto pid = plugin_id(*p, tem->text);
+        const RANGE &r = *p;
+        auto pid = plugin_id(r, tem_map.ast->text);
         i->set_value(0, pid);
         i->set_value(1, bi_map.find(pid) != bi_map.end());
+        p2s.append(r, i);
     }
 }
