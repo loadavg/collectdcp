@@ -30,5 +30,10 @@ inline int icompare(std::string const& a, std::string const& b) {
             return c;
     return p != P ? +1 : q != Q ? -1 : 0;
 }
+struct iless : std::less<std::string> {
+    bool operator()(const std::string& lhs, const std::string& rhs) const {
+        return icompare(lhs, rhs) < 0;
+    }
+};
 
 #endif // ICOMPARE

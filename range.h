@@ -53,7 +53,7 @@ struct RANGE {
      */
     const RANGE &operator[](size_t p) const;
 
-    typedef std::vector<const RANGE *> t_path;
+    typedef std::vector<const RANGE *> path_t;
 
     /**
      * @brief validate
@@ -61,7 +61,7 @@ struct RANGE {
      * @param parents
      *  keep to perform error reporting
      */
-    void validate(t_path& parents) const;
+    void validate(path_t& parents) const;
 
     /**
      * @brief contains

@@ -22,14 +22,14 @@ string RANGE::describe(const string &s, int ellipsis) const {
 }
 
 string RANGE::text(const string &s) const {
-    if (begin >= s.size() || end >= s.size())
+    if (begin >= s.size() || end > s.size())
         error("string out of bounds " + describe(s));
     return s.substr(begin, size());
 }
 
-void RANGE::validate(t_path &v) const {
+void RANGE::validate(path_t &v) const {
 
-    auto cat = [](t_path &v) {
+    auto cat = [](path_t &v) {
         vector<string> p;
         transform(v.begin(), v.end(), inserter(p, p.end()), [](const RANGE *r){ return r->describe(); });
         return join(p);

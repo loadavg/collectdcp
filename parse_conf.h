@@ -106,9 +106,11 @@ namespace parse_conf
          * @param text
          *  the .conf text content
          * @param path
-         *  the .conf file name
+         *  the .conf file name - for errors report
+         * @param errors
+         *  report errors found
          */
-        AST(string text, string path = "<?>");
+        AST(string text, string path = "<?>", vector<string>* errors = 0);
 
         /**
          * @brief elements
@@ -133,6 +135,18 @@ namespace parse_conf
         void dump(ostream &s, int indent = 0) const;
 
         struct parse;    /// private implementation
+
+        /**
+         * @brief format_errors
+         *  make a string representation of all errors found
+         * @param errors
+         *  all errors so far
+         * @param ellipsis
+         *  cut too long lists to keep manageable
+         * @return
+         *  a multiline string mesasge
+         */
+        static string format_errors(vector<string> errors, size_t ellipsis = 3);
     };
 }
 

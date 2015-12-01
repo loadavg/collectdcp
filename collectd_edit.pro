@@ -47,7 +47,8 @@ HEADERS += \
     process_run.h \
     editor_window.h \
     test_parse.h \
-    is_a.h
+    is_a.h \
+    depth_first.h
 
 DISTFILES += \
     doxygen_config \

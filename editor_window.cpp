@@ -271,7 +271,7 @@ void editor_window::on_add_block() {
     using namespace ui_structure;
     instance_ui_object<add_plugin_block>(
                 "add_plugin_treeview", "add_plugin_block", [&](add_plugin_block *dialog) {
-        dialog->editor = current_view();
+        dialog->set_editor(current_view());
         return run_dialog(dialog);
     });
 }

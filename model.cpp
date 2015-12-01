@@ -49,7 +49,7 @@ nesting_path_t ast_locate_cursor(const AST &ast, RANGE::pos cursor) {
     //ast.dump(cout);
 
     const RANGE *r = &ast.elements;
-    RANGE::t_path p;
+    RANGE::path_t p;
     r->validate(p);
 
     nesting_path_t path;

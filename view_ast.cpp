@@ -26,7 +26,10 @@ view_ast::view_ast(string conf) :
     auto path = model::conf_file(conf);
     auto text = file2string(path);
     try {
-        ast = new model::AST(text, conf);
+        vector<string> errors;
+        ast = new model::AST(text, conf, &errors);
+        if (!errors.empty())
+            message_box(model::AST::format_errors(errors));
     }
     catch(exception &e) {
         message_box(e.what());
@@ -108,8 +111,8 @@ void view_ast::on_changed() {
     //action_status("file_save", true);
 }
 bool view_ast::on_focus(DirectionType dt) {
-    cout << "on_focus" << dt << endl;
     /*
+    cout << "on_focus" << dt << endl;
     if (is_dirty()) {
         action_status("file_save", true);
     }
