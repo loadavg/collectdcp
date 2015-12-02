@@ -10,6 +10,7 @@
 #include "attr_helper.h"
 #include "file2string.h"
 #include "message_box.h"
+#include "depth_first.h"
 #include "ui_structure.h"
 #include "editor_window.h"
 
@@ -187,25 +188,16 @@ void view_ast::apply_AST_attributes(RefPtr<Buffer> buf) {
 
     using namespace parse_conf;
 
-    stack<const RANGE*> se;
-    se.push(&ast->elements);
-    while (!se.empty()) {
-        const RANGE &r = *se.top(); se.pop();
+    depth_first df;
+    df.visit(ast->elements, [&](const RANGE &r) {
+
         switch (r.type) {
-        case FILE_t:
-            for (auto &y: r.nesting)
-                se.push(&y);
-            break;
         case XML_LIKE_t:
             apply_attribute(buf, "xml_open", r[HEAD_l][HTAG_l]);
             apply_attribute(buf, "xml_close", r[TAIL_l]);
-            for (auto &y: r[BODY_l].nesting)
-                se.push(&y);
             break;
         case COMMENT_t:
             apply_attribute(buf, "comment", r);
-            for (auto &y: r.nesting)
-                se.push(&y);
             break;
         case KEY_VALUES_t:
             apply_attribute(buf, "key", r[KEY_l]);
@@ -228,14 +220,13 @@ void view_ast::apply_AST_attributes(RefPtr<Buffer> buf) {
                     break;
                 }
             }
-            break;
+            return false;
         case ERROR_t:
             apply_attribute(buf, "error", r);
             break;
-        default:
-            break;
         }
-    }
+        return true;
+    });
 }
 
 typedef RANGE::pos CURSOR;
