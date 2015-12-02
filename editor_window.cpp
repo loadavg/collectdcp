@@ -19,6 +19,10 @@
 #include <gtkmm/scrolledwindow.h>
 #include <gtksourceviewmm/undomanager.h>
 
+using namespace std;
+using namespace Glib;
+using namespace Gtk;
+
 editor_window* editor_window::setup(RefPtr<Application> app) {
     editor_window* window = 0;
     RefPtr<Builder> builder;
@@ -31,8 +35,8 @@ editor_window* editor_window::setup(RefPtr<Application> app) {
     return window;
 }
 
-editor_window::editor_window(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& builder)
-    : Gtk::Window(cobject)
+editor_window::editor_window(BaseObjectType *cobject, const RefPtr<Builder>& builder)
+    : Window(cobject)
 {
     // install idle time handler
     Glib::signal_timeout().connect(sigc::mem_fun(*this, &editor_window::on_timer), 100);
@@ -228,7 +232,7 @@ void editor_window::on_enable_block() {
         status_message("cannot enable block");
 }
 
-const strings_t& editor_window::conf_editable() {
+const editor_window::strings_t& editor_window::conf_editable() {
     static strings_t e = {"collectd", "filters", "thresholds"};
     return e;
 }

@@ -16,17 +16,8 @@
 #include <string>
 #include <vector>
 
-#include "parse_conf.h"
 #include "view_ast.h"
-
-using namespace std;
-using namespace Glib;
-using namespace Gtk;
-
-typedef vector<string> strings_t;
-typedef RANGE::pos CURSOR;
-typedef vector<Widget*> parents_t;
-typedef map<string, Widget*> named_parents_t;
+#include "parse_conf.h"
 
 /**
  * @brief The editor_window class
@@ -44,7 +35,7 @@ public:
      * @return
      *  instantiated window1
      */
-    static editor_window* setup(RefPtr<Application> app);
+    static editor_window* setup(Glib::RefPtr<Gtk::Application> app);
 
     /**
      * @brief editor_window
@@ -54,7 +45,7 @@ public:
      * @param refBuilder
      *  actual resource loader
      */
-    editor_window(BaseObjectType *cobject, const RefPtr<Builder>& refBuilder);
+    editor_window(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder);
 
     /**
      * @brief on_delete_event
@@ -74,17 +65,17 @@ public:
      * @param status
      *  enabled/disabled
      */
-    void action_status(string action, bool status);
+    void action_status(std::string action, bool status);
 
     /**
      * @brief status_message
      *  display a formatted message
      */
-    void status_message(string msg);
+    void status_message(std::string msg);
 
 protected:
 
-    RefPtr<Application> app;
+    Glib::RefPtr<Gtk::Application> app;
 
     /**
      * @brief on_timer
@@ -116,8 +107,8 @@ protected:
      * @brief get_notebook,get_statusbar
      *  these calls resolve the *hardcoded* application structure
      */
-    Notebook* get_notebook();
-    Statusbar* get_statusbar();
+    Gtk::Notebook* get_notebook();
+    Gtk::Statusbar* get_statusbar();
 
     /**
      * @brief route_to_view
@@ -125,7 +116,7 @@ protected:
      * @param sig
      *  action' signal by name
      */
-    void route_to_view(string sig);
+    void route_to_view(std::string sig);
 
     /**
      * @brief current_view
@@ -142,14 +133,14 @@ protected:
      * @return
      *  @a view_ast containing @param conf, if found
      */
-    view_ast *find_view(string conf);
+    view_ast *find_view(std::string conf);
 
     /**
      * @brief file_view_buf
      *  borrowed from Prolog, where pattern matching was a good deal
      *  to access structured data, but useless now
      */
-    typedef tuple<string, Gsv::View*, RefPtr<Gsv::Buffer>> file_view_buf;
+    typedef std::tuple<std::string, Gsv::View*, Glib::RefPtr<Gsv::Buffer>> file_view_buf;
     file_view_buf current_file_view_buf();
 
     /**
@@ -158,6 +149,7 @@ protected:
      * @return
      *  a list of foreseen symbols, without extension or folder
      */
+    typedef std::vector<std::string> strings_t;
     static const strings_t& conf_editable();
 
     /**

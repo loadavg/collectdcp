@@ -16,11 +16,14 @@
 #include <fstream>
 #include <iostream>
 
+using namespace attr_helper;
+using namespace std;
+
 view_ast::view_ast(string conf) :
-    conf(conf) //  , ast(0), ast_template(0), disable_parse(false)
+    conf(conf)
 {
     RefPtr<Buffer> buf = Buffer::create();
-    attr_helper::prepare_attributes(buf);
+    prepare_attributes(buf);
     set_buffer(buf);
 
     auto path = model::conf_file(conf);
@@ -110,17 +113,18 @@ void view_ast::on_changed() {
     set_dirty();
     //action_status("file_save", true);
 }
+/*
 bool view_ast::on_focus(DirectionType dt) {
-    /*
     cout << "on_focus" << dt << endl;
     if (is_dirty()) {
         action_status("file_save", true);
     }
     else {
         action_status("file_save", false);
-    }*/
+    }
     return false;
 }
+*/
 
 RANGE::pos view_ast::buffer_cursor_offset() {
     RefPtr<Buffer> b = get_source_buffer();
@@ -182,7 +186,6 @@ void view_ast::apply_AST_attributes(RefPtr<Buffer> buf) {
         return;
 
     using namespace parse_conf;
-    using namespace attr_helper;
 
     stack<const RANGE*> se;
     se.push(&ast->elements);
@@ -235,6 +238,7 @@ void view_ast::apply_AST_attributes(RefPtr<Buffer> buf) {
     }
 }
 
+typedef RANGE::pos CURSOR;
 typedef std::vector<CURSOR> Lines;
 
 Lines get_starts(TextIter Xi, TextIter Yi) {

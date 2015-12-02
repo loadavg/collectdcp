@@ -71,7 +71,7 @@ void dlg_commands::on_stop() {
 
 void dlg_commands::set_monospace() {
     auto buf = tb_output->get_buffer();
-    TextIter I, J;
+    Gtk::TextIter I, J;
     buf->get_bounds(I, J);
     buf->apply_tag_by_name("monospace", I, J);
 }

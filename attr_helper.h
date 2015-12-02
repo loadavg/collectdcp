@@ -11,11 +11,11 @@
 #include <gtksourceviewmm.h>
 #include "range.h"
 
-using namespace Glib;
-using namespace Gtk;
-using namespace Gsv;
-
 namespace attr_helper {
+
+    using namespace Glib;
+    using namespace Gtk;
+    using namespace Gsv;
 
     typedef const char* ccp;
     typedef RefPtr<TextTag> TT;

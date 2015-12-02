@@ -101,22 +101,30 @@ struct plugins_t : std::map<string, RANGE::path_t, iless> {
 
 struct plugin_to_store {
 
+    typedef Gtk::TreeStore Model;
+    typedef Model::iterator Node;
+
     kstring text;
-    Glib::RefPtr<Gtk::TreeStore> treestore;
+    Glib::RefPtr<Model> treestore;
 
-    plugin_to_store(kstring text, Glib::RefPtr<Gtk::TreeStore> treestore) :
-        text(text), treestore(treestore) { }
+    void add_plugin(const RANGE &r, const plugins_t &in_view) {
+        Node i = treestore->append();
+        auto pid = plugin_id(r, text);
+        i->set_value(0, pid);
+        i->set_value(1, in_view.find(pid) != in_view.end());
+        append(r, i);
+    }
 
-    void append(const RANGE &s, Gtk::TreeStore::iterator parent) {
+    void append(const RANGE &s, Node parent) {
         g_assert(s.type == XML_LIKE_t);
         for (auto e: s[BODY_l].nesting) {
             if (e.type == XML_LIKE_t) {
-                Gtk::TreeStore::iterator c = treestore->append(parent->children());
+                Node c = treestore->append(parent->children());
                 c->set_value(0, e[HEAD_l][HTAG_l](text));
                 append(e, c);
             }
             if (e.type == KEY_VALUES_t) {
-                Gtk::TreeStore::iterator c = treestore->append(parent->children());
+                Node c = treestore->append(parent->children());
                 c->set_value(0, e[KEY_l](text));
                 vector<string> args;
                 for (auto a: e[VALUES_l].nesting)
@@ -125,26 +133,21 @@ struct plugin_to_store {
             }
         }
     }
+
 };
 
 }
 
 void add_plugin_block::set_editor(view_ast *editor) {
     this->editor = editor;
-    using namespace implementation;
+    if (treestore) {
+        using namespace implementation;
 
-    plugins_t tem_map(editor->ast_template);
-    plugins_t bi_map(editor->get_AST());
+        plugins_t tem_map(editor->ast_template);
+        plugins_t in_view(editor->get_AST());
+        plugin_to_store p2s {tem_map.ast->text, treestore};
 
-    plugin_to_store p2s(tem_map.ast->text, treestore);
-
-    for (auto e: tem_map) {
-        Gtk::TreeStore::iterator i = treestore->append();
-        auto p = e.second.back();
-        const RANGE &r = *p;
-        auto pid = plugin_id(r, tem_map.ast->text);
-        i->set_value(0, pid);
-        i->set_value(1, bi_map.find(pid) != bi_map.end());
-        p2s.append(r, i);
+        for (auto e: tem_map)
+            p2s.add_plugin(*e.second.back(), in_view);
     }
 }

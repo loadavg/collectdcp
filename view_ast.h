@@ -81,7 +81,7 @@ private:
     void on_cursor_position_changed();
 
     void on_changed();
-    bool on_focus(Gtk::DirectionType);
+    //bool on_focus(Gtk::DirectionType);
 
     //bool disable_parse;
     void setup_context_commands();
