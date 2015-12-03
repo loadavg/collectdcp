@@ -18,9 +18,9 @@ dlg_commands::dlg_commands(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Buil
     using namespace ui_structure;
 
     tb_output = instance_widget<Gtk::TextView>(refBuilder, "tb_output");
-    auto buf = tb_output->get_buffer();
-    auto tag = buf->create_tag("monospace");
-    tag->property_family() = "Monospace";
+    if (auto buf = tb_output->get_buffer())
+        if (auto tag = buf->create_tag("monospace"))
+            tag->property_family() = "Monospace";
 
     password = instance_widget<Gtk::Entry>(refBuilder, "txt_sysadm_pwd");
 
@@ -32,7 +32,6 @@ dlg_commands::dlg_commands(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Buil
     btn("btn_install",  &dlg_commands::on_install);
     btn("btn_start",    &dlg_commands::on_start);
     btn("btn_stop",     &dlg_commands::on_stop);
-
 }
 
 void dlg_commands::issue_command(std::string cmd) {
