@@ -5,14 +5,16 @@
  * Copyright 2015 Sputnik7
  */
 
-#include "parse_conf.h"
-#include "icompare.h"
-#include "prints.h"
 #include "join.h"
+#include "prints.h"
+#include "icompare.h"
 #include "tokenizer.h"
+#include "parse_conf.h"
 
 #include <ostream>
 #include <algorithm>
+
+#include <glibmm.h>
 
 namespace parse_conf {
 
@@ -332,6 +334,24 @@ string AST::format_errors(vector<string> errors, size_t ellipsis) {
         return prints("problems found:\n%s\n...", join(errors, '\n').c_str());
     }
     return prints("problems found:\n%s", join(errors, '\n').c_str());
+}
+
+string unquote(const RANGE &r, kstring t) {
+    string v = r(t);
+    if (r.type == quoted_v)
+        return v.substr(1, v.length() - 2);
+    return v;
+}
+
+string plugin_id(const RANGE &r, kstring t) {
+    if (r.type == XML_LIKE_t)
+        if (0 == icompare("plugin", r[HEAD_l][HTAG_l](t))) {
+            auto &h = r[HEAD_l][HARGS_l];
+            if (h)
+                return unquote(h[0], t);
+            g_assert(h.nesting.empty());
+        }
+    return string();
 }
 
 }

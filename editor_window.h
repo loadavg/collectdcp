@@ -8,8 +8,10 @@
 #ifndef EDITOR_WINDOW_H
 #define EDITOR_WINDOW_H
 
+#include <gtkmm/entry.h>
 #include <gtkmm/window.h>
 #include <gtkmm/builder.h>
+#include <gtkmm/toolbar.h>
 #include <gtkmm/statusbar.h>
 
 #include <map>
@@ -73,6 +75,14 @@ public:
      */
     void status_message(std::string msg);
 
+    /**
+     * @brief password
+     *  sudo password required to access protected resources
+     * @return
+     *  user interface to define password
+     */
+    Gtk::Entry* password();
+
 protected:
 
     Glib::RefPtr<Gtk::Application> app;
@@ -104,11 +114,12 @@ protected:
     Widget* get_main_iitem(int index);
 
     /**
-     * @brief get_notebook,get_statusbar
+     * @brief get_notebook,get_statusbar,get_toolbar
      *  these calls resolve the *hardcoded* application structure
      */
     Gtk::Notebook* get_notebook();
     Gtk::Statusbar* get_statusbar();
+    Gtk::Toolbar* get_toolbar();
 
     /**
      * @brief route_to_view

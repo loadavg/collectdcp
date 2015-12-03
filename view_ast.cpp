@@ -7,6 +7,7 @@
 
 #include "prints.h"
 #include "view_ast.h"
+#include "process_run.h"
 #include "attr_helper.h"
 #include "file2string.h"
 #include "message_box.h"
@@ -16,6 +17,8 @@
 
 #include <fstream>
 #include <iostream>
+
+#include <glibmm/fileutils.h>
 
 using namespace attr_helper;
 using namespace std;
@@ -79,22 +82,46 @@ void view_ast::action_status(std::string action, bool on_off) const {
 
 void view_ast::save()
 {
-    if (is_dirty()) {
-        auto text = get_buffer()->get_text();
-        auto path = model::conf_file(conf);
-        ofstream s(path);
-        if (s) {
-            s << text;
-            app_window()->status_message(prints("saved '%s' in '%s'", conf.c_str(), path.c_str()));
+    if (!is_dirty()) {
+        message_box(prints("nothing to save from %s", conf.c_str()));
+        return;
+    }
 
-            reparse_buffer();
-            set_dirty(false);
+    auto text = get_buffer()->get_text();
+    auto path = model::conf_file(conf);
+    string error;
+
+    string pwd = app_window()->password()->get_text();
+    if (!pwd.empty()) {
+        string tmp;
+        int fd = Glib::file_open_tmp(tmp);
+        string::size_type c = write(fd, text.c_str(), text.length());
+        close(fd);
+        if (c == text.length()) {
+            try {
+                process_run p(prints("cp %s %s", tmp.c_str(), path.c_str()), pwd);
+                error = p.result;
+            }
+            catch(exception &e) {
+                error = e.what();
+            }
         }
+    }
+    else {
+        ofstream s(path);
+        if (s)
+            s << text;
         else
-            message_box(prints("cannot save '%s' in '%s'", conf.c_str(), path.c_str()));
+            error = Glib::strerror(errno);
+    }
+    if (error.empty()) {
+        app_window()->status_message(prints("saved '%s' in '%s'", conf.c_str(), path.c_str()));
+
+        reparse_buffer();
+        set_dirty(false);
     }
     else
-        message_box(prints("nothing to save from %s", conf.c_str()));
+        message_box(prints("cannot save '%s' in '%s'\n%s", conf.c_str(), path.c_str(), error.c_str()));
 }
 
 void view_ast::on_cursor_position_changed() {
@@ -201,6 +228,7 @@ void view_ast::apply_AST_attributes(RefPtr<Buffer> buf) {
             break;
         case KEY_VALUES_t:
             apply_attribute(buf, "key", r[KEY_l]);
+            /*
             for (auto &v: r[VALUES_l].nesting) {
                 switch (v.type) {
                 case quoted_v:
@@ -221,6 +249,24 @@ void view_ast::apply_AST_attributes(RefPtr<Buffer> buf) {
                 }
             }
             return false;
+            */
+            break;
+        case quoted_v:
+            apply_attribute(buf, "quoted", r);
+            break;
+        case integer_v:
+        case floating_v:
+        case xinteger_v:
+        case octals_v:
+            apply_attribute(buf, "number", r);
+            break;
+        case boolean_v:
+            apply_attribute(buf, "boolean", r);
+            break;
+        case unquoted_v:
+            apply_attribute(buf, "unquoted", r);
+            break;
+
         case ERROR_t:
             apply_attribute(buf, "error", r);
             break;

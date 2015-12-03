@@ -148,6 +148,33 @@ namespace parse_conf
          */
         static string format_errors(vector<string> errors, size_t ellipsis = 3);
     };
+
+    typedef const string &kstring;
+
+    /**
+     * @brief unquote
+     *  quote is mandatory around symbols with spaces inside
+     *  often also proper symbols are quoted
+     * @param r
+     *  parsed area containing the identifier
+     * @param t
+     *  text source of parsed area
+     * @return
+     *  symbol without quotes (check before rewrite is quote is needed!)
+     */
+    string unquote(const RANGE &r, kstring t);
+
+    /**
+     * @brief plugin_id
+     *  get the plugin identifier of a XML_LIKE_t section
+     * @param r
+     *  parsed area containing the section
+     * @param t
+     *  text source of parsed area
+     * @return
+     *  unquoted plugin identifier
+     */
+    string plugin_id(const RANGE &r, kstring t);
 }
 
 #endif // PARSE_CONF_H

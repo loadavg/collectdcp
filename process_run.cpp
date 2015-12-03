@@ -45,6 +45,14 @@ process_run::process_run(std::string cmd, std::string pwd, bool add_stderr)
 
     pclose(pipe);
 
+    if (!pwd.empty()) {
+        // remove eventual warning
+        if (result.substr(0, 6) == "[sudo]") {
+            auto nl = result.find('\n');
+            if (nl != std::string::npos)
+                result = result.substr(nl + 1);
+        }
+    }
 }
 
 #if 0

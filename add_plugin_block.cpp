@@ -29,8 +29,6 @@ using namespace std;
 using namespace model;
 using namespace parse_conf;
 
-typedef const string &kstring;
-
 /*
 typedef RANGE::path_t path;
 typedef map<path, const RANGE *> block_indexing_t;
@@ -74,14 +72,6 @@ int visit(path& buffer, const RANGE &node, function<void(const RANGE &top)> on_n
     return c;
 }
 */
-
-inline string plugin_id(const RANGE &r, kstring t) {
-    if (r.type == XML_LIKE_t)
-        if (0 == icompare("plugin", r[HEAD_l][HTAG_l](t)))
-            if (r[HEAD_l][HARGS_l].nesting.size())
-                return r[HEAD_l][HARGS_l][0](t);
-    return string();
-}
 
 struct plugins_t : std::map<string, RANGE::path_t, iless> {
     const AST *ast;

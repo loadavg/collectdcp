@@ -22,12 +22,13 @@
 using namespace std;
 using namespace Glib;
 using namespace Gtk;
+using namespace ui_structure;
 
 editor_window* editor_window::setup(RefPtr<Application> app) {
     editor_window* window = 0;
     RefPtr<Builder> builder;
 
-    if (ui_structure::get_resource("editor", builder)) {
+    if (get_resource("editor", builder)) {
         builder->get_widget_derived("window1", window);
         if (window)
             window->app = app;
@@ -134,19 +135,24 @@ bool editor_window::on_idle()
     return true;
 }
 
-/////////////////////////////
-
+/**
+ * @brief get_main_iitem
+ *  these calls resolve the *hardcoded* application structure
+ */
 Widget* editor_window::get_main_iitem(int index) {
     auto c0 = get_children();
     auto c1 = is_a<Container>(c0[0])->get_children();
     return c1[index];
 }
+
 Notebook* editor_window::get_notebook() {
     return is_a<Notebook>(get_main_iitem(2));
 }
-
 Statusbar* editor_window::get_statusbar() {
     return is_a<Statusbar>(get_main_iitem(3));
+}
+Toolbar* editor_window::get_toolbar() {
+    return is_a<Toolbar>(get_main_iitem(1));
 }
 
 /**
@@ -172,8 +178,8 @@ view_ast *editor_window::current_view() {
 view_ast *editor_window::find_view(string conf) {
     if (auto nb = get_notebook())
         for (int p = 0; p < nb->get_n_pages(); ++p)
-            if (auto sc = dynamic_cast<Container*>(nb->get_nth_page(p)))
-                if (auto v = dynamic_cast<view_ast*>(sc->get_children()[0]))
+            if (auto sc = is_a<Container>(nb->get_nth_page(p)))
+                if (auto v = is_a<view_ast>(sc->get_children()[0]))
                     if (v->conf == conf)
                         return v;
     return 0;
@@ -238,7 +244,7 @@ const editor_window::strings_t& editor_window::conf_editable() {
 }
 
 void editor_window::on_help_about() {
-    ui_structure::instance_ui_widget("about_box", "aboutdialog1");
+    instance_ui_widget("about_box", "aboutdialog1");
 }
 
 bool editor_window::check_quit() {
@@ -259,12 +265,10 @@ void editor_window::on_file_quit() {
 }
 
 void editor_window::on_commands() {
-    using namespace ui_structure;
     instance_ui_object<dlg_commands>("dlg_commands", "dlg_commands", run_dialog);
 }
 
 void editor_window::action_status(string action, bool status) {
-    using namespace ui_structure;
     if (auto mn = locate_by_name(this, "mn_"+action))
         mn->set_sensitive(status);
     if (auto tb = locate_by_name(this, "tb_"+action))
@@ -272,10 +276,13 @@ void editor_window::action_status(string action, bool status) {
 }
 
 void editor_window::on_add_block() {
-    using namespace ui_structure;
     instance_ui_object<add_plugin_block>(
                 "add_plugin_treeview", "add_plugin_block", [&](add_plugin_block *dialog) {
         dialog->set_editor(current_view());
         return run_dialog(dialog);
     });
+}
+
+Entry* editor_window::password() {
+    return is_a<Entry>(locate_by_name(get_toolbar(), "te_password"));
 }
