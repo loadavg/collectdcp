@@ -265,7 +265,11 @@ void editor_window::on_file_quit() {
 }
 
 void editor_window::on_commands() {
-    instance_ui_object<dlg_commands>("dlg_commands", "dlg_commands", run_dialog);
+    instance_ui_object<dlg_commands>("dlg_commands", "dlg_commands", [&](dlg_commands* dia) {
+        if (dia->password)
+            dia->password->set_text(password()->get_text());
+        return run_dialog(dia);
+    });
 }
 
 void editor_window::action_status(string action, bool status) {

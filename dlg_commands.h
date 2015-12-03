@@ -23,6 +23,8 @@ class dlg_commands : public Gtk::Dialog
 public:
     dlg_commands(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder);
 
+    Gtk::Entry *password;
+
 private:
     void on_validate();
     void on_stats();
@@ -34,7 +36,6 @@ private:
     void issue_command(std::string cmd);
 
     Gtk::TextView *tb_output;
-    Gtk::Entry *password;
 
     void set_monospace();
 };
