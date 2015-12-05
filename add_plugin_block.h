@@ -34,6 +34,17 @@ protected:
 
     view_ast *editor = 0;
     Glib::RefPtr<Gtk::TreeStore> treestore;
+
+    /**
+     * @brief on_add_plugin
+     *  insert selected plugin block in view editor
+     */
+    void on_add_plugin();
+
+    /**
+     * expected columns from .glade definition
+     */
+    enum { c_name, c_used, c_summary, c_args };
 };
 
 #endif // ADD_PLUGIN_BLOCK_H

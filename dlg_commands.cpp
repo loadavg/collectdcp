@@ -35,7 +35,6 @@ dlg_commands::dlg_commands(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Buil
 }
 
 void dlg_commands::issue_command(std::string cmd) {
-    //auto p = model::conf_file("collectd");
     try {
         process_run P(cmd, password->get_text());
         if (tb_output) {
@@ -69,8 +68,11 @@ void dlg_commands::on_stop() {
 }
 
 void dlg_commands::set_monospace() {
+    ui_structure::tag_buffer(tb_output->get_buffer());
+    /*
     auto buf = tb_output->get_buffer();
     Gtk::TextIter I, J;
     buf->get_bounds(I, J);
     buf->apply_tag_by_name("monospace", I, J);
+    */
 }

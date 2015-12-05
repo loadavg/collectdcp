@@ -58,6 +58,14 @@ public:
      */
     model::AST *ast_template = 0;
 
+    /**
+     * @brief on_search
+     *  apply search from curent position
+     * @param text
+     *  text sought
+     */
+    void on_search(std::string text);
+
 private:
 
     /**

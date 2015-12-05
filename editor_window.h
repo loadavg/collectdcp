@@ -183,6 +183,7 @@ protected:
     void on_help_about();
     void on_file_quit();
     void on_commands();
+    void on_search();
 
     /**
      * @brief on_add_block

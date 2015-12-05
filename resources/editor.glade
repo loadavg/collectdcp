@@ -37,8 +37,8 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">collectd editor</property>
     <property name="window_position">center</property>
-    <property name="default_width">800</property>
-    <property name="default_height">600</property>
+    <property name="default_width">1024</property>
+    <property name="default_height">800</property>
     <signal name="delete-event" handler="on_delete_event" swapped="no"/>
     <signal name="destroy" handler="on_destroy" swapped="no"/>
     <child>
@@ -499,6 +499,8 @@
               <object class="GtkToolItem" id="tb_passwd_host">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="tooltip_markup" translatable="yes">Enter your sudo password to access protected resources.
+It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
                 <child>
                   <object class="GtkEntry" id="te_password">
                     <property name="name">te_password</property>
@@ -510,6 +512,40 @@
                     <property name="primary_icon_tooltip_markup" translatable="yes">Enter your sudo password to access protected resources.
 It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
                     <property name="placeholder_text" translatable="yes">sudo password</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparatorToolItem" id="separatortoolitem5">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolItem" id="tb_search">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_markup" translatable="yes">&lt;b&gt;Search&lt;/b&gt; text in current view</property>
+                <child>
+                  <object class="GtkSearchEntry" id="te_search">
+                    <property name="name">te_search</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="progress_pulse_step">0.089999999999999997</property>
+                    <property name="primary_icon_name">edit-find-symbolic</property>
+                    <property name="primary_icon_activatable">False</property>
+                    <property name="primary_icon_sensitive">False</property>
+                    <property name="primary_icon_tooltip_text" translatable="yes">search text in current view</property>
+                    <property name="placeholder_text" translatable="yes">search...</property>
                   </object>
                 </child>
               </object>

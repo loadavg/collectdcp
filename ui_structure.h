@@ -10,6 +10,7 @@
 
 #include <gtkmm/dialog.h>
 #include <gtkmm/widget.h>
+#include <gtkmm/textbuffer.h>
 #include <gtkmm/builder.h>
 #include <string>
 
@@ -174,6 +175,18 @@ bool buffer_cursor_offset(RefPtr<TextBuffer>& buffer, CURSOR &);
  */
 bool current_cursor_info(RefPtr<Window>& toplevel, string file, CURSOR &);
 #endif
+
+/**
+ * @brief tag_buffer
+ *  apply tag by name to entire buffer
+ * @param buf
+ *  buffer to modify
+ * @param tag
+ *  tag to apply
+ * @return
+ *  buffer extent
+ */
+std::pair<Gtk::TextIter, Gtk::TextIter> tag_buffer(Glib::RefPtr<Gtk::TextBuffer> buf, std::string tag = "monospace");
 
 }
 

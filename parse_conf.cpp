@@ -313,7 +313,7 @@ void AST::dump(ostream &s, int indent) const {
  * @param path
  *  file path for error reporting
  */
-AST::AST(string text, string path, vector<string>* errors) : text(text) {
+AST::AST(string text, string path, strings* errors) : text(text) {
     parse p(text, path);
     elements = p.begin(FILE_t);
     while (!p.eof())
@@ -328,7 +328,7 @@ AST::AST(string text, string path, vector<string>* errors) : text(text) {
             throw invalid_argument(format_errors(p.errors));
     }
 }
-string AST::format_errors(vector<string> errors, size_t ellipsis) {
+string AST::format_errors(strings errors, size_t ellipsis) {
     if (errors.size() > ellipsis) {
         errors.resize(ellipsis);
         return prints("problems found:\n%s\n...", join(errors, '\n').c_str());

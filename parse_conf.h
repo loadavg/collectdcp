@@ -44,6 +44,9 @@ namespace parse_conf
 {
     using namespace std;
 
+    typedef vector<string> strings;
+    typedef const string &kstring;
+
     /**
      * @brief The ELEMENT_t enum
      *  qualify different parts
@@ -110,7 +113,7 @@ namespace parse_conf
          * @param errors
          *  report errors found
          */
-        AST(string text, string path = "<?>", vector<string>* errors = 0);
+        AST(string text, string path = "<?>", strings* errors = 0);
 
         /**
          * @brief elements
@@ -146,10 +149,8 @@ namespace parse_conf
          * @return
          *  a multiline string mesasge
          */
-        static string format_errors(vector<string> errors, size_t ellipsis = 3);
+        static string format_errors(strings errors, size_t ellipsis = 3);
     };
-
-    typedef const string &kstring;
 
     /**
      * @brief unquote
@@ -175,6 +176,16 @@ namespace parse_conf
      *  unquoted plugin identifier
      */
     string plugin_id(const RANGE &r, kstring t);
+
+    /**
+     * @brief The token struct
+     *  define token access functions
+     */
+    struct token : pair<const RANGE &, kstring> {
+        string unquote() const { return parse_conf::unquote(first, second); }
+        string plugin_id() const { return parse_conf::plugin_id(first, second); }
+    };
+
 }
 
 #endif // PARSE_CONF_H

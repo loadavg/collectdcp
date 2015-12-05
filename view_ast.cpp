@@ -19,6 +19,7 @@
 #include <iostream>
 
 #include <glibmm/fileutils.h>
+//#include <gtksourceview/gtksource.h>
 
 using namespace attr_helper;
 using namespace std;
@@ -76,6 +77,37 @@ editor_window* view_ast::app_window() const {
             return const_cast<editor_window*>(e);
     return 0;
 }
+
+void view_ast::on_search(string text) {
+    /*
+    g_log("view_ast", G_LOG_LEVEL_DEBUG, "on_search(%s)", text.c_str());
+    RefPtr<Buffer> b = get_source_buffer();
+    GtkSourceSearchContext *sc = gtk_source_search_context_new(b->gobj(), 0);
+    GtkSourceSearchSettings	*ss = gtk_source_search_context_get_settings(sc);
+    gtk_source_search_settings_set_search_text(ss, text.c_str());
+    RefPtr<TextBuffer::Mark> mark = b->get_insert();
+    TextBuffer::iterator iter = b->get_iter_at_mark(mark);
+    GtkTextIter I,J;
+    gboolean found = gtk_source_search_context_forward(sc, iter.gobj(), &I, &J);
+    if (found) {
+        g_log("view_ast", G_LOG_LEVEL_DEBUG, "on_search(%s)", text.c_str());
+    }
+    */
+    string feedback;
+    RefPtr<Buffer> buf = get_source_buffer();
+    RefPtr<TextBuffer::Mark> cur = buf->get_insert();
+    TextBuffer::iterator pos = buf->get_iter_at_mark(cur), I,J;
+    if ((++pos).forward_search(text, TEXT_SEARCH_CASE_INSENSITIVE, I,J)) {
+        buf->move_mark(cur, I);
+        buf->select_range(I, J);
+        scroll_to(cur);
+        feedback = prints("found '%s'", text.c_str());
+    }
+    else
+        feedback = prints("not found '%s'", text.c_str());
+    app_window()->status_message(feedback);
+}
+
 void view_ast::action_status(std::string action, bool on_off) const {
     app_window()->action_status(action, on_off);
 }
@@ -228,28 +260,6 @@ void view_ast::apply_AST_attributes(RefPtr<Buffer> buf) {
             break;
         case KEY_VALUES_t:
             apply_attribute(buf, "key", r[KEY_l]);
-            /*
-            for (auto &v: r[VALUES_l].nesting) {
-                switch (v.type) {
-                case quoted_v:
-                    apply_attribute(buf, "quoted", v);
-                    break;
-                case integer_v:
-                case floating_v:
-                case xinteger_v:
-                case octals_v:
-                    apply_attribute(buf, "number", v);
-                    break;
-                case boolean_v:
-                    apply_attribute(buf, "boolean", v);
-                    break;
-                case unquoted_v:
-                    apply_attribute(buf, "unquoted", v);
-                    break;
-                }
-            }
-            return false;
-            */
             break;
         case quoted_v:
             apply_attribute(buf, "quoted", r);

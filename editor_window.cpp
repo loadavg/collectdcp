@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <gtkmm/toolbutton.h>
+#include <gtkmm/searchentry.h>
 #include <gtkmm/aboutdialog.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtksourceviewmm/undomanager.h>
@@ -95,6 +96,9 @@ editor_window::editor_window(BaseObjectType *cobject, const RefPtr<Builder>& bui
 
     // web scrapped template based insertion
     find_view("collectd")->set_template("plugins");
+
+    is_a<SearchEntry>(ui_structure::locate_by_name(this, "te_search"))->
+            signal_activate().connect(sigc::mem_fun(*this, &editor_window::on_search));
 }
 
 /**
@@ -289,4 +293,11 @@ void editor_window::on_add_block() {
 
 Entry* editor_window::password() {
     return is_a<Entry>(locate_by_name(get_toolbar(), "te_password"));
+}
+
+void editor_window::on_search() {
+    if (view_ast *v = current_view()) {
+        string search = is_a<SearchEntry>(ui_structure::locate_by_name(this, "te_search"))->get_text();
+        v->on_search(search);
+    }
 }

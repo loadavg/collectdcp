@@ -86,4 +86,12 @@ std::string get_resource_path(std::string what, std::string ext) {
     return "../collectdcp/resources/" + what + "." + ext;
 }
 
+std::pair<Gtk::TextIter, Gtk::TextIter> tag_buffer(Glib::RefPtr<Gtk::TextBuffer> buf, std::string tag)
+{
+    Gtk::TextIter I, J;
+    buf->get_bounds(I, J);
+    buf->apply_tag_by_name(tag, I, J);
+    return std::make_pair(I, J);
+}
+
 }

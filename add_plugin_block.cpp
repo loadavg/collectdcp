@@ -10,6 +10,7 @@
 #include <gtkmm/dialog.h>
 #include <gtkmm/treeview.h>
 
+#include "is_a.h"
 #include "join.h"
 #include "icompare.h"
 #include "depth_first.h"
@@ -21,6 +22,22 @@ add_plugin_block::add_plugin_block(Gtk::Dialog::BaseObjectType *cobject, const G
     : Gtk::Dialog(cobject)
 {
     treestore = Glib::RefPtr<Gtk::TreeStore>::cast_dynamic(refBuilder->get_object("add_plugin_treestore"));
+    if (treestore) {
+        //Glib::RefPtr<Gtk::TreeView> treeview = Glib::RefPtr<Gtk::TreeView>::cast_dynamic(refBuilder->get_object("add_plugin_treeview"));
+        ui_structure::instance_widget<Gtk::Button>(refBuilder, "btn_add_plugin")
+            ->signal_clicked().connect(sigc::mem_fun(this, &add_plugin_block::on_add_plugin));
+    }
+}
+void add_plugin_block::on_add_plugin() {
+    auto treeview = is_a<Gtk::TreeView>(ui_structure::locate_by_name(this, "add_plugin_treeview"));
+    auto sel = treeview->get_selection();
+    auto row = sel->get_selected();
+
+    std::string v; row->get_value(c_name, v);
+    bool in; row->get_value(c_used, in);
+    if (!in) {
+
+    }
 }
 
 namespace implementation {
