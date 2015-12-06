@@ -9,15 +9,13 @@
 
 namespace attr_helper {
 
-void apply_attribute(RefPtr<Buffer> buf, ccp attr, const RANGE &r) {
+void apply_attribute(RefPtr<edit_text_buf> buf, ccp attr, const RANGE &r) {
     auto    I = buf->get_iter_at_offset(r.begin),
             J = buf->get_iter_at_offset(r.end);
     buf->apply_tag_by_name(attr, I, J);
 }
 
-void prepare_attributes(RefPtr<Buffer> buf) {
-
-    using namespace attr_helper;
+void prepare_attributes(RefPtr<edit_text_buf> buf) {
 
     auto TAG = [buf](ccp tag, attr_func attrs) {
         return attrs(buf->create_tag(tag));

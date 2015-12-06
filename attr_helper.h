@@ -8,14 +8,13 @@
 #ifndef ATTR_HELPER_H
 #define ATTR_HELPER_H
 
-#include <gtksourceviewmm.h>
 #include "range.h"
+#include "edittext.h"
 
 namespace attr_helper {
 
     using namespace Glib;
     using namespace Gtk;
-    using namespace Gsv;
 
     typedef const char* ccp;
     typedef RefPtr<TextTag> TT;
@@ -35,7 +34,7 @@ namespace attr_helper {
      * @param attr
      * @param r
      */
-    void apply_attribute(RefPtr<Buffer> buf, const char *attr, const RANGE &r);
+    void apply_attribute(RefPtr<edit_text_buf> buf, const char *attr, const RANGE &r);
 
     /**
      * @brief prepare_attributes
@@ -43,7 +42,7 @@ namespace attr_helper {
      * @param buf
      *  text buffer to bind
      */
-    void prepare_attributes(RefPtr<Buffer> buf);
+    void prepare_attributes(RefPtr<edit_text_buf> buf);
 }
 
 #endif // ATTR_HELPER_H

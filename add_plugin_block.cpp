@@ -18,22 +18,32 @@
 #include <map>
 #include <iostream>
 
-add_plugin_block::add_plugin_block(Gtk::Dialog::BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &refBuilder)
-    : Gtk::Dialog(cobject)
+namespace ns_all {
+    using namespace std;
+    using namespace Glib;
+    using namespace Gtk;
+    using namespace ui_structure;
+    using namespace model;
+    using namespace parse_conf;
+}
+using namespace ns_all;
+
+add_plugin_block::add_plugin_block(BaseObjectType *cobject, const RefPtr<Builder> &refBuilder)
+    : Dialog(cobject)
 {
-    treestore = Glib::RefPtr<Gtk::TreeStore>::cast_dynamic(refBuilder->get_object("add_plugin_treestore"));
+    treestore = RefPtr<TreeStore>::cast_dynamic(refBuilder->get_object("add_plugin_treestore"));
     if (treestore) {
         //Glib::RefPtr<Gtk::TreeView> treeview = Glib::RefPtr<Gtk::TreeView>::cast_dynamic(refBuilder->get_object("add_plugin_treeview"));
-        ui_structure::instance_widget<Gtk::Button>(refBuilder, "btn_add_plugin")
+        instance_widget<Button>(refBuilder, "btn_add_plugin")
             ->signal_clicked().connect(sigc::mem_fun(this, &add_plugin_block::on_add_plugin));
     }
 }
 void add_plugin_block::on_add_plugin() {
-    auto treeview = is_a<Gtk::TreeView>(ui_structure::locate_by_name(this, "add_plugin_treeview"));
+    auto treeview = is_a<TreeView>(locate_by_name(this, "add_plugin_treeview"));
     auto sel = treeview->get_selection();
     auto row = sel->get_selected();
 
-    std::string v; row->get_value(c_name, v);
+    string v; row->get_value(c_name, v);
     bool in; row->get_value(c_used, in);
     if (!in) {
 
@@ -41,10 +51,6 @@ void add_plugin_block::on_add_plugin() {
 }
 
 namespace implementation {
-
-using namespace std;
-using namespace model;
-using namespace parse_conf;
 
 /*
 typedef RANGE::path_t path;
@@ -90,7 +96,7 @@ int visit(path& buffer, const RANGE &node, function<void(const RANGE &top)> on_n
 }
 */
 
-struct plugins_t : std::map<string, RANGE::path_t, iless> {
+struct plugins_t : map<string, RANGE::path_t, iless> {
     const AST *ast;
     plugins_t(const AST *ast) : ast(ast) {
         depth_first df;
@@ -108,11 +114,10 @@ struct plugins_t : std::map<string, RANGE::path_t, iless> {
 
 struct plugin_to_store {
 
-    typedef Gtk::TreeStore Model;
-    typedef Model::iterator Node;
+    typedef TreeStore::iterator Node;
 
     kstring text;
-    Glib::RefPtr<Model> treestore;
+    RefPtr<TreeStore> treestore;
 
     void add_plugin(const RANGE &r, const plugins_t &in_view) {
         Node i = treestore->append();
@@ -133,7 +138,7 @@ struct plugin_to_store {
             if (e.type == KEY_VALUES_t) {
                 Node c = treestore->append(parent->children());
                 c->set_value(0, e[KEY_l](text));
-                vector<string> args;
+                strings args;
                 for (auto a: e[VALUES_l].nesting)
                     args.push_back(a(text));
                 c->set_value(3, join(args, ','));

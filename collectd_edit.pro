@@ -13,7 +13,10 @@ CONFIG -= qt
 CONFIG -= app_bundle
 
 CONFIG += link_pkgconfig
-PKGCONFIG += gtkmm-3.0 gtksourceviewmm-3.0
+PKGCONFIG += gtkmm-3.0
+
+DEFINES += USE_SOURCEVIEW
+PKGCONFIG += gtksourceviewmm-3.0
 
 SOURCES += main.cpp \
     parse_conf.cpp \
@@ -48,7 +51,8 @@ HEADERS += \
     editor_window.h \
     test_parse.h \
     is_a.h \
-    depth_first.h
+    depth_first.h \
+    edittext.h
 
 DISTFILES += \
     doxygen_config \
@@ -56,4 +60,5 @@ DISTFILES += \
     resources/editor.glade \
     resources/add_plugin_treeview.glade \
     resources/about_box.glade \
-    resources/plugins.template
+    resources/plugins.template \
+    README.md

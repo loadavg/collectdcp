@@ -151,7 +151,7 @@ protected:
      *  borrowed from Prolog, where pattern matching was a good deal
      *  to access structured data, but useless now
      */
-    typedef std::tuple<std::string, Gsv::View*, Glib::RefPtr<Gsv::Buffer>> file_view_buf;
+    typedef std::tuple<std::string, Gtk::TextView*, Glib::RefPtr<Gtk::TextBuffer>> file_view_buf;
     file_view_buf current_file_view_buf();
 
     /**

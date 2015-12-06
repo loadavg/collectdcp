@@ -9,8 +9,8 @@
 #define VIEW_AST_H
 
 #include "model.h"
-
-#include <gtksourceviewmm.h>
+#include "edittext.h"
+#include <gtkmm/label.h>
 #include <gtkmm/notebook.h>
 
 class editor_window;
@@ -19,7 +19,7 @@ class editor_window;
  * @brief The view_ast class
  *  a decorated AST view/editor
  */
-class view_ast : public Gsv::View
+class view_ast : public edit_text_view
 {
 public:
     view_ast(std::string conf);
@@ -29,6 +29,14 @@ public:
 
     Gtk::Notebook* view_notebook();
     Gtk::Label* label();
+
+    Glib::RefPtr<edit_text_buf> buffer() {
+#ifdef USE_SOURCEVIEW
+        return get_source_buffer();
+#else
+        return get_buffer();
+#endif
+    }
 
     const model::AST *get_AST() const { return ast; }
     std::string conf;
@@ -80,7 +88,7 @@ private:
      *	decorate a 'key value' pair
      *	decorate an XML like tag
      */
-    void apply_AST_attributes(Glib::RefPtr<Gsv::Buffer> buf);
+    void apply_AST_attributes(Glib::RefPtr<edit_text_buf> buf);
 
     /**
      * @brief on_cursor_position_changed

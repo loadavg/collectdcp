@@ -19,6 +19,7 @@
 #include <iostream>
 
 #include <glibmm/fileutils.h>
+#include <glibmm/stringutils.h>
 //#include <gtksourceview/gtksource.h>
 
 using namespace attr_helper;
@@ -27,7 +28,7 @@ using namespace std;
 view_ast::view_ast(string conf) :
     conf(conf)
 {
-    RefPtr<Buffer> buf = Buffer::create();
+    RefPtr<edit_text_buf> buf = edit_text_buf::create();
     prepare_attributes(buf);
     set_buffer(buf);
 
@@ -43,12 +44,14 @@ view_ast::view_ast(string conf) :
         message_box(e.what());
     }
 
-    RefPtr<UndoManager> um = buf->get_undo_manager();
+    #ifdef USE_SOURCEVIEW
+    RefPtr<Gsv::UndoManager> um = buf->get_undo_manager();
     um->begin_not_undoable_action();
+    #endif
     if (ast) {
         buf->set_text(ast->text);
 
-        Buffer::iterator b, e;
+        edit_text_buf::iterator b, e;
         buf->get_bounds(b, e);
         buf->apply_tag_by_name("monospace", b, e),
 
@@ -56,9 +59,10 @@ view_ast::view_ast(string conf) :
     }
     else
         buf->set_text(text);
+    #ifdef USE_SOURCEVIEW
     um->end_not_undoable_action();
-
     set_show_line_numbers(true);
+    #endif
 
     buf->property_cursor_position().signal_changed().connect(sigc::mem_fun(this, &view_ast::on_cursor_position_changed));
     buf->signal_changed().connect(sigc::mem_fun(this, &view_ast::on_changed));
@@ -85,8 +89,8 @@ void view_ast::on_search(string text) {
     GtkSourceSearchContext *sc = gtk_source_search_context_new(b->gobj(), 0);
     GtkSourceSearchSettings	*ss = gtk_source_search_context_get_settings(sc);
     gtk_source_search_settings_set_search_text(ss, text.c_str());
-    RefPtr<TextBuffer::Mark> mark = b->get_insert();
-    TextBuffer::iterator iter = b->get_iter_at_mark(mark);
+    RefPtr<edit_text_buf::Mark> mark = b->get_insert();
+    edit_text_buf::iterator iter = b->get_iter_at_mark(mark);
     GtkTextIter I,J;
     gboolean found = gtk_source_search_context_forward(sc, iter.gobj(), &I, &J);
     if (found) {
@@ -94,9 +98,9 @@ void view_ast::on_search(string text) {
     }
     */
     string feedback;
-    RefPtr<Buffer> buf = get_source_buffer();
-    RefPtr<TextBuffer::Mark> cur = buf->get_insert();
-    TextBuffer::iterator pos = buf->get_iter_at_mark(cur), I,J;
+    RefPtr<edit_text_buf> buf = buffer();
+    RefPtr<edit_text_buf::Mark> cur = buf->get_insert();
+    edit_text_buf::iterator pos = buf->get_iter_at_mark(cur), I,J;
     if ((++pos).forward_search(text, TEXT_SEARCH_CASE_INSENSITIVE, I,J)) {
         buf->move_mark(cur, I);
         buf->select_range(I, J);
@@ -119,7 +123,7 @@ void view_ast::save()
         return;
     }
 
-    auto text = get_buffer()->get_text();
+    auto text = buffer()->get_text();
     auto path = model::conf_file(conf);
     string error;
 
@@ -187,9 +191,9 @@ bool view_ast::on_focus(DirectionType dt) {
 */
 
 RANGE::pos view_ast::buffer_cursor_offset() {
-    RefPtr<Buffer> b = get_source_buffer();
-    RefPtr<TextBuffer::Mark> mark = b->get_insert();
-    TextBuffer::iterator iter = b->get_iter_at_mark(mark);
+    RefPtr<edit_text_buf> b = buffer();
+    RefPtr<edit_text_buf::Mark> mark = b->get_insert();
+    edit_text_buf::iterator iter = b->get_iter_at_mark(mark);
     return iter.get_offset();
 }
 
@@ -240,7 +244,7 @@ Notebook* view_ast::view_notebook() {
     return n;
 }
 
-void view_ast::apply_AST_attributes(RefPtr<Buffer> buf) {
+void view_ast::apply_AST_attributes(RefPtr<edit_text_buf> buf) {
 
     if (!ast)
         return;
@@ -300,7 +304,7 @@ Lines get_starts(TextIter Xi, TextIter Yi) {
     return lines;
 }
 
-typedef RefPtr<Buffer> pBuffer;
+typedef RefPtr<edit_text_buf> pBuffer;
 
 Lines get_start_lines(pBuffer Buf, CURSOR X, CURSOR Y) {
     TextIter Xi = Buf->get_iter_at_offset(X);
@@ -343,7 +347,7 @@ bool view_ast::disable_block(bool perform) {
                 return false;   // already disabled
             if (actionable_block(rp)) {
                 if (perform) {
-                    comment_lines(get_source_buffer(), rp->begin, rp->end);
+                    comment_lines(buffer(), rp->begin, rp->end);
                     reparse_buffer();
                 }
                 return true;
@@ -360,7 +364,7 @@ bool view_ast::enable_block(bool perform) {
                 enabled = false;   // already disabled
             if (!enabled && actionable_block(rp)) {
                 if (perform) {
-                    uncomment_lines(get_source_buffer(), rp->begin, rp->end);
+                    uncomment_lines(buffer(), rp->begin, rp->end);
                     reparse_buffer();
                 }
                 return true;
@@ -370,7 +374,7 @@ bool view_ast::enable_block(bool perform) {
     return false;
 }
 void view_ast::reparse_buffer() {
-    auto buf = get_source_buffer();
+    auto buf = buffer();
     auto text = buf->get_text();
     try {
         auto temp = new parse_conf::AST(text, conf);

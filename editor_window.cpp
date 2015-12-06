@@ -18,7 +18,7 @@
 #include <gtkmm/searchentry.h>
 #include <gtkmm/aboutdialog.h>
 #include <gtkmm/scrolledwindow.h>
-#include <gtksourceviewmm/undomanager.h>
+#include <glibmm.h>
 
 using namespace std;
 using namespace Glib;
@@ -124,9 +124,11 @@ bool editor_window::on_timer()
         action_status("disable_block", w->disable_block(false));
         action_status("file_save", w->is_dirty());
 
+#ifdef USE_SOURCEVIEW
         RefPtr<const Gsv::UndoManager> um = w->get_source_buffer()->get_undo_manager();
         action_status("edit_undo", um->can_undo());
         action_status("edit_redo", um->can_redo());
+#endif
 
         action_status("add_block", w->ast_template != 0);
     }
@@ -191,7 +193,7 @@ view_ast *editor_window::find_view(string conf) {
 
 editor_window::file_view_buf editor_window::current_file_view_buf() {
     auto va = current_view();
-    auto sb = va->get_source_buffer();
+    auto sb = va->buffer();
     return file_view_buf(va->label()->get_text(), va, sb);
 }
 
