@@ -33,7 +33,6 @@ add_plugin_block::add_plugin_block(BaseObjectType *cobject, const RefPtr<Builder
 {
     treestore = RefPtr<TreeStore>::cast_dynamic(refBuilder->get_object("add_plugin_treestore"));
     if (treestore) {
-        //Glib::RefPtr<Gtk::TreeView> treeview = Glib::RefPtr<Gtk::TreeView>::cast_dynamic(refBuilder->get_object("add_plugin_treeview"));
         instance_widget<Button>(refBuilder, "btn_add_plugin")
             ->signal_clicked().connect(sigc::mem_fun(this, &add_plugin_block::on_add_plugin));
     }
