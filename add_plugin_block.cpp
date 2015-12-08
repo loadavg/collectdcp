@@ -67,7 +67,8 @@ void add_plugin_block::on_add_plugin() {
     bool in; row->get_value(c_used, in);
     if (!in) {
         auto i = tem_map->find(v);
-        string p = i->second(tem_map->text);
+        const RANGE &r = *(i->second.back());
+        string p = r(tem_map->ast->text);
         editor->add_plugin(p);
     }
 }
