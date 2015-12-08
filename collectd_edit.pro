@@ -61,4 +61,5 @@ DISTFILES += \
     resources/add_plugin_treeview.glade \
     resources/about_box.glade \
     resources/plugins.template \
-    README.md
+    README.md \
+    Makefile
