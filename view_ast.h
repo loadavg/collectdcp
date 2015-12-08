@@ -74,6 +74,14 @@ public:
      */
     void on_search(std::string text);
 
+    /**
+     * @brief add_plugin
+     *  insert a plugin block after current cursor position
+     * @param text
+     *  plugin text block
+     */
+    void add_plugin(std::string text);
+
 private:
 
     /**

@@ -21,6 +21,7 @@ class add_plugin_block : public Gtk::Dialog
 {
 public:
     add_plugin_block(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder);
+    ~add_plugin_block();
 
     /**
      * @brief set_editor
@@ -34,6 +35,13 @@ protected:
 
     view_ast *editor = 0;
     Glib::RefPtr<Gtk::TreeStore> treestore;
+
+    struct plugin_to_store;
+    friend struct plugin_to_store;
+
+    struct plugins_t;
+    plugins_t *tem_map = 0;
+    plugins_t *in_view = 0;
 
     /**
      * @brief on_add_plugin

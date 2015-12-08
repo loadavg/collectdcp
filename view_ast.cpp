@@ -112,6 +112,10 @@ void view_ast::on_search(string text) {
     app_window()->status_message(feedback);
 }
 
+void view_ast::add_plugin(string text) {
+
+}
+
 void view_ast::action_status(std::string action, bool on_off) const {
     app_window()->action_status(action, on_off);
 }

@@ -20,13 +20,29 @@
 
 namespace ns_all {
     using namespace std;
-    using namespace Glib;
     using namespace Gtk;
-    using namespace ui_structure;
+    using namespace Glib;
     using namespace model;
     using namespace parse_conf;
+    using namespace ui_structure;
 }
 using namespace ns_all;
+
+struct add_plugin_block::plugins_t : map<string, RANGE::path_t, iless> {
+    const AST *ast;
+    plugins_t(const AST *ast) : ast(ast) {
+        depth_first df;
+        df.visit(ast->elements, [&](const RANGE &r) {
+            if (r.type == XML_LIKE_t) {
+                auto id = plugin_id(r, ast->text);
+                if (!id.empty())
+                    ((*this)[id] = df).push_back(&r);
+                return false;
+            }
+            return true;
+        });
+    }
+};
 
 add_plugin_block::add_plugin_block(BaseObjectType *cobject, const RefPtr<Builder> &refBuilder)
     : Dialog(cobject)
@@ -37,6 +53,11 @@ add_plugin_block::add_plugin_block(BaseObjectType *cobject, const RefPtr<Builder
             ->signal_clicked().connect(sigc::mem_fun(this, &add_plugin_block::on_add_plugin));
     }
 }
+add_plugin_block::~add_plugin_block() {
+    delete tem_map;
+    delete in_view;
+}
+
 void add_plugin_block::on_add_plugin() {
     auto treeview = is_a<TreeView>(locate_by_name(this, "add_plugin_treeview"));
     auto sel = treeview->get_selection();
@@ -45,7 +66,9 @@ void add_plugin_block::on_add_plugin() {
     string v; row->get_value(c_name, v);
     bool in; row->get_value(c_used, in);
     if (!in) {
-
+        auto i = tem_map->find(v);
+        string p = i->second(tem_map->text);
+        editor->add_plugin(p);
     }
 }
 
@@ -95,30 +118,16 @@ int visit(path& buffer, const RANGE &node, function<void(const RANGE &top)> on_n
 }
 */
 
-struct plugins_t : map<string, RANGE::path_t, iless> {
-    const AST *ast;
-    plugins_t(const AST *ast) : ast(ast) {
-        depth_first df;
-        df.visit(ast->elements, [&](const RANGE &r) {
-            if (r.type == XML_LIKE_t) {
-                auto id = plugin_id(r, ast->text);
-                if (!id.empty())
-                    ((*this)[id] = df).push_back(&r);
-                return false;
-            }
-            return true;
-        });
-    }
-};
+}
 
-struct plugin_to_store {
+struct add_plugin_block::plugin_to_store {
 
     typedef TreeStore::iterator Node;
 
     kstring text;
     RefPtr<TreeStore> treestore;
 
-    void add_plugin(const RANGE &r, const plugins_t &in_view) {
+    void add_plugin(const RANGE &r, const add_plugin_block::plugins_t &in_view) {
         Node i = treestore->append();
         auto pid = plugin_id(r, text);
         i->set_value(0, pid);
@@ -147,18 +156,24 @@ struct plugin_to_store {
 
 };
 
-}
-
 void add_plugin_block::set_editor(view_ast *editor) {
     this->editor = editor;
     if (treestore) {
         using namespace implementation;
 
+        /*
         plugins_t tem_map(editor->ast_template);
         plugins_t in_view(editor->get_AST());
         plugin_to_store p2s {tem_map.ast->text, treestore};
-
         for (auto e: tem_map)
             p2s.add_plugin(*e.second.back(), in_view);
+        */
+        tem_map = new plugins_t(editor->ast_template);
+        in_view = new plugins_t(editor->get_AST());
+
+        plugin_to_store p2s {tem_map->ast->text, treestore};
+
+        for (auto e: *tem_map)
+            p2s.add_plugin(*e.second.back(), *in_view);
     }
 }
