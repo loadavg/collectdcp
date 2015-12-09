@@ -10,14 +10,13 @@
 #include "editor_window.h"
 
 #define TEST_GLADE_VERSION
-
 #ifdef TEST_GLADE_VERSION
 #include "ui_structure.h"
-
-void test_glade() {
+auto test_glade() {
     auto b = ui_structure::get_resource("collectdcp");
     auto w = ui_structure::instance_widget<Gtk::Window>(b, "window1");
     w->show_all();
+    return w;
 }
 #endif
 
@@ -40,7 +39,8 @@ int main(int argc, char **argv)
     //test_parse();
 
     #ifdef TEST_GLADE_VERSION
-    test_glade();
+    auto w = test_glade();
+    return app->run(*w, argc, argv);
     #endif
 
     // for debugging purpose, get first argument to indicate

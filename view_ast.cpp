@@ -113,7 +113,9 @@ void view_ast::on_search(string text) {
 }
 
 void view_ast::add_plugin(string text) {
-
+    RefPtr<edit_text_buf> buf = buffer();
+    buf->insert_at_cursor(text);
+    reparse_buffer();
 }
 
 void view_ast::action_status(std::string action, bool on_off) const {

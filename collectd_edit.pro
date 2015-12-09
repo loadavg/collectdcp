@@ -8,7 +8,7 @@
 TEMPLATE = app
 
 CONFIG += console
-CONFIG += C++11
+CONFIG += C++14
 CONFIG -= qt
 CONFIG -= app_bundle
 
