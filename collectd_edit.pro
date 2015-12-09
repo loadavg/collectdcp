@@ -62,4 +62,5 @@ DISTFILES += \
     resources/about_box.glade \
     resources/plugins.template \
     README.md \
-    Makefile
+    Makefile \
+    resources/collectdcp.glade
