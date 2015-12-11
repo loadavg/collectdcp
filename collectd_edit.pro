@@ -68,4 +68,5 @@ DISTFILES += \
     resources/plugins.template \
     README.md \
     Makefile \
-    resources/collectdcp.glade
+    resources/collectdcp.glade \
+    resources/test_glade.glade

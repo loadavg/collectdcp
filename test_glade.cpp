@@ -32,13 +32,12 @@ void test_plugin_form(int argc, char **argv) {
     auto text = file2string(get_resource_path("plugins", "template"));
     auto ast_template = new AST(text);
     try {
-        ast_template->dump(cout);
         delete ast_template;
     } catch (exception &e) {
         message_box(e.what());
     }
-    auto b = ui_structure::get_resource("collectdcp");
-    auto w = ui_structure::instance_widget<Gtk::Window>(b, "window1");
+    auto b = ui_structure::get_resource("test_glade");
+    auto w = ui_structure::instance_widget<Gtk::Window>(b, "collectdcp");
     w->show_all();
     app->run(*w, argc, argv);
     exit(0);
