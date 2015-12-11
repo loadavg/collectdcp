@@ -6,7 +6,7 @@
 #
 
 .cpp.o:
-	g++ -c -std=c++14 $< `pkg-config --cflags gtkmm-3.0`
+	g++ -c -std=c++11 $< `pkg-config --cflags gtkmm-3.0`
 
 collectdcp:\
 	add_plugin_block.o\

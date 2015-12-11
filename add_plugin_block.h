@@ -39,9 +39,8 @@ protected:
     struct plugin_to_store;
     friend struct plugin_to_store;
 
-    struct plugins_t;
-    plugins_t *tem_map = 0;
-    plugins_t *in_view = 0;
+    model::plugins_t *tem_map = 0;
+    model::plugins_t *in_view = 0;
 
     /**
      * @brief on_add_plugin

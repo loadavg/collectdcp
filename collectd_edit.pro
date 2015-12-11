@@ -30,7 +30,9 @@ SOURCES += main.cpp \
     attr_helper.cpp \
     process_run.cpp \
     editor_window.cpp \
-    test_parse.cpp
+    test_parse.cpp \
+    plugin_form.cpp \
+    test_glade.cpp
 
 HEADERS += \
     parse_conf.h \
@@ -52,7 +54,10 @@ HEADERS += \
     test_parse.h \
     is_a.h \
     depth_first.h \
-    edittext.h
+    edittext.h \
+    plugin_form.h \
+    test_glade.h \
+    ns_all.h
 
 DISTFILES += \
     doxygen_config \

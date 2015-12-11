@@ -9,6 +9,8 @@
 #define MODEL_H
 
 #include "parse_conf.h"
+#include "icompare.h"
+#include <map>
 
 /**
  *   collectd editor model data
@@ -23,15 +25,6 @@ namespace model
      * @param root
      */
     void set_root(string root);
-
-    /**
-     * @brief conf_load_file
-     *  load symbolic file and parse it to Ast
-     *  throws on first error
-     * @return
-     *  structured info
-    AST conf_load_file(string conf);
-     */
 
     /**
      * @brief base_folder
@@ -55,6 +48,17 @@ namespace model
      */
     typedef vector<const RANGE*> nesting_path_t;
     nesting_path_t ast_locate_cursor(const AST &ast, RANGE::pos cursor);
+
+    /**
+     * @brief The plugins_t struct
+     *  index an AST by plugin name
+     *  that is a block like <plugin name> ... </plugin>
+     */
+    struct plugins_t : map<string, RANGE::path_t, iless> {
+        const AST *ast;
+        plugins_t(const AST *ast);
+    };
+
 }
 
 #endif // MODEL_H

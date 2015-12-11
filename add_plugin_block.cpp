@@ -18,31 +18,8 @@
 #include <map>
 #include <iostream>
 
-namespace ns_all {
-    using namespace std;
-    using namespace Gtk;
-    using namespace Glib;
-    using namespace model;
-    using namespace parse_conf;
-    using namespace ui_structure;
-}
+#include "ns_all.h"
 using namespace ns_all;
-
-struct add_plugin_block::plugins_t : map<string, RANGE::path_t, iless> {
-    const AST *ast;
-    plugins_t(const AST *ast) : ast(ast) {
-        depth_first df;
-        df.visit(ast->elements, [&](const RANGE &r) {
-            if (r.type == XML_LIKE_t) {
-                auto id = plugin_id(r, ast->text);
-                if (!id.empty())
-                    ((*this)[id] = df).push_back(&r);
-                return false;
-            }
-            return true;
-        });
-    }
-};
 
 add_plugin_block::add_plugin_block(BaseObjectType *cobject, const RefPtr<Builder> &refBuilder)
     : Dialog(cobject)
@@ -128,7 +105,7 @@ struct add_plugin_block::plugin_to_store {
     kstring text;
     RefPtr<TreeStore> treestore;
 
-    void add_plugin(const RANGE &r, const add_plugin_block::plugins_t &in_view) {
+    void add_plugin(const RANGE &r, const plugins_t &in_view) {
         Node i = treestore->append();
         auto pid = plugin_id(r, text);
         i->set_value(0, pid);

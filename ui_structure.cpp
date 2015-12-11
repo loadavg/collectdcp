@@ -17,30 +17,14 @@ namespace ui_structure
 {
 
 Glib::RefPtr<Gtk::Builder> get_resource(std::string what) {
-    using namespace std;
-
-    // Load the GtkBuilder file and instantiate its widgets:
-    auto builder = Gtk::Builder::create();
-    /*
-    try {
-        builder->add_from_file("../resources/" + what + ".glade");
-    }
-    catch(const Glib::FileError& ex) {
-        cerr << "FileError: " << ex.what() << endl;
-    }
-    catch(const Glib::MarkupError& ex) {
-        cerr << "MarkupError: " << ex.what() << endl;
-    }
-    catch(const Gtk::BuilderError& ex) {
-        cerr << "BuilderError: " << ex.what() << endl;
-    }
-    */
+    Glib::RefPtr<Gtk::Builder> builder;
     get_resource(what, builder);
     return builder;
 }
 
+using namespace std;
+
 bool get_resource(std::string what, Glib::RefPtr<Gtk::Builder> &builder) {
-    using namespace std;
 
     // Load the GtkBuilder file and instantiate its widgets:
     builder = Gtk::Builder::create();
@@ -64,7 +48,6 @@ bool get_resource(std::string what, Glib::RefPtr<Gtk::Builder> &builder) {
 }
 
 Gtk::Widget* locate_by_name(Gtk::Widget* w, std::string name, int deep) {
-    using namespace std;
 
     if (deep < 1000)
         cout << string(deep * 2, ' ') << (w->get_name() == name) << ' ' << w->get_name() << endl;

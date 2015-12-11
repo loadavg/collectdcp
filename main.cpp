@@ -7,18 +7,8 @@
 
 #include "model.h"
 #include "test_parse.h"
+#include "test_glade.h"
 #include "editor_window.h"
-
-#define TEST_GLADE_VERSION
-#ifdef TEST_GLADE_VERSION
-#include "ui_structure.h"
-auto test_glade() {
-    auto b = ui_structure::get_resource("collectdcp");
-    auto w = ui_structure::instance_widget<Gtk::Window>(b, "window1");
-    w->show_all();
-    return w;
-}
-#endif
 
 /**
  * @brief main
@@ -33,15 +23,11 @@ auto test_glade() {
  */
 int main(int argc, char **argv)
 {
-    auto app = Gtk::Application::create("org.loadavg.collectd.edit");
-
     // debugging error handling
     //test_parse();
+    test_glade(argc, argv);
 
-    #ifdef TEST_GLADE_VERSION
-    auto w = test_glade();
-    return app->run(*w, argc, argv);
-    #endif
+    auto app = Gtk::Application::create("org.loadavg.collectd.edit");
 
     // for debugging purpose, get first argument to indicate
     //  the collectd folder

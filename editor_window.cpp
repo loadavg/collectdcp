@@ -28,7 +28,6 @@ using namespace ui_structure;
 editor_window* editor_window::setup(RefPtr<Application> app) {
     editor_window* window = 0;
     RefPtr<Builder> builder;
-
     if (get_resource("editor", builder)) {
         builder->get_widget_derived("window1", window);
         if (window)

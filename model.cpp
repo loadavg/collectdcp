@@ -6,6 +6,7 @@
  */
 
 #include "model.h"
+#include "depth_first.h"
 #include "file2string.h"
 #include <iostream>
 
@@ -31,13 +32,6 @@ string base_folder() {
     //return root.empty() ? "/etc/collectd" /* "../collectd" */ : root;
     return root; // "../collectd";
 }
-
-/*
-AST conf_load_file(string conf) {
-    auto path = conf_file(conf);
-    return AST(file2string(path), path);
-}
-*/
 
 string conf_file(string conf) {
     if (conf == "collectd")
@@ -70,4 +64,18 @@ nesting_path_t ast_locate_cursor(const AST &ast, RANGE::pos cursor) {
     return path;
 }
 
+plugins_t::plugins_t(const AST *ast) : ast(ast) {
+    depth_first df;
+    df.visit(ast->elements, [&](const RANGE &r) {
+        if (r.type == XML_LIKE_t) {
+            auto id = plugin_id(r, ast->text);
+            if (!id.empty())
+                ((*this)[id] = df).push_back(&r);
+            return false;
+        }
+        return true;
+    });
 }
+
+}
+
