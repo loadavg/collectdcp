@@ -13,16 +13,15 @@
 #include <glibmm/fileutils.h>
 #include <glibmm/markup.h>
 
-namespace ui_structure
-{
+namespace ui_structure {
 
-Glib::RefPtr<Gtk::Builder> get_resource(std::string what) {
+using namespace std;
+
+Glib::RefPtr<Gtk::Builder> get_resource(string what) {
     Glib::RefPtr<Gtk::Builder> builder;
     get_resource(what, builder);
     return builder;
 }
-
-using namespace std;
 
 bool get_resource(std::string what, Glib::RefPtr<Gtk::Builder> &builder) {
 
@@ -47,7 +46,7 @@ bool get_resource(std::string what, Glib::RefPtr<Gtk::Builder> &builder) {
     return true;
 }
 
-Gtk::Widget* locate_by_name(Gtk::Widget* w, std::string name, int deep) {
+Gtk::Widget* locate_by_name(Gtk::Widget* w, string name, int deep) {
 
     if (deep < 1000)
         cout << string(deep * 2, ' ') << (w->get_name() == name) << ' ' << w->get_name() << endl;
@@ -65,12 +64,11 @@ Gtk::Widget* locate_by_name(Gtk::Widget* w, std::string name, int deep) {
     return w->get_name() == name ? w : W;
 }
 
-std::string get_resource_path(std::string what, std::string ext) {
+string get_resource_path(string what, string ext) {
     return "../collectdcp/resources/" + what + "." + ext;
 }
 
-std::pair<Gtk::TextIter, Gtk::TextIter> tag_buffer(Glib::RefPtr<Gtk::TextBuffer> buf, std::string tag)
-{
+pair<Gtk::TextIter, Gtk::TextIter> tag_buffer(Glib::RefPtr<Gtk::TextBuffer> buf, string tag) {
     Gtk::TextIter I, J;
     buf->get_bounds(I, J);
     buf->apply_tag_by_name(tag, I, J);
