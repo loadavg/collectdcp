@@ -32,7 +32,7 @@ settings::settings() {
 
 settings::~settings() {
     std::vector<std::string> v;
-    if (GTKMM_MAJOR_VERSION >= 3 || (GTKMM_MAJOR_VERSION == 3 && GTKMM_MINOR_VERSION >= 10)) {
+    if (GTKMM_MAJOR_VERSION >= 3 && GTKMM_MINOR_VERSION >= 10) {
         Glib::KeyFile kf;
         for (auto s: servers) {
             auto n = s.first;
