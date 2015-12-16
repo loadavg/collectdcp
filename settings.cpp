@@ -46,6 +46,14 @@ settings::~settings() {
 #else
     // CentOS 7 have GTKMM_MINOR_VERSION == 8, missing save_to_file
     std::ofstream kf(store_path());
+    auto section = [&](std::string s) {
+        kf << '[' << s << ']' << std::endl;
+    };
+    auto entry = [&](std::string k, std::string v) {
+        kf << k << '=' << v << std::endl;
+    };
+
+    /*
     for (auto s: servers) {
         auto n = s.first;
         kf << '[' << n << ']' << std::endl;
@@ -54,7 +62,20 @@ settings::~settings() {
         kf << "alias" << '=' << s.second.alias << std::endl;
         kf << "folder" << '=' << s.second.folder << std::endl;
     }
-    kf << '[' << join(v) << ']' << std::endl;
+    kf << '[' << "servers" << ']' << std::endl;
+    kf << "name" << '=' << join(v) << std::endl;
+    */
+    for (auto s: servers) {
+        auto n = s.first;
+        v.push_back(n);
+        section(n);
+        entry("address", s.second.address);
+        entry("alias", s.second.alias);
+        entry("folder", s.second.folder);
+    }
+    section("servers");
+    entry("name", join(v));
+
 #endif
 }
 

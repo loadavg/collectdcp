@@ -52,7 +52,10 @@ void test_plugin_form(int argc, char **argv) {
         delete ast_template;
     } catch (exception &e) {
         message_box(e.what());
+    } catch (Glib::Exception &e) {
+        message_box(e.what());
     }
+
     exit(0);
 }
 
