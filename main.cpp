@@ -25,9 +25,9 @@ int main(int argc, char **argv)
 {
     // debugging error handling
     //test_parse();
-    test_glade(argc, argv);
+    //test_glade(argc, argv);
 
-    auto app = Gtk::Application::create("org.loadavg.collectd.edit");
+    auto app = Gtk::Application::create(argc, argv, "org.loadavg.collectd.edit");
 
     // for debugging purpose, get first argument to indicate
     //  the collectd folder
