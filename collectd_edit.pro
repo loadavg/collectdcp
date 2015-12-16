@@ -59,7 +59,8 @@ HEADERS += \
     plugin_form.h \
     test_glade.h \
     ns_all.h \
-    settings.h
+    settings.h \
+    ini_file.h
 
 DISTFILES += \
     doxygen_config \

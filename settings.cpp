@@ -10,7 +10,7 @@
 #include "ui_structure.h"
 
 #include <gtkmmconfig.h>
-#include <fstream>
+#include "ini_file.h"
 
 settings::settings() {
     auto path = store_path();
@@ -32,51 +32,15 @@ settings::settings() {
 
 settings::~settings() {
     std::vector<std::string> v;
-#if 0 // GTKMM_MAJOR_VERSION >= 3 && GTKMM_MINOR_VERSION >= 10
-    Glib::KeyFile kf;
+    ini_file kf(store_path());
     for (auto s: servers) {
-        auto n = s.first;
-        v.push_back(n);
-        kf.set_string(n, "address", s.second.address);
-        kf.set_string(n, "alias", s.second.alias);
-        kf.set_string(n, "folder", s.second.folder);
+        v.push_back(kf.section(s.first));
+        kf.entry("address", s.second.address);
+        kf.entry("alias", s.second.alias);
+        kf.entry("folder", s.second.folder);
     }
-    kf.set_string_list("servers", "name", v);
-    kf.save_to_file(store_path());
-#else
-    // CentOS 7 have GTKMM_MINOR_VERSION == 8, missing save_to_file
-    std::ofstream kf(store_path());
-    auto section = [&](std::string s) {
-        kf << '[' << s << ']' << std::endl;
-    };
-    auto entry = [&](std::string k, std::string v) {
-        kf << k << '=' << v << std::endl;
-    };
-
-    /*
-    for (auto s: servers) {
-        auto n = s.first;
-        kf << '[' << n << ']' << std::endl;
-        v.push_back(n);
-        kf << "address" << '=' << s.second.address << std::endl;
-        kf << "alias" << '=' << s.second.alias << std::endl;
-        kf << "folder" << '=' << s.second.folder << std::endl;
-    }
-    kf << '[' << "servers" << ']' << std::endl;
-    kf << "name" << '=' << join(v) << std::endl;
-    */
-    for (auto s: servers) {
-        auto n = s.first;
-        v.push_back(n);
-        section(n);
-        entry("address", s.second.address);
-        entry("alias", s.second.alias);
-        entry("folder", s.second.folder);
-    }
-    section("servers");
-    entry("name", join(v));
-
-#endif
+    kf.section("servers");
+    kf.entry("name", join(v));
 }
 
 /**
