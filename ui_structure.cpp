@@ -65,7 +65,10 @@ Gtk::Widget* locate_by_name(Gtk::Widget* w, string name, int deep) {
 }
 
 string get_resource_path(string what, string ext) {
-    return "../collectdcp/resources/" + what + "." + ext;
+    #ifndef RESOURCES_DIR
+    #define RESOURCES_DIR "resources-3.8"
+    #endif
+    return "../collectdcp/" RESOURCES_DIR "/" + what + "." + ext;
 }
 
 pair<Gtk::TextIter, Gtk::TextIter> tag_buffer(Glib::RefPtr<Gtk::TextBuffer> buf, string tag) {

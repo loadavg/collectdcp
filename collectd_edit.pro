@@ -18,6 +18,8 @@ PKGCONFIG += gtkmm-3.0
 DEFINES += USE_SOURCEVIEW
 PKGCONFIG += gtksourceviewmm-3.0
 
+DEFINES += RESOURCES_DIR=\\\"resources-3.10\\\"
+
 SOURCES += main.cpp \
     parse_conf.cpp \
     model.cpp \
@@ -64,13 +66,25 @@ HEADERS += \
     fileuty.h
 
 DISTFILES += \
+    Makefile \
+    README.md \
     doxygen_config \
     resources/dlg_commands.glade \
     resources/editor.glade \
     resources/add_plugin_treeview.glade \
     resources/about_box.glade \
     resources/plugins.template \
-    README.md \
-    Makefile \
     resources/collectdcp.glade \
-    resources/test_glade.glade
+    resources/test_glade.glade \
+    resources-3.8/test_glade.glade \
+    resources-3.8/editor.glade \
+    resources-3.8/dlg_commands.glade \
+    resources-3.8/collectdcp.glade \
+    resources-3.8/add_plugin_treeview.glade \
+    resources-3.8/about_box.glade \
+    resources-3.10/test_glade.glade \
+    resources-3.10/collectdcp.glade \
+    resources-3.10/editor.glade \
+    resources-3.10/dlg_commands.glade \
+    resources-3.10/add_plugin_treeview.glade \
+    resources-3.10/about_box.glade
