@@ -41,3 +41,13 @@ comment out these two lines in *collectd_edit.pro*
     DEFINES += USE_SOURCEVIEW
     PKGCONFIG += gtksourceviewmm-3.0
 
+Documentation:
+-----
+
+is provided by structured comments in Doxygen style: run
+
+doxygen doxygen_config
+
+to build a browsable "docs/html/index.html" containing cross reference and graphic documentation.
+You will need Graphviz with SVG support installed.
+You can disable graphs creation setting HAVE_DOT=NO near line 1715 of doxygen_config.
