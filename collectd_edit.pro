@@ -60,7 +60,8 @@ HEADERS += \
     test_glade.h \
     ns_all.h \
     settings.h \
-    ini_file.h
+    ini_file.h \
+    fileuty.h
 
 DISTFILES += \
     doxygen_config \

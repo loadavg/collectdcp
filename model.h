@@ -23,8 +23,14 @@ namespace model
      * @brief set_root
      *  set the root folder, defaults to /etc/collectd
      * @param root
-     */
     void set_root(string root);
+     */
+
+    /**
+     * @brief check_root
+     *  need to adapt to different collectd base folders
+     */
+    void check_root(int &argc, char **argv);
 
     /**
      * @brief base_folder

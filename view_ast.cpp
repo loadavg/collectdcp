@@ -6,6 +6,7 @@
  */
 
 #include "prints.h"
+#include "fileuty.h"
 #include "view_ast.h"
 #include "process_run.h"
 #include "attr_helper.h"
@@ -33,15 +34,18 @@ view_ast::view_ast(string conf) :
     set_buffer(buf);
 
     auto path = model::conf_file(conf);
-    auto text = file2string(path);
-    try {
-        vector<string> errors;
-        ast = new model::AST(text, conf, &errors);
-        if (!errors.empty())
-            message_box(model::AST::format_errors(errors));
-    }
-    catch(exception &e) {
-        message_box(e.what());
+    string text;
+    if (fileuty(path)) {
+        text = file2string(path);
+        try {
+            vector<string> errors;
+            ast = new model::AST(text, conf, &errors);
+            if (!errors.empty())
+                message_box(model::AST::format_errors(errors));
+        }
+        catch(exception &e) {
+            message_box(e.what());
+        }
     }
 
     #ifdef USE_SOURCEVIEW
@@ -59,6 +63,7 @@ view_ast::view_ast(string conf) :
     }
     else
         buf->set_text(text);
+
     #ifdef USE_SOURCEVIEW
     um->end_not_undoable_action();
     set_show_line_numbers(true);

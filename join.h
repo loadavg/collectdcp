@@ -12,16 +12,17 @@
 #include <functional>
 
 template<class C>
-inline std::string join(const C& c, char sepc = ',') {
-    std::string j;
+inline std::string join(const C& c, std::string sep) {
+    std::string ret;
     for (size_t i = 0; i < c.size(); ++i) {
         if (i > 0)
-            j += sepc;
-        j += c[i];
+            ret += sep;
+        ret += c[i];
     }
-    return j;
+    return ret;
 }
 
+template<class C>
+inline std::string join(const C& c, char sepc = ',') { return join(c, std::string(1, sepc)); }
 
 #endif // JOIN_H
-

@@ -10,6 +10,8 @@
 #include "test_glade.h"
 #include "editor_window.h"
 
+#include <iostream>
+
 /**
  * @brief main
  *  application entry point
@@ -23,24 +25,37 @@
  */
 int main(int argc, char **argv)
 {
-    // debugging error handling
-    //test_parse();
-    //test_glade(argc, argv);
-
-    auto app = Gtk::Application::create(argc, argv, "org.loadavg.collectd.edit");
-
-    // for debugging purpose, get first argument to indicate
-    //  the collectd folder
-    if (argc > 1) {
-        model::set_root(argv[1]);
-        argc--;
-    }
-
     int rc = 1;
-    if (auto w = editor_window::setup(app)) {
-        w->show_all();
-        rc = app->run(*w, argc, argv);
-        delete w;
+    try {
+        // debugging error handling
+        //test_parse();
+        //test_glade(argc, argv);
+
+        // for debugging purpose, get first argument to indicate
+        //  the collectd folder
+        /*
+        if (argc > 1) {
+            model::set_root(argv[1]);
+            argc--;
+        }
+        else
+            model::check_root();
+        */
+        model::check_root(argc, argv);
+
+        auto app = Gtk::Application::create(argc, argv, "org.loadavg.collectd.edit");
+
+        if (auto w = editor_window::setup(app)) {
+            w->show_all();
+            rc = app->run(*w, argc, argv);
+            delete w;
+        }
+    }
+    catch(std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+    catch(Glib::Exception &e) {
+        std::cerr << e.what() << std::endl;
     }
 
     return rc;
