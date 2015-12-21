@@ -87,4 +87,6 @@ DISTFILES += \
     resources-3.10/editor.glade \
     resources-3.10/dlg_commands.glade \
     resources-3.10/add_plugin_treeview.glade \
-    resources-3.10/about_box.glade
+    resources-3.10/about_box.glade \
+    resources-3.10/plugins.template \
+    resources-3.8/plugins.template

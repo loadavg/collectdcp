@@ -1,0 +1,890 @@
+<Plugin "aggregation">
+  <Aggregation>
+    Plugin "example"
+    Type "gauge"
+
+    GroupBy "Host"
+    GroupBy "TypeInstance"
+
+    CalculateNum false
+    CalculateSum false
+    CalculateAverage true
+    CalculateMinimum false
+    CalculateMaximum false
+    CalculateStddev false
+  </Aggregation>
+</Plugin>
+<Plugin "amqp">
+  # Send values to an AMQP broker
+  <Publish "some_name">
+    Host "localhost"
+    Port "5672"
+    VHost "/"
+    User "guest"
+    Password "guest"
+    Exchange "amq.fanout"
+#   ExchangeType "fanout"
+#   RoutingKey "collectd"
+#   Persistent false
+#   Format "command"
+#   StoreRates false
+  </Publish>
+
+  # Receive values from an AMQP broker (work in progress)
+  <Subscribe "some_name">
+    Host "localhost"
+    Port "5672"
+    VHost "/"
+    User "guest"
+    Password "guest"
+    Exchange "amq.fanout"
+#   ExchangeType "fanout"
+#   Queue "queue_name"
+#   RoutingKey "collectd.#"
+  </Subscribe>
+</Plugin>
+
+# Apache
+# ExtendedStatus on
+# <Location "/mod_status">
+#   SetHandler server-status
+# </Location>
+
+<Plugin "apache">
+   <Instance "www1">
+     URL "http://www1.example.com/mod_status?auto";
+   </Instance>
+   <Instance "www2">
+     URL "http://www2.example.com/mod_status?auto";
+   </Instance>
+</Plugin>
+
+<Plugin "apcups">
+  Host "localhost"
+  Port "3551"
+</Plugin>
+<Plugin "ascent">
+  URL "http://localhost/ascent/status/"
+</Plugin>
+statistics-channels {
+  inet 127.0.0.1 port 8053;
+};
+<Plugin "csv">
+  DataDir "/var/lib/collectd/csv"
+  StoreRates true
+</Plugin>
+<Plugin curl>
+  <Page "stock_quotes">
+    URL "http://finance.google.com/finance?q=NYSE%3AAMD"
+    User "foo"
+    Password "bar"
+    <Match>
+      Regex "]*> *([0-9]*\\.[0-9]+) *"
+      DSType "GaugeAverage"
+      # Note: "stock_value" is not a standard type.
+      # Read types.db(5) for details on "types".
+      Type "stock_value"
+      Instance "AMD"
+    </Match>
+  </Page>
+</Plugin>
+<Plugin curl_json>
+# See: http://wiki.apache.org/couchdb/Runtime_Statistics
+  <URL "http://localhost:5984/_stats">
+    Instance "httpd"
+    <Key "httpd/requests/count">
+      Type "http_requests"
+    </Key>
+
+    <Key "httpd_request_methods/*/count">
+      Type "http_request_methods"
+    </Key>
+
+    <Key "httpd_status_codes/*/count">
+      Type "http_response_codes"
+    </Key>
+  </URL>
+# Database status metrics:
+  <URL "http://localhost:5984/_all_dbs">
+    Instance "dbs"
+    <Key "*/doc_count">
+      Type "gauge"
+    </Key>
+    <Key "*/doc_del_count">
+      Type "counter"
+    </Key>
+    <Key "*/disk_size">
+      Type "bytes"
+    </Key>
+  </URL>
+</Plugin>
+<Plugin "curl_xml">
+  <URL "http://localhost/stats.xml">
+    Host "my_host"
+    Instance "some_instance"
+    User "collectd"
+    Password "thaiNg0I"
+    VerifyPeer true
+    VerifyHost true
+    CACert "/path/to/ca.crt"
+
+    <xpath "table[@id=\"magic_level\"]/tr">
+      Type "magic_level"
+      #InstancePrefix "prefix-"
+      InstanceFrom "td[1]"
+      ValuesFrom "td[2]/span[@class=\"level\"]"
+    </xpath>
+  </URL>
+</Plugin>
+<Plugin dbi>
+  <Query "out_of_stock">
+    Statement "SELECT category, COUNT(*) AS value FROM products WHERE in_stock = 0 GROUP BY category"
+    # Use with MySQL 5.0.0 or later
+    MinVersion 50000
+    <Result>
+      Type "gauge"
+      InstancePrefix "out_of_stock"
+      InstancesFrom "category"
+      ValuesFrom "value"
+    </Result>
+  </Query>
+  <Database "product_information">
+    Driver "mysql"
+    DriverOption "host" "localhost"
+    # You may connect via socket as well:
+    # DriverOption "mysql_unix_socket" "/var/tmp/mysql.sock"
+    DriverOption "username" "collectd"
+    DriverOption "password" "aZo6daiw"
+    DriverOption "dbname" "prod_info"
+    SelectDB "prod_info"
+    Query "out_of_stock"
+  </Database>
+</Plugin>
+<Plugin "df">
+  Device "/dev/hda1"
+  MountPoint "/home"
+  FSType "ext3"
+  IgnoreSelected false
+  ReportInodes false
+  # Only in Version 4 since 4.9
+  #ReportReserved false
+</Plugin>
+<Plugin "disk">
+  Disk "sda"
+  Disk "/^hd/"
+  IgnoreSelected false
+</Plugin>
+<Plugin email>
+  SocketFile "/var/run/collectd-email"
+  SocketGroup "mail"
+  SocketPerms 660
+  MaxConns 4
+</Plugin>
+<Plugin exec>
+  Exec "myuser:mygroup" "myprog"
+  Exec "otheruser" "/path/to/another/binary" "arg0" "arg1"
+  NotificationExec "user" "/usr/lib/collectd/exec/handle_notification"
+</Plugin>
+<Plugin "filecount">
+  <Directory "/var/qmail/queue/mess">
+    Instance "qmail-message"
+  </Directory>
+  <Directory "/var/qmail/queue/todo">
+    Instance "qmail-todo"
+  </Directory>
+  <Directory "/var/lib/php5">
+    Instance "php5-sessions"
+    Name "sess_*"
+  </Directory>
+</Plugin>
+<Plugin "java">
+  # required JVM argument is the classpath
+  # JVMArg "-Djava.class.path=/installpath/collectd/share/collectd/java"
+  # Since version 4.8.4 (commit c983405) the API and GenericJMX plugin are
+  # provided as .jar files.
+  JVMARG "-Djava.class.path=/usr/share/collectd/java/collectd-api.jar:/usr/share/collectd/java/generic-jmx.jar"
+  LoadPlugin "org.collectd.java.GenericJMX"
+
+  <Plugin "GenericJMX">
+    # Memory usage by memory pool.
+    <MBean "memory_pool">
+      ObjectName "java.lang:type=MemoryPool,*"
+      InstancePrefix "memory_pool-"
+      InstanceFrom "name"
+      <Value>
+        Type "memory"
+        #InstancePrefix ""
+        #InstanceFrom ""
+        Table true
+        Attribute "Usage"
+      </Value>
+    </MBean>
+
+    <Connection>
+      Host "localhost"
+      ServiceURL "service:jmx:rmi:///jndi/rmi://localhost:17264/jmxrmi"
+      Collect "memory_pool"
+    </Connection>
+  </Plugin>
+</Plugin>
+<Plugin "gmond">
+  MCReceiveFrom "239.2.11.71" "8649"
+  <Metric "swap_total">
+    Type "swap"
+    TypeInstance "total"
+    DataSource "value"
+  </Metric>
+  <Metric "swap_free">
+    Type "swap"
+    TypeInstance "free"
+    DataSource "value"
+  </Metric>
+</Plugin>
+<Plugin "hddtemp">
+  Host "127.0.0.1"
+  Port "7634"
+  TranslateDevicename true
+</Plugin>
+<Plugin "interface">
+  Interface "lo"
+  Interface "sit0"
+  IgnoreSelected true
+</Plugin>
+<Plugin "ipmi">
+  Sensor "some_sensor"
+  Sensor "another_one"
+  IgnoreSelected false
+  NotifySensorAdd false
+  NotifySensorRemove true
+  NotifySensorNotPresent false
+</Plugin>
+<Plugin "iptables">
+  Chain "filter" "FORWARD"
+  Chain6 "filter" "OUTPUT"
+  Chain  "filter" "FORWARD" "MatchThisComment"
+</Plugin>
+<Plugin "irq">
+  IRQ "23"
+  IgnoreSelected true
+</Plugin>
+<Plugin "java">
+  JVMArg "-verbose:jni"
+  JVMArg "-Djava.class.path=/opt/collectd/lib/collectd/bindings/java"
+  LoadPlugin "org.collectd.java.Foobar"
+  <Plugin "org.collectd.java.Foobar">
+    # To be parsed by the plugin
+  </Plugin>
+</Plugin>
+<Plugin "java">
+  JVMArg "-verbose:jni"
+  JVMArg "-Djava.class.path=/opt/collectd/lib/collectd/bindings/java"
+  LoadPlugin "org.collectd.java.Foobar"
+  <Plugin "org.collectd.java.Foobar">
+    # To be parsed by the plugin
+  </Plugin>
+</Plugin>
+LoadPlugin "logfile"
+<Plugin "logfile">
+  LogLevel "info"
+  File "/var/log/collectd.log"
+  Timestamp true
+</Plugin>
+<Plugin "lpar">
+  CpuPoolStats false
+  ReportBySerial false
+</Plugin>
+<Plugin "madwifi">
+  Interface "wlan0"
+  Source "SysFS"
+  WatchSet "None"
+  WatchAdd "node_octets"
+  WatchAdd "node_rssi"
+  WatchAdd "is_rx_acl"
+  WatchAdd "is_scan_active"
+</Plugin>
+<Plugin "mbmon">
+  Host "127.0.0.1"
+  Port "411"
+</Plugin>
+<Plugin "memcachec">
+  <Page "plugin_instance">
+    Server "localhost"
+    Key "page_key"
+    <Match>
+      Regex "(\\d+) bytes sent"
+      DSType CounterAdd
+      Type "ipt_octets"
+      Instance "type_instance"
+    </Match>
+  </Page>
+</Plugin>
+<Plugin "memcached">
+  Host "127.0.0.1"
+  Port "11211"
+</Plugin>
+<Plugin "mic">
+  ShowCPU true
+  ShowTemperatures true
+
+  Temperature "die"
+  Temperature "devmem"
+  Temperature "fin"
+  Temperature "fout"
+</Plugin>
+<Plugin modbus>
+ <Data "voltage-input-1">
+   RegisterBase 0
+   RegisterType float
+   Type voltage
+   Instance "input-1"
+ </Data>
+
+ <Data "voltage-input-2">
+   RegisterBase 2
+   RegisterType float
+   Type voltage
+   Instance "input-2"
+ </Data>
+
+ <Host "modbus.example.com">
+   Address "192.168.0.42"
+   Port    "502"
+   Interval 60
+
+   <Slave 1>
+     Instance "power-supply"
+     Collect  "voltage-input-1"
+     Collect  "voltage-input-2"
+   </Slave>
+ </Host>
+</Plugin>
+<Plugin "mysql">
+  <Database "foo">
+    Host "hostname"
+    User "username"
+    Password "password"
+    Port 3306
+    # Since version 5.0:
+    #Port "3306"
+    MasterStats true
+  </Database>
+
+  <Database "bar">
+    Host "localhost"
+    Socket "/var/run/mysql/mysqld.sock"
+    SlaveStats true
+    SlaveNotifications true
+  </Database>
+</Plugin>
+<Plugin "netapp">
+  <Host "netapp1.example.com">
+   Protocol      "https"
+   Address       "10.0.0.1"
+   Port          443
+   User          "username"
+   Password      "aef4Aebe"
+   Interval      30
+
+   <WAFL>
+     Interval 30
+     GetNameCache   true
+     GetDirCache    true
+     GetBufferCache true
+     GetInodeCache  true
+   </WAFL>
+
+   <Disks>
+     Interval 30
+     GetBusy true
+   </Disks>
+
+   <VolumePerf>
+     GetIO      "volume0"
+     IgnoreSelectedIO      false
+     GetOps     "volume0"
+     IgnoreSelectedOps     false
+     GetLatency "volume0"
+     IgnoreSelectedLatency false
+   </VolumePerf>
+
+   <VolumeUsage>
+     GetCapacity "vol0"
+     GetCapacity "vol1"
+     IgnoreSelectedCapacity false
+     GetSnapshot "vol1"
+     GetSnapshot "vol3"
+     IgnoreSelectedSnapshot false
+   </VolumeUsage>
+
+   <System>
+     Interval 30
+     GetCPULoad     true
+     GetInterfaces  true
+     GetDiskOps     true
+     GetDiskIO      true
+   </System>
+  </Host>
+</Plugin>
+# ip -s -s link list
+# Client
+<Plugin "network">
+  Server "ff18::efc0:4a42"
+</Plugin>
+<Plugin "nginx">
+  URL "https://localhost:8433"
+  User "stats"
+  Password "uleePi4A"
+</Plugin>
+<Plugin "notify_desktop">
+  FailureTimeout 10000
+</Plugin>
+<Plugin "notify_email">
+  From "collectd@somewhere"
+  Recipient "admin0@somewhere"
+  Recipient "admin1@somewhere"
+</Plugin>
+<Plugin "ntpd">
+  Host "localhost"
+  Port "123"
+  ReverseLookups false
+</Plugin>
+<Plugin "nut">
+  UPS "upsname@localhost:12345"
+</Plugin>
+<Plugin olsrd>
+  Host "127.0.0.1"
+  Port "2006"
+  CollectLinks "Detail"
+  CollectRoutes "Summary"
+  CollectTopology "Summary"
+</Plugin>
+<Plugin "onewire">
+  Device "-s localhost:4304"
+  Sensor "F10FCA000800"
+  IgnoreSelected false
+</Plugin>
+<Plugin "openvpn">
+ StatusFile "/var/log/openvpn-status.log"
+ StatusFile "/var/log/openvpn-status_pp.log"
+ StatusFile "/var/log/openvpn-status_udp.log"
+ StatusFile "/var/log/openvpn-status_wlan.log"
+ #
+ # Since 23. March 2010
+ # http://github.com/octo/collectd/commit/f4c25b4b234ba63fb9b15c2219d55d8af3e3f39d
+ #
+ # Collect one RRD for each logged in user
+ CollectIndividualUsers false
+ #
+ # Aggregate number of connected users
+ CollectUserCount true
+ #
+ # Store compression statistics
+ CollectCompression false
+ #
+ # Use new NamingSchema
+ ImprovedNamingSchema false
+</Plugin>
+<Plugin oracle>
+  <Query "out_of_stock">
+    Statement "SELECT category, COUNT(*) AS value \
+                   FROM products \
+                   WHERE in_stock = 0 \
+                   GROUP BY category"
+    <Result>
+      Type "gauge"
+      # InstancePrefix "foo"
+      InstancesFrom "category"
+      ValuesFrom "value"
+    </Result>
+  </Query>
+  <Database "product_information">
+    ConnectID "db01"
+    Username "oracle"
+    Password "secret"
+    Query "out_of_stock"
+  </Database>
+</Plugin>
+# See "Caveats" below.
+<LoadPlugin perl>
+  Globals true
+</LoadPlugin>
+
+<Plugin perl>
+  IncludeDir "/path/to/perl/plugins"
+  BaseName "Collectd::Plugins"
+  EnableDebugger ""
+  LoadPlugin "FooBar"
+
+  <Plugin FooBar>
+    Foo "Bar"
+  </Plugin>
+</Plugin>
+<Plugin pinba>
+  Address "::0"
+  Port "30002"
+  # Per-vhost statistic
+  <View "www.example.com-search">
+    Server "www.example.com"
+    Script "/search.php"
+  </View>
+  # Per-webserver statistics
+  <View "www-a.example.com-search">
+    Host "www-a"
+    Server "www.example.com"
+    Script "/search.php"
+  </View>
+  <View "www-b.example.com-search">
+    Host "www-b"
+    Server "www.example.com"
+    Script "/search.php"
+  </View>
+</Plugin>
+<Plugin "ping">
+  Host "example.com"
+</Plugin>
+<Plugin postgresql>
+  <Query magic>
+    Statement "SELECT magic FROM wizard WHERE host = $1;"
+    Param hostname
+    <Result>
+      Type gauge
+      InstancePrefix "magic"
+      ValuesFrom magic
+    </Result>
+  </Query>
+
+  <Query rt36_tickets>
+    Statement "SELECT COUNT(type) AS count, type \
+                      FROM (SELECT CASE \
+                                   WHEN resolved = 'epoch' THEN 'open' \
+                                   ELSE 'resolved' END AS type \
+                                   FROM tickets) type \
+                      GROUP BY type;"
+    <Result>
+      Type counter
+      InstancePrefix "rt36_tickets"
+      InstancesFrom "type"
+      ValuesFrom "count"
+    </Result>
+  </Query>
+
+  <Database foo>
+    Host "hostname"
+    Port "5432"
+    User "username"
+    Password "secret"
+    SSLMode "prefer"
+    KRBSrvName "kerberos_service_name"
+    Query magic
+  </Database>
+
+  <Database bar>
+    Service "service_name"
+    Query backend # predefined
+    Query rt36_tickets
+  </Database>
+</Plugin>
+<Plugin "powerdns">
+  <Server "server_name">
+    Collect "latency"
+    Collect "udp-answers" "udp-queries"
+    Collect "recursing-answers" "recursing-questions"
+    Collect "packetcache-hit" "packetcache-miss"
+    Collect "query-cache-hit" "query-cache-miss"
+    Collect "packetcache-size" "qsize-q"
+    Collect "corrupt-packets" "servfail-packets"
+    Collect "tcp-answers" "tcp-queries"
+    Collect "udp4-answers" "udp4-queries"
+    Collect "udp6-answers" "udp6-queries"
+    Collect "deferred-cache-inserts" "deferred-cache-lookup"
+    Socket "/var/run/pdns.controlsocket"
+  </Server>
+  <Recursor "recursor_name">
+    Collect "all-outqueries" "dlg-only-drops" "outgoing-timeouts"
+    Collect "tcp-outqueries" "throttled-out" "throttled-outqueries"
+    Collect "unreachables" "answers-slow" "answers0-1"
+    Collect "answers1-10" "answers10-100" "answers100-1000"
+    Collect "case-mismatches" "chain-resends" "client-parse-errors"
+    Collect "edns-ping-matches" "edns-ping-mismatches" "ipv6-outqueries"
+    Collect "no-packet-error" "noedns-outqueries" "noerror-answers"
+    Collect "noping-outqueries" "nsset-invalidations" "nxdomain-answers"
+    Collect "over-capacity-drops" "qa-latency" "questions"
+    Collect "resource-limits" "server-parse-errors" "servfail-answers"
+    Collect "spoof-prevents" "tcp-client-overflow" "tcp-questions unauthorized-tcp"
+    Collect "unauthorized-udp" "unexpected-packets" "cache-entries"
+    Collect "cache-hits cache-misses" "concurrent-queries" "negcache-entries"
+    Collect "nsspeeds-entries" "packetcache-entries" "packetcache-hits"
+    Collect "packetcache-misses" "sys-msec" "throttle-entries"
+    Collect "uptime user-msec"
+    Socket "/var/run/pdns_recursor.controlsocket"
+  </Recursor>
+  LocalSocket "/opt/collectd/var/run/collectd-powerdns"
+</Plugin>
+<Plugin "protocols">
+  Value "Icmp:InDestUnreachs"
+  Value "/^Icmp:.*Echo/"
+  IgnoreSelected false
+</Plugin>
+<LoadPlugin python>
+  Globals true
+</LoadPlugin>
+# ...
+<Plugin python>
+  ModulePath "/path/to/your/python/modules"
+  LogTraces true
+  Interactive true
+  Import "spam"
+
+  <Module spam>
+    spam "wonderful" "lovely"
+  </Module>
+</Plugin>
+<Plugin redis>
+  <Node "mynode">
+    Host "localhost"
+    Port "6379"
+    Timeout 2000
+  </Node>
+</Plugin>
+<Plugin "routeros">
+  <Router>
+    Host "router0.example.com"
+    User "collectd"
+    Password "secr3t"
+  </Router>
+  <Router>
+    Host "router1.example.com"
+    User "collectd"
+    Password "5ecret"
+  </Router>
+</Plugin>
+<Plugin "rrdcached">
+  DaemonAddress "unix:/var/run/rrdcached.sock"
+  DataDir "/var/lib/collectd/rrd"
+  CreateFiles true
+</Plugin>
+<Plugin "rrdtool">
+  DataDir "/var/lib/collectd/rrd"
+  CacheFlush 120
+  WritesPerSecond 50
+</Plugin>
+<Plugin "sensors">
+  Sensor "it8712-isa-0290/voltage-in1"
+  IgnoreSelected true
+</Plugin>
+<Plugin "sigrok">
+   LogLevel 3
+   <Device "Sound level">
+       Driver "cem-dt-885x"
+       Conn "/dev/ttyUSB3"
+       MinimumInterval 1
+   </Device>
+   <Device "Temperature">
+       Driver "uni-t-ut32x"
+       conn "1a86.e008"
+       MinimumInterval 1
+   </Device>
+</Plugin>
+LoadPlugin snmp
+# ...
+<Plugin snmp>
+  <Data "powerplus_voltge_input">
+    Type "voltage"
+    Table false
+    Instance "input_line1"
+    Scale 0.1
+    Values "SNMPv2-SMI::enterprises.6050.5.4.1.1.2.1"
+  </Data>
+  <Data "hr_users">
+    Type "users"
+    Table false
+    Instance ""
+    Shift -1
+    Values "HOST-RESOURCES-MIB::hrSystemNumUsers.0"
+  </Data>
+  <Data "std_traffic">
+    Type "if_octets"
+    Table true
+    Instance "IF-MIB::ifDescr"
+    Values "IF-MIB::ifInOctets" "IF-MIB::ifOutOctets"
+  </Data>
+
+  <Host "some.switch.mydomain.org">
+    Address "192.168.0.2"
+    Version 1
+    Community "community_string"
+    Collect "std_traffic"
+    Interval 120
+  </Host>
+  <Host "some.server.mydomain.org">
+    Address "192.168.0.42"
+    Version 2
+    Community "another_string"
+    Collect "std_traffic" "hr_users"
+  </Host>
+  <Host "some.ups.mydomain.org">
+    Address "192.168.0.3"
+    Version 1
+    Community "more_communities"
+    Collect "powerplus_voltge_input"
+    Interval 300
+  </Host>
+</Plugin>
+<Plugin statsd>
+  Host "::"
+  Port "8125"
+  DeleteSets     true
+  TimerPercentile 90.0
+</Plugin>
+<Plugin "syslog">
+  LogLevel "info"
+  NotifyLevel "OKAY"
+</Plugin>
+<Plugin "table">
+  <Table "/proc/slabinfo">
+    Instance "slabinfo"
+    Separator " "
+    <Result>
+      Type gauge
+      InstancePrefix "active_objs"
+      InstancesFrom 0
+      ValuesFrom 1
+    </Result>
+    <Result>
+      Type gauge
+      InstancePrefix "objperslab"
+      InstancesFrom 0
+      ValuesFrom 4
+    </Result>
+  </Table>
+</Plugin>
+\<sshd[^:]*: Invalid user [^ ]+ from\>
+<Plugin "tcpconns">
+  ListeningPorts false
+  LocalPort "25"
+  RemotePort "25"
+</Plugin>
+<Plugin "teamspeak2">
+  Host "127.0.0.1"
+  Port "51234"
+  Server "my_vserver_name"
+</Plugin>
+<Plugin "ted">
+  Device "/dev/ttyUSB0"
+  Retries 3
+</Plugin>
+<Plugin "thermal">
+  Device "foo0"
+  IgnoreSelected false
+</Plugin>
+LoadPlugin "tokyotyrant"
+<Plugin "tokyotyrant">
+  Host "localhost"
+  Port "1978"
+</Plugin>
+LoadPlugin unixsock
+# ...
+<Plugin unixsock>
+  SocketFile "/path/to/socket"
+  SocketGroup "collectd"
+  SocketPerms "0770"
+  DeleteSocket true
+</Plugin>
+<Plugin "uuid">
+  UUIDFile "/etc/uuid"
+</Plugin>
+<Plugin "varnish">
+  <Instance>
+    CollectCache       true
+    CollectConnections true
+    CollectBackend     true
+    CollectSHM         true
+    CollectESI         false
+    CollectFetch       false
+    CollectHCB         false
+    CollectSMA         false
+    CollectSMS         false
+    CollectSM          false
+    CollectTotals      false
+    CollectWorkers     false
+  </Instance>
+</Plugin>
+<Plugin "virt">
+  Connection "xen:///"
+  RefreshInterval 60
+  #Domain "name"
+  #BlockDevice "name:device"
+  #InterfaceDevice "name:interface"
+  #IgnoreSelected false
+  HostnameFormat "name"
+</Plugin>
+<Plugin vmem>
+  Verbose false
+</Plugin>
+LoadPlugin "write_graphite"
+<Plugin "write_graphite">
+ <Node "example">
+   Host "localhost"
+   Port "2003"
+   #Prefix "collectd."
+   #Postfix ""
+   #Protocol "udp"
+   #LogSendErrors false
+   EscapeCharacter "_"
+   SeparateInstances true
+   StoreRates false
+   AlwaysAppendDS false
+ </Node>
+</Plugin>
+<Plugin "write_http">
+  <Node "example">
+    URL "http://example.com/post-collectd"
+    User "collectd"
+    Password "weCh3ik0"
+  </Node>
+</Plugin>
+LoadPlugin "write_kafka"
+<Plugin write_kafka>
+  Property "metadata.broker.list" "localhost:9092"
+  <Topic "mytopic">
+    Format JSON
+  </Topic>
+</Plugin>
+<Plugin "write_mongodb">
+  <Node "default">
+    Host "localhost"
+    Port     "27017"
+    Timeout    2000
+    StoreRates true
+  </Node>
+</Plugin>
+<Node "foobar">
+  # ...
+</Node>
+LoadPlugin "write_sensu"
+<Plugin write_sensu>
+  Attribute "production" "true"
+  Tag "appserver"
+  <Node "example">
+    Host "sensu.example.com"
+    Port "3030"
+    EventServicePrefix "collectd/"
+    Separator "/"
+    StoreRates true
+    AlwaysAppendDS false
+    # Optionally specify Sensu handlers
+    Metrics false
+    #MetricHandler "example_metric_handler"
+    Notifications false
+    #NotificationHandler "example_notification_handler"
+  </Node>
+</Plugin>
+<Plugin write_tsdb>
+  <Node>
+    Host           "localhost"
+    Port           "4242"
+    HostTags       "status=production deviceclass=www"
+    StoreRates     false
+    AlwaysAppendDS false
+  </Node>
+</Plugin>
