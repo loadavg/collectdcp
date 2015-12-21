@@ -13,8 +13,13 @@ project collectd_edit
 Build instructions:
 -----
 
-Currently, this project is developed in Ubuntu 14.04, using using QtCreator as IDE, hence just open collectd_edit.pro and build.
-A Makefile is provided for CentOS 7.
+Currently, this project is developed in Ubuntu 14.04, using using QtCreator as IDE,
+hence if you have QtCreator, just open collectd_edit.pro and build.
+
+A Makefile is provided for CentOS 7,  if you miss an advanced IDE like QtCreator.
+It will build the collectdcp executable in a folder:
+
+TARGET_FOLDER=../build-collectdcp
 
 GNOME platform has been installed from standard Debian repo, and this has created several difficulties when porting to CentOS 7.
 GLib, Gtk, gtkmm, Glade versions mismatch, and gtksourceviewmmm isn't available.
