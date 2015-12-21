@@ -10,10 +10,23 @@ project collectd_edit
 
 >Copyright 2015 Sputnik7
 
-build instructions:
+Build instructions:
 -----
 
-to use *GtkSourceView* we need the gtkmm wrapper:
+Currently, this project is developed in Ubuntu 14.04, using using QtCreator as IDE, hence just open collectd_edit.pro and build.
+A Makefile is provided for CentOS 7.
+
+GNOME platform has been installed from standard Debian repo, and this has created several difficulties when porting to CentOS 7.
+GLib, Gtk, gtkmm, Glade versions mismatch, and gtksourceviewmmm isn't available.
+
+Since the original plan was to have minimal requirements on target platform, some workarounds has been implemented.
+Glade files version have been 'downgraded' from 3.10 to 3.8, using a minimal script that updates just the version element.
+The resource folder has been duplicated and renamed to match the different versions.
+
+Advanced components:
+-----
+
+To use *GtkSourceView* we need the gtkmm wrapper:
 
     sudo apt-get install libgtksourceviewmm-3.0-dev
 
