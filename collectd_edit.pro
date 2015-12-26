@@ -82,4 +82,17 @@ DISTFILES += \
     resources-3.10/dlg_commands.glade \
     resources-3.10/add_plugin_treeview.glade \
     resources-3.10/about_box.glade \
-    resources-3.10/plugins.template
+    resources-3.10/plugins.template \
+    swipl-plgi/url_page_cache.pl \
+    swipl-plgi/parse_conf.pl \
+    swipl-plgi/glade_utility.pl \
+    swipl-plgi/add_plugin_block.pl \
+    swipl-plgi/colors.pl \
+    swipl-plgi/dlg_commands.pl \
+    swipl-plgi/editapp.pl \
+    swipl-plgi/message_box.pl \
+    swipl-plgi/model.pl \
+    swipl-plgi/scrap_plugins_wiki.pl \
+    swipl-plgi/ui_structure.pl \
+    swipl-plgi/uty.pl \
+    swipl-plgi/view_ast.pl

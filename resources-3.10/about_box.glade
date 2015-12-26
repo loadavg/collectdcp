@@ -7,7 +7,7 @@
     <property name="type_hint">dialog</property>
     <property name="program_name">Collectd Configuration Editor</property>
     <property name="version">0.0.1</property>
-    <property name="copyright" translatable="yes">Karsten Becker @2015</property>
+    <property name="copyright" translatable="no">(c) 2015 Sputnik7</property>
     <property name="comments" translatable="yes">Can we place here
 some comment about the general development architecture ?</property>
     <property name="website">http://www.loadavg.com/</property>
