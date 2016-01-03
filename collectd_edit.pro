@@ -99,4 +99,6 @@ DISTFILES += \
     swipl-plgi/ubuntu-14.04-default/collectd.conf.d/thresholds.conf \
     swipl-plgi/ubuntu-14.04-default/collectd.conf.d/filters.conf \
     swipl-plgi/ubuntu-14.04-default/collectd.conf \
-    swipl-plgi/ubuntu-14.04-default/collection.conf
+    swipl-plgi/ubuntu-14.04-default/collection.conf \
+    swipl-plgi/gen_glade.pl \
+    resources-3.8/generated/main.glade

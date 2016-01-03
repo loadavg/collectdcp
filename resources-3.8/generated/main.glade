@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="grid1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">False</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="="BaseDir">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets the base directory. This is the directory beneath all RRD-files are
+created. Possibly more subdirectories are created. This is also the working
+directory for the daemon.
+</property>
+	<property name="placeholder_text" translatable="yes">Directory</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">LoadPlugin</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="LoadPlugin">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Loads the plugin Plugin. This is required to load plugins, unless the
+AutoLoadPlugin option is enabled (see below). Without any loaded plugins,
+collectd will be mostly useless.
+Only the first LoadPlugin statement or block for a given plugin name has any
+effect. This is useful when you want to split up the configuration into smaller
+files and want each file to be "self contained", i.e. it contains a Plugin
+block and then appropriate LoadPlugin statement. The downside is that if
+you have multiple conflicting LoadPlugin blocks, e.g. when they specify
+different intervals, only one of them (the first one encountered) will take
+effect and all others will be silently ignored.
+LoadPlugin may either be a simple configuration statement or a block
+with additional options, affecting the behavior of LoadPlugin. A simple
+statement looks like this:
+
+ LoadPlugin "cpu"
+Options inside a LoadPlugin block can override default settings and
+influence the way plugins are loaded, e.g.:
+
+ &lt;LoadPlugin perl&gt;
+   Interval 60
+ &lt;/LoadPlugin&gt;
+The following options are valid inside LoadPlugin blocks:
+Globals true|false
+If enabled, collectd will export all global symbols of the plugin (and of all
+libraries loaded as dependencies of the plugin) and, thus, makes those symbols
+available for resolving unresolved symbols in subsequently loaded plugins if
+that is supported by your system.
+This is useful (or possibly even required), e.g., when loading a plugin that
+embeds some scripting language into the daemon (e.g. the Perl and
+Python plugins). Scripting languages usually provide means to load
+extensions written in C. Those extensions require symbols provided by the
+interpreter, which is loaded as a dependency of the respective collectd plugin.
+See the documentation of those plugins (e.g., collectd-perl(5) or
+collectd-python(5)) for details.
+By default, this is disabled. As a special exception, if the plugin name is
+either perl or python, the default is changed to enabled in order to keep
+the average user from ever having to deal with this low level linking stuff.
+Interval Seconds
+Sets a plugin-specific interval for collecting metrics. This overrides the
+global Interval setting. If a plugin provides own support for specifying an
+interval, that setting will take precedence.
+
+</property>
+	<property name="placeholder_text" translatable="yes">Plugin</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">AutoLoadPlugin</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="AutoLoadPlugin">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+When set to false (the default), each plugin needs to be loaded explicitly,
+using the LoadPlugin statement documented above. If a
+&lt;Plugin ...&gt; block is encountered and no configuration
+handling callback for this plugin has been registered, a warning is logged and
+the block is ignored.
+When set to true, explicit LoadPlugin statements are not required. Each
+&lt;Plugin ...&gt; block acts as if it was immediately preceded by a
+LoadPlugin statement. LoadPlugin statements are still required for
+plugins that don't provide any configuration, e.g. the Load plugin.
+</property>
+	<property name="placeholder_text" translatable="yes">false|true</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">CollectInternalStats</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="CollectInternalStats">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+When set to true, various statistics about the collectd daemon will be
+collected, with "collectd" as the plugin name. Defaults to false.
+The "write_queue" plugin instance reports the number of elements currently
+queued and the number of elements dropped off the queue by the
+WriteQueueLimitLow/WriteQueueLimitHigh mechanism.
+The "cache" plugin instance reports the number of elements in the value list
+cache (the cache you can interact with using collectd-unixsock(5)).
+</property>
+	<property name="placeholder_text" translatable="yes">false|true</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Include</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Include">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+If Path points to a file, includes that file. If Path points to a
+directory, recursively includes all files within that directory and its
+subdirectories. If the wordexp function is available on your system,
+shell-like wildcards are expanded before files are included. This means you can
+use statements like the following:
+
+  Include "/etc/collectd.d/*.conf"
+Starting with version 5.3, this may also be a block in which further options
+affecting the behavior of Include may be specified. The following option is
+currently allowed:
+
+  &lt;Include "/etc/collectd.d"&gt;
+    Filter "*.conf"
+  &lt;/Include&gt;
+Filter pattern
+If the fnmatch function is available on your system, a shell-like wildcard
+pattern may be specified to filter which files to include. This may be used
+in combination with recursively including a directory to easily be able to
+arbitrarily mix configuration files and other documents (e.g. README files).
+The given example is similar to the first example above but includes all files
+matching *.conf in any subdirectory of /etc/collectd.d:
+
+  Include "/etc/collectd.d" "*.conf"
+
+If more than one files are included by a single Include option, the files
+will be included in lexicographical order (as defined by the strcmp
+function). Thus, you can e. g. use numbered prefixes to specify the
+order in which the files are loaded.
+To prevent loops and shooting yourself in the foot in interesting ways the
+nesting is limited to a depth of 8 levels, which should be sufficient for
+most uses. Since symlinks are followed it is still possible to crash the daemon
+by looping symlinks. In our opinion significant stupidity should result in an
+appropriate amount of pain.
+It is no problem to have a block like &lt;Plugin foo&gt; in more than one
+file, but you cannot include files from within blocks.
+</property>
+	<property name="placeholder_text" translatable="yes">Path [pattern]</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">PIDFile</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="PIDFile">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets where to write the PID file to. This file is overwritten when it exists
+and deleted when the program is stopped. Some init-scripts might override this
+setting using the -P command-line option.
+</property>
+	<property name="placeholder_text" translatable="yes">File</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">PluginDir</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">6</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="PluginDir">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Path to the plugins (shared objects) of collectd.
+</property>
+	<property name="placeholder_text" translatable="yes">Directory</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">6</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">TypesDB</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">7</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="TypesDB">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Set one or more files that contain the data-set descriptions. See
+types.db(5) for a description of the format of this file.
+</property>
+	<property name="placeholder_text" translatable="yes">File [File ...]</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">7</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Interval</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">8</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Interval">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Configures the interval in which to query the read plugins. Obviously smaller
+values lead to a higher system load produced by collectd, while higher values
+lead to more coarse statistics.
+Warning: You should set this once and then never touch it again. If you do,
+you will have to delete all your RRD files or know some serious RRDtool
+magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
+</property>
+	<property name="placeholder_text" translatable="yes">Seconds</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">8</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">MaxReadInterval</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">9</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="MaxReadInterval">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Read plugin doubles interval between queries after each failed attempt
+to get data.
+This options limits the maximum value of the interval. The default value is
+86400.
+</property>
+	<property name="placeholder_text" translatable="yes">Seconds</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">9</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Timeout</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">10</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Timeout">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Consider a value list "missing" when no update has been read or received for
+Iterations iterations. By default, collectd considers a value list
+missing when no update has been received for twice the update interval. Since
+this setting uses iterations, the maximum allowed time without update depends
+on the Interval information contained in each value list. This is used in
+the Threshold configuration to dispatch notifications about missing values,
+see collectd-threshold(5) for details.
+</property>
+	<property name="placeholder_text" translatable="yes">Iterations</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">10</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">ReadThreads</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">11</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="ReadThreads">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Number of threads to start for reading plugins. The default value is 5, but
+you may want to increase this if you have more than five plugins that take a
+long time to read. Mostly those are plugins that do network-IO. Setting this to
+a value higher than the number of registered read callbacks is not recommended.
+</property>
+	<property name="placeholder_text" translatable="yes">Num</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">11</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">WriteThreads</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">12</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="WriteThreads">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Number of threads to start for dispatching value lists to write plugins. The
+default value is 5, but you may want to increase this if you have more than
+five plugins that may take relatively long to write to.
+</property>
+	<property name="placeholder_text" translatable="yes">Num</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">12</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">WriteQueueLimitLow</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">13</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="WriteQueueLimitLow">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Metrics are read by the read threads and then put into a queue to be handled
+by the write threads. If one of the write plugins is slow (e.g. network
+timeouts, I/O saturation of the disk) this queue will grow. In order to avoid
+running into memory issues in such a case, you can limit the size of this
+queue.
+By default, there is no limit and memory may grow indefinitely. This is most
+likely not an issue for clients, i.e. instances that only handle the local
+metrics. For servers it is recommended to set this to a non-zero value, though.
+You can set the limits using WriteQueueLimitHigh and WriteQueueLimitLow.
+Each of them takes a numerical argument which is the number of metrics in the
+queue. If there are HighNum metrics in the queue, any new metrics will be
+dropped. If there are less than LowNum metrics in the queue, all new metrics
+will be enqueued. If the number of metrics currently in the queue is between
+LowNum and HighNum, the metric is dropped with a probability that is
+proportional to the number of metrics in the queue (i.e. it increases linearly
+until it reaches 100%.)
+If WriteQueueLimitHigh is set to non-zero and WriteQueueLimitLow is
+unset, the latter will default to half of WriteQueueLimitHigh.
+If you do not want to randomly drop values when the queue size is between
+LowNum and HighNum, set WriteQueueLimitHigh and WriteQueueLimitLow
+to the same value.
+Enabling the CollectInternalStats option is of great help to figure out the
+values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
+</property>
+	<property name="placeholder_text" translatable="yes">LowNum</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">13</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Hostname</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">14</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Hostname">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets the hostname that identifies a host. If you omit this setting, the
+hostname will be determined using the gethostname(2) system call.
+</property>
+	<property name="placeholder_text" translatable="yes">Name</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">14</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">FQDNLookup</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">15</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="FQDNLookup">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+If Hostname is determined automatically this setting controls whether or not
+the daemon should try to figure out the "fully qualified domain name", FQDN.
+This is done using a lookup of the name returned by gethostname. This option
+is enabled by default.
+</property>
+	<property name="placeholder_text" translatable="yes">true|false</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">15</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">PostCacheChain</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">16</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="PostCacheChain">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Configure the name of the "pre-cache chain" and the "post-cache chain". Please
+see FILTER CONFIGURATION below on information on chains and how these
+setting change the daemon's behavior.
+</property>
+	<property name="placeholder_text" translatable="yes">ChainName</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">16</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     t_attach">0</property>
+	<property name="top_attach">34</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="PreCacheChain ChainName">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">no description available for PreCacheChain ChainName</property>
+	<property name="label" translatable="yes">False</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">34</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object>
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">False</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">35</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="PostCacheChain ChainName">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">no description available for PostCacheChain ChainName</property>
+	<property name="label" translatable="yes">False</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">35</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

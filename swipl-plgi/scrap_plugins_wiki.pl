@@ -2,8 +2,6 @@
     Author:  Carlo,,,
     Created: Oct  3 2015
     Purpose: read plugins specification from wiki pages, store in local data file
-    License  : MIT
-    Copyright: (c) 2015 Sputnik7
 */
 
 :- module(scrap_plugins_wiki,
@@ -54,24 +52,48 @@ get_manpages(ManPage, ManPages) :-
 	xpath(Html, //td(@id=l23), element(td, _, L)),
 	capture_sections(L, h1, H1s), !,
 	% this crash XPCE... length(H1s, L), writeln(L).
-	%length(H1s, C), writeln(C).
+	% length(H1s, C), writeln(C).
 	% maplist(show_h1_section, H1s),
-	findall(manpage{ name:Name, desc:Desc, h2s:Sub },
-		( member(G, H1s), capt(G, Name, Desc, Sub) ), ManPages).
+	findall(manpage{ name:Name, desc:Desc, h1s:H1, h2s:Sub, data_model:Model },
+		( member(H1, H1s),
+		  get_h1_section(H1, Name, Desc, Sub, Model)
+		), ManPages).
 
-capt(G, Name, 'Desc', Sub) :-
+get_h1_section(G, Name, Desc, Sub, Model) :-
+	xpath_chk(G, //h1(text), Desc),
 	xpath_chk(G, //h1/a(@name), Name),
 	G=[_,_|R],
-	capture_sections(R, h2, Sub), !.
+	capture_sections(R, h2, Sub), !,
+	(   Name == global_options
+	->  dl_model(G, Model)
+	    ,maplist(writeln,Model)
+	;   maplist(dl_model, Sub, Model)
+	).
 
-/*
-show_h1_section([A,B|S]) :-
-	writeln((A,B)),
-	capture_sections(S, h2, H2s),
-	maplist(show_h2_section, H2s).
-show_h2_section([A,B|_]) :-
-	put(0' ), writeln((A,B)).
-*/
+match(T1,T2, G, R) :-
+	E1 = element(T1, _A1, _V1),
+	E2 = element(T2, _A2, _V2),
+	append(_, [E1,E2|_], G),
+	xpath(E1, /self(text), Tx1),
+	xpath(E2, /self(text), Tx2),
+	R = field{name:Tx1, desc:Tx2}.
+match(T, G, R) :-
+	E = element(T, _A, _V),
+	append(_, [E|_], G),
+	xpath(E, /self(text), F),
+	R = field{name:F}.
+
+find(Tag, G, V) :-
+	E = element(Tag, _, V),
+	append(_, [E|_], G).
+
+dl_model(G, DlDt) :- dldt(G, DlDt).
+dldt(G, DlDt) :-
+	find(dl, G, DL),
+	findall(Def, (match(dt,dd, DL, Def) *-> true ; match(dt, DL, Def)), DlDt),
+	!.
+dldt(_, []).
+
 show_h1_section([A,_|S]) :-
 	writeln(A),
 	capture_sections(S, h2, H2s),
@@ -96,33 +118,12 @@ capture_section([E|Es], Tag, [E|Ss], R) :-
 	capture_section(Es, Tag, Ss, R).
 capture_section([], _Tag, [], []).
 
-/*
-collect_find_dl([B|R], B, R) :-
-	B = element(dl,_,_).
-collect_find_dl([B|_], _, _) :-
-	B = element(h2,_,_), !, fail.
-collect_find_dl([_|R], B, S) :-
-	collect_find_dl(R, B, S).
-
-
-xpath_pos(DOM, Expr, Node, Pos) :-
-	xpath(DOM, Expr, Node),
-	dom_pos(DOM, Node, Pos).
-
-dom_pos(Node, Node, []).
-dom_pos(element(_, _, L), Node, [P|Ps]) :-
-	nth1(P, L, E),
-	dom_pos(E, Node, Ps).
-*/
 manpages(PluginManpages, ManPage, PluginName) :-
 	atomic_list_concat([UrlPage, PluginName], #, PluginManpages),
 	get_page(UrlPage, ManPage).
 plugin_url_name(Plugin, UrlPage, PluginName) :-
 	atomic_list_concat([UrlPage, PluginName], #, Plugin.manpages).
 
-/*save_plugins_wiki :-
-	forall(page(U, Html), add_url_page(U, Html)).
-*/
 collectd_url(top, Url) :- !,
 	collectd_url('/wiki/index.php/Table_of_Plugins', Url).
 collectd_url(man, Url) :- !,
@@ -154,10 +155,17 @@ get_plugin(TBody,
 	   }) :-
 	xpath(TBody, //tr, Tr),
 	xpath(Tr, td(1)/a(@title), Title),
-	xpath(Tr, td(1)/a(@href), Href),
+	xpath(Tr, td(1)/a(@href), HrefD), clean_tail(HrefD, Href),
 	xpath(Tr, td(2, text), Mode),
 	xpath(Tr, td(3)/a(@href), Manpages),
 	xpath(Tr, td(4)/a(text), Version).
+
+clean_tail(Href, Href).
+
+clean_tail(HrefD, What, HRef) :-
+	sub_atom(HrefD, _,W,0, What),
+	atom_length(HrefD, LHrefD), W1 is LHrefD - W,
+	sub_atom(HrefD, 0,W1,_, HRef).
 
 get_page(Url, Html) :-
 	url_page(Url, Html), !.
