@@ -3,7 +3,7 @@
     Created: Oct  6 2015
     Purpose: collectd editor model data
     License  : MIT
-    Copyright: (c) 2015 Sputnik7
+    Copyright (c) 2015,2016 Sputnik7
 */
 
 :- module(model,

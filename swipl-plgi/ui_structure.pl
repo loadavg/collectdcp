@@ -3,7 +3,7 @@
     Created: Oct 12 2015
     Purpose: interface GUI
     License  : MIT
-    Copyright: (c) 2015 Sputnik7
+    Copyright (c) 2015,2016 Sputnik7
 */
 
 :- module(ui_structure,

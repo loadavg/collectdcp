@@ -4,7 +4,7 @@
     Purpose: Main application for collectd configuration files editapp project.
              Bind commands to UI designed with glade.
     License  : MIT
-    Copyright: (c) 2015 Sputnik7
+    Copyright (c) 2015,2016 Sputnik7
 */
 
 :- module(editapp,

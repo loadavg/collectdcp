@@ -1,7 +1,9 @@
 /*  File:    gen_glade.pl
     Author:  Carlo,,,
     Created: Dec 30 2015
-    Purpose:
+    Purpose: generation of Glade editable user interface from collectd wiki documentation
+    License  : MIT
+    Copyright (c) 2015,2016 Sputnik7
 */
 
 :- module(gen_glade,

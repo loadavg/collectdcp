@@ -3,7 +3,7 @@
     Created: Oct 26 2015
     Purpose: simple utilities
     License  : MIT
-    Copyright: (c) 2015 Sputnik7
+    Copyright (c) 2015,2016 Sputnik7
 */
 :- module(uty,
 	  [replace_word/4

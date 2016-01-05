@@ -3,7 +3,7 @@
     Created: Oct 20 2015
     Purpose: issue and display shell commands
     License  : MIT
-    Copyright: (c) 2015 Sputnik7
+    Copyright (c) 2015,2016 Sputnik7
 */
 
 :- module(dlg_commands,
