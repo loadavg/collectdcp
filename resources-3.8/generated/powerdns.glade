@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="powerdns">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Server</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Server">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+The Server block defines one authoritative server to query, the Recursor
+does the same for an recursing server. The possible options in both blocks are
+the same, though. The argument defines a name for the server / recursor
+and is required.
+Collect Field
+Using the Collect statement you can select which values to collect. Here,
+you specify the name of the values as used by the PowerDNS servers, e. g.
+dlg-only-drops, answers10-100.
+The method of getting the values differs for Server and Recursor blocks:
+When querying the server a SHOW * command is issued in any case, because
+that's the only way of getting multiple values out of the server at once.
+collectd then picks out the values you have selected. When querying the
+recursor, a command is generated to query exactly these values. So if you
+specify invalid fields when querying the recursor, a syntax error may be
+returned by the daemon and collectd may not collect any values at all.
+If no Collect statement is given, the following Server values will be
+collected:
+latencypacketcache-hitpacketcache-misspacketcache-sizequery-cache-hitquery-cache-missrecursing-answersrecursing-questionstcp-answerstcp-queriesudp-answersudp-queries
+The following Recursor values will be collected by default:
+noerror-answersnxdomain-answersservfail-answerssys-msecuser-msecqa-latencycache-entriescache-hitscache-missesquestions
+Please note that up to that point collectd doesn't know what values are
+available on the server and values that are added do not need a change of the
+mechanism so far. However, the values must be mapped to collectd's naming
+scheme, which is done using a lookup table that lists all known values. If
+values are added in the future and collectd does not know about them, you will
+get an error much like this:
+
+  powerdns plugin: submit: Not found in lookup table: foobar = 42
+In this case please file a bug report with the collectd team.
+Socket Path
+Configures the path to the UNIX domain socket to be used when connecting to the
+daemon. By default ${localstatedir}/run/pdns.controlsocket will be used for
+an authoritative server and ${localstatedir}/run/pdns_recursor.controlsocket
+will be used for the recursor.
+
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">LocalSocket</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="LocalSocket">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Querying the recursor is done using UDP. When using UDP over UNIX domain
+sockets, the client socket needs a name in the file system, too. You can set
+this local name to Path using the LocalSocket option. The default is
+prefix/var/run/collectd-powerdns.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

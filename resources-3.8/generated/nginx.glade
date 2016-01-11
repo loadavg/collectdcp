@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="nginx">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">URL</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="URL">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets the URL of the ngx_http_stub_status_module output.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">User</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="User">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Optional user name needed for authentication.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Password</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Password">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Optional password needed for authentication.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">VerifyPeer</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="VerifyPeer">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Enable or disable peer SSL certificate verification. See
+http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">VerifyHost</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="VerifyHost">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Enable or disable peer host name verification. If enabled, the plugin checks
+if the Common Name or a Subject Alternate Name field of the SSL
+certificate matches the host name provided by the URL option. If this
+identity check fails, the connection is aborted. Obviously, only works when
+connecting to a SSL enabled server. Enabled by default.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">CACert</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="CACert">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+File that holds one or more SSL certificates. If you want to use HTTPS you will
+possibly need this option. What CA certificates come bundled with libcurl
+and are checked by default depends on the distribution you use.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Timeout</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">6</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Timeout">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+The Timeout option sets the overall timeout for HTTP requests to URL, in
+milliseconds. By default, the configured Interval is used to set the
+timeout.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">6</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

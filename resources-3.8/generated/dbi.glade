@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="dbi">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Statement</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Statement">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets the statement that should be executed on the server. This is not
+interpreted by collectd, but simply passed to the database server. Therefore,
+the SQL dialect that's used depends on the server collectd is connected to.
+The query has to return at least two columns, one for the instance and one
+value. You cannot omit the instance, even if the statement is guaranteed to
+always return exactly one line. In that case, you can usually specify something
+like this:
+
+  Statement "SELECT \"instance\", COUNT(*) AS value FROM table"
+(That works with MySQL but may not be valid SQL according to the spec. If you
+use a more strict database server, you may have to select from a dummy table or
+something.)
+Please note that some databases, for example Oracle, will fail if you
+include a semicolon at the end of the statement.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">MaxVersion</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="MaxVersion">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Only use this query for the specified database version. You can use these
+options to provide multiple queries with the same name but with a slightly
+different syntax. The plugin will use only those queries, where the specified
+minimum and maximum versions fit the version of the database in use.
+The database version is determined by dbi_conn_get_engine_version, see the
+libdbi documentation
+for details. Basically, each part of the version is assumed to be in the range
+from 00 to 99 and all dots are removed. So version "4.1.2" becomes
+"40102", version "5.0.42" becomes "50042".
+Warning: The plugin will use all matching queries, so if you specify
+multiple queries with the same name and overlapping ranges, weird stuff will
+happen. Don't to it! A valid example would be something along these lines:
+
+  MinVersion 40000
+  MaxVersion 49999
+  ...
+  MinVersion 50000
+  MaxVersion 50099
+  ...
+  MinVersion 50100
+  # No maximum
+In the above example, there are three ranges that don't overlap. The last one
+goes from version "5.1.0" to infinity, meaning "all later versions". Versions
+before "4.0.0" are not specified.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Type</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Type">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+The type that's used for each line returned. See types.db(5) for more
+details on how types are defined. In short: A type is a predefined layout of
+data and the number of values and type of values has to match the type
+definition.
+If you specify "temperature" here, you need exactly one gauge column. If you
+specify "if_octets", you will need two counter columns. See the ValuesFrom
+setting below.
+There must be exactly one Type option inside each Result block.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">InstancePrefix</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="InstancePrefix">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Prepends prefix to the type instance. If InstancesFrom (see below) is not
+given, the string is simply copied. If InstancesFrom is given, prefix and
+all strings returned in the appropriate columns are concatenated together,
+separated by dashes ("-").
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">InstancesFrom</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="InstancesFrom">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Specifies the columns whose values will be used to create the "type-instance"
+for each row. If you specify more than one column, the value of all columns
+will be joined together with dashes ("-") as separation characters.
+The plugin itself does not check whether or not all built instances are
+different. It's your responsibility to assure that each is unique. This is
+especially true, if you do not specify InstancesFrom: You have to make
+sure that only one row is returned in this case.
+If neither InstancePrefix nor InstancesFrom is given, the type-instance
+will be empty.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">ValuesFrom</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="ValuesFrom">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Names the columns whose content is used as the actual data for the data sets
+that are dispatched to the daemon. How many such columns you need is determined
+by the Type setting above. If you specify too many or not enough columns,
+the plugin will complain about that and no data will be submitted to the
+daemon.
+The actual data type in the columns is not that important. The plugin will
+automatically cast the values to the right type if it know how to do that. So
+it should be able to handle integer an floating point types, as well as strings
+(if they include a number at the beginning).
+There must be at least one ValuesFrom option inside each Result block.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">MetadataFrom</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">6</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="MetadataFrom">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Names the columns whose content is used as metadata for the data sets
+that are dispatched to the daemon.
+The actual data type in the columns is not that important. The plugin will
+automatically cast the values to the right type if it know how to do that. So
+it should be able to handle integer an floating point types, as well as strings
+(if they include a number at the beginning).
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">6</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

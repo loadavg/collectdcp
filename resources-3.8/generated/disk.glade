@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="disk">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Disk</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Disk">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Select the disk Name. Whether it is collected or ignored depends on the
+IgnoreSelected setting, see below. As with other plugins that use the
+daemon's ignorelist functionality, a string that starts and ends with a slash
+is interpreted as a regular expression. Examples:
+
+  Disk "sdd"
+  Disk "/hda[34]/"
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">IgnoreSelected</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="IgnoreSelected">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets whether selected disks, i. e. the ones matches by any of the Disk
+statements, are ignored or if all other disks are ignored. The behavior
+(hopefully) is intuitive: If no Disk option is configured, all disks are
+collected. If at least one Disk option is given and no IgnoreSelected or
+set to false, only matching disks will be collected. If IgnoreSelected
+is set to true, all disks are collected except the ones matched.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">UseBSDName</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="UseBSDName">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Whether to use the device's "BSD Name", on Mac OS X, instead of the
+default major/minor numbers. Requires collectd to be built with Apple's
+IOKitLib support.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">UdevNameAttr</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="UdevNameAttr">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Attempt to override disk instance name with the value of a specified udev
+attribute when built with libudev.  If the attribute is not defined for the
+given device, the default name is used. Example:
+
+  UdevNameAttr "DM_NAME"
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

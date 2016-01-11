@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="write_tsdb">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Host</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Host">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Hostname or address to connect to. Defaults to localhost.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Port</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Port">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Service name or port number to connect to. Defaults to 4242.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">HostTags</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="HostTags">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+When set, HostTags is added to the end of the metric. It is intended to be
+used for name=value pairs that the TSD will tag the metric with. Dots and
+whitespace are not escaped in this string.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">StoreRates</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="StoreRates">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+If set to true, convert counter values to rates. If set to false
+(the default) counter values are stored as is, as an increasing
+integer number.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">AlwaysAppendDS</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="AlwaysAppendDS">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+If set the true, append the name of the Data Source (DS) to the "metric"
+identifier. If set to false (the default), this is only done when there is
+more than one DS.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

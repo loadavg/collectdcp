@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="postgresql">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Statement</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Statement">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Specify the sql query statement which the plugin should execute. The string
+may contain the tokens $1, $2, etc. which are used to reference the
+first, second, etc. parameter. The value of the parameters is specified by the
+Param configuration option - see below for details. To include a literal
+$ character followed by a number, surround it with single quotes (').
+Any SQL command which may return data (such as SELECT or SHOW) is
+allowed. Note, however, that only a single command may be used. Semicolons are
+allowed as long as a single non-empty command has been specified only.
+The returned lines will be handled separately one after another.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Param</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Param">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Specify the parameters which should be passed to the SQL query. The parameters
+are referred to in the SQL query as $1, $2, etc. in the same order as
+they appear in the configuration file. The value of the parameter is
+determined depending on the value of the Param option as follows:
+hostname
+The configured hostname of the database connection. If a UNIX domain socket is
+used, the parameter expands to "localhost".
+database
+The name of the database of the current connection.
+instance
+The name of the database plugin instance. See the Instance option of the
+database specification below for details.
+username
+The username used to connect to the database.
+interval
+The interval with which this database is queried (as specified by the database
+specific or global Interval options).
+
+Please note that parameters are only supported by PostgreSQL's protocol
+version 3 and above which was introduced in version 7.4 of PostgreSQL.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Type</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Type">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+The type name to be used when dispatching the values. The type describes
+how to handle the data and where to store it. See types.db(5) for more
+details on types and their configuration. The number and type of values (as
+selected by the ValuesFrom option) has to match the type of the given name.
+This option is required inside a Result block.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">InstancesFrom</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="InstancesFrom">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Specify how to create the "TypeInstance" for each data set (i. e. line).
+InstancePrefix defines a static prefix that will be prepended to all type
+instances. InstancesFrom defines the column names whose values will be used
+to create the type instance. Multiple values will be joined together using the
+hyphen (-) as separation character.
+The plugin itself does not check whether or not all built instances are
+different. It is your responsibility to assure that each is unique.
+Both options are optional. If none is specified, the type instance will be
+empty.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">ValuesFrom</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="ValuesFrom">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Names the columns whose content is used as the actual data for the data sets
+that are dispatched to the daemon. How many such columns you need is
+determined by the Type setting as explained above. If you specify too many
+or not enough columns, the plugin will complain about that and no data will be
+submitted to the daemon.
+The actual data type, as seen by PostgreSQL, is not that important as long as
+it represents numbers. The plugin will automatically cast the values to the
+right type if it know how to do that. For that, it uses the strtoll(3) and
+strtod(3) functions, so anything supported by those functions is supported
+by the plugin as well.
+This option is required inside a Result block and may be specified multiple
+times. If multiple ValuesFrom options are specified, the columns are read
+in the given order.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">MaxVersion</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="MaxVersion">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Specify the minimum or maximum version of PostgreSQL that this query should be
+used with. Some statistics might only be available with certain versions of
+PostgreSQL. This allows you to specify multiple queries with the same name but
+which apply to different versions, thus allowing you to use the same
+configuration in a heterogeneous environment.
+The version has to be specified as the concatenation of the major, minor
+and patch-level versions, each represented as two-decimal-digit numbers. For
+example, version 8.2.3 will become 80203.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

@@ -2,14 +2,12 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkGrid" id="grid_main">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
+  <object class="GtkGrid" id="amqp"><property name="visible">True</property><property name="can_focus">False</property>/property>
     <child>
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">BaseDir</property>
+	<property name="label" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -19,13 +17,12 @@
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="BaseDir">
+      <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Sets the base directory. This is the directory beneath all RRD-files are
-created. Possibly more subdirectories are created. This is also the working
-directory for the daemon.
+Hostname or IP-address of the AMQP broker. Defaults to the default behavior of
+the underlying communications library, rabbitmq-c, which is "localhost".
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -40,7 +37,7 @@ directory for the daemon.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">LoadPlugin</property>
+	<property name="label" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -50,52 +47,13 @@ directory for the daemon.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="LoadPlugin">
+      <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Loads the plugin Plugin. This is required to load plugins, unless the
-AutoLoadPlugin option is enabled (see below). Without any loaded plugins,
-collectd will be mostly useless.
-Only the first LoadPlugin statement or block for a given plugin name has any
-effect. This is useful when you want to split up the configuration into smaller
-files and want each file to be "self contained", i.e. it contains a Plugin
-block and then appropriate LoadPlugin statement. The downside is that if
-you have multiple conflicting LoadPlugin blocks, e.g. when they specify
-different intervals, only one of them (the first one encountered) will take
-effect and all others will be silently ignored.
-LoadPlugin may either be a simple configuration statement or a block
-with additional options, affecting the behavior of LoadPlugin. A simple
-statement looks like this:
-
- LoadPlugin "cpu"
-Options inside a LoadPlugin block can override default settings and
-influence the way plugins are loaded, e.g.:
-
- &lt;LoadPlugin perl&gt;
-   Interval 60
- &lt;/LoadPlugin&gt;
-The following options are valid inside LoadPlugin blocks:
-Globals true|false
-If enabled, collectd will export all global symbols of the plugin (and of all
-libraries loaded as dependencies of the plugin) and, thus, makes those symbols
-available for resolving unresolved symbols in subsequently loaded plugins if
-that is supported by your system.
-This is useful (or possibly even required), e.g., when loading a plugin that
-embeds some scripting language into the daemon (e.g. the Perl and
-Python plugins). Scripting languages usually provide means to load
-extensions written in C. Those extensions require symbols provided by the
-interpreter, which is loaded as a dependency of the respective collectd plugin.
-See the documentation of those plugins (e.g., collectd-perl(5) or
-collectd-python(5)) for details.
-By default, this is disabled. As a special exception, if the plugin name is
-either perl or python, the default is changed to enabled in order to keep
-the average user from ever having to deal with this low level linking stuff.
-Interval Seconds
-Sets a plugin-specific interval for collecting metrics. This overrides the
-global Interval setting. If a plugin provides own support for specifying an
-interval, that setting will take precedence.
-
+Service name or port number on which the AMQP broker accepts connections. This
+argument must be a string, even if the numeric form is used. Defaults to
+"5672".
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -110,7 +68,7 @@ interval, that setting will take precedence.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">AutoLoadPlugin</property>
+	<property name="label" translatable="yes">VHost</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -120,19 +78,11 @@ interval, that setting will take precedence.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="AutoLoadPlugin">
+      <object class="GtkEntry" id="VHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-When set to false (the default), each plugin needs to be loaded explicitly,
-using the LoadPlugin statement documented above. If a
-&lt;Plugin ...&gt; block is encountered and no configuration
-handling callback for this plugin has been registered, a warning is logged and
-the block is ignored.
-When set to true, explicit LoadPlugin statements are not required. Each
-&lt;Plugin ...&gt; block acts as if it was immediately preceded by a
-LoadPlugin statement. LoadPlugin statements are still required for
-plugins that don't provide any configuration, e.g. the Load plugin.
+Name of the virtual host on the AMQP broker to use. Defaults to "/".
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -147,7 +97,7 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectInternalStats</property>
+	<property name="label" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -157,17 +107,12 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectInternalStats">
+      <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-When set to true, various statistics about the collectd daemon will be
-collected, with "collectd" as the plugin name. Defaults to false.
-The "write_queue" plugin instance reports the number of elements currently
-queued and the number of elements dropped off the queue by the
-WriteQueueLimitLow/WriteQueueLimitHigh mechanism.
-The "cache" plugin instance reports the number of elements in the value list
-cache (the cache you can interact with using collectd-unixsock(5)).
+Credentials used to authenticate to the AMQP broker. By default "guest"/"guest"
+is used.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -182,7 +127,7 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Include</property>
+	<property name="label" translatable="yes">Exchange</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -192,45 +137,15 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Include">
+      <object class="GtkEntry" id="Exchange">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-If Path points to a file, includes that file. If Path points to a
-directory, recursively includes all files within that directory and its
-subdirectories. If the wordexp function is available on your system,
-shell-like wildcards are expanded before files are included. This means you can
-use statements like the following:
-
-  Include "/etc/collectd.d/*.conf"
-Starting with version 5.3, this may also be a block in which further options
-affecting the behavior of Include may be specified. The following option is
-currently allowed:
-
-  &lt;Include "/etc/collectd.d"&gt;
-    Filter "*.conf"
-  &lt;/Include&gt;
-Filter pattern
-If the fnmatch function is available on your system, a shell-like wildcard
-pattern may be specified to filter which files to include. This may be used
-in combination with recursively including a directory to easily be able to
-arbitrarily mix configuration files and other documents (e.g. README files).
-The given example is similar to the first example above but includes all files
-matching *.conf in any subdirectory of /etc/collectd.d:
-
-  Include "/etc/collectd.d" "*.conf"
-
-If more than one files are included by a single Include option, the files
-will be included in lexicographical order (as defined by the strcmp
-function). Thus, you can e. g. use numbered prefixes to specify the
-order in which the files are loaded.
-To prevent loops and shooting yourself in the foot in interesting ways the
-nesting is limited to a depth of 8 levels, which should be sufficient for
-most uses. Since symlinks are followed it is still possible to crash the daemon
-by looping symlinks. In our opinion significant stupidity should result in an
-appropriate amount of pain.
-It is no problem to have a block like &lt;Plugin foo&gt; in more than one
-file, but you cannot include files from within blocks.
+In Publish blocks, this option specifies the exchange to send values to.
+By default, "amq.fanout" will be used.
+In Subscribe blocks this option is optional. If given, a binding between
+the given exchange and the queue is created, using the routing key if
+configured. See the Queue and RoutingKey options below.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -245,7 +160,7 @@ file, but you cannot include files from within blocks.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">PIDFile</property>
+	<property name="label" translatable="yes">ExchangeType</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -255,13 +170,13 @@ file, but you cannot include files from within blocks.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="PIDFile">
+      <object class="GtkEntry" id="ExchangeType">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Sets where to write the PID file to. This file is overwritten when it exists
-and deleted when the program is stopped. Some init-scripts might override this
-setting using the -P command-line option.
+If given, the plugin will try to create the configured exchange with this
+type after connecting. When in a Subscribe block, the queue will then
+be bound to this exchange.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -276,7 +191,7 @@ setting using the -P command-line option.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">PluginDir</property>
+	<property name="label" translatable="yes">Queue</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -286,11 +201,12 @@ setting using the -P command-line option.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="PluginDir">
+      <object class="GtkEntry" id="Queue">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Path to the plugins (shared objects) of collectd.
+Configures the queue name to subscribe to. If no queue name was configured
+explicitly, a unique queue name will be created by the broker.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -305,7 +221,7 @@ Path to the plugins (shared objects) of collectd.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">TypesDB</property>
+	<property name="label" translatable="yes">QueueDurable</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -315,12 +231,15 @@ Path to the plugins (shared objects) of collectd.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="TypesDB">
+      <object class="GtkEntry" id="QueueDurable">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Set one or more files that contain the data-set descriptions. See
-types.db(5) for a description of the format of this file.
+Defines if the queue subscribed to is durable (saved to persistent storage)
+or transient (will disappear if the AMQP broker is restarted). Defaults to
+"false".
+This option should be used in conjunction with the Persistent option on the
+publish side.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -335,7 +254,7 @@ types.db(5) for a description of the format of this file.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Interval</property>
+	<property name="label" translatable="yes">RoutingKey</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -345,16 +264,21 @@ types.db(5) for a description of the format of this file.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Interval">
+      <object class="GtkEntry" id="RoutingKey">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Configures the interval in which to query the read plugins. Obviously smaller
-values lead to a higher system load produced by collectd, while higher values
-lead to more coarse statistics.
-Warning: You should set this once and then never touch it again. If you do,
-you will have to delete all your RRD files or know some serious RRDtool
-magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
+In Publish blocks, this configures the routing key to set on all outgoing
+messages. If not given, the routing key will be computed from the identifier
+of the value. The host, plugin, type and the two instances are concatenated
+together using dots as the separator and all containing dots replaced with
+slashes. For example "collectd.host/example/com.cpu.0.cpu.user". This makes it
+possible to receive only specific values using a "topic" exchange.
+In Subscribe blocks, configures the routing key used when creating a
+binding between an exchange and the queue. The usual wildcards can be
+used to filter messages when using a "topic" exchange. If you're only
+interested in CPU statistics, you could use the routing key "collectd.*.cpu.#"
+for example.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -369,7 +293,7 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MaxReadInterval</property>
+	<property name="label" translatable="yes">ConnectionRetryDelay</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -379,14 +303,14 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="MaxReadInterval">
+      <object class="GtkEntry" id="ConnectionRetryDelay">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Read plugin doubles interval between queries after each failed attempt
-to get data.
-This options limits the maximum value of the interval. The default value is
-86400.
+When the connection to the AMQP broker is lost, defines the time in seconds to
+wait before attempting to reconnect. Defaults to 0, which implies collectd will
+attempt to reconnect at each read interval (in Subscribe mode) or each time
+values are ready for submission (in Publish mode).
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -401,7 +325,7 @@ This options limits the maximum value of the interval. The default value is
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Timeout</property>
+	<property name="label" translatable="yes">Format</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -411,17 +335,23 @@ This options limits the maximum value of the interval. The default value is
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Timeout">
+      <object class="GtkEntry" id="Format">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Consider a value list "missing" when no update has been read or received for
-Iterations iterations. By default, collectd considers a value list
-missing when no update has been received for twice the update interval. Since
-this setting uses iterations, the maximum allowed time without update depends
-on the Interval information contained in each value list. This is used in
-the Threshold configuration to dispatch notifications about missing values,
-see collectd-threshold(5) for details.
+Selects the format in which messages are sent to the broker. If set to
+Command (the default), values are sent as PUTVAL commands which are
+identical to the syntax used by the Exec and UnixSock plugins. In this
+case, the Content-Type header field will be set to text/collectd.
+If set to JSON, the values are encoded in the JavaScript Object Notation,
+an easy and straight forward exchange format. The Content-Type header field
+will be set to application/json.
+If set to Graphite, values are encoded in the Graphite format, which is
+"&lt;metric&gt; &lt;value&gt; &lt;timestamp&gt;\n". The Content-Type header field will be set to
+text/graphite.
+A subscribing client should use the Content-Type header field to
+determine how to decode the values. Currently, the AMQP plugin itself can
+only decode the Command format.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -436,7 +366,7 @@ see collectd-threshold(5) for details.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ReadThreads</property>
+	<property name="label" translatable="yes">GraphitePrefix</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -446,14 +376,13 @@ see collectd-threshold(5) for details.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ReadThreads">
+      <object class="GtkEntry" id="GraphitePrefix">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Number of threads to start for reading plugins. The default value is 5, but
-you may want to increase this if you have more than five plugins that take a
-long time to read. Mostly those are plugins that do network-IO. Setting this to
-a value higher than the number of registered read callbacks is not recommended.
+A prefix can be added in the metric name when outputting in the Graphite format.
+It's added before the Host name.
+Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;type&gt;&lt;name&gt;"
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -468,7 +397,7 @@ a value higher than the number of registered read callbacks is not recommended.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">WriteThreads</property>
+	<property name="label" translatable="yes">GraphitePostfix</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -478,13 +407,13 @@ a value higher than the number of registered read callbacks is not recommended.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="WriteThreads">
+      <object class="GtkEntry" id="GraphitePostfix">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Number of threads to start for dispatching value lists to write plugins. The
-default value is 5, but you may want to increase this if you have more than
-five plugins that may take relatively long to write to.
+A postfix can be added in the metric name when outputting in the Graphite format.
+It's added after the Host name.
+Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;type&gt;&lt;name&gt;"
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -499,7 +428,7 @@ five plugins that may take relatively long to write to.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">WriteQueueLimitLow</property>
+	<property name="label" translatable="yes">GraphiteEscapeChar</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -509,33 +438,14 @@ five plugins that may take relatively long to write to.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="WriteQueueLimitLow">
+      <object class="GtkEntry" id="GraphiteEscapeChar">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Metrics are read by the read threads and then put into a queue to be handled
-by the write threads. If one of the write plugins is slow (e.g. network
-timeouts, I/O saturation of the disk) this queue will grow. In order to avoid
-running into memory issues in such a case, you can limit the size of this
-queue.
-By default, there is no limit and memory may grow indefinitely. This is most
-likely not an issue for clients, i.e. instances that only handle the local
-metrics. For servers it is recommended to set this to a non-zero value, though.
-You can set the limits using WriteQueueLimitHigh and WriteQueueLimitLow.
-Each of them takes a numerical argument which is the number of metrics in the
-queue. If there are HighNum metrics in the queue, any new metrics will be
-dropped. If there are less than LowNum metrics in the queue, all new metrics
-will be enqueued. If the number of metrics currently in the queue is between
-LowNum and HighNum, the metric is dropped with a probability that is
-proportional to the number of metrics in the queue (i.e. it increases linearly
-until it reaches 100%.)
-If WriteQueueLimitHigh is set to non-zero and WriteQueueLimitLow is
-unset, the latter will default to half of WriteQueueLimitHigh.
-If you do not want to randomly drop values when the queue size is between
-LowNum and HighNum, set WriteQueueLimitHigh and WriteQueueLimitLow
-to the same value.
-Enabling the CollectInternalStats option is of great help to figure out the
-values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
+Specify a character to replace dots (.) in the host part of the metric name.
+In Graphite metric name, dots are used as separators between different
+metric parts (host, plugin, type).
+Default is "_" (Underscore).
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -550,7 +460,7 @@ values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Hostname</property>
+	<property name="label" translatable="yes">GraphiteSeparateInstances</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -560,12 +470,14 @@ values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Hostname">
+      <object class="GtkEntry" id="GraphiteSeparateInstances">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Sets the hostname that identifies a host. If you omit this setting, the
-hostname will be determined using the gethostname(2) system call.
+If set to true, the plugin instance and type instance will be in their own
+path component, for example host.cpu.0.cpu.idle. If set to false (the
+default), the plugin and plugin instance (and likewise the type and type
+instance) are put into one component, for example host.cpu-0.cpu-idle.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -580,7 +492,7 @@ hostname will be determined using the gethostname(2) system call.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">FQDNLookup</property>
+	<property name="label" translatable="yes">GraphiteAlwaysAppendDS</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -590,51 +502,19 @@ hostname will be determined using the gethostname(2) system call.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="FQDNLookup">
+      <object class="GtkEntry" id="GraphiteAlwaysAppendDS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-If Hostname is determined automatically this setting controls whether or not
-the daemon should try to figure out the "fully qualified domain name", FQDN.
-This is done using a lookup of the name returned by gethostname. This option
-is enabled by default.
+If set to true, append the name of the Data Source (DS) to the "metric"
+identifier. If set to false (the default), this is only done when there is
+more than one DS.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
 	<property name="top_attach">15</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label1">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">PostCacheChain</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">16</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="PostCacheChain">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
-Configure the name of the "pre-cache chain" and the "post-cache chain". Please
-see FILTER CONFIGURATION below on information on chains and how these
-setting change the daemon's behavior.
-</property>
-	<property name="placeholder_text" translatable="yes"></property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">16</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="tail_csv">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Metric</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Metric">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+The Metric block configures a new metric to be extracted from the statistics
+file and how it is mapped on collectd's data model. The string Name is
+only used inside the Instance blocks to refer to this block, so you can use
+one Metric block for multiple CSV files.
+Type Type
+Configures which Type to use when dispatching this metric. Types are defined
+in the types.db(5) file, see the appropriate manual page for more
+information on specifying types. Only types with a single data source are
+supported by the tail_csv plugin. The information whether the value is an
+absolute value (i.e. a GAUGE) or a rate (i.e. a DERIVE) is taken from the
+Type's definition.
+Instance TypeInstance
+If set, TypeInstance is used to populate the type instance field of the
+created value lists. Otherwise, no type instance is used.
+ValueFrom Index
+Configure to read the value from the field with the zero-based index Index.
+If the value is parsed as signed integer, unsigned integer or double depends on
+the Type setting, see above.
+
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">File</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="File">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Each File block represents one CSV file to read. There must be at least one
+File block but there can be multiple if you have multiple CSV files.
+Instance PluginInstance
+Sets the plugin instance used when dispatching the values.
+Collect Metric
+Specifies which Metric to collect. This option must be specified at least
+once, and you can use this option multiple times to specify more than one
+metric to be extracted from this statistic file.
+Interval Seconds
+Configures the interval in which to read values from this instance / file.
+Defaults to the plugin's default interval.
+TimeFrom Index
+Rather than using the local time when dispatching a value, read the timestamp
+from the field with the zero-based index Index. The value is interpreted as
+seconds since epoch. The value is parsed as a double and may be factional.
+
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="python">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+  </object>
+</interface>

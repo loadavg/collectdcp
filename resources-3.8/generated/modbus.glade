@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="modbus">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Data</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Data">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Data blocks define a mapping between register numbers and the "types" used by
+collectd.
+Within &lt;Data /&gt; blocks, the following options are allowed:
+RegisterBase Number
+Configures the base register to read from the device. If the option
+RegisterType has been set to Uint32 or Float, this and the next
+register will be read (the register number is increased by one).
+RegisterType Int16|Int32|Uint16|Uint32|Float
+Specifies what kind of data is returned by the device. If the type is Int32,
+Uint32 or Float, two 16 bit registers will be read and the data is
+combined into one value. Defaults to Uint16.
+RegisterCmd ReadHolding|ReadInput
+Specifies register type to be collected from device. Works only with libmodbus
+2.9.2 or higher. Defaults to ReadHolding.
+Type Type
+Specifies the "type" (data set) to use when dispatching the value to
+collectd. Currently, only data sets with exactly one data source are
+supported.
+Instance Instance
+Sets the type instance to use when dispatching the value to collectd. If
+unset, an empty string (no type instance) is used.
+
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Host</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Host">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Host blocks are used to specify to which hosts to connect and what data to read
+from their "slaves". The string argument Name is used as hostname when
+dispatching the values to collectd.
+Within &lt;Host /&gt; blocks, the following options are allowed:
+Address Hostname
+For Modbus/TCP, specifies the node name (the actual network address) used to
+connect to the host. This may be an IP address or a hostname. Please note that
+the used libmodbus library only supports IPv4 at the moment.
+Port Service
+for Modbus/TCP, specifies the port used to connect to the host. The port can
+either be given as a number or as a service name. Please note that the
+Service argument must be a string, even if ports are given in their numerical
+form. Defaults to "502".
+Device Devicenode
+For Modbus/RTU, specifies the path to the serial device being used.
+Baudrate Baudrate
+For Modbus/RTU, specifies the baud rate of the serial device.
+Note, connections currently support only 8/N/1.
+Interval Interval
+Sets the interval (in seconds) in which the values will be collected from this
+host. By default the global Interval setting will be used.
+&lt;Slave ID&gt;
+Over each connection, multiple Modbus devices may be reached. The slave ID
+is used to specify which device should be addressed. For each device you want
+to query, one Slave block must be given.
+Within &lt;Slave /&gt; blocks, the following options are allowed:
+Instance Instance
+Specify the plugin instance to use when dispatching the values to collectd.
+By default "slave_ID" is used.
+Collect DataName
+Specifies which data to retrieve from the device. DataName must be the same
+string as the Name argument passed to a Data block. You can specify this
+option multiple times to collect more than one value from a slave. At least one
+Collect option is mandatory.
+
+
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

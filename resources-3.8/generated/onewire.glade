@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="onewire">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Device</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Device">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets the device to read the values from. This can either be a "real" hardware
+device, such as a serial port or an USB port, or the address of the
+owserver(1) socket, usually localhost:4304.
+Though the documentation claims to automatically recognize the given address
+format, with version 2.7p4 we had to specify the type explicitly. So
+with that version, the following configuration worked for us:
+
+  &lt;Plugin onewire&gt;
+    Device "-s localhost:4304"
+  &lt;/Plugin&gt;
+This directive is required and does not have a default value.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Sensor</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Sensor">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+In the standard mode selects sensors to collect or to ignore
+(depending on IgnoreSelected, see below). Sensors are specified without
+the family byte at the beginning, so you have to use for example F10FCA000800,
+and not include the leading 10. family byte and point.
+When no Sensor is configured the whole Onewire bus is walked and all supported
+sensors (see above) are read.
+In the advanced mode the Sensor specifies full OWFS path - e.g.
+/uncached/10.F10FCA000800/temperature (or when cached values are OK
+/10.F10FCA000800/temperature). IgnoreSelected is not used.
+As there can be multiple devices on the bus you can list multiple sensor (use
+multiple Sensor elements).
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">IgnoreSelected</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="IgnoreSelected">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+If no configuration is given, the onewire plugin will collect data from all
+sensors found. This may not be practical, especially if sensors are added and
+removed regularly. Sometimes, however, it's easier/preferred to collect only
+specific sensors or all sensors except a few specified ones. This option
+enables you to do that: By setting IgnoreSelected to true the effect of
+Sensor is inverted: All selected interfaces are ignored and all other
+interfaces are collected.
+Used only in the standard mode - see above.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Interval</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Interval">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets the interval in which all sensors should be read. If not specified, the
+global Interval setting is used.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

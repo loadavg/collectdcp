@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="exec">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">NotificationExec</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="NotificationExec">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Execute the executable Executable as user User. If the user name is
+followed by a colon and a group name, the effective group is set to that group.
+The real group and saved-set group will be set to the default group of that
+user. If no group is given the effective group ID will be the same as the real
+group ID.
+Please note that in order to change the user and/or group the daemon needs
+superuser privileges. If the daemon is run as an unprivileged user you must
+specify the same user/group here. If the daemon is run with superuser
+privileges, you must supply a non-root user here.
+The executable may be followed by optional arguments that are passed to the
+program. Please note that due to the configuration parsing numbers and boolean
+values may be changed. If you want to be absolutely sure that something is
+passed as-is please enclose it in quotes.
+The Exec and NotificationExec statements change the semantics of the
+programs executed, i. e. the data passed to them and the response
+expected from them. This is documented in great detail in collectd-exec(5).
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

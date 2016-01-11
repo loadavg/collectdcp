@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="network">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+The Server statement/block sets the server to send datagrams to. The
+statement may occur multiple times to send each datagram to multiple
+destinations.
+The argument Host may be a hostname, an IPv4 address or an IPv6 address. The
+optional second argument specifies a port number or a service name. If not
+given, the default, 25826, is used.
+The following options are recognized within Server blocks:
+SecurityLevel Encrypt|Sign|None
+Set the security you require for network communication. When the security level
+has been set to Encrypt, data sent over the network will be encrypted using
+AES-256. The integrity of encrypted packets is ensured using SHA-1. When
+set to Sign, transmitted data is signed using the HMAC-SHA-256 message
+authentication code. When set to None, data is sent without any security.
+This feature is only available if the network plugin was linked with
+libgcrypt.
+Username Username
+Sets the username to transmit. This is used by the server to lookup the
+password. See AuthFile below. All security levels except None require
+this setting.
+This feature is only available if the network plugin was linked with
+libgcrypt.
+Password Password
+Sets a password (shared secret) for this socket. All security levels except
+None require this setting.
+This feature is only available if the network plugin was linked with
+libgcrypt.
+Interface Interface name
+Set the outgoing interface for IP packets. This applies at least
+to IPv6 packets and if possible to IPv4. If this option is not applicable,
+undefined or a non-existent interface name is specified, the default
+behavior is to let the kernel choose the appropriate interface. Be warned
+that the manual selection of an interface for unicast traffic is only
+necessary in rare cases.
+ResolveInterval Seconds
+Sets the interval at which to re-resolve the DNS for the Host. This is
+useful to force a regular DNS lookup to support a high availability setup. If
+not specified, re-resolves are never attempted.
+
+</property>
+	<property name="placeholder_text" translatable="yes">&lt;Server</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+The Listen statement sets the interfaces to bind to. When multiple
+statements are found the daemon will bind to multiple interfaces.
+The argument Host may be a hostname, an IPv4 address or an IPv6 address. If
+the argument is a multicast address the daemon will join that multicast group.
+The optional second argument specifies a port number or a service name. If not
+given, the default, 25826, is used.
+The following options are recognized within &lt;Listen&gt; blocks:
+SecurityLevel Encrypt|Sign|None
+Set the security you require for network communication. When the security level
+has been set to Encrypt, only encrypted data will be accepted. The integrity
+of encrypted packets is ensured using SHA-1. When set to Sign, only
+signed and encrypted data is accepted. When set to None, all data will be
+accepted. If an AuthFile option was given (see below), encrypted data is
+decrypted if possible.
+This feature is only available if the network plugin was linked with
+libgcrypt.
+AuthFile Filename
+Sets a file in which usernames are mapped to passwords. These passwords are
+used to verify signatures and to decrypt encrypted network packets. If
+SecurityLevel is set to None, this is optional. If given, signed data is
+verified and encrypted packets are decrypted. Otherwise, signed data is
+accepted without checking the signature and encrypted data cannot be decrypted.
+For the other security levels this option is mandatory.
+The file format is very simple: Each line consists of a username followed by a
+colon and any number of spaces followed by the password. To demonstrate, an
+example file could look like this:
+
+  user0: foo
+  user1: bar
+Each time a packet is received, the modification time of the file is checked
+using stat(2). If the file has been changed, the contents is re-read. While
+the file is being read, it is locked using fcntl(2).
+Interface Interface name
+Set the incoming interface for IP packets explicitly. This applies at least
+to IPv6 packets and if possible to IPv4. If this option is not applicable,
+undefined or a non-existent interface name is specified, the default
+behavior is, to let the kernel choose the appropriate interface. Thus incoming
+traffic gets only accepted, if it arrives on the given interface.
+
+</property>
+	<property name="placeholder_text" translatable="yes">&lt;Listen</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">TimeToLive</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="TimeToLive">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Set the time-to-live of sent packets. This applies to all, unicast and
+multicast, and IPv4 and IPv6 packets. The default is to not change this value.
+That means that multicast packets will be sent with a TTL of 1 (one) on most
+operating systems.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">MaxPacketSize</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="MaxPacketSize">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Set the maximum size for datagrams received over the network. Packets larger
+than this will be truncated. Defaults to 1452 bytes, which is the maximum
+payload size that can be transmitted in one Ethernet frame using IPv6 /
+UDP.
+On the server side, this limit should be set to the largest value used on
+any client. Likewise, the value on the client must not be larger than the
+value on the server, or data will be lost.
+Compatibility: Versions prior to version 4.8 used a fixed sized
+buffer of 1024 bytes. Versions 4.8, 4.9 and 4.10 used a default
+value of 1024 bytes to avoid problems when sending data to an older
+server.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Forward</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Forward">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+If set to true, write packets that were received via the network plugin to
+the sending sockets. This should only be activated when the Listen- and
+Server-statements differ. Otherwise packets may be send multiple times to
+the same multicast group. While this results in more network traffic than
+necessary it's not a huge problem since the plugin has a duplicate detection,
+so the values will not loop.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">ReportStats</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="ReportStats">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+The network plugin cannot only receive and send statistics, it can also create
+statistics about itself. Collected data included the number of received and
+sent octets and packets, the length of the receive queue and the number of
+values handled. When set to true, the Network plugin will make these
+statistics available. Defaults to false.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

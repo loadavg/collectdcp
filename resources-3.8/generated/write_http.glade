@@ -2,14 +2,14 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkGrid" id="grid_main">
+  <object class="GtkGrid" id="write_http">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">BaseDir</property>
+	<property name="label" translatable="yes">URL</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -19,13 +19,11 @@
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="BaseDir">
+      <object class="GtkEntry" id="URL">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Sets the base directory. This is the directory beneath all RRD-files are
-created. Possibly more subdirectories are created. This is also the working
-directory for the daemon.
+URL to which the values are submitted to. Mandatory.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -40,7 +38,7 @@ directory for the daemon.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">LoadPlugin</property>
+	<property name="label" translatable="yes">User</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -50,52 +48,11 @@ directory for the daemon.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="LoadPlugin">
+      <object class="GtkEntry" id="User">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Loads the plugin Plugin. This is required to load plugins, unless the
-AutoLoadPlugin option is enabled (see below). Without any loaded plugins,
-collectd will be mostly useless.
-Only the first LoadPlugin statement or block for a given plugin name has any
-effect. This is useful when you want to split up the configuration into smaller
-files and want each file to be "self contained", i.e. it contains a Plugin
-block and then appropriate LoadPlugin statement. The downside is that if
-you have multiple conflicting LoadPlugin blocks, e.g. when they specify
-different intervals, only one of them (the first one encountered) will take
-effect and all others will be silently ignored.
-LoadPlugin may either be a simple configuration statement or a block
-with additional options, affecting the behavior of LoadPlugin. A simple
-statement looks like this:
-
- LoadPlugin "cpu"
-Options inside a LoadPlugin block can override default settings and
-influence the way plugins are loaded, e.g.:
-
- &lt;LoadPlugin perl&gt;
-   Interval 60
- &lt;/LoadPlugin&gt;
-The following options are valid inside LoadPlugin blocks:
-Globals true|false
-If enabled, collectd will export all global symbols of the plugin (and of all
-libraries loaded as dependencies of the plugin) and, thus, makes those symbols
-available for resolving unresolved symbols in subsequently loaded plugins if
-that is supported by your system.
-This is useful (or possibly even required), e.g., when loading a plugin that
-embeds some scripting language into the daemon (e.g. the Perl and
-Python plugins). Scripting languages usually provide means to load
-extensions written in C. Those extensions require symbols provided by the
-interpreter, which is loaded as a dependency of the respective collectd plugin.
-See the documentation of those plugins (e.g., collectd-perl(5) or
-collectd-python(5)) for details.
-By default, this is disabled. As a special exception, if the plugin name is
-either perl or python, the default is changed to enabled in order to keep
-the average user from ever having to deal with this low level linking stuff.
-Interval Seconds
-Sets a plugin-specific interval for collecting metrics. This overrides the
-global Interval setting. If a plugin provides own support for specifying an
-interval, that setting will take precedence.
-
+Optional user name needed for authentication.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -110,7 +67,7 @@ interval, that setting will take precedence.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">AutoLoadPlugin</property>
+	<property name="label" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -120,19 +77,11 @@ interval, that setting will take precedence.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="AutoLoadPlugin">
+      <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-When set to false (the default), each plugin needs to be loaded explicitly,
-using the LoadPlugin statement documented above. If a
-&lt;Plugin ...&gt; block is encountered and no configuration
-handling callback for this plugin has been registered, a warning is logged and
-the block is ignored.
-When set to true, explicit LoadPlugin statements are not required. Each
-&lt;Plugin ...&gt; block acts as if it was immediately preceded by a
-LoadPlugin statement. LoadPlugin statements are still required for
-plugins that don't provide any configuration, e.g. the Load plugin.
+Optional password needed for authentication.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -147,7 +96,7 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectInternalStats</property>
+	<property name="label" translatable="yes">VerifyPeer</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -157,17 +106,12 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectInternalStats">
+      <object class="GtkEntry" id="VerifyPeer">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-When set to true, various statistics about the collectd daemon will be
-collected, with "collectd" as the plugin name. Defaults to false.
-The "write_queue" plugin instance reports the number of elements currently
-queued and the number of elements dropped off the queue by the
-WriteQueueLimitLow/WriteQueueLimitHigh mechanism.
-The "cache" plugin instance reports the number of elements in the value list
-cache (the cache you can interact with using collectd-unixsock(5)).
+Enable or disable peer SSL certificate verification. See
+http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -182,7 +126,7 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Include</property>
+	<property name="label" translatable="yes">VerifyHost</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -192,45 +136,15 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Include">
+      <object class="GtkEntry" id="VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-If Path points to a file, includes that file. If Path points to a
-directory, recursively includes all files within that directory and its
-subdirectories. If the wordexp function is available on your system,
-shell-like wildcards are expanded before files are included. This means you can
-use statements like the following:
-
-  Include "/etc/collectd.d/*.conf"
-Starting with version 5.3, this may also be a block in which further options
-affecting the behavior of Include may be specified. The following option is
-currently allowed:
-
-  &lt;Include "/etc/collectd.d"&gt;
-    Filter "*.conf"
-  &lt;/Include&gt;
-Filter pattern
-If the fnmatch function is available on your system, a shell-like wildcard
-pattern may be specified to filter which files to include. This may be used
-in combination with recursively including a directory to easily be able to
-arbitrarily mix configuration files and other documents (e.g. README files).
-The given example is similar to the first example above but includes all files
-matching *.conf in any subdirectory of /etc/collectd.d:
-
-  Include "/etc/collectd.d" "*.conf"
-
-If more than one files are included by a single Include option, the files
-will be included in lexicographical order (as defined by the strcmp
-function). Thus, you can e. g. use numbered prefixes to specify the
-order in which the files are loaded.
-To prevent loops and shooting yourself in the foot in interesting ways the
-nesting is limited to a depth of 8 levels, which should be sufficient for
-most uses. Since symlinks are followed it is still possible to crash the daemon
-by looping symlinks. In our opinion significant stupidity should result in an
-appropriate amount of pain.
-It is no problem to have a block like &lt;Plugin foo&gt; in more than one
-file, but you cannot include files from within blocks.
+Enable or disable peer host name verification. If enabled, the plugin checks if
+the Common Name or a Subject Alternate Name field of the SSL certificate
+matches the host name provided by the URL option. If this identity check
+fails, the connection is aborted. Obviously, only works when connecting to a
+SSL enabled server. Enabled by default.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -245,7 +159,7 @@ file, but you cannot include files from within blocks.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">PIDFile</property>
+	<property name="label" translatable="yes">CACert</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -255,13 +169,13 @@ file, but you cannot include files from within blocks.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="PIDFile">
+      <object class="GtkEntry" id="CACert">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Sets where to write the PID file to. This file is overwritten when it exists
-and deleted when the program is stopped. Some init-scripts might override this
-setting using the -P command-line option.
+File that holds one or more SSL certificates. If you want to use HTTPS you will
+possibly need this option. What CA certificates come bundled with libcurl
+and are checked by default depends on the distribution you use.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -276,7 +190,7 @@ setting using the -P command-line option.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">PluginDir</property>
+	<property name="label" translatable="yes">CAPath</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -286,11 +200,14 @@ setting using the -P command-line option.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="PluginDir">
+      <object class="GtkEntry" id="CAPath">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Path to the plugins (shared objects) of collectd.
+Directory holding one or more CA certificate files. You can use this if for
+some reason all the needed CA certificates aren't in the same file and can't be
+pointed to using the CACert option. Requires libcurl to be built against
+OpenSSL.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -305,7 +222,7 @@ Path to the plugins (shared objects) of collectd.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">TypesDB</property>
+	<property name="label" translatable="yes">ClientKey</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -315,12 +232,12 @@ Path to the plugins (shared objects) of collectd.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="TypesDB">
+      <object class="GtkEntry" id="ClientKey">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Set one or more files that contain the data-set descriptions. See
-types.db(5) for a description of the format of this file.
+File that holds the private key in PEM format to be used for certificate-based
+authentication.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -335,7 +252,7 @@ types.db(5) for a description of the format of this file.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Interval</property>
+	<property name="label" translatable="yes">ClientCert</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -345,16 +262,12 @@ types.db(5) for a description of the format of this file.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Interval">
+      <object class="GtkEntry" id="ClientCert">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Configures the interval in which to query the read plugins. Obviously smaller
-values lead to a higher system load produced by collectd, while higher values
-lead to more coarse statistics.
-Warning: You should set this once and then never touch it again. If you do,
-you will have to delete all your RRD files or know some serious RRDtool
-magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
+File that holds the SSL certificate to be used for certificate-based
+authentication.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
@@ -369,7 +282,7 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MaxReadInterval</property>
+	<property name="label" translatable="yes">ClientKeyPass</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -379,20 +292,176 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="MaxReadInterval">
+      <object class="GtkEntry" id="ClientKeyPass">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Read plugin doubles interval between queries after each failed attempt
-to get data.
-This options limits the maximum value of the interval. The default value is
-86400.
+Password required to load the private key in ClientKey.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
 	<property name="top_attach">9</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">SSLVersion</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">10</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="SSLVersion">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Define which SSL protocol version must be used. By default libcurl will
+attempt to figure out the remote SSL protocol version. See
+curl_easy_setopt(3) for more details.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">10</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Format</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">11</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Format">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Format of the output to generate. If set to Command, will create output that
+is understood by the Exec and UnixSock plugins. When set to JSON, will
+create output in the JavaScript Object Notation (JSON).
+Defaults to Command.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">11</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">StoreRates</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">12</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="StoreRates">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+If set to true, convert counter values to rates. If set to false (the
+default) counter values are stored as is, i.e. as an increasing integer number.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">12</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">BufferSize</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">13</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="BufferSize">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets the send buffer size to Bytes. By increasing this buffer, less HTTP
+requests will be generated, but more metrics will be batched / metrics are
+cached for longer before being sent, introducing additional delay until they
+are available on the server side. Bytes must be at least 1024 and cannot
+exceed the size of an int, i.e. 2 GByte.
+Defaults to 4096.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">13</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">LowSpeedLimit</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">14</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="LowSpeedLimit">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Sets the minimal transfer rate in Bytes per Second below which the
+connection with the HTTP server will be considered too slow and aborted. All
+the data submitted over this connection will probably be lost. Defaults to 0,
+which means no minimum transfer rate is enforced.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">14</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -405,7 +474,7 @@ This options limits the maximum value of the interval. The default value is
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">10</property>
+	<property name="top_attach">15</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -415,226 +484,21 @@ This options limits the maximum value of the interval. The default value is
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_markup" translatable="yes">
-Consider a value list "missing" when no update has been read or received for
-Iterations iterations. By default, collectd considers a value list
-missing when no update has been received for twice the update interval. Since
-this setting uses iterations, the maximum allowed time without update depends
-on the Interval information contained in each value list. This is used in
-the Threshold configuration to dispatch notifications about missing values,
-see collectd-threshold(5) for details.
-</property>
-	<property name="placeholder_text" translatable="yes"></property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">10</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label1">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ReadThreads</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">11</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="ReadThreads">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
-Number of threads to start for reading plugins. The default value is 5, but
-you may want to increase this if you have more than five plugins that take a
-long time to read. Mostly those are plugins that do network-IO. Setting this to
-a value higher than the number of registered read callbacks is not recommended.
-</property>
-	<property name="placeholder_text" translatable="yes"></property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">11</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label1">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">WriteThreads</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">12</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="WriteThreads">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
-Number of threads to start for dispatching value lists to write plugins. The
-default value is 5, but you may want to increase this if you have more than
-five plugins that may take relatively long to write to.
-</property>
-	<property name="placeholder_text" translatable="yes"></property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">12</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label1">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">WriteQueueLimitLow</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">13</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="WriteQueueLimitLow">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
-Metrics are read by the read threads and then put into a queue to be handled
-by the write threads. If one of the write plugins is slow (e.g. network
-timeouts, I/O saturation of the disk) this queue will grow. In order to avoid
-running into memory issues in such a case, you can limit the size of this
-queue.
-By default, there is no limit and memory may grow indefinitely. This is most
-likely not an issue for clients, i.e. instances that only handle the local
-metrics. For servers it is recommended to set this to a non-zero value, though.
-You can set the limits using WriteQueueLimitHigh and WriteQueueLimitLow.
-Each of them takes a numerical argument which is the number of metrics in the
-queue. If there are HighNum metrics in the queue, any new metrics will be
-dropped. If there are less than LowNum metrics in the queue, all new metrics
-will be enqueued. If the number of metrics currently in the queue is between
-LowNum and HighNum, the metric is dropped with a probability that is
-proportional to the number of metrics in the queue (i.e. it increases linearly
-until it reaches 100%.)
-If WriteQueueLimitHigh is set to non-zero and WriteQueueLimitLow is
-unset, the latter will default to half of WriteQueueLimitHigh.
-If you do not want to randomly drop values when the queue size is between
-LowNum and HighNum, set WriteQueueLimitHigh and WriteQueueLimitLow
-to the same value.
-Enabling the CollectInternalStats option is of great help to figure out the
-values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
-</property>
-	<property name="placeholder_text" translatable="yes"></property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">13</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label1">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Hostname</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">14</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="Hostname">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
-Sets the hostname that identifies a host. If you omit this setting, the
-hostname will be determined using the gethostname(2) system call.
-</property>
-	<property name="placeholder_text" translatable="yes"></property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">14</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label1">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">FQDNLookup</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">15</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="FQDNLookup">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
-If Hostname is determined automatically this setting controls whether or not
-the daemon should try to figure out the "fully qualified domain name", FQDN.
-This is done using a lookup of the name returned by gethostname. This option
-is enabled by default.
+Sets the maximum time in milliseconds given for HTTP POST operations to
+complete. When this limit is reached, the POST operation will be aborted, and
+all the data in the current send buffer will probably be lost. Defaults to 0,
+which means the connection never times out.
+The write_http plugin regularly submits the collected values to the HTTP
+server. How frequently this happens depends on how much data you are collecting
+and the size of BufferSize. The optimal value to set Timeout to is
+slightly below this interval, which you can estimate by monitoring the network
+traffic between collectd and the HTTP server.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
 	<property name="top_attach">15</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label1">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">PostCacheChain</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">16</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="PostCacheChain">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
-Configure the name of the "pre-cache chain" and the "post-cache chain". Please
-see FILTER CONFIGURATION below on information on chains and how these
-setting change the daemon's behavior.
-</property>
-	<property name="placeholder_text" translatable="yes"></property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">16</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

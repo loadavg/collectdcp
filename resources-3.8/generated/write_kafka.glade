@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+  <requires lib="gtk+" version="3.8"/>
+  <object class="GtkGrid" id="write_kafka">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Topic</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Topic">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+The plugin's configuration consists of one or more Topic blocks. Each block
+is given a unique Name and specifies one kafka producer.
+Inside the Topic block, the following per-topic options are
+understood:
+Property String String
+Configure the named property for the current topic. Properties are
+forwarded to the kafka producer library librdkafka.
+Key String
+Use the specified string as a partioning key for the topic. Kafka breaks
+topic into partitions and guarantees that for a given topology, the same
+consumer will be used for a specific key. The special (case insensitive)
+string Random can be used to specify that an arbitrary partition should
+be used.
+Format Command|JSON|Graphite
+Selects the format in which messages are sent to the broker. If set to
+Command (the default), values are sent as PUTVAL commands which are
+identical to the syntax used by the Exec and UnixSock plugins.
+If set to JSON, the values are encoded in the JavaScript Object Notation,
+an easy and straight forward exchange format.
+If set to Graphite, values are encoded in the Graphite format, which is
+&lt;metric&gt; &lt;value&gt; &lt;timestamp&gt;\n.
+StoreRates true|false
+Determines whether or not COUNTER, DERIVE and ABSOLUTE data sources
+are converted to a rate (i.e. a GAUGE value). If set to false (the
+default), no conversion is performed. Otherwise the conversion is performed
+using the internal value cache.
+Please note that currently this option is only used if the Format option has
+been set to JSON.
+GraphitePrefix (Format=Graphite only)
+A prefix can be added in the metric name when outputting in the Graphite
+format. It's added before the Host name.
+Metric name will be
+&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;type&gt;&lt;name&gt;
+GraphitePostfix (Format=Graphite only)
+A postfix can be added in the metric name when outputting in the Graphite
+format. It's added after the Host name.
+Metric name will be
+&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;type&gt;&lt;name&gt;
+GraphiteEscapeChar (Format=Graphite only)
+Specify a character to replace dots (.) in the host part of the metric name.
+In Graphite metric name, dots are used as separators between different
+metric parts (host, plugin, type).
+Default is _ (Underscore).
+GraphiteSeparateInstances false|true
+If set to true, the plugin instance and type instance will be in their own
+path component, for example host.cpu.0.cpu.idle. If set to false (the
+default), the plugin and plugin instance (and likewise the type and type
+instance) are put into one component, for example host.cpu-0.cpu-idle.
+StoreRates true|false
+If set to true (the default), convert counter values to rates. If set to
+false counter values are stored as is, i.e. as an increasing integer number.
+This will be reflected in the ds_type tag: If StoreRates is enabled,
+converted values will have "rate" appended to the data source type, e.g.
+ds_type:derive:rate.
+
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Property</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Property">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_markup" translatable="yes">
+Configure the kafka producer through properties, you almost always will
+want to set metadata.broker.list to your Kafka broker list.
+</property>
+	<property name="placeholder_text" translatable="yes"></property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>
