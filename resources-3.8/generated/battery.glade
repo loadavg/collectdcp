@@ -2,6 +2,18 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="battery">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin battery
+
+
+The battery plugin reports the remaining capacity, power and voltage of
+laptop batteries.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="battery">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +21,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ValuesPercentage</property>
+	<property name="label">ValuesPercentage</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,14 +34,14 @@
       <object class="GtkEntry" id="ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When enabled, remaining capacity is reported as a percentage, e.g. "42%
 capacity remaining". Otherwise the capacity is stored as reported by the
 battery, most likely in "Wh". This option does not work with all input methods,
 in particular when only /proc/pmu is available on an old Linux system.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -42,7 +54,7 @@ Defaults to false.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ReportDegraded</property>
+	<property name="label">ReportDegraded</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -55,7 +67,7 @@ Defaults to false.
       <object class="GtkEntry" id="ReportDegraded">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Typical laptop batteries degrade over time, meaning the capacity decreases with
 recharge cycles. The maximum charge of the previous charge cycle is tracked as
 "last full capacity" and used to determine that a battery is "fully charged".
@@ -69,7 +81,7 @@ When set to true, the battery plugin will report three values: charged
 and "remaining capacity") and degraded (difference between "design capacity"
 and "last full capacity").
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

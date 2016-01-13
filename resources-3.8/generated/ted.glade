@@ -2,6 +2,24 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="ted">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin ted
+
+
+The TED plugin connects to a device of "The Energy Detective", a device to
+measure power consumption. These devices are usually connected to a serial
+(RS232) or USB port. The plugin opens a configured device and tries to read the
+current energy readings. For more information on TED, visit
+http://www.theenergydetective.com/.
+
+
+Available configuration options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="ted">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +27,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Device</property>
+	<property name="label">Device</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,12 +40,12 @@
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Path to the device on which TED is connected. collectd will need read and write
 permissions on that file.
 Default: /dev/ttyUSB0
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -40,7 +58,7 @@ Default: /dev/ttyUSB0
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Retries</property>
+	<property name="label">Retries</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -53,7 +71,7 @@ Default: /dev/ttyUSB0
       <object class="GtkEntry" id="Retries">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Apparently reading from TED is not that reliable. You can therefore configure a
 number of retries here. You only configure the retries here, to if you
 specify zero, one reading will be performed (but no retries if that fails); if
@@ -61,7 +79,7 @@ you specify three, a maximum of four readings are performed. Negative values
 are illegal.
 Default: 0
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

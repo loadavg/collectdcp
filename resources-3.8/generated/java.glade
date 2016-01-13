@@ -2,6 +2,37 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="java">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin java
+
+
+The Java plugin makes it possible to write extensions for collectd in Java.
+This section only discusses the syntax and semantic of the configuration
+options. For more in-depth information on the Java plugin, please read
+collectd-java(5).
+
+
+Synopsis:
+
+
+
+ &lt;Plugin "java"&gt;
+   JVMArg "-verbose:jni"
+   JVMArg "-Djava.class.path=/opt/collectd/lib/collectd/bindings/java"
+   LoadPlugin "org.collectd.java.Foobar"
+   &lt;Plugin "org.collectd.java.Foobar"&gt;
+     # To be parsed by the plugin
+   &lt;/Plugin&gt;
+ &lt;/Plugin&gt;
+
+
+Available configuration options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="java">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +40,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">JVMArg</property>
+	<property name="label">JVMArg</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +53,7 @@
       <object class="GtkEntry" id="JVMArg">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Argument that is to be passed to the Java Virtual Machine (JVM). This works
 exactly the way the arguments to the java binary on the command line work.
 Execute java--help for details.
@@ -30,7 +61,7 @@ Please note that all these options must appear before (i. e. above)
 any other options! When another option is found, the JVM will be started and
 later options will have to be ignored!
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -43,7 +74,7 @@ later options will have to be ignored!
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">LoadPlugin</property>
+	<property name="label">LoadPlugin</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -56,7 +87,7 @@ later options will have to be ignored!
       <object class="GtkEntry" id="LoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Instantiates a new JavaClass object. The constructor of this object very
 likely then registers one or more callback methods with the server.
 See collectd-java(5) for details.
@@ -64,7 +95,7 @@ When the first such option is found, the virtual machine (JVM) is created. This
 means that all JVMArg options must appear before (i. e. above) all
 LoadPlugin options!
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -77,7 +108,7 @@ LoadPlugin options!
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Plugin</property>
+	<property name="label">Plugin</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -90,7 +121,7 @@ LoadPlugin options!
       <object class="GtkEntry" id="Plugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The entire block is passed to the Java plugin as an
 org.collectd.api.OConfigItem object.
 For this to work, the plugin has to register a configuration callback first,
@@ -99,7 +130,7 @@ must appear after the appropriate LoadPlugin block. Also note, that Name
 depends on the (Java) plugin registering the callback and is completely
 independent from the JavaClass argument passed to LoadPlugin.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

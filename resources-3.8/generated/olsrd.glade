@@ -2,6 +2,22 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="olsrd">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin olsrd
+
+
+The olsrd plugin connects to the TCP port opened by the txtinfo plugin of
+the Optimized Link State Routing daemon and reads information about the current
+state of the meshed network.
+
+
+The following configuration options are understood:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="olsrd">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +25,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Host</property>
+	<property name="label">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,10 +38,10 @@
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Connect to Host. Defaults to "localhost".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -38,7 +54,7 @@ Connect to Host. Defaults to "localhost".
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Port</property>
+	<property name="label">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -51,11 +67,11 @@ Connect to Host. Defaults to "localhost".
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specifies the port to connect to. This must be a string, even if you give the
 port as a number rather than a service name. Defaults to "2006".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -68,7 +84,7 @@ port as a number rather than a service name. Defaults to "2006".
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectLinks</property>
+	<property name="label">CollectLinks</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -81,7 +97,7 @@ port as a number rather than a service name. Defaults to "2006".
       <object class="GtkEntry" id="CollectLinks">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specifies what information to collect about links, i. e. direct
 connections of the daemon queried. If set to No, no information is
 collected. If set to Summary, the number of links and the average of all
@@ -89,7 +105,7 @@ link quality (LQ) and neighbor link quality (NLQ) values is calculated.
 If set to Detail LQ and NLQ are collected per link.
 Defaults to Detail.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -102,7 +118,7 @@ Defaults to Detail.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectRoutes</property>
+	<property name="label">CollectRoutes</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -115,14 +131,14 @@ Defaults to Detail.
       <object class="GtkEntry" id="CollectRoutes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specifies what information to collect about routes of the daemon queried. If
 set to No, no information is collected. If set to Summary, the number of
 routes and the average metric and ETX is calculated. If set to Detail
 metric and ETX are collected per route.
 Defaults to Summary.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -135,7 +151,7 @@ Defaults to Summary.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectTopology</property>
+	<property name="label">CollectTopology</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -148,14 +164,14 @@ Defaults to Summary.
       <object class="GtkEntry" id="CollectTopology">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specifies what information to collect about the global topology. If set to
 No, no information is collected. If set to Summary, the number of links
 in the entire topology and the average link quality (LQ) is calculated.
 If set to Detail LQ and NLQ are collected for each link in the entire topology.
 Defaults to Summary.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

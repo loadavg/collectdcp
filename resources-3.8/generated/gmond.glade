@@ -2,6 +2,57 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="gmond">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin gmond
+
+
+The gmond plugin received the multicast traffic sent by gmond, the
+statistics collection daemon of Ganglia. Mappings for the standard "metrics"
+are built-in, custom mappings may be added via Metric blocks, see below.
+
+
+Synopsis:
+
+
+
+ &lt;Plugin "gmond"&gt;
+   MCReceiveFrom "239.2.11.71" "8649"
+   &lt;Metric "swap_total"&gt;
+     Type "swap"
+     TypeInstance "total"
+     DataSource "value"
+   &lt;/Metric&gt;
+   &lt;Metric "swap_free"&gt;
+     Type "swap"
+     TypeInstance "free"
+     DataSource "value"
+   &lt;/Metric&gt;
+ &lt;/Plugin&gt;
+
+
+The following metrics are built-in:
+
+
+
+load_one, load_five, load_fifteen
+
+cpu_user, cpu_system, cpu_idle, cpu_nice, cpu_wio
+
+mem_free, mem_shared, mem_buffers, mem_cached, mem_total
+
+bytes_in, bytes_out
+
+pkts_in, pkts_out
+
+
+
+Available configuration options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="gmond">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +60,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MCReceiveFrom</property>
+	<property name="label">MCReceiveFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +73,11 @@
       <object class="GtkEntry" id="MCReceiveFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets sets the multicast group and UDP port to which to subscribe.
 Default: 239.2.11.71 / 8649
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +90,7 @@ Default: 239.2.11.71 / 8649
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Metric</property>
+	<property name="label">Metric</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,7 +103,7 @@ Default: 239.2.11.71 / 8649
       <object class="GtkEntry" id="Metric">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 These blocks add a new metric conversion to the internal table. Name, the
 string argument to the Metric block, is the metric name as used by Ganglia.
 Type Type
@@ -64,7 +115,7 @@ Data source to map this metric to. If the configured type has exactly one data
 source, this is optional. Otherwise the option is required.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

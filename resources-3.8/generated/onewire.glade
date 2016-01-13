@@ -2,6 +2,56 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="onewire">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin onewire
+
+
+EXPERIMENTAL! See notes below.
+
+
+The onewire plugin uses the owcapi library from the owfs project
+http://owfs.org/ to read sensors connected via the onewire bus.
+
+
+It can be used in two possible modes - standard or advanced.
+
+
+In the standard mode only temperature sensors (sensors with the family code
+10, 22 and 28 - e.g. DS1820, DS18S20, DS1920) can be read. If you have
+other sensors you would like to have included, please send a sort request to
+the mailing list. You can select sensors to be read or to be ignored depending
+on the option IgnoreSelected). When no list is provided the whole bus is
+walked and all sensors are read.
+
+
+Hubs (the DS2409 chips) are working, but read the note, why this plugin is
+experimental, below.
+
+
+In the advanced mode you can configure any sensor to be read (only numerical
+value) using full OWFS path (e.g. "/uncached/10.F10FCA000800/temperature").
+In this mode you have to list all the sensors. Neither default bus walk nor
+IgnoreSelected are used here. Address and type (file) is extracted from
+the path automatically and should produce compatible structure with the "standard"
+mode (basically the path is expected as for example
+"/uncached/10.F10FCA000800/temperature" where it would extract address part
+"F10FCA000800" and the rest after the slash is considered the type - here
+"temperature").
+There are two advantages to this mode - you can access virtually any sensor
+(not just temperature), select whether to use cached or directly read values
+and it is slighlty faster. The downside is more complex configuration.
+
+
+The two modes are distinguished automatically by the format of the address.
+It is not possible to mix the two modes. Once a full path is detected in any
+Sensor then the whole addressing (all sensors) is considered to be this way
+(and as standard addresses will fail parsing they will be ignored).
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="onewire">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +59,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Device</property>
+	<property name="label">Device</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +72,7 @@
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets the device to read the values from. This can either be a "real" hardware
 device, such as a serial port or an USB port, or the address of the
 owserver(1) socket, usually localhost:4304.
@@ -35,7 +85,7 @@ with that version, the following configuration worked for us:
   &lt;/Plugin&gt;
 This directive is required and does not have a default value.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -48,7 +98,7 @@ This directive is required and does not have a default value.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Sensor</property>
+	<property name="label">Sensor</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -61,7 +111,7 @@ This directive is required and does not have a default value.
       <object class="GtkEntry" id="Sensor">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 In the standard mode selects sensors to collect or to ignore
 (depending on IgnoreSelected, see below). Sensors are specified without
 the family byte at the beginning, so you have to use for example F10FCA000800,
@@ -74,7 +124,7 @@ In the advanced mode the Sensor specifies full OWFS path - e.g.
 As there can be multiple devices on the bus you can list multiple sensor (use
 multiple Sensor elements).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -87,7 +137,7 @@ multiple Sensor elements).
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">IgnoreSelected</property>
+	<property name="label">IgnoreSelected</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -100,7 +150,7 @@ multiple Sensor elements).
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If no configuration is given, the onewire plugin will collect data from all
 sensors found. This may not be practical, especially if sensors are added and
 removed regularly. Sometimes, however, it's easier/preferred to collect only
@@ -110,7 +160,7 @@ Sensor is inverted: All selected interfaces are ignored and all other
 interfaces are collected.
 Used only in the standard mode - see above.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -123,7 +173,7 @@ Used only in the standard mode - see above.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Interval</property>
+	<property name="label">Interval</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -136,11 +186,11 @@ Used only in the standard mode - see above.
       <object class="GtkEntry" id="Interval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets the interval in which all sensors should be read. If not specified, the
 global Interval setting is used.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

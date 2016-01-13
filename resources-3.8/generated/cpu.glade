@@ -2,6 +2,18 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="cpu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin cpu
+
+
+The CPU plugin collects CPU usage metrics. By default, CPU usage is reported
+as Jiffies, using the cpu type. Two aggregations are available:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="cpu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>

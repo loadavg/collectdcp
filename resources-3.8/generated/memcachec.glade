@@ -2,6 +2,46 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="memcachec">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin memcachec
+
+
+The memcachec plugin connects to a memcached server, queries one or more
+given pages and parses the returned data according to user specification.
+The matches used are the same as the matches used in the curl and tail
+plugins.
+
+
+In order to talk to the memcached server, this plugin uses the libmemcached
+library. Please note that there is another library with a very similar name,
+libmemcache (notice the missing `d'), which is not applicable.
+
+
+Synopsis of the configuration:
+
+
+
+ &lt;Plugin "memcachec"&gt;
+   &lt;Page "plugin_instance"&gt;
+     Server "localhost"
+     Key "page_key"
+     &lt;Match&gt;
+       Regex "(\\d+) bytes sent"
+       DSType CounterAdd
+       Type "ipt_octets"
+       Instance "type_instance"
+     &lt;/Match&gt;
+   &lt;/Page&gt;
+ &lt;/Plugin&gt;
+
+
+The configuration options are:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="memcachec">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +49,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Page</property>
+	<property name="label">Page</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +62,11 @@
       <object class="GtkEntry" id="Page">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Each Page block defines one page to be queried from the memcached server.
 The block requires one string argument which is used as plugin instance.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +79,7 @@ The block requires one string argument which is used as plugin instance.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Server</property>
+	<property name="label">Server</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,11 +92,11 @@ The block requires one string argument which is used as plugin instance.
       <object class="GtkEntry" id="Server">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets the server address to connect to when querying the page. Must be inside a
 Page block.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -69,7 +109,7 @@ Page block.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Key</property>
+	<property name="label">Key</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -82,10 +122,10 @@ Page block.
       <object class="GtkEntry" id="Key">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When connected to the memcached server, asks for the page Key.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -98,7 +138,7 @@ When connected to the memcached server, asks for the page Key.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Match</property>
+	<property name="label">Match</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -111,11 +151,11 @@ When connected to the memcached server, asks for the page Key.
       <object class="GtkEntry" id="Match">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Match blocks define which strings to look for and how matches substrings are
 interpreted. For a description of match blocks, please see Plugin tail.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

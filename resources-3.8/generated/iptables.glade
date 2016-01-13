@@ -2,6 +2,14 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="iptables">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin iptables
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="iptables">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +17,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Chain</property>
+	<property name="label">Chain</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +30,7 @@
       <object class="GtkEntry" id="Chain">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Select the rules to count. If only Table and Chain are given, this plugin
 will collect the counters of all rules which have a comment-match. The comment
 is then used as type-instance.
@@ -32,7 +40,7 @@ used as the type-instance.
 If Name is supplied, it will be used as the type-instance instead of the
 comment or the number.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

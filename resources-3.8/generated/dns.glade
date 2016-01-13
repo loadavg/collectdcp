@@ -2,6 +2,14 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="dns">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin dns
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="dns">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +17,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Interface</property>
+	<property name="label">Interface</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,13 +30,13 @@
       <object class="GtkEntry" id="Interface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The dns plugin uses libpcap to capture dns traffic and analyzes it. This
 option sets the interface that should be used. If this option is not set, or
 set to "any", the plugin will try to get packets from all interfaces. This
 may not work on certain platforms, such as Mac OS X.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -41,7 +49,7 @@ may not work on certain platforms, such as Mac OS X.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">IgnoreSource</property>
+	<property name="label">IgnoreSource</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -54,10 +62,10 @@ may not work on certain platforms, such as Mac OS X.
       <object class="GtkEntry" id="IgnoreSource">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Ignore packets that originate from this address.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -70,7 +78,7 @@ Ignore packets that originate from this address.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">SelectNumericQueryTypes</property>
+	<property name="label">SelectNumericQueryTypes</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -83,10 +91,10 @@ Ignore packets that originate from this address.
       <object class="GtkEntry" id="SelectNumericQueryTypes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Enabled by default, collects unknown (and thus presented as numeric only) query types.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

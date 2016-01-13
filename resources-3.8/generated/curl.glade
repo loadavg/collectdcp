@@ -2,6 +2,62 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="curl">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin curl
+
+
+The curl plugin uses the libcurl (http://curl.haxx.se/) to read web pages
+and the match infrastructure (the same code used by the tail plugin) to use
+regular expressions with the received data.
+
+
+The following example will read the current value of AMD stock from Google's
+finance page and dispatch the value to collectd.
+
+
+
+  &lt;Plugin curl&gt;
+    &lt;Page "stock_quotes"&gt;
+      URL "http://finance.google.com/finance?q=NYSE%3AAMD";
+      User "foo"
+      Password "bar"
+      Digest false
+      VerifyPeer true
+      VerifyHost true
+      CACert "/path/to/ca.crt"
+      Header "X-Custom-Header: foobar"
+      Post "foo=bar"
+
+
+
+      MeasureResponseTime false
+      MeasureResponseCode false
+
+
+
+      &lt;Match&gt;
+        Regex "&lt;span +class=\"pr\"[^&gt;]*&gt; *([0-9]*\\.[0-9]+) *&lt;/span&gt;"
+        DSType "GaugeAverage"
+        # Note: `stock_value' is not a standard type.
+        Type "stock_value"
+        Instance "AMD"
+      &lt;/Match&gt;
+    &lt;/Page&gt;
+  &lt;/Plugin&gt;
+
+
+In the Plugin block, there may be one or more Page blocks, each defining
+a web page and one or more "matches" to be performed on the returned data. The
+string argument to the Page block is used as plugin instance.
+
+
+The following options are valid within Page blocks:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="curl">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +65,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">URL</property>
+	<property name="label">URL</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +78,11 @@
       <object class="GtkEntry" id="URL">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 URL of the web site to retrieve. Since a regular expression will be used to
 extract information from this data, non-binary data is a big plus here ;)
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +95,7 @@ extract information from this data, non-binary data is a big plus here ;)
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">User</property>
+	<property name="label">User</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,10 +108,10 @@ extract information from this data, non-binary data is a big plus here ;)
       <object class="GtkEntry" id="User">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Username to use if authorization is required to read the page.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -68,7 +124,7 @@ Username to use if authorization is required to read the page.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Password</property>
+	<property name="label">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -81,10 +137,10 @@ Username to use if authorization is required to read the page.
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Password to use if authorization is required to read the page.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -97,7 +153,7 @@ Password to use if authorization is required to read the page.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Digest</property>
+	<property name="label">Digest</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -110,10 +166,10 @@ Password to use if authorization is required to read the page.
       <object class="GtkEntry" id="Digest">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Enable HTTP digest authentication.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -126,7 +182,7 @@ Enable HTTP digest authentication.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">VerifyPeer</property>
+	<property name="label">VerifyPeer</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -139,11 +195,11 @@ Enable HTTP digest authentication.
       <object class="GtkEntry" id="VerifyPeer">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Enable or disable peer SSL certificate verification. See
 http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -156,7 +212,7 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">VerifyHost</property>
+	<property name="label">VerifyHost</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -169,14 +225,14 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
       <object class="GtkEntry" id="VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Enable or disable peer host name verification. If enabled, the plugin checks if
 the Common Name or a Subject Alternate Name field of the SSL certificate
 matches the host name provided by the URL option. If this identity check
 fails, the connection is aborted. Obviously, only works when connecting to a
 SSL enabled server. Enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -189,7 +245,7 @@ SSL enabled server. Enabled by default.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CACert</property>
+	<property name="label">CACert</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -202,12 +258,12 @@ SSL enabled server. Enabled by default.
       <object class="GtkEntry" id="CACert">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 File that holds one or more SSL certificates. If you want to use HTTPS you will
 possibly need this option. What CA certificates come bundled with libcurl
 and are checked by default depends on the distribution you use.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -220,7 +276,7 @@ and are checked by default depends on the distribution you use.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Header</property>
+	<property name="label">Header</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -233,11 +289,11 @@ and are checked by default depends on the distribution you use.
       <object class="GtkEntry" id="Header">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 A HTTP header to add to the request. Multiple headers are added if this option
 is specified more than once.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -250,7 +306,7 @@ is specified more than once.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Post</property>
+	<property name="label">Post</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -263,14 +319,14 @@ is specified more than once.
       <object class="GtkEntry" id="Post">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specifies that the HTTP operation should be a POST instead of a GET. The
 complete data to be posted is given as the argument.  This option will usually
 need to be accompanied by a Header option to set an appropriate
 Content-Type for the post body (e.g. to
 application/x-www-form-urlencoded).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -283,7 +339,7 @@ application/x-www-form-urlencoded).
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MeasureResponseTime</property>
+	<property name="label">MeasureResponseTime</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -296,14 +352,14 @@ application/x-www-form-urlencoded).
       <object class="GtkEntry" id="MeasureResponseTime">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Measure response time for the request. If this setting is enabled, Match
 blocks (see below) are optional. Disabled by default.
 Beware that requests will get aborted if they take too long to complete. Adjust
 Timeout accordingly if you expect MeasureResponseTime to report such slow
 requests.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -316,7 +372,7 @@ requests.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MeasureResponseCode</property>
+	<property name="label">MeasureResponseCode</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -329,11 +385,11 @@ requests.
       <object class="GtkEntry" id="MeasureResponseCode">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Measure response code for the request. If this setting is enabled, Match
 blocks (see below) are optional. Disabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -346,7 +402,7 @@ blocks (see below) are optional. Disabled by default.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes"></property>
+	<property name="label"></property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -359,7 +415,7 @@ blocks (see below) are optional. Disabled by default.
       <object class="GtkEntry" id="">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 One or more Match blocks that define how to match information in the data
 returned by libcurl. The curl plugin uses the same infrastructure that's
 used by the tail plugin, so please see the documentation of the tail
@@ -367,7 +423,7 @@ plugin below on how matches are defined. If the MeasureResponseTime or
 MeasureResponseCode options are set to true, Match blocks are
 optional.
 </property>
-	<property name="placeholder_text" translatable="yes">&lt;Match&gt;</property>
+	<property name="placeholder_text">&lt;Match&gt;</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -380,7 +436,7 @@ optional.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Timeout</property>
+	<property name="label">Timeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -393,7 +449,7 @@ optional.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The Timeout option sets the overall timeout for HTTP requests to URL, in
 milliseconds. By default, the configured Interval is used to set the
 timeout. Prior to version 5.5.0, there was no timeout and requests could hang
@@ -403,7 +459,7 @@ If Timeout is 0 or bigger than the Interval, keep in mind that each slow
 network connection will stall one read thread. Adjust the ReadThreads global
 setting accordingly to prevent this from blocking other plugins.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

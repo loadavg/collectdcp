@@ -2,6 +2,14 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="apcups">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin apcups
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="apcups">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +17,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Host</property>
+	<property name="label">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,12 +30,12 @@
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Hostname of the host running apcupsd. Defaults to localhost. Please note
 that IPv6 support has been disabled unless someone can confirm or decline that
 apcupsd can handle it.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -40,7 +48,7 @@ apcupsd can handle it.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Port</property>
+	<property name="label">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -53,10 +61,10 @@ apcupsd can handle it.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 TCP-Port to connect to. Defaults to 3551.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -69,7 +77,7 @@ TCP-Port to connect to. Defaults to 3551.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ReportSeconds</property>
+	<property name="label">ReportSeconds</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -82,12 +90,12 @@ TCP-Port to connect to. Defaults to 3551.
       <object class="GtkEntry" id="ReportSeconds">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If set to true, the time reported in the timeleft metric will be
 converted to seconds. This is the recommended setting. If set to false, the
 default for backwards compatibility, the time will be reported in minutes.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

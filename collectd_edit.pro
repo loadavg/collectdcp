@@ -9,7 +9,7 @@
 TEMPLATE = app
 
 CONFIG += console
-CONFIG += C++14
+CONFIG += C++11
 CONFIG -= qt
 CONFIG -= app_bundle
 
@@ -36,7 +36,8 @@ SOURCES += main.cpp \
     test_parse.cpp \
     plugin_form.cpp \
     test_glade.cpp \
-    settings.cpp
+    settings.cpp \
+    app_window.cpp
 
 HEADERS += \
     parse_conf.h \
@@ -64,7 +65,8 @@ HEADERS += \
     ns_all.h \
     settings.h \
     ini_file.h \
-    fileuty.h
+    fileuty.h \
+    app_window.h
 
 DISTFILES += \
     Makefile \

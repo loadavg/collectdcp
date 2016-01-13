@@ -2,6 +2,17 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="conntrack">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin conntrack
+
+
+This plugin collects IP conntrack statistics.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="conntrack">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +20,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">OldFiles</property>
+	<property name="label">OldFiles</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +33,11 @@
       <object class="GtkEntry" id="OldFiles">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Assume the conntrack_count and conntrack_max files to be found in
 /proc/sys/net/ipv4/netfilter instead of /proc/sys/net/netfilter/.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

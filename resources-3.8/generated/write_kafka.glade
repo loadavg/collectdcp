@@ -2,6 +2,31 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="write_kafka">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin write_kafka
+
+
+The write_kafka plugin will send values to a Kafka topic, a distributed
+queue.
+Synopsis:
+
+
+
+ &lt;Plugin "write_kafka"&gt;
+   Property "metadata.broker.list" "broker1:9092,broker2:9092"
+   &lt;Topic "collectd"&gt;
+     Format JSON
+   &lt;/Topic&gt;
+ &lt;/Plugin&gt;
+
+
+The following options are understood by the write_kafka plugin:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="write_kafka">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +34,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Topic</property>
+	<property name="label">Topic</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +47,7 @@
       <object class="GtkEntry" id="Topic">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The plugin's configuration consists of one or more Topic blocks. Each block
 is given a unique Name and specifies one kafka producer.
 Inside the Topic block, the following per-topic options are
@@ -79,7 +104,7 @@ converted values will have "rate" appended to the data source type, e.g.
 ds_type:derive:rate.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -92,7 +117,7 @@ ds_type:derive:rate.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Property</property>
+	<property name="label">Property</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -105,11 +130,11 @@ ds_type:derive:rate.
       <object class="GtkEntry" id="Property">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Configure the kafka producer through properties, you almost always will
 want to set metadata.broker.list to your Kafka broker list.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

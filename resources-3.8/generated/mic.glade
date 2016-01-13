@@ -2,6 +2,46 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="mic">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin mic
+
+
+The mic plugin gathers CPU statistics, memory usage and temperatures from
+Intel's Many Integrated Core (MIC) systems.
+
+
+Synopsis:
+
+
+
+ &lt;Plugin mic&gt;
+   ShowCPU true
+   ShowCPUCores true
+   ShowMemory true
+
+
+
+   ShowTemperatures true
+   Temperature vddg
+   Temperature vddq
+   IgnoreSelectedTemperature true
+
+
+
+   ShowPower true
+   Power total0
+   Power total1
+   IgnoreSelectedPower true
+ &lt;/Plugin&gt;
+
+
+The following options are valid inside the Plugin mic block:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="mic">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +49,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ShowCPU</property>
+	<property name="label">ShowCPU</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,10 +62,10 @@
       <object class="GtkEntry" id="ShowCPU">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If enabled (the default) a sum of the CPU usage across all cores is reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -38,7 +78,7 @@ If enabled (the default) a sum of the CPU usage across all cores is reported.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ShowCPUCores</property>
+	<property name="label">ShowCPUCores</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -51,10 +91,10 @@ If enabled (the default) a sum of the CPU usage across all cores is reported.
       <object class="GtkEntry" id="ShowCPUCores">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If enabled (the default) per-core CPU usage is reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -67,7 +107,7 @@ If enabled (the default) per-core CPU usage is reported.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ShowMemory</property>
+	<property name="label">ShowMemory</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -80,11 +120,11 @@ If enabled (the default) per-core CPU usage is reported.
       <object class="GtkEntry" id="ShowMemory">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If enabled (the default) the physical memory usage of the MIC system is
 reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -97,7 +137,7 @@ reported.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ShowTemperatures</property>
+	<property name="label">ShowTemperatures</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -110,10 +150,10 @@ reported.
       <object class="GtkEntry" id="ShowTemperatures">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If enabled (the default) various temperatures of the MIC system are reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -126,7 +166,7 @@ If enabled (the default) various temperatures of the MIC system are reported.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Temperature</property>
+	<property name="label">Temperature</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -139,13 +179,13 @@ If enabled (the default) various temperatures of the MIC system are reported.
       <object class="GtkEntry" id="Temperature">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 This option controls which temperatures are being reported. Whether matching
 temperatures are being ignored or only matching temperatures are reported
 depends on the IgnoreSelectedTemperature setting below. By default all
 temperatures are reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -158,7 +198,7 @@ temperatures are reported.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">IgnoreSelectedTemperature</property>
+	<property name="label">IgnoreSelectedTemperature</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -171,7 +211,7 @@ temperatures are reported.
       <object class="GtkEntry" id="IgnoreSelectedTemperature">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Controls the behavior of the Temperature setting above. If set to false
 (the default) only temperatures matching a Temperature option are reported
 or, if no Temperature option is specified, all temperatures are reported. If
@@ -194,7 +234,7 @@ vddq
 Voltage ddq
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -207,7 +247,7 @@ Voltage ddq
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ShowPower</property>
+	<property name="label">ShowPower</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -220,10 +260,10 @@ Voltage ddq
       <object class="GtkEntry" id="ShowPower">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If enabled (the default) various temperatures of the MIC system are reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -236,7 +276,7 @@ If enabled (the default) various temperatures of the MIC system are reported.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Power</property>
+	<property name="label">Power</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -249,13 +289,13 @@ If enabled (the default) various temperatures of the MIC system are reported.
       <object class="GtkEntry" id="Power">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 This option controls which power readings are being reported. Whether matching
 power readings are being ignored or only matching power readings are reported
 depends on the IgnoreSelectedPower setting below. By default all
 power readings are reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -268,7 +308,7 @@ power readings are reported.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">IgnoreSelectedPower</property>
+	<property name="label">IgnoreSelectedPower</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -281,7 +321,7 @@ power readings are reported.
       <object class="GtkEntry" id="IgnoreSelectedPower">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Controls the behavior of the Power setting above. If set to false
 (the default) only power readings matching a Power option are reported
 or, if no Power option is specified, all power readings are reported. If
@@ -310,7 +350,7 @@ vddq
 Memory subsystem rail (uVolts).
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

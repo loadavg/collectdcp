@@ -2,6 +2,45 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="ceph">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin ceph
+
+
+The ceph plugin collects values from JSON data to be parsed by libyajl
+(https://lloyd.github.io/yajl/) retrieved from ceph daemon admin sockets.
+
+
+A separate Daemon block must be configured for each ceph daemon to be
+monitored. The following example will read daemon statistics from four
+separate ceph daemons running on the same device (two OSDs, one MON, one MDS) :
+
+
+
+  &lt;Plugin ceph&gt;
+    LongRunAvgLatency false
+    ConvertSpecialMetricTypes true
+    &lt;Daemon "osd.0"&gt;
+      SocketPath "/var/run/ceph/ceph-osd.0.asok"
+    &lt;/Daemon&gt;
+    &lt;Daemon "osd.1"&gt;
+      SocketPath "/var/run/ceph/ceph-osd.1.asok"
+    &lt;/Daemon&gt;
+    &lt;Daemon "mon.a"&gt;
+      SocketPath "/var/run/ceph/ceph-mon.ceph1.asok"
+    &lt;/Daemon&gt;
+    &lt;Daemon "mds.a"&gt;
+      SocketPath "/var/run/ceph/ceph-mds.ceph1.asok"
+    &lt;/Daemon&gt;
+  &lt;/Plugin&gt;
+
+
+The ceph plugin accepts the following configuration options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="ceph">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +48,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">LongRunAvgLatency</property>
+	<property name="label">LongRunAvgLatency</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,14 +61,14 @@
       <object class="GtkEntry" id="LongRunAvgLatency">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If enabled, latency values(sum,count pairs) are calculated as the long run
 average - average since the ceph daemon was started = (sum / count).
 When disabled, latency values are calculated as the average since the last
 collection = (sum_now - sum_last) / (count_now - count_last).
 Default: Disabled
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -42,7 +81,7 @@ Default: Disabled
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ConvertSpecialMetricTypes</property>
+	<property name="label">ConvertSpecialMetricTypes</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -55,7 +94,7 @@ Default: Disabled
       <object class="GtkEntry" id="ConvertSpecialMetricTypes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If enabled, special metrics (metrics that differ in type from similar counters)
 are converted to the type of those similar counters. This currently only
 applies to filestore.journal_wr_bytes which is a counter for OSD daemons. The
@@ -65,7 +104,7 @@ value and is treated as a derive type.
 When disabled, all metrics are treated as the types received from the ceph schema.
 Default: Enabled
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -2,6 +2,24 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="notify_email">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin notify_email
+
+
+The notify_email plugin uses the ESMTP library to send notifications to a
+configured email address.
+
+
+libESMTP is available from http://www.stafford.uklinux.net/libesmtp/.
+
+
+Available configuration options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="notify_email">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +27,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">From</property>
+	<property name="label">From</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +40,11 @@
       <object class="GtkEntry" id="From">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Email address from which the emails should appear to come from.
 Default: root@localhost
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +57,7 @@ Default: root@localhost
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Recipient</property>
+	<property name="label">Recipient</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,12 +70,12 @@ Default: root@localhost
       <object class="GtkEntry" id="Recipient">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Configures the email address(es) to which the notifications should be mailed.
 May be repeated to send notifications to multiple addresses.
 At least one Recipient must be present for the plugin to work correctly.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -70,7 +88,7 @@ At least one Recipient must be present for the plugin to work correctly.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">SMTPServer</property>
+	<property name="label">SMTPServer</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -83,11 +101,11 @@ At least one Recipient must be present for the plugin to work correctly.
       <object class="GtkEntry" id="SMTPServer">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Hostname of the SMTP server to connect to.
 Default: localhost
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -100,7 +118,7 @@ Default: localhost
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">SMTPPort</property>
+	<property name="label">SMTPPort</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -113,11 +131,11 @@ Default: localhost
       <object class="GtkEntry" id="SMTPPort">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 TCP port to connect to.
 Default: 25
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -130,7 +148,7 @@ Default: 25
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">SMTPUser</property>
+	<property name="label">SMTPUser</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -143,10 +161,10 @@ Default: 25
       <object class="GtkEntry" id="SMTPUser">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Username for ASMTP authentication. Optional.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -159,7 +177,7 @@ Username for ASMTP authentication. Optional.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">SMTPPassword</property>
+	<property name="label">SMTPPassword</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -172,10 +190,10 @@ Username for ASMTP authentication. Optional.
       <object class="GtkEntry" id="SMTPPassword">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Password for ASMTP authentication. Optional.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -188,7 +206,7 @@ Password for ASMTP authentication. Optional.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Subject</property>
+	<property name="label">Subject</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -201,14 +219,14 @@ Password for ASMTP authentication. Optional.
       <object class="GtkEntry" id="Subject">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Subject-template to use when sending emails. There must be exactly two
 string-placeholders in the subject, given in the standard printf(3) syntax,
 i. e. %s. The first will be replaced with the severity, the second
 with the hostname.
 Default: Collectd notify: %s@%s
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

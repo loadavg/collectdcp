@@ -2,6 +2,21 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="tcpconns">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin tcpconns
+
+
+The tcpconns plugin counts the number of currently established TCP
+connections based on the local port and/or the remote port. Since there may be
+a lot of connections the default if to count all connections with a local port,
+for which a listening socket is opened. You can use the following options to
+fine-tune the ports you are interested in:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="tcpconns">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +24,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ListeningPorts</property>
+	<property name="label">ListeningPorts</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +37,7 @@
       <object class="GtkEntry" id="ListeningPorts">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If this option is set to true, statistics for all local ports for which a
 listening socket exists are collected. The default depends on LocalPort and
 RemotePort (see below): If no port at all is specifically selected, the
@@ -31,7 +46,7 @@ remote ports) are selected, this option defaults to false, i. e. only
 the selected ports will be collected unless this option is set to true
 specifically.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -44,7 +59,7 @@ specifically.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">LocalPort</property>
+	<property name="label">LocalPort</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -57,13 +72,13 @@ specifically.
       <object class="GtkEntry" id="LocalPort">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Count the connections to a specific local port. This can be used to see how
 many connections are handled by a specific daemon, e. g. the mailserver.
 You have to specify the port in numeric form, so for the mailserver example
 you'd need to set 25.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -76,7 +91,7 @@ you'd need to set 25.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">RemotePort</property>
+	<property name="label">RemotePort</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -89,7 +104,7 @@ you'd need to set 25.
       <object class="GtkEntry" id="RemotePort">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Count the connections to a specific remote port. This is useful to see how
 much a remote service is used. This is most useful if you want to know how many
 connections a local service has opened to remote services, e. g. how many
@@ -97,7 +112,7 @@ connections a mail server or news server has to other mail or news servers, or
 how many connections a web proxy holds to web servers. You have to give the
 port in numeric form.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -110,7 +125,7 @@ port in numeric form.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">AllPortsSummary</property>
+	<property name="label">AllPortsSummary</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -123,11 +138,11 @@ port in numeric form.
       <object class="GtkEntry" id="AllPortsSummary">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If this option is set to true a summary of statistics from all connections
 are collectd. This option defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

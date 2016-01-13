@@ -2,6 +2,23 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="load">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin load
+
+
+The Load plugin collects the system load. These numbers give a rough overview
+over the utilization of a machine. The system load is defined as the number of
+runnable tasks in the run-queue and is provided by many operating systems as a
+one, five or fifteen minute average.
+
+
+The following configuration options are available:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="load">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +26,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ReportRelative</property>
+	<property name="label">ReportRelative</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +39,11 @@
       <object class="GtkEntry" id="ReportRelative">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When enabled, system load divided by number of available CPU cores is reported
 for intervals 1 min, 5 min and 15 min. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

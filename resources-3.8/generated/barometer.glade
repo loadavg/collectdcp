@@ -2,6 +2,18 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="barometer">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin barometer
+
+
+This plugin reads absolute air pressure using digital barometer sensor on a I2C
+bus. Supported sensors are:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="barometer">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +21,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MPL115A2</property>
+	<property name="label">MPL115A2</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,8 +34,8 @@
       <object class="GtkEntry" id="MPL115A2">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">no description available for MPL115A2</property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="tooltip_markup">no description available for MPL115A2</property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -36,7 +48,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MPL3115</property>
+	<property name="label">MPL3115</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -49,8 +61,8 @@
       <object class="GtkEntry" id="MPL3115">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">no description available for MPL3115</property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="tooltip_markup">no description available for MPL3115</property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -63,7 +75,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">BMP085</property>
+	<property name="label">BMP085</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -76,8 +88,8 @@
       <object class="GtkEntry" id="BMP085">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">no description available for BMP085</property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="tooltip_markup">no description available for BMP085</property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

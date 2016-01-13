@@ -2,12 +2,78 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkGrid" id="amqp"><property name="visible">True</property><property name="can_focus">False</property>/property>
+  <object class="GtkLabel" id="amqp">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin amqp
+
+
+The AMQMP plugin can be used to communicate with other instances of
+collectd or third party applications using an AMQP message broker. Values
+are sent to or received from the broker, which handles routing, queueing and
+possibly filtering or messages.
+
+
+
+ &lt;Plugin "amqp"&gt;
+   # Send values to an AMQP broker
+   &lt;Publish "some_name"&gt;
+     Host "localhost"
+     Port "5672"
+     VHost "/"
+     User "guest"
+     Password "guest"
+     Exchange "amq.fanout"
+ #   ExchangeType "fanout"
+ #   RoutingKey "collectd"
+ #   Persistent false
+ #   ConnectionRetryDelay 0
+ #   Format "command"
+ #   StoreRates false
+ #   GraphitePrefix "collectd."
+ #   GraphiteEscapeChar "_"
+ #   GraphiteSeparateInstances false
+ #   GraphiteAlwaysAppendDS false
+   &lt;/Publish&gt;
+
+
+
+   # Receive values from an AMQP broker
+   &lt;Subscribe "some_name"&gt;
+     Host "localhost"
+     Port "5672"
+     VHost "/"
+     User "guest"
+     Password "guest"
+     Exchange "amq.fanout"
+ #   ExchangeType "fanout"
+ #   Queue "queue_name"
+ #   QueueDurable false
+ #   QueueAutoDelete true
+ #   RoutingKey "collectd.#"
+ #   ConnectionRetryDelay 0
+   &lt;/Subscribe&gt;
+ &lt;/Plugin&gt;
+
+
+The plugin's configuration consists of a number of Publish and Subscribe
+blocks, which configure sending and receiving of values respectively. The two
+blocks are very similar, so unless otherwise noted, an option can be used in
+either block. The name given in the blocks starting tag is only used for
+reporting messages, but may be used to support flushing of certain
+Publish blocks in the future.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
+  <object class="GtkGrid" id="amqp">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <child>
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Host</property>
+	<property name="label">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -20,11 +86,11 @@
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Hostname or IP-address of the AMQP broker. Defaults to the default behavior of
 the underlying communications library, rabbitmq-c, which is "localhost".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -37,7 +103,7 @@ the underlying communications library, rabbitmq-c, which is "localhost".
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Port</property>
+	<property name="label">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -50,12 +116,12 @@ the underlying communications library, rabbitmq-c, which is "localhost".
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Service name or port number on which the AMQP broker accepts connections. This
 argument must be a string, even if the numeric form is used. Defaults to
 "5672".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -68,7 +134,7 @@ argument must be a string, even if the numeric form is used. Defaults to
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">VHost</property>
+	<property name="label">VHost</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -81,10 +147,10 @@ argument must be a string, even if the numeric form is used. Defaults to
       <object class="GtkEntry" id="VHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Name of the virtual host on the AMQP broker to use. Defaults to "/".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -97,7 +163,7 @@ Name of the virtual host on the AMQP broker to use. Defaults to "/".
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Password</property>
+	<property name="label">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -110,11 +176,11 @@ Name of the virtual host on the AMQP broker to use. Defaults to "/".
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Credentials used to authenticate to the AMQP broker. By default "guest"/"guest"
 is used.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -127,7 +193,7 @@ is used.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Exchange</property>
+	<property name="label">Exchange</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -140,14 +206,14 @@ is used.
       <object class="GtkEntry" id="Exchange">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 In Publish blocks, this option specifies the exchange to send values to.
 By default, "amq.fanout" will be used.
 In Subscribe blocks this option is optional. If given, a binding between
 the given exchange and the queue is created, using the routing key if
 configured. See the Queue and RoutingKey options below.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -160,7 +226,7 @@ configured. See the Queue and RoutingKey options below.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ExchangeType</property>
+	<property name="label">ExchangeType</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -173,12 +239,12 @@ configured. See the Queue and RoutingKey options below.
       <object class="GtkEntry" id="ExchangeType">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If given, the plugin will try to create the configured exchange with this
 type after connecting. When in a Subscribe block, the queue will then
 be bound to this exchange.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -191,7 +257,7 @@ be bound to this exchange.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Queue</property>
+	<property name="label">Queue</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -204,11 +270,11 @@ be bound to this exchange.
       <object class="GtkEntry" id="Queue">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Configures the queue name to subscribe to. If no queue name was configured
 explicitly, a unique queue name will be created by the broker.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -221,7 +287,7 @@ explicitly, a unique queue name will be created by the broker.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">QueueDurable</property>
+	<property name="label">QueueDurable</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -234,14 +300,14 @@ explicitly, a unique queue name will be created by the broker.
       <object class="GtkEntry" id="QueueDurable">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Defines if the queue subscribed to is durable (saved to persistent storage)
 or transient (will disappear if the AMQP broker is restarted). Defaults to
 "false".
 This option should be used in conjunction with the Persistent option on the
 publish side.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -254,7 +320,7 @@ publish side.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">RoutingKey</property>
+	<property name="label">RoutingKey</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -267,7 +333,7 @@ publish side.
       <object class="GtkEntry" id="RoutingKey">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 In Publish blocks, this configures the routing key to set on all outgoing
 messages. If not given, the routing key will be computed from the identifier
 of the value. The host, plugin, type and the two instances are concatenated
@@ -280,7 +346,7 @@ used to filter messages when using a "topic" exchange. If you're only
 interested in CPU statistics, you could use the routing key "collectd.*.cpu.#"
 for example.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -293,7 +359,7 @@ for example.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ConnectionRetryDelay</property>
+	<property name="label">ConnectionRetryDelay</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -306,13 +372,13 @@ for example.
       <object class="GtkEntry" id="ConnectionRetryDelay">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When the connection to the AMQP broker is lost, defines the time in seconds to
 wait before attempting to reconnect. Defaults to 0, which implies collectd will
 attempt to reconnect at each read interval (in Subscribe mode) or each time
 values are ready for submission (in Publish mode).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -325,7 +391,7 @@ values are ready for submission (in Publish mode).
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Format</property>
+	<property name="label">Format</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -338,7 +404,7 @@ values are ready for submission (in Publish mode).
       <object class="GtkEntry" id="Format">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Selects the format in which messages are sent to the broker. If set to
 Command (the default), values are sent as PUTVAL commands which are
 identical to the syntax used by the Exec and UnixSock plugins. In this
@@ -353,7 +419,7 @@ A subscribing client should use the Content-Type header field to
 determine how to decode the values. Currently, the AMQP plugin itself can
 only decode the Command format.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -366,7 +432,7 @@ only decode the Command format.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">GraphitePrefix</property>
+	<property name="label">GraphitePrefix</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -379,12 +445,12 @@ only decode the Command format.
       <object class="GtkEntry" id="GraphitePrefix">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 A prefix can be added in the metric name when outputting in the Graphite format.
 It's added before the Host name.
 Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;type&gt;&lt;name&gt;"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -397,7 +463,7 @@ Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">GraphitePostfix</property>
+	<property name="label">GraphitePostfix</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -410,12 +476,12 @@ Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;
       <object class="GtkEntry" id="GraphitePostfix">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 A postfix can be added in the metric name when outputting in the Graphite format.
 It's added after the Host name.
 Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;type&gt;&lt;name&gt;"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -428,7 +494,7 @@ Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">GraphiteEscapeChar</property>
+	<property name="label">GraphiteEscapeChar</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -441,13 +507,13 @@ Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;
       <object class="GtkEntry" id="GraphiteEscapeChar">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specify a character to replace dots (.) in the host part of the metric name.
 In Graphite metric name, dots are used as separators between different
 metric parts (host, plugin, type).
 Default is "_" (Underscore).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -460,7 +526,7 @@ Default is "_" (Underscore).
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">GraphiteSeparateInstances</property>
+	<property name="label">GraphiteSeparateInstances</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -473,13 +539,13 @@ Default is "_" (Underscore).
       <object class="GtkEntry" id="GraphiteSeparateInstances">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If set to true, the plugin instance and type instance will be in their own
 path component, for example host.cpu.0.cpu.idle. If set to false (the
 default), the plugin and plugin instance (and likewise the type and type
 instance) are put into one component, for example host.cpu-0.cpu-idle.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -492,7 +558,7 @@ instance) are put into one component, for example host.cpu-0.cpu-idle.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">GraphiteAlwaysAppendDS</property>
+	<property name="label">GraphiteAlwaysAppendDS</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -505,12 +571,12 @@ instance) are put into one component, for example host.cpu-0.cpu-idle.
       <object class="GtkEntry" id="GraphiteAlwaysAppendDS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If set to true, append the name of the Data Source (DS) to the "metric"
 identifier. If set to false (the default), this is only done when there is
 more than one DS.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

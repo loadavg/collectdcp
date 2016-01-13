@@ -2,6 +2,33 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="memcached">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin memcached
+
+
+The memcached plugin connects to a memcached server and queries statistics
+about cache utilization, memory and bandwidth used.
+http://www.danga.com/memcached/
+
+
+
+ &lt;Plugin "memcached"&gt;
+   &lt;Instance "name"&gt;
+     Host "memcache.example.com"
+     Port 11211
+   &lt;/Instance&gt;
+ &lt;/Plugin&gt;
+
+
+The plugin configuration consists of one or more Instance blocks which
+specify one memcached connection each. Within the Instance blocks, the
+following options are allowed:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="memcached">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +36,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Host</property>
+	<property name="label">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,10 +49,10 @@
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Hostname to connect to. Defaults to 127.0.0.1.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -38,7 +65,7 @@ Hostname to connect to. Defaults to 127.0.0.1.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Port</property>
+	<property name="label">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -51,10 +78,10 @@ Hostname to connect to. Defaults to 127.0.0.1.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 TCP-Port to connect to. Defaults to 11211.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -67,7 +94,7 @@ TCP-Port to connect to. Defaults to 11211.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Socket</property>
+	<property name="label">Socket</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -80,11 +107,11 @@ TCP-Port to connect to. Defaults to 11211.
       <object class="GtkEntry" id="Socket">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Connect to memcached using the UNIX domain socket at Path. If this
 setting is given, the Host and Port settings are ignored.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

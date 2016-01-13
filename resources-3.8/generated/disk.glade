@@ -2,6 +2,25 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="disk">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin disk
+
+
+The disk plugin collects information about the usage of physical disks and
+logical disks (partitions). Values collected are the number of octets written
+to and read from a disk or partition, the number of read/write operations
+issued to the disk and a rather complex "time" it took for these commands to be
+issued.
+
+
+Using the following two options you can ignore some disks or configure the
+collection only of specific disks.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="disk">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +28,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Disk</property>
+	<property name="label">Disk</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +41,7 @@
       <object class="GtkEntry" id="Disk">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Select the disk Name. Whether it is collected or ignored depends on the
 IgnoreSelected setting, see below. As with other plugins that use the
 daemon's ignorelist functionality, a string that starts and ends with a slash
@@ -31,7 +50,7 @@ is interpreted as a regular expression. Examples:
   Disk "sdd"
   Disk "/hda[34]/"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -44,7 +63,7 @@ is interpreted as a regular expression. Examples:
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">IgnoreSelected</property>
+	<property name="label">IgnoreSelected</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -57,7 +76,7 @@ is interpreted as a regular expression. Examples:
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets whether selected disks, i. e. the ones matches by any of the Disk
 statements, are ignored or if all other disks are ignored. The behavior
 (hopefully) is intuitive: If no Disk option is configured, all disks are
@@ -65,7 +84,7 @@ collected. If at least one Disk option is given and no IgnoreSelected or
 set to false, only matching disks will be collected. If IgnoreSelected
 is set to true, all disks are collected except the ones matched.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -78,7 +97,7 @@ is set to true, all disks are collected except the ones matched.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">UseBSDName</property>
+	<property name="label">UseBSDName</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -91,12 +110,12 @@ is set to true, all disks are collected except the ones matched.
       <object class="GtkEntry" id="UseBSDName">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Whether to use the device's "BSD Name", on Mac OS X, instead of the
 default major/minor numbers. Requires collectd to be built with Apple's
 IOKitLib support.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -109,7 +128,7 @@ IOKitLib support.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">UdevNameAttr</property>
+	<property name="label">UdevNameAttr</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -122,14 +141,14 @@ IOKitLib support.
       <object class="GtkEntry" id="UdevNameAttr">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Attempt to override disk instance name with the value of a specified udev
 attribute when built with libudev.  If the attribute is not defined for the
 given device, the default name is used. Example:
 
   UdevNameAttr "DM_NAME"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

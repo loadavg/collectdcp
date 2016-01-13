@@ -2,6 +2,135 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="netapp">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin netapp
+
+
+The netapp plugin can collect various performance and capacity information
+from a NetApp filer using the NetApp API.
+
+
+Please note that NetApp has a wide line of products and a lot of different
+software versions for each of these products. This plugin was developed for a
+NetApp FAS3040 running OnTap 7.2.3P8 and tested on FAS2050 7.3.1.1L1,
+FAS3140 7.2.5.1 and FAS3020 7.2.4P9. It should work for most combinations of
+model and software version but it is very hard to test this.
+If you have used this plugin with other models and/or software version, feel
+free to send us a mail to tell us about the results, even if it's just a short
+"It works".
+
+
+To collect these data collectd will log in to the NetApp via HTTP(S) and HTTP
+basic authentication.
+
+
+Do not use a regular user for this! Create a special collectd user with just
+the minimum of capabilities needed. The user only needs the "login-http-admin"
+capability as well as a few more depending on which data will be collected.
+Required capabilities are documented below.
+
+
+
+
+
+
+Synopsis
+
+
+
+ &lt;Plugin "netapp"&gt;
+   &lt;Host "netapp1.example.com"&gt;
+    Protocol      "https"
+    Address       "10.0.0.1"
+    Port          443
+    User          "username"
+    Password      "aef4Aebe"
+    Interval      30
+
+
+
+    &lt;WAFL&gt;
+      Interval 30
+      GetNameCache   true
+      GetDirCache    true
+      GetBufferCache true
+      GetInodeCache  true
+    &lt;/WAFL&gt;
+
+
+
+    &lt;Disks&gt;
+      Interval 30
+      GetBusy true
+    &lt;/Disks&gt;
+
+
+
+    &lt;VolumePerf&gt;
+      Interval 30
+      GetIO      "volume0"
+      IgnoreSelectedIO      false
+      GetOps     "volume0"
+      IgnoreSelectedOps     false
+      GetLatency "volume0"
+      IgnoreSelectedLatency false
+    &lt;/VolumePerf&gt;
+
+
+
+    &lt;VolumeUsage&gt;
+      Interval 30
+      GetCapacity "vol0"
+      GetCapacity "vol1"
+      IgnoreSelectedCapacity false
+      GetSnapshot "vol1"
+      GetSnapshot "vol3"
+      IgnoreSelectedSnapshot false
+    &lt;/VolumeUsage&gt;
+
+
+
+    &lt;Quota&gt;
+      Interval 60
+    &lt;/Quota&gt;
+
+
+
+    &lt;Snapvault&gt;
+      Interval 30
+    &lt;/Snapvault&gt;
+
+
+
+    &lt;System&gt;
+      Interval 30
+      GetCPULoad     true
+      GetInterfaces  true
+      GetDiskOps     true
+      GetDiskIO      true
+    &lt;/System&gt;
+
+
+
+    &lt;VFiler vfilerA&gt;
+      Interval 60
+
+
+
+      SnapVault true
+      # ...
+    &lt;/VFiler&gt;
+   &lt;/Host&gt;
+ &lt;/Plugin&gt;
+
+
+The netapp plugin accepts the following configuration options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="netapp">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +138,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Host</property>
+	<property name="label">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,12 +151,12 @@
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 A host block defines one NetApp filer. It will appear in collectd with the name
 you specify here which does not have to be its real name nor its hostname (see
 the Address option below).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -40,7 +169,7 @@ the Address option below).
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">VFiler</property>
+	<property name="label">VFiler</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -53,7 +182,7 @@ the Address option below).
       <object class="GtkEntry" id="VFiler">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 A VFiler block may only be used inside a host block. It accepts all the
 same options as the Host block (except for cascaded VFiler blocks) and
 will execute all NetApp API commands in the context of the specified
@@ -69,7 +198,7 @@ This feature is useful, for example, when using a VFiler as SnapVault target
 available in the host filer (vfiler0) but only in the respective VFiler
 context.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -82,7 +211,7 @@ context.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Protocol</property>
+	<property name="label">Protocol</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -95,14 +224,14 @@ context.
       <object class="GtkEntry" id="Protocol">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The protocol collectd will use to query this host.
 Optional
 Type: string
 Default: https
 Valid options: http, https
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -115,7 +244,7 @@ Valid options: http, https
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Address</property>
+	<property name="label">Address</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -128,13 +257,13 @@ Valid options: http, https
       <object class="GtkEntry" id="Address">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The hostname or IP address of the host.
 Optional
 Type: string
 Default: The "host" block's name.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -147,7 +276,7 @@ Default: The "host" block's name.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Port</property>
+	<property name="label">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -160,13 +289,13 @@ Default: The "host" block's name.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The TCP port to connect to on the host.
 Optional
 Type: integer
 Default: 80 for protocol "http", 443 for protocol "https"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -179,7 +308,7 @@ Default: 80 for protocol "http", 443 for protocol "https"
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Password</property>
+	<property name="label">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -192,12 +321,12 @@ Default: 80 for protocol "http", 443 for protocol "https"
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The username and password to use to login to the NetApp.
 Mandatory
 Type: string
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -210,7 +339,7 @@ Type: string
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">VFilerName</property>
+	<property name="label">VFilerName</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -223,7 +352,7 @@ Type: string
       <object class="GtkEntry" id="VFilerName">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The name of the VFiler in which context to execute API commands. If not
 specified, the name provided to the VFiler block will be used instead.
 Optional
@@ -231,7 +360,7 @@ Type: string
 Default: name of the VFiler block
 Note: This option may only be used inside VFiler blocks.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -244,7 +373,7 @@ Note: This option may only be used inside VFiler blocks.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Interval</property>
+	<property name="label">Interval</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -257,10 +386,10 @@ Note: This option may only be used inside VFiler blocks.
       <object class="GtkEntry" id="Interval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 TODO
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

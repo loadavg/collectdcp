@@ -2,6 +2,19 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="exec">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin exec
+
+
+Please make sure to read collectd-exec(5) before using this plugin. It
+contains valuable information on when the executable is executed and the
+output that is expected from it.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="exec">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +22,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">NotificationExec</property>
+	<property name="label">NotificationExec</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +35,7 @@
       <object class="GtkEntry" id="NotificationExec">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Execute the executable Executable as user User. If the user name is
 followed by a colon and a group name, the effective group is set to that group.
 The real group and saved-set group will be set to the default group of that
@@ -40,7 +53,7 @@ The Exec and NotificationExec statements change the semantics of the
 programs executed, i. e. the data passed to them and the response
 expected from them. This is documented in great detail in collectd-exec(5).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -7,6 +7,7 @@
  */
 
 #include "model.h"
+#include "app_window.h"
 #include "test_parse.h"
 #include "test_glade.h"
 #include "editor_window.h"
@@ -44,13 +45,19 @@ int main(int argc, char **argv)
         */
         model::check_root(argc, argv);
 
-        auto app = Gtk::Application::create(argc, argv, "org.loadavg.collectd.edit");
+        auto app = Gtk::Application::create(argc, argv, "org.loadavg.collectdCP");
+        app_window w;
+        w.show_all();
+        rc = app->run(w, argc, argv);
 
+        /*
         if (auto w = editor_window::setup(app)) {
             w->show_all();
             rc = app->run(*w, argc, argv);
             delete w;
         }
+        */
+
     }
     catch(std::exception &e) {
         std::cerr << e.what() << std::endl;

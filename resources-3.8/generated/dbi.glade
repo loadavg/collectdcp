@@ -2,6 +2,106 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="dbi">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin dbi
+
+
+This plugin uses the dbi library (http://libdbi.sourceforge.net/) to
+connect to various databases, execute SQL statements and read back the
+results. dbi is an acronym for "database interface" in case you were
+wondering about the name. You can configure how each column is to be
+interpreted and the plugin will generate one or more data sets from each row
+returned according to these rules.
+
+
+Because the plugin is very generic, the configuration is a little more complex
+than those of other plugins. It usually looks something like this:
+
+
+
+  &lt;Plugin dbi&gt;
+    &lt;Query "out_of_stock"&gt;
+      Statement "SELECT category, COUNT(*) AS value FROM products WHERE in_stock = 0 GROUP BY category"
+      # Use with MySQL 5.0.0 or later
+      MinVersion 50000
+      &lt;Result&gt;
+        Type "gauge"
+        InstancePrefix "out_of_stock"
+        InstancesFrom "category"
+        ValuesFrom "value"
+      &lt;/Result&gt;
+    &lt;/Query&gt;
+    &lt;Database "product_information"&gt;
+      Driver "mysql"
+      DriverOption "host" "localhost"
+      DriverOption "username" "collectd"
+      DriverOption "password" "aZo6daiw"
+      DriverOption "dbname" "prod_info"
+      SelectDB "prod_info"
+      Query "out_of_stock"
+    &lt;/Database&gt;
+  &lt;/Plugin&gt;
+
+
+The configuration above defines one query with one result and one database. The
+query is then linked to the database with the Query option within the
+&lt;Database&gt; block. You can have any number of queries and databases
+and you can also use the Include statement to split up the configuration
+file in multiple, smaller files. However, the &lt;Query&gt; block must
+precede the &lt;Database&gt; blocks, because the file is interpreted from
+top to bottom!
+
+
+The following is a complete list of options:
+
+
+
+
+
+
+Query blocks
+
+
+Query blocks define SQL statements and how the returned data should be
+interpreted. They are identified by the name that is given in the opening line
+of the block. Thus the name needs to be unique. Other than that, the name is
+not used in collectd.
+
+
+In each Query block, there is one or more Result blocks. Result blocks
+define which column holds which value or instance information. You can use
+multiple Result blocks to create multiple values from one returned row. This
+is especially useful, when queries take a long time and sending almost the same
+query again and again is not desirable.
+
+
+Example:
+
+
+
+  &lt;Query "environment"&gt;
+    Statement "select station, temperature, humidity from environment"
+    &lt;Result&gt;
+      Type "temperature"
+      # InstancePrefix "foo"
+      InstancesFrom "station"
+      ValuesFrom "temperature"
+    &lt;/Result&gt;
+    &lt;Result&gt;
+      Type "humidity"
+      InstancesFrom "station"
+      ValuesFrom "humidity"
+    &lt;/Result&gt;
+  &lt;/Query&gt;
+
+
+The following options are accepted:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="dbi">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +109,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Statement</property>
+	<property name="label">Statement</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +122,7 @@
       <object class="GtkEntry" id="Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets the statement that should be executed on the server. This is not
 interpreted by collectd, but simply passed to the database server. Therefore,
 the SQL dialect that's used depends on the server collectd is connected to.
@@ -38,7 +138,7 @@ something.)
 Please note that some databases, for example Oracle, will fail if you
 include a semicolon at the end of the statement.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -51,7 +151,7 @@ include a semicolon at the end of the statement.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MaxVersion</property>
+	<property name="label">MaxVersion</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -64,7 +164,7 @@ include a semicolon at the end of the statement.
       <object class="GtkEntry" id="MaxVersion">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Only use this query for the specified database version. You can use these
 options to provide multiple queries with the same name but with a slightly
 different syntax. The plugin will use only those queries, where the specified
@@ -90,7 +190,7 @@ In the above example, there are three ranges that don't overlap. The last one
 goes from version "5.1.0" to infinity, meaning "all later versions". Versions
 before "4.0.0" are not specified.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -103,7 +203,7 @@ before "4.0.0" are not specified.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Type</property>
+	<property name="label">Type</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -116,7 +216,7 @@ before "4.0.0" are not specified.
       <object class="GtkEntry" id="Type">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The type that's used for each line returned. See types.db(5) for more
 details on how types are defined. In short: A type is a predefined layout of
 data and the number of values and type of values has to match the type
@@ -126,7 +226,7 @@ specify "if_octets", you will need two counter columns. See the ValuesFrom
 setting below.
 There must be exactly one Type option inside each Result block.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -139,7 +239,7 @@ There must be exactly one Type option inside each Result block.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">InstancePrefix</property>
+	<property name="label">InstancePrefix</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -152,13 +252,13 @@ There must be exactly one Type option inside each Result block.
       <object class="GtkEntry" id="InstancePrefix">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Prepends prefix to the type instance. If InstancesFrom (see below) is not
 given, the string is simply copied. If InstancesFrom is given, prefix and
 all strings returned in the appropriate columns are concatenated together,
 separated by dashes ("-").
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -171,7 +271,7 @@ separated by dashes ("-").
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">InstancesFrom</property>
+	<property name="label">InstancesFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -184,7 +284,7 @@ separated by dashes ("-").
       <object class="GtkEntry" id="InstancesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specifies the columns whose values will be used to create the "type-instance"
 for each row. If you specify more than one column, the value of all columns
 will be joined together with dashes ("-") as separation characters.
@@ -195,7 +295,7 @@ sure that only one row is returned in this case.
 If neither InstancePrefix nor InstancesFrom is given, the type-instance
 will be empty.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -208,7 +308,7 @@ will be empty.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ValuesFrom</property>
+	<property name="label">ValuesFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -221,7 +321,7 @@ will be empty.
       <object class="GtkEntry" id="ValuesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Names the columns whose content is used as the actual data for the data sets
 that are dispatched to the daemon. How many such columns you need is determined
 by the Type setting above. If you specify too many or not enough columns,
@@ -233,7 +333,7 @@ it should be able to handle integer an floating point types, as well as strings
 (if they include a number at the beginning).
 There must be at least one ValuesFrom option inside each Result block.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -246,7 +346,7 @@ There must be at least one ValuesFrom option inside each Result block.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MetadataFrom</property>
+	<property name="label">MetadataFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -259,7 +359,7 @@ There must be at least one ValuesFrom option inside each Result block.
       <object class="GtkEntry" id="MetadataFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Names the columns whose content is used as metadata for the data sets
 that are dispatched to the daemon.
 The actual data type in the columns is not that important. The plugin will
@@ -267,7 +367,7 @@ automatically cast the values to the right type if it know how to do that. So
 it should be able to handle integer an floating point types, as well as strings
 (if they include a number at the beginning).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

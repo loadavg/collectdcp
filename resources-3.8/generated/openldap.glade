@@ -2,6 +2,44 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="openldap">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin openldap
+
+
+To use the openldap plugin you first need to configure the OpenLDAP
+server correctly. The backend database monitor needs to be loaded and
+working. See slapd-monitor(5) for the details.
+
+
+The configuration of the openldap plugin consists of one or more Instance
+blocks. Each block requires one string argument as the instance name. For
+example:
+
+
+
+ &lt;Plugin "openldap"&gt;
+   &lt;Instance "foo"&gt;
+     URL "ldap://localhost/"
+   &lt;/Instance&gt;
+   &lt;Instance "bar"&gt;
+     URL "ldaps://localhost/"
+   &lt;/Instance&gt;
+ &lt;/Plugin&gt;
+
+
+The instance name will be used as the plugin instance. To emulate the old
+(version 4) behavior, you can use an empty string (""). In order for the
+plugin to work correctly, each instance name must be unique. This is not
+enforced by the plugin and it is your responsibility to ensure it is.
+
+
+The following options are accepted within each Instance block:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="openldap">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +47,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">URL</property>
+	<property name="label">URL</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +60,11 @@
       <object class="GtkEntry" id="URL">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets the URL to use to connect to the OpenLDAP server. This option is
 mandatory.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +77,7 @@ mandatory.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">StartTLS</property>
+	<property name="label">StartTLS</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,11 +90,11 @@ mandatory.
       <object class="GtkEntry" id="StartTLS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Defines whether TLS must be used when connecting to the OpenLDAP server.
 Disabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -69,7 +107,7 @@ Disabled by default.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">VerifyHost</property>
+	<property name="label">VerifyHost</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -82,13 +120,13 @@ Disabled by default.
       <object class="GtkEntry" id="VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Enables or disables peer host name verification. If enabled, the plugin checks
 if the Common Name or a Subject Alternate Name field of the SSL
 certificate matches the host name provided by the URL option. If this
 identity check fails, the connection is aborted. Enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -101,7 +139,7 @@ identity check fails, the connection is aborted. Enabled by default.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CACert</property>
+	<property name="label">CACert</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -114,13 +152,13 @@ identity check fails, the connection is aborted. Enabled by default.
       <object class="GtkEntry" id="CACert">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 File that holds one or more SSL certificates. If you want to use TLS/SSL you
 may possibly need this option. What CA certificates are checked by default
 depends on the distribution you use and can be changed with the usual ldap
 client configuration mechanisms. See ldap.conf(5) for the details.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -133,7 +171,7 @@ client configuration mechanisms. See ldap.conf(5) for the details.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Timeout</property>
+	<property name="label">Timeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -146,11 +184,11 @@ client configuration mechanisms. See ldap.conf(5) for the details.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets the timeout value for ldap operations. Defaults to -1 which results in
 an infinite timeout.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -163,7 +201,7 @@ an infinite timeout.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Version</property>
+	<property name="label">Version</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -176,11 +214,11 @@ an infinite timeout.
       <object class="GtkEntry" id="Version">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 An integer which sets the LDAP protocol version number to use when connecting
 to the OpenLDAP server. Defaults to 3 for using LDAPv3.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -2,6 +2,37 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="redis">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin redis
+
+
+The Redis plugin connects to one or more Redis servers and gathers
+information about each server's state. For each server there is a Node block
+which configures the connection parameters for this node.
+
+
+
+  &lt;Plugin redis&gt;
+    &lt;Node "example"&gt;
+        Host "localhost"
+        Port "6379"
+        Timeout 2000
+        &lt;Query "LLEN myqueue"&gt;
+          Type "queue_length"
+          Instance "myqueue"
+        &lt;Query&gt;
+    &lt;/Node&gt;
+  &lt;/Plugin&gt;
+
+
+The information shown in the synopsis above is the default configuration
+which is used by the plugin if no configuration is present.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="redis">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +40,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Node</property>
+	<property name="label">Node</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,13 +53,13 @@
       <object class="GtkEntry" id="Node">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The Node block identifies a new Redis node, that is a new Redis instance
 running in an specified host and port. The name for node is a canonical
 identifier which is used as plugin instance. It is limited to
 64 characters in length.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -41,7 +72,7 @@ identifier which is used as plugin instance. It is limited to
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Host</property>
+	<property name="label">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -54,11 +85,11 @@ identifier which is used as plugin instance. It is limited to
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The Host option is the hostname or IP-address where the Redis instance is
 running on.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -71,7 +102,7 @@ running on.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Port</property>
+	<property name="label">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -84,12 +115,12 @@ running on.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The Port option is the TCP port on which the Redis instance accepts
 connections. Either a service name of a port number may be given. Please note
 that numerical port numbers must be given as a string, too.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -102,7 +133,7 @@ that numerical port numbers must be given as a string, too.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Password</property>
+	<property name="label">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -115,10 +146,10 @@ that numerical port numbers must be given as a string, too.
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Use Password to authenticate when connecting to Redis.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -131,7 +162,7 @@ Use Password to authenticate when connecting to Redis.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Timeout</property>
+	<property name="label">Timeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -144,13 +175,13 @@ Use Password to authenticate when connecting to Redis.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The Timeout option set the socket timeout for node response. Since the Redis
 read function is blocking, you should keep this value as low as possible. Keep
 in mind that the sum of all Timeout values for all Nodes should be lower
 than Interval defined globally.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -163,7 +194,7 @@ than Interval defined globally.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Query</property>
+	<property name="label">Query</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -176,11 +207,11 @@ than Interval defined globally.
       <object class="GtkEntry" id="Query">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The Query block identifies a query to execute against the redis server.
 There may be an arbitrary number of queries to execute.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -193,7 +224,7 @@ There may be an arbitrary number of queries to execute.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Type</property>
+	<property name="label">Type</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -206,11 +237,11 @@ There may be an arbitrary number of queries to execute.
       <object class="GtkEntry" id="Type">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Within a query definition, a valid collectd type to use as when submitting
 the result of the query. When not supplied, will default to gauge.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -223,7 +254,7 @@ the result of the query. When not supplied, will default to gauge.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Instance</property>
+	<property name="label">Instance</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -236,12 +267,12 @@ the result of the query. When not supplied, will default to gauge.
       <object class="GtkEntry" id="Instance">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Within a query definition, an optional type instance to use when submitting
 the result of the query. When not supplied will default to the escaped
 command, up to 64 chars.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

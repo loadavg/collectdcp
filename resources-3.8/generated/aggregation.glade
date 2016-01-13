@@ -2,6 +2,81 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="aggregation">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin aggregation
+
+
+The Aggregation plugin makes it possible to aggregate several values into
+one using aggregation functions such as sum, average, min and max.
+This can be put to a wide variety of uses, e.g. average and total CPU
+statistics for your entire fleet.
+
+
+The grouping is powerful but, as with many powerful tools, may be a bit
+difficult to wrap your head around. The grouping will therefore be
+demonstrated using an example: The average and sum of the CPU usage across
+all CPUs of each host is to be calculated.
+
+
+To select all the affected values for our example, set Plugin cpu and
+Type cpu. The other values are left unspecified, meaning "all values". The
+Host, Plugin, PluginInstance, Type and TypeInstance options
+work as if they were specified in the WHERE clause of an SELECT SQL
+statement.
+
+
+
+  Plugin "cpu"
+  Type "cpu"
+
+
+Although the Host, PluginInstance (CPU number, i.e. 0, 1, 2, ...)  and
+TypeInstance (idle, user, system, ...) fields are left unspecified in the
+example, the intention is to have a new value for each host / type instance
+pair. This is achieved by "grouping" the values using the GroupBy option.
+It can be specified multiple times to group by more than one field.
+
+
+
+  GroupBy "Host"
+  GroupBy "TypeInstance"
+
+
+We do neither specify nor group by plugin instance (the CPU number), so all
+metrics that differ in the CPU number only will be aggregated. Each
+aggregation needs at least one such field, otherwise no aggregation would
+take place.
+
+
+The full example configuration looks like this:
+
+
+
+ &lt;Plugin "aggregation"&gt;
+   &lt;Aggregation&gt;
+     Plugin "cpu"
+     Type "cpu"
+
+
+
+     GroupBy "Host"
+     GroupBy "TypeInstance"
+
+
+
+     CalculateSum true
+     CalculateAverage true
+   &lt;/Aggregation&gt;
+ &lt;/Plugin&gt;
+
+
+There are a couple of limitations you should be aware of:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="aggregation">
     <property name="visible">True</property>
     <property name="can_focus">False</property>

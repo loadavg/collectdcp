@@ -2,6 +2,32 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="ethstat">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin ethstat
+
+
+The ethstat plugin collects information about network interface cards (NICs)
+by talking directly with the underlying kernel driver using ioctl(2).
+
+
+Synopsis:
+
+
+
+ &lt;Plugin "ethstat"&gt;
+   Interface "eth0"
+   Map "rx_csum_offload_errors" "if_rx_errors" "checksum_offload"
+   Map "multicast" "if_multicast"
+ &lt;/Plugin&gt;
+
+
+Options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="ethstat">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +35,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Interface</property>
+	<property name="label">Interface</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,10 +48,10 @@
       <object class="GtkEntry" id="Interface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Collect statistical information about interface Name.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -38,7 +64,7 @@ Collect statistical information about interface Name.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Map</property>
+	<property name="label">Map</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -51,13 +77,13 @@ Collect statistical information about interface Name.
       <object class="GtkEntry" id="Map">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 By default, the plugin will submit values as type derive and type
 instance set to Name, the name of the metric as reported by the driver. If
 an appropriate Map option exists, the given Type and, optionally,
 TypeInstance will be used.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -70,7 +96,7 @@ TypeInstance will be used.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MappedOnly</property>
+	<property name="label">MappedOnly</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -83,11 +109,11 @@ TypeInstance will be used.
       <object class="GtkEntry" id="MappedOnly">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When set to true, only metrics that can be mapped to to a type will be
 collected, all other metrics will be ignored. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

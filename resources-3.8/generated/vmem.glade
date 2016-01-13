@@ -2,6 +2,21 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="vmem">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin vmem
+
+
+The vmem plugin collects information about the usage of virtual memory.
+Since the statistics provided by the Linux kernel are very detailed, they are
+collected very detailed. However, to get all the details, you have to switch
+them on manually. Most people just want an overview over, such as the number of
+pages read from swap space.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="vmem">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +24,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Verbose</property>
+	<property name="label">Verbose</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,12 +37,12 @@
       <object class="GtkEntry" id="Verbose">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Enables verbose collection of information. This will start collecting page
 "actions", e. g. page allocations, (de)activations, steals and so on.
 Part of these statistics are collected on a "per zone" basis.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -2,6 +2,21 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="fhcount">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin fhcount
+
+
+The fhcount plugin provides statistics about used, unused and total number of
+file handles.
+
+
+The fhcount plugin provides the following configuration options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="fhcount">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +24,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ValuesAbsolute</property>
+	<property name="label">ValuesAbsolute</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +37,11 @@
       <object class="GtkEntry" id="ValuesAbsolute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Enables or disables reporting of file handles usage in absolute numbers,
 e.g. file handles used. Defaults to true.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +54,7 @@ e.g. file handles used. Defaults to true.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ValuesPercentage</property>
+	<property name="label">ValuesPercentage</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,11 +67,11 @@ e.g. file handles used. Defaults to true.
       <object class="GtkEntry" id="ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Enables or disables reporting of file handles usage in percentages, e.g.
 percent of file handles used. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

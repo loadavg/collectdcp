@@ -2,6 +2,49 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="pinba">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin pinba
+
+
+The Pinba plugin receives profiling information from Pinba, an extension
+for the PHP interpreter. At the end of executing a script, i.e. after a
+PHP-based webpage has been delivered, the extension will send a UDP packet
+containing timing information, peak memory usage and so on. The plugin will
+wait for such packets, parse them and account the provided information, which
+is then dispatched to the daemon once per interval.
+
+
+Synopsis:
+
+
+
+ &lt;Plugin pinba&gt;
+   Address "::0"
+   Port "30002"
+   # Overall statistics for the website.
+   &lt;View "www-total"&gt;
+     Server "www.example.com"
+   &lt;/View&gt;
+   # Statistics for www-a only
+   &lt;View "www-a"&gt;
+     Host "www-a.example.com"
+     Server "www.example.com"
+   &lt;/View&gt;
+   # Statistics for www-b only
+   &lt;View "www-b"&gt;
+     Host "www-b.example.com"
+     Server "www.example.com"
+   &lt;/View&gt;
+ &lt;/Plugin&gt;
+
+
+The plugin provides the following configuration options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="pinba">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +52,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Address</property>
+	<property name="label">Address</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +65,11 @@
       <object class="GtkEntry" id="Address">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Configures the address used to open a listening socket. By default, plugin will
 bind to the any address ::0.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +82,7 @@ bind to the any address ::0.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Port</property>
+	<property name="label">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,12 +95,12 @@ bind to the any address ::0.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Configures the port (service) to bind to. By default the default Pinba port
 "30002" will be used. The option accepts service names in addition to port
 numbers and thus requires a string argument.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -70,7 +113,7 @@ numbers and thus requires a string argument.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">View</property>
+	<property name="label">View</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -83,7 +126,7 @@ numbers and thus requires a string argument.
       <object class="GtkEntry" id="View">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The packets sent by the Pinba extension include the hostname of the server, the
 server name (the name of the virtual host) and the script that was executed.
 Using View blocks it is possible to separate the data into multiple groups
@@ -103,7 +146,7 @@ $_SERVER["SCRIPT_NAME"] variable when within PHP. If not configured, all
 script names will be accepted.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

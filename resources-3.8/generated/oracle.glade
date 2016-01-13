@@ -2,6 +2,65 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="oracle">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin oracle
+
+
+The "oracle" plugin uses the Oracle® Call Interface (OCI) to connect to an
+Oracle® Database and lets you execute SQL statements there. It is very similar
+to the "dbi" plugin, because it was written around the same time. See the "dbi"
+plugin's documentation above for details.
+
+
+
+  &lt;Plugin oracle&gt;
+    &lt;Query "out_of_stock"&gt;
+      Statement "SELECT category, COUNT(*) AS value FROM products WHERE in_stock = 0 GROUP BY category"
+      &lt;Result&gt;
+        Type "gauge"
+        # InstancePrefix "foo"
+        InstancesFrom "category"
+        ValuesFrom "value"
+      &lt;/Result&gt;
+    &lt;/Query&gt;
+    &lt;Database "product_information"&gt;
+      ConnectID "db01"
+      Username "oracle"
+      Password "secret"
+      Query "out_of_stock"
+    &lt;/Database&gt;
+  &lt;/Plugin&gt;
+
+
+
+
+
+
+Query blocks
+
+
+The Query blocks are handled identically to the Query blocks of the "dbi"
+plugin. Please see its documentation above for details on how to specify
+queries.
+
+
+
+
+
+
+Database blocks
+
+
+Database blocks define a connection to a database and which queries should be
+sent to that database. Each database needs a "name" as string argument in the
+starting tag of the block. This name will be used as "PluginInstance" in the
+values submitted to the daemon. Other than that, that name is not used.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="oracle">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +68,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ConnectID</property>
+	<property name="label">ConnectID</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +81,11 @@
       <object class="GtkEntry" id="ConnectID">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Defines the "database alias" or "service name" to connect to. Usually, these
 names are defined in the file named $ORACLE_HOME/network/admin/tnsnames.ora.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +98,7 @@ names are defined in the file named $ORACLE_HOME/network/admin/tnsnames.ora.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Host</property>
+	<property name="label">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,11 +111,11 @@ names are defined in the file named $ORACLE_HOME/network/admin/tnsnames.ora.
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Hostname to use when dispatching values for this database. Defaults to using
 the global hostname of the collectd instance.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -69,7 +128,7 @@ the global hostname of the collectd instance.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Username</property>
+	<property name="label">Username</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -82,10 +141,10 @@ the global hostname of the collectd instance.
       <object class="GtkEntry" id="Username">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Username used for authentication.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -98,7 +157,7 @@ Username used for authentication.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Password</property>
+	<property name="label">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -111,10 +170,10 @@ Username used for authentication.
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Password used for authentication.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -127,7 +186,7 @@ Password used for authentication.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Query</property>
+	<property name="label">Query</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -140,13 +199,13 @@ Password used for authentication.
       <object class="GtkEntry" id="Query">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Associates the query named QueryName with this database connection. The
 query needs to be defined before this statement, i. e. all query
 blocks you want to refer to must be placed above the database block you want to
 refer to them from.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -2,6 +2,14 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="thermal">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin thermal
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="thermal">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +17,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ForceUseProcfs</property>
+	<property name="label">ForceUseProcfs</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,13 +30,13 @@
       <object class="GtkEntry" id="ForceUseProcfs">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 By default, the Thermal plugin tries to read the statistics from the Linux
 sysfs interface. If that is not available, the plugin falls back to the
 procfs interface. By setting this option to true, you can force the
 plugin to use the latter. This option defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -41,7 +49,7 @@ plugin to use the latter. This option defaults to false.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Device</property>
+	<property name="label">Device</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -54,12 +62,12 @@ plugin to use the latter. This option defaults to false.
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Selects the name of the thermal device that you want to collect or ignore,
 depending on the value of the IgnoreSelected option. This option may be
 used multiple times to specify a list of devices.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -72,7 +80,7 @@ used multiple times to specify a list of devices.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">IgnoreSelected</property>
+	<property name="label">IgnoreSelected</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -85,13 +93,13 @@ used multiple times to specify a list of devices.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Invert the selection: If set to true, all devices except the ones that
 match the device names specified by the Device option are collected. By
 default only selected devices are collected if a selection is made. If no
 selection is configured at all, all devices are selected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

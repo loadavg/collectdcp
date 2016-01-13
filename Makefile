@@ -17,6 +17,7 @@ $(TARGET_FOLDER)/%.o: %.cpp
 
 $(TARGET_FOLDER)/collectdcp:\
 	$(TARGET_FOLDER)/add_plugin_block.o\
+	$(TARGET_FOLDER)/app_window.o\
 	$(TARGET_FOLDER)/attr_helper.o\
 	$(TARGET_FOLDER)/dlg_commands.o\
 	$(TARGET_FOLDER)/editor_window.o\

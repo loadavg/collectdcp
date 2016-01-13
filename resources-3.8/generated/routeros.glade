@@ -2,6 +2,48 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="routeros">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin routeros
+
+
+The routeros plugin connects to a device running RouterOS, the
+Linux-based operating system for routers by MikroTik. The plugin uses
+librouteros to connect and reads information about the interfaces and
+wireless connections of the device. The configuration supports querying
+multiple routers:
+
+
+
+  &lt;Plugin "routeros"&gt;
+    &lt;Router&gt;
+      Host "router0.example.com"
+      User "collectd"
+      Password "secr3t"
+      CollectInterface true
+      CollectCPULoad true
+      CollectMemory true
+    &lt;/Router&gt;
+    &lt;Router&gt;
+      Host "router1.example.com"
+      User "collectd"
+      Password "5ecret"
+      CollectInterface true
+      CollectRegistrationTable true
+      CollectDF true
+      CollectDisk true
+    &lt;/Router&gt;
+  &lt;/Plugin&gt;
+
+
+As you can see above, the configuration of the routeros plugin consists of
+one or more &lt;Router&gt; blocks. Within each block, the following
+options are understood:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="routeros">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +51,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Host</property>
+	<property name="label">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,10 +64,10 @@
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Hostname or IP-address of the router to connect to.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -38,7 +80,7 @@ Hostname or IP-address of the router to connect to.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Port</property>
+	<property name="label">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -51,12 +93,12 @@ Hostname or IP-address of the router to connect to.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Port name or port number used when connecting. If left unspecified, the default
 will be chosen by librouteros, currently "8728". This option expects a
 string argument, even when a numeric port number is given.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -69,7 +111,7 @@ string argument, even when a numeric port number is given.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">User</property>
+	<property name="label">User</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -82,10 +124,10 @@ string argument, even when a numeric port number is given.
       <object class="GtkEntry" id="User">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Use the user name User to authenticate. Defaults to "admin".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -98,7 +140,7 @@ Use the user name User to authenticate. Defaults to "admin".
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Password</property>
+	<property name="label">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -111,10 +153,10 @@ Use the user name User to authenticate. Defaults to "admin".
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Set the password used to authenticate.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -127,7 +169,7 @@ Set the password used to authenticate.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectInterface</property>
+	<property name="label">CollectInterface</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -140,11 +182,11 @@ Set the password used to authenticate.
       <object class="GtkEntry" id="CollectInterface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When set to true, interface statistics will be collected for all interfaces
 present on the device. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -157,7 +199,7 @@ present on the device. Defaults to false.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectRegistrationTable</property>
+	<property name="label">CollectRegistrationTable</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -170,11 +212,11 @@ present on the device. Defaults to false.
       <object class="GtkEntry" id="CollectRegistrationTable">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When set to true, information about wireless LAN connections will be
 collected. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -187,7 +229,7 @@ collected. Defaults to false.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectCPULoad</property>
+	<property name="label">CollectCPULoad</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -200,12 +242,12 @@ collected. Defaults to false.
       <object class="GtkEntry" id="CollectCPULoad">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When set to true, information about the CPU usage will be collected. The
 number is a dimensionless value where zero indicates no CPU usage at all.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -218,7 +260,7 @@ Defaults to false.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectMemory</property>
+	<property name="label">CollectMemory</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -231,13 +273,13 @@ Defaults to false.
       <object class="GtkEntry" id="CollectMemory">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When enabled, the amount of used and free memory will be collected. How used
 memory is calculated is unknown, for example whether or not caches are counted
 as used space.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -250,7 +292,7 @@ Defaults to false.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectDF</property>
+	<property name="label">CollectDF</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -263,11 +305,11 @@ Defaults to false.
       <object class="GtkEntry" id="CollectDF">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When enabled, the amount of used and free disk space will be collected.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -280,7 +322,7 @@ Defaults to false.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">CollectDisk</property>
+	<property name="label">CollectDisk</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -293,11 +335,11 @@ Defaults to false.
       <object class="GtkEntry" id="CollectDisk">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When enabled, the number of sectors written and bad blocks will be collected.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -2,6 +2,70 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="mysql">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin mysql
+
+
+The mysql plugin requires mysqlclient to be installed. It connects to
+one or more databases when started and keeps the connection up as long as
+possible. When the connection is interrupted for whatever reason it will try
+to re-connect. The plugin will complain loudly in case anything goes wrong.
+
+
+This plugin issues the MySQL SHOW STATUS / SHOW GLOBAL STATUS command
+and collects information about MySQL network traffic, executed statements,
+requests, the query cache and threads by evaluating the
+Bytes_{received,sent}, Com_*, Handler_*, Qcache_* and Threads_*
+return values. Please refer to the MySQL reference manual, 5.1.6. Server
+Status Variables for an explanation of these values.
+
+
+Optionally, master and slave statistics may be collected in a MySQL
+replication setup. In that case, information about the synchronization state
+of the nodes are collected by evaluating the Position return value of the
+SHOW MASTER STATUS command and the Seconds_Behind_Master,
+Read_Master_Log_Pos and Exec_Master_Log_Pos return values of the
+SHOW SLAVE STATUS command. See the MySQL reference manual,
+12.5.5.21 SHOW MASTER STATUS Syntax and
+12.5.5.31 SHOW SLAVE STATUS Syntax for details.
+
+
+Synopsis:
+
+
+
+  &lt;Plugin mysql&gt;
+    &lt;Database foo&gt;
+      Host "hostname"
+      User "username"
+      Password "password"
+      Port "3306"
+      MasterStats true
+      ConnectTimeout 10
+    &lt;/Database&gt;
+
+
+
+    &lt;Database bar&gt;
+      Alias "squeeze"
+      Host "localhost"
+      Socket "/var/run/mysql/mysqld.sock"
+      SlaveStats true
+      SlaveNotifications true
+    &lt;/Database&gt;
+  &lt;/Plugin&gt;
+
+
+A Database block defines one connection to a MySQL database. It accepts a
+single argument which specifies the name of the database. None of the other
+options are required. MySQL will use default values as documented in the
+section "mysql_real_connect()" in the MySQL reference manual.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="mysql">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +73,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Alias</property>
+	<property name="label">Alias</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +86,11 @@
       <object class="GtkEntry" id="Alias">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Alias to use as sender instead of hostname when reporting. This may be useful
 when having cryptic hostnames.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +103,7 @@ when having cryptic hostnames.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Host</property>
+	<property name="label">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,10 +116,10 @@ when having cryptic hostnames.
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Hostname of the database server. Defaults to localhost.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -68,7 +132,7 @@ Hostname of the database server. Defaults to localhost.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">User</property>
+	<property name="label">User</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -81,14 +145,14 @@ Hostname of the database server. Defaults to localhost.
       <object class="GtkEntry" id="User">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Username to use when connecting to the database. The user does not have to be
 granted any privileges (which is synonym to granting the USAGE privilege),
 unless you want to collectd replication statistics (see MasterStats and
 SlaveStats below). In this case, the user needs the REPLICATION CLIENT
 (or SUPER) privileges. Else, any existing MySQL user will do.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -101,7 +165,7 @@ SlaveStats below). In this case, the user needs the REPLICATION CLIENT
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Password</property>
+	<property name="label">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -114,10 +178,10 @@ SlaveStats below). In this case, the user needs the REPLICATION CLIENT
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Password needed to log into the database.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -130,7 +194,7 @@ Password needed to log into the database.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Database</property>
+	<property name="label">Database</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -143,11 +207,11 @@ Password needed to log into the database.
       <object class="GtkEntry" id="Database">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Select this database. Defaults to no database which is a perfectly reasonable
 option for what this plugin does.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -160,7 +224,7 @@ option for what this plugin does.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Port</property>
+	<property name="label">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -173,7 +237,7 @@ option for what this plugin does.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 TCP-port to connect to. The port must be specified in its numeric form, but it
 must be passed as a string nonetheless. For example:
 
@@ -181,7 +245,7 @@ must be passed as a string nonetheless. For example:
 If Host is set to localhost (the default), this setting has no effect.
 See the documentation for the mysql_real_connect function for details.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -194,7 +258,7 @@ See the documentation for the mysql_real_connect function for details.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Socket</property>
+	<property name="label">Socket</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -207,13 +271,13 @@ See the documentation for the mysql_real_connect function for details.
       <object class="GtkEntry" id="Socket">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specifies the path to the UNIX domain socket of the MySQL server. This option
 only has any effect, if Host is set to localhost (the default).
 Otherwise, use the Port option above. See the documentation for the
 mysql_real_connect function for details.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -226,7 +290,7 @@ mysql_real_connect function for details.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">InnodbStats</property>
+	<property name="label">InnodbStats</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -239,11 +303,11 @@ mysql_real_connect function for details.
       <object class="GtkEntry" id="InnodbStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If enabled, metrics about the InnoDB storage engine are collected.
 Disabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -256,7 +320,7 @@ Disabled by default.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">SlaveStats</property>
+	<property name="label">SlaveStats</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -269,12 +333,12 @@ Disabled by default.
       <object class="GtkEntry" id="SlaveStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Enable the collection of master / slave statistics in a replication setup. In
 order to be able to get access to these statistics, the user needs special
 privileges. See the User documentation above. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -287,7 +351,7 @@ privileges. See the User documentation above. Defaults to false.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">SlaveNotifications</property>
+	<property name="label">SlaveNotifications</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -300,11 +364,11 @@ privileges. See the User documentation above. Defaults to false.
       <object class="GtkEntry" id="SlaveNotifications">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 If enabled, the plugin sends a notification if the replication slave I/O and /
 or SQL threads are not running. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -317,7 +381,7 @@ or SQL threads are not running. Defaults to false.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ConnectTimeout</property>
+	<property name="label">ConnectTimeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -330,10 +394,10 @@ or SQL threads are not running. Defaults to false.
       <object class="GtkEntry" id="ConnectTimeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets the connect timeout for the MySQL client.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

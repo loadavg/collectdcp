@@ -2,6 +2,85 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="curl_json">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin curl_json
+
+
+The curl_json plugin collects values from JSON data to be parsed by
+libyajl (http://www.lloydforge.org/projects/yajl/) retrieved via
+either libcurl (http://curl.haxx.se/) or read directly from a
+unix socket. The former can be used, for example, to collect values
+from CouchDB documents (which are stored JSON notation), and the
+latter to collect values from a uWSGI stats socket.
+
+
+The following example will collect several values from the built-in
+_stats runtime statistics module of CouchDB
+(http://wiki.apache.org/couchdb/Runtime_Statistics).
+
+
+
+  &lt;Plugin curl_json&gt;
+    &lt;URL "http://localhost:5984/_stats"&gt;
+      Instance "httpd"
+      &lt;Key "httpd/requests/count"&gt;
+        Type "http_requests"
+      &lt;/Key&gt;
+
+
+
+      &lt;Key "httpd_request_methods/*/count"&gt;
+        Type "http_request_methods"
+      &lt;/Key&gt;
+
+
+
+      &lt;Key "httpd_status_codes/*/count"&gt;
+        Type "http_response_codes"
+      &lt;/Key&gt;
+    &lt;/URL&gt;
+  &lt;/Plugin&gt;
+
+
+This example will collect data directly from a uWSGI "Stats Server" socket.
+
+
+
+  &lt;Plugin curl_json&gt;
+    &lt;Sock "/var/run/uwsgi.stats.sock"&gt;
+      Instance "uwsgi"
+      &lt;Key "workers/*/requests"&gt;
+        Type "http_requests"
+      &lt;/Key&gt;
+
+
+
+      &lt;Key "workers/*/apps/*/requests"&gt;
+        Type "http_requests"
+      &lt;/Key&gt;
+    &lt;/Sock&gt;
+  &lt;/Plugin&gt;
+
+
+In the Plugin block, there may be one or more URL blocks, each
+defining a URL to be fetched via HTTP (using libcurl) or Sock
+blocks defining a unix socket to read JSON from directly.  Each of
+these blocks may have one or more Key blocks.
+
+
+The Key string argument must be in a path format. Each component is
+used to match the key from a JSON map or the index of an JSON
+array. If a path component of a Key is a * wildcard, the
+values for all map keys or array indices will be collectd.
+
+
+The following options are valid within URL blocks:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="curl_json">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +88,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Instance</property>
+	<property name="label">Instance</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,10 +101,10 @@
       <object class="GtkEntry" id="Instance">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets the plugin instance to Instance.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -38,7 +117,7 @@ Sets the plugin instance to Instance.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Interval</property>
+	<property name="label">Interval</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -51,11 +130,11 @@ Sets the plugin instance to Instance.
       <object class="GtkEntry" id="Interval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Sets the interval (in seconds) in which the values will be collected from this
 URL. By default the global Interval setting will be used.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -68,7 +147,7 @@ URL. By default the global Interval setting will be used.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Timeout</property>
+	<property name="label">Timeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -81,11 +160,11 @@ URL. By default the global Interval setting will be used.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 These options behave exactly equivalent to the appropriate options of the
 cURL plugin. Please see there for a detailed description.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

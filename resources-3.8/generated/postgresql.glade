@@ -2,6 +2,125 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="postgresql">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin postgresql
+
+
+The postgresql plugin queries statistics from PostgreSQL databases. It
+keeps a persistent connection to all configured databases and tries to
+reconnect if the connection has been interrupted. A database is configured by
+specifying a Database block as described below. The default statistics are
+collected from PostgreSQL's statistics collector which thus has to be
+enabled for this plugin to work correctly. This should usually be the case by
+default. See the section "The Statistics Collector" of the PostgreSQL
+Documentation for details.
+
+
+By specifying custom database queries using a Query block as described
+below, you may collect any data that is available from some PostgreSQL
+database. This way, you are able to access statistics of external daemons
+which are available in a PostgreSQL database or use future or special
+statistics provided by PostgreSQL without the need to upgrade your collectd
+installation.
+
+
+Starting with version 5.2, the postgresql plugin supports writing data to
+PostgreSQL databases as well. This has been implemented in a generic way. You
+need to specify an SQL statement which will then be executed by collectd in
+order to write the data (see below for details). The benefit of that approach
+is that there is no fixed database layout. Rather, the layout may be optimized
+for the current setup.
+
+
+The PostgreSQL Documentation manual can be found at
+http://www.postgresql.org/docs/manuals/.
+
+
+
+  &lt;Plugin postgresql&gt;
+    &lt;Query magic&gt;
+      Statement "SELECT magic FROM wizard WHERE host = $1;"
+      Param hostname
+      &lt;Result&gt;
+        Type gauge
+        InstancePrefix "magic"
+        ValuesFrom magic
+      &lt;/Result&gt;
+    &lt;/Query&gt;
+
+
+
+    &lt;Query rt36_tickets&gt;
+      Statement "SELECT COUNT(type) AS count, type \
+                        FROM (SELECT CASE \
+                                     WHEN resolved = 'epoch' THEN 'open' \
+                                     ELSE 'resolved' END AS type \
+                                     FROM tickets) type \
+                        GROUP BY type;"
+      &lt;Result&gt;
+        Type counter
+        InstancePrefix "rt36_tickets"
+        InstancesFrom "type"
+        ValuesFrom "count"
+      &lt;/Result&gt;
+    &lt;/Query&gt;
+
+
+
+    &lt;Writer sqlstore&gt;
+      Statement "SELECT collectd_insert($1, $2, $3, $4, $5, $6, $7, $8, $9);"
+      StoreRates true
+    &lt;/Writer&gt;
+
+
+
+    &lt;Database foo&gt;
+      Host "hostname"
+      Port "5432"
+      User "username"
+      Password "secret"
+      SSLMode "prefer"
+      KRBSrvName "kerberos_service_name"
+      Query magic
+    &lt;/Database&gt;
+
+
+
+    &lt;Database bar&gt;
+      Interval 300
+      Service "service_name"
+      Query backend # predefined
+      Query rt36_tickets
+    &lt;/Database&gt;
+
+
+
+    &lt;Database qux&gt;
+      # ...
+      Writer sqlstore
+      CommitInterval 10
+    &lt;/Database&gt;
+  &lt;/Plugin&gt;
+
+
+The Query block defines one database query which may later be used by a
+database definition. It accepts a single mandatory argument which specifies
+the name of the query. The names of all queries have to be unique (see the
+MinVersion and MaxVersion options below for an exception to this
+rule). The following configuration options are available to define the query:
+
+
+In each Query block, there is one or more Result blocks. Result
+blocks define how to handle the values returned from the query. They define
+which column holds which value and how to dispatch that value to the daemon.
+Multiple Result blocks may be used to extract multiple values from a single
+query.
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="postgresql">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +128,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Statement</property>
+	<property name="label">Statement</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +141,7 @@
       <object class="GtkEntry" id="Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specify the sql query statement which the plugin should execute. The string
 may contain the tokens $1, $2, etc. which are used to reference the
 first, second, etc. parameter. The value of the parameters is specified by the
@@ -33,7 +152,7 @@ allowed. Note, however, that only a single command may be used. Semicolons are
 allowed as long as a single non-empty command has been specified only.
 The returned lines will be handled separately one after another.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -46,7 +165,7 @@ The returned lines will be handled separately one after another.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Param</property>
+	<property name="label">Param</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -59,7 +178,7 @@ The returned lines will be handled separately one after another.
       <object class="GtkEntry" id="Param">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specify the parameters which should be passed to the SQL query. The parameters
 are referred to in the SQL query as $1, $2, etc. in the same order as
 they appear in the configuration file. The value of the parameter is
@@ -81,7 +200,7 @@ specific or global Interval options).
 Please note that parameters are only supported by PostgreSQL's protocol
 version 3 and above which was introduced in version 7.4 of PostgreSQL.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -94,7 +213,7 @@ version 3 and above which was introduced in version 7.4 of PostgreSQL.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Type</property>
+	<property name="label">Type</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -107,14 +226,14 @@ version 3 and above which was introduced in version 7.4 of PostgreSQL.
       <object class="GtkEntry" id="Type">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The type name to be used when dispatching the values. The type describes
 how to handle the data and where to store it. See types.db(5) for more
 details on types and their configuration. The number and type of values (as
 selected by the ValuesFrom option) has to match the type of the given name.
 This option is required inside a Result block.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -127,7 +246,7 @@ This option is required inside a Result block.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">InstancesFrom</property>
+	<property name="label">InstancesFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -140,7 +259,7 @@ This option is required inside a Result block.
       <object class="GtkEntry" id="InstancesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specify how to create the "TypeInstance" for each data set (i. e. line).
 InstancePrefix defines a static prefix that will be prepended to all type
 instances. InstancesFrom defines the column names whose values will be used
@@ -151,7 +270,7 @@ different. It is your responsibility to assure that each is unique.
 Both options are optional. If none is specified, the type instance will be
 empty.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -164,7 +283,7 @@ empty.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ValuesFrom</property>
+	<property name="label">ValuesFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -177,7 +296,7 @@ empty.
       <object class="GtkEntry" id="ValuesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Names the columns whose content is used as the actual data for the data sets
 that are dispatched to the daemon. How many such columns you need is
 determined by the Type setting as explained above. If you specify too many
@@ -192,7 +311,7 @@ This option is required inside a Result block and may be specified multiple
 times. If multiple ValuesFrom options are specified, the columns are read
 in the given order.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -205,7 +324,7 @@ in the given order.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MaxVersion</property>
+	<property name="label">MaxVersion</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -218,7 +337,7 @@ in the given order.
       <object class="GtkEntry" id="MaxVersion">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Specify the minimum or maximum version of PostgreSQL that this query should be
 used with. Some statistics might only be available with certain versions of
 PostgreSQL. This allows you to specify multiple queries with the same name but
@@ -228,7 +347,7 @@ The version has to be specified as the concatenation of the major, minor
 and patch-level versions, each represented as two-decimal-digit numbers. For
 example, version 8.2.3 will become 80203.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

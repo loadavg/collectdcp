@@ -2,6 +2,24 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="uuid">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin uuid
+
+
+This plugin, if loaded, causes the Hostname to be taken from the machine's
+UUID. The UUID is a universally unique designation for the machine, usually
+taken from the machine's BIOS. This is most useful if the machine is running in
+a virtual environment such as Xen, in which case the UUID is preserved across
+shutdowns and migration.
+
+
+The following methods are used to find the machine's UUID, in order:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="uuid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>

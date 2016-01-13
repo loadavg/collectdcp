@@ -2,6 +2,70 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="bind">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin bind
+
+
+Starting with BIND 9.5.0, the most widely used DNS server software provides
+extensive statistics about queries, responses and lots of other information.
+The bind plugin retrieves this information that's encoded in XML and provided
+via HTTP and submits the values to collectd.
+
+
+To use this plugin, you first need to tell BIND to make this information
+available. This is done with the statistics-channels configuration option:
+
+
+
+ statistics-channels {
+   inet localhost port 8053;
+ };
+
+
+The configuration follows the grouping that can be seen when looking at the
+data with an XSLT compatible viewer, such as a modern web browser. It's
+probably a good idea to make yourself familiar with the provided values, so you
+can understand what the collected statistics actually mean.
+
+
+Synopsis:
+
+
+
+ &lt;Plugin "bind"&gt;
+   URL "http://localhost:8053/";
+   ParseTime       false
+   OpCodes         true
+   QTypes          true
+
+
+
+   ServerStats     true
+   ZoneMaintStats  true
+   ResolverStats   false
+   MemoryStats     true
+
+
+
+   &lt;View "_default"&gt;
+     QTypes        true
+     ResolverStats true
+     CacheRRSets   true
+
+
+
+     Zone "127.in-addr.arpa/IN"
+   &lt;/View&gt;
+ &lt;/Plugin&gt;
+
+
+The bind plugin accepts the following configuration options:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="bind">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +73,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">URL</property>
+	<property name="label">URL</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,11 +86,11 @@
       <object class="GtkEntry" id="URL">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 URL from which to retrieve the XML data. If not specified,
 http://localhost:8053/ will be used.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -39,7 +103,7 @@ http://localhost:8053/ will be used.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ParseTime</property>
+	<property name="label">ParseTime</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,14 +116,14 @@ http://localhost:8053/ will be used.
       <object class="GtkEntry" id="ParseTime">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When set to true, the time provided by BIND will be parsed and used to
 dispatch the values. When set to false, the local time source is queried.
 This setting is set to true by default for backwards compatibility; setting
 this to false is recommended to avoid problems with timezones and
 localization.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -72,7 +136,7 @@ localization.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">OpCodes</property>
+	<property name="label">OpCodes</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -85,12 +149,12 @@ localization.
       <object class="GtkEntry" id="OpCodes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When enabled, statistics about the "OpCodes", for example the number of
 QUERY packets, are collected.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -103,7 +167,7 @@ Default: Enabled.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">QTypes</property>
+	<property name="label">QTypes</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -116,12 +180,12 @@ Default: Enabled.
       <object class="GtkEntry" id="QTypes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 When enabled, the number of incoming queries by query types (for example
 A, MX, AAAA) is collected.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -134,7 +198,7 @@ Default: Enabled.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ServerStats</property>
+	<property name="label">ServerStats</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -147,12 +211,12 @@ Default: Enabled.
       <object class="GtkEntry" id="ServerStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Collect global server statistics, such as requests received over IPv4 and IPv6,
 successful queries, and failed updates.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -165,7 +229,7 @@ Default: Enabled.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ZoneMaintStats</property>
+	<property name="label">ZoneMaintStats</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -178,12 +242,12 @@ Default: Enabled.
       <object class="GtkEntry" id="ZoneMaintStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Collect zone maintenance statistics, mostly information about notifications
 (zone updates) and zone transfers.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -196,7 +260,7 @@ Default: Enabled.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">ResolverStats</property>
+	<property name="label">ResolverStats</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -209,7 +273,7 @@ Default: Enabled.
       <object class="GtkEntry" id="ResolverStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Collect resolver statistics, i. e. statistics about outgoing requests
 (e. g. queries over IPv4, lame servers). Since the global resolver
 counters apparently were removed in BIND 9.5.1 and 9.6.0, this is disabled by
@@ -217,7 +281,7 @@ default. Use the ResolverStats option within a View "_default" block
 instead for the same functionality.
 Default: Disabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -230,7 +294,7 @@ Default: Disabled.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MemoryStats</property>
+	<property name="label">MemoryStats</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -243,11 +307,11 @@ Default: Disabled.
       <object class="GtkEntry" id="MemoryStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Collect global memory statistics.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -260,7 +324,7 @@ Default: Enabled.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Timeout</property>
+	<property name="label">Timeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -273,12 +337,12 @@ Default: Enabled.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The Timeout option sets the overall timeout for HTTP requests to URL, in
 milliseconds. By default, the configured Interval is used to set the
 timeout.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -291,7 +355,7 @@ timeout.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">View</property>
+	<property name="label">View</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -304,7 +368,7 @@ timeout.
       <object class="GtkEntry" id="View">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Collect statistics about a specific "view". BIND can behave different,
 mostly depending on the source IP-address of the request. These different
 configurations are called "views". If you don't use this feature, you most
@@ -335,7 +399,7 @@ zones.
 By default no detailed zone information is collected.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

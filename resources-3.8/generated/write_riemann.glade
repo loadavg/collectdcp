@@ -2,6 +2,40 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
+  <object class="GtkLabel" id="write_riemann">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="label">Plugin write_riemann
+
+
+The write_riemann plugin will send values to Riemann, a powerful stream
+aggregation and monitoring system. The plugin sends Protobuf encoded data to
+Riemann using UDP packets.
+
+
+Synopsis:
+
+
+
+ &lt;Plugin "write_riemann"&gt;
+   &lt;Node "example"&gt;
+     Host "localhost"
+     Port "5555"
+     Protocol UDP
+     StoreRates true
+     AlwaysAppendDS false
+     TTLFactor 2.0
+   &lt;/Node&gt;
+   Tag "foobar"
+   Attribute "foo" "bar"
+ &lt;/Plugin&gt;
+
+
+The following options are understood by the write_riemann plugin:
+
+</property>
+    <property name="use_markup">True</property>
+  </object>
   <object class="GtkGrid" id="write_riemann">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -9,7 +43,7 @@
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Node</property>
+	<property name="label">Node</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,7 +56,7 @@
       <object class="GtkEntry" id="Node">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 The plugin's configuration consists of one or more Node blocks. Each block
 is given a unique Name and specifies one connection to an instance of
 Riemann. Indise the Node block, the following per-connection options are
@@ -77,7 +111,7 @@ If EventServicePrefix not set or set to an empty string (""),
 no prefix will be used.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -90,7 +124,7 @@ no prefix will be used.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Tag</property>
+	<property name="label">Tag</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -103,11 +137,11 @@ no prefix will be used.
       <object class="GtkEntry" id="Tag">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Add the given string as an additional tag to the metric being sent to
 Riemann.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -120,7 +154,7 @@ Riemann.
       <object class="GtkLabel" id="label1">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Attribute</property>
+	<property name="label">Attribute</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -133,11 +167,11 @@ Riemann.
       <object class="GtkEntry" id="Attribute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_markup">
 Consider the two given strings to be the key and value of an additional
 attribute for each metric being sent out to Riemann.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
