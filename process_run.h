@@ -18,7 +18,7 @@
 class process_run
 {
 public:
-    process_run(std::string cmd, std::string pwd, bool add_stderr = true);
+    process_run(std::string cmd, std::string pwd = std::string(), bool add_stderr = true);
     std::string result;
 };
 
