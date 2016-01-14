@@ -24,6 +24,7 @@ $(TARGET_FOLDER)/collectdcp:\
 	$(TARGET_FOLDER)/main.o\
 	$(TARGET_FOLDER)/message_box.o\
 	$(TARGET_FOLDER)/model.o\
+        $(TARGET_FOLDER)/os_info.o\
 	$(TARGET_FOLDER)/parse_conf.o\
 	$(TARGET_FOLDER)/plugin_form.o\
 	$(TARGET_FOLDER)/process_run.o\

@@ -38,7 +38,6 @@ SOURCES += main.cpp \
     test_glade.cpp \
     settings.cpp \
     app_window.cpp \
-    rex_var_assign.cpp \
     os_info.cpp
 
 HEADERS += \
@@ -69,7 +68,6 @@ HEADERS += \
     ini_file.h \
     fileuty.h \
     app_window.h \
-    rex_var_assign.h \
     trim.h \
     var_assign.h \
     os_info.h
