@@ -11,6 +11,8 @@
 #include "test_parse.h"
 #include "test_glade.h"
 #include "editor_window.h"
+#include "collectdcp.h"
+#include "ui_structure.h"
 
 #include <iostream>
 
@@ -29,26 +31,28 @@ int main(int argc, char **argv)
 {
     int rc = 1;
     try {
-        // debugging error handling
-        //test_parse();
-        //test_glade(argc, argv);
-
-        // for debugging purpose, get first argument to indicate
-        //  the collectd folder
-        /*
-        if (argc > 1) {
-            model::set_root(argv[1]);
-            argc--;
-        }
-        else
-            model::check_root();
-        */
-        model::check_root(argc, argv);
 
         auto app = Gtk::Application::create(argc, argv, "org.loadavg.collectdCP");
+
+        if (auto w = collectdcp::setup(app)) {
+            w->show_all();
+            rc = app->run(*w, argc, argv);
+            delete w;
+        }
+        /*
+        if (!ui_structure::instance_ui_widget("collectdcp", "collectdcp", [&](Gtk::Widget *widget) {
+            auto w = dynamic_cast<Gtk::Window*>(widget);
+            rc = app->run(*w, argc, argv);
+            return true;
+        }))
+            rc = 2;
+            */
+
+        /*
         app_window w;
         w.show_all();
         rc = app->run(w, argc, argv);
+        */
 
         /*
         if (auto w = editor_window::setup(app)) {
