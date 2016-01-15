@@ -15,6 +15,7 @@
 #include "ui_structure.h"
 
 #include <iostream>
+#include "test_win.h"
 
 /**
  * @brief main
@@ -32,13 +33,30 @@ int main(int argc, char **argv)
     int rc = 1;
     try {
 
+        model::check_root(argc, argv);
         auto app = Gtk::Application::create(argc, argv, "org.loadavg.collectdCP");
 
+        /*
+        test_win* w = 0;
+        Glib::RefPtr<Gtk::Builder> builder;
+        //if (ui_structure::get_resource("collectdcp", builder)) {
+        if (ui_structure::get_resource("editor", builder)) {
+            //builder->get_widget_derived("collectdcp_window", w);
+            builder->get_widget_derived("window1", w);
+            w->show_all();
+            rc = app->run(*w, argc, argv);
+            delete w;
+        }
+        */
+
+        /*
         if (auto w = collectdcp::setup(app)) {
             w->show_all();
             rc = app->run(*w, argc, argv);
             delete w;
         }
+        */
+
         /*
         if (!ui_structure::instance_ui_widget("collectdcp", "collectdcp", [&](Gtk::Widget *widget) {
             auto w = dynamic_cast<Gtk::Window*>(widget);
@@ -46,7 +64,7 @@ int main(int argc, char **argv)
             return true;
         }))
             rc = 2;
-            */
+        */
 
         /*
         app_window w;
@@ -61,6 +79,17 @@ int main(int argc, char **argv)
             delete w;
         }
         */
+
+        test_win* window = 0;
+        Glib::RefPtr<Gtk::Builder> builder;
+        if (ui_structure::get_resource("collectdcp", builder)) {
+            builder->get_widget_derived("collectdcp_window", window);
+            if (window) {
+                window->show_all();
+                rc = app->run(*window, argc, argv);
+                //window->app = app;
+            }
+        }
 
     }
     catch(std::exception &e) {
