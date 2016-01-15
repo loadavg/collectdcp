@@ -81,7 +81,7 @@ values submitted to the daemon. Other than that, that name is not used.
       <object class="GtkEntry" id="ConnectID">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Defines the "database alias" or "service name" to connect to. Usually, these
 names are defined in the file named $ORACLE_HOME/network/admin/tnsnames.ora.
 </property>
@@ -111,7 +111,7 @@ names are defined in the file named $ORACLE_HOME/network/admin/tnsnames.ora.
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Hostname to use when dispatching values for this database. Defaults to using
 the global hostname of the collectd instance.
 </property>
@@ -141,7 +141,7 @@ the global hostname of the collectd instance.
       <object class="GtkEntry" id="Username">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Username used for authentication.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -170,7 +170,7 @@ Username used for authentication.
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Password used for authentication.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -199,7 +199,7 @@ Password used for authentication.
       <object class="GtkEntry" id="Query">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Associates the query named QueryName with this database connection. The
 query needs to be defined before this statement, i. e. all query
 blocks you want to refer to must be placed above the database block you want to

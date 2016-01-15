@@ -37,7 +37,7 @@ Available configuration options:
       <object class="GtkEntry" id="Value">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Selects whether or not to select a specific value. The string being matched is
 of the form "Protocol:ValueName", where Protocol will be used as the
 plugin instance and ValueName will be used as type instance. An example of
@@ -77,7 +77,7 @@ If no value is configured at all, all values will be selected.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If set to true, inverts the selection made by Value, i. e. all
 matching values will be ignored.
 </property>

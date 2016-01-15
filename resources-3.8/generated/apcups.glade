@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Hostname of the host running apcupsd. Defaults to localhost. Please note
 that IPv6 support has been disabled unless someone can confirm or decline that
 apcupsd can handle it.
@@ -61,7 +61,7 @@ apcupsd can handle it.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 TCP-Port to connect to. Defaults to 3551.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -90,7 +90,7 @@ TCP-Port to connect to. Defaults to 3551.
       <object class="GtkEntry" id="ReportSeconds">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If set to true, the time reported in the timeleft metric will be
 converted to seconds. This is the recommended setting. If set to false, the
 default for backwards compatibility, the time will be reported in minutes.

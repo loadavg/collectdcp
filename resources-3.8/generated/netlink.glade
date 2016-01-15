@@ -34,7 +34,7 @@ statistics of various interface and routing aspects.
       <object class="GtkEntry" id="VerboseInterface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Instruct the plugin to collect interface statistics. This is basically the same
 as the statistics provided by the interface plugin (see above) but
 potentially much more detailed.
@@ -76,7 +76,7 @@ If Interface is All, all interfaces will be selected.
       <object class="GtkEntry" id="Filter">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Collect the octets and packets that pass a certain qdisc, class or filter.
 QDiscs and classes are identified by their type and handle (or classid).
 Filters don't necessarily have a handle, therefore the parent's handle is used.
@@ -130,7 +130,7 @@ Here are some examples to help you understand the above text more easily:
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The behavior is the same as with all other similar plugins: If nothing is
 selected at all, everything is collected. If some things are selected using the
 options described above, only these statistics are collected. If you set

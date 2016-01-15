@@ -41,7 +41,7 @@ http://www.galago-project.org/specs/notification/.
       <object class="GtkEntry" id="FailureTimeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Set the timeout, in milliseconds, after which to expire the notification
 for OKAY, WARNING and FAILURE severities respectively. If zero has
 been specified, the displayed notification will not be closed at all - the

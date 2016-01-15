@@ -62,7 +62,7 @@ The configuration options are:
       <object class="GtkEntry" id="Page">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Each Page block defines one page to be queried from the memcached server.
 The block requires one string argument which is used as plugin instance.
 </property>
@@ -92,7 +92,7 @@ The block requires one string argument which is used as plugin instance.
       <object class="GtkEntry" id="Server">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets the server address to connect to when querying the page. Must be inside a
 Page block.
 </property>
@@ -122,7 +122,7 @@ Page block.
       <object class="GtkEntry" id="Key">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When connected to the memcached server, asks for the page Key.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -151,7 +151,7 @@ When connected to the memcached server, asks for the page Key.
       <object class="GtkEntry" id="Match">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Match blocks define which strings to look for and how matches substrings are
 interpreted. For a description of match blocks, please see Plugin tail.
 </property>

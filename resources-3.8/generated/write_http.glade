@@ -54,7 +54,7 @@ block, the following options are available:
       <object class="GtkEntry" id="URL">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 URL to which the values are submitted to. Mandatory.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -83,7 +83,7 @@ URL to which the values are submitted to. Mandatory.
       <object class="GtkEntry" id="User">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Optional user name needed for authentication.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -112,7 +112,7 @@ Optional user name needed for authentication.
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Optional password needed for authentication.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -141,7 +141,7 @@ Optional password needed for authentication.
       <object class="GtkEntry" id="VerifyPeer">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enable or disable peer SSL certificate verification. See
 http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
 </property>
@@ -171,7 +171,7 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
       <object class="GtkEntry" id="VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enable or disable peer host name verification. If enabled, the plugin checks if
 the Common Name or a Subject Alternate Name field of the SSL certificate
 matches the host name provided by the URL option. If this identity check
@@ -204,7 +204,7 @@ SSL enabled server. Enabled by default.
       <object class="GtkEntry" id="CACert">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 File that holds one or more SSL certificates. If you want to use HTTPS you will
 possibly need this option. What CA certificates come bundled with libcurl
 and are checked by default depends on the distribution you use.
@@ -235,7 +235,7 @@ and are checked by default depends on the distribution you use.
       <object class="GtkEntry" id="CAPath">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Directory holding one or more CA certificate files. You can use this if for
 some reason all the needed CA certificates aren't in the same file and can't be
 pointed to using the CACert option. Requires libcurl to be built against
@@ -267,7 +267,7 @@ OpenSSL.
       <object class="GtkEntry" id="ClientKey">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 File that holds the private key in PEM format to be used for certificate-based
 authentication.
 </property>
@@ -297,7 +297,7 @@ authentication.
       <object class="GtkEntry" id="ClientCert">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 File that holds the SSL certificate to be used for certificate-based
 authentication.
 </property>
@@ -327,7 +327,7 @@ authentication.
       <object class="GtkEntry" id="ClientKeyPass">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Password required to load the private key in ClientKey.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -356,7 +356,7 @@ Password required to load the private key in ClientKey.
       <object class="GtkEntry" id="SSLVersion">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Define which SSL protocol version must be used. By default libcurl will
 attempt to figure out the remote SSL protocol version. See
 curl_easy_setopt(3) for more details.
@@ -387,7 +387,7 @@ curl_easy_setopt(3) for more details.
       <object class="GtkEntry" id="Format">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Format of the output to generate. If set to Command, will create output that
 is understood by the Exec and UnixSock plugins. When set to JSON, will
 create output in the JavaScript Object Notation (JSON).
@@ -419,7 +419,7 @@ Defaults to Command.
       <object class="GtkEntry" id="StoreRates">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If set to true, convert counter values to rates. If set to false (the
 default) counter values are stored as is, i.e. as an increasing integer number.
 </property>
@@ -449,7 +449,7 @@ default) counter values are stored as is, i.e. as an increasing integer number.
       <object class="GtkEntry" id="BufferSize">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets the send buffer size to Bytes. By increasing this buffer, less HTTP
 requests will be generated, but more metrics will be batched / metrics are
 cached for longer before being sent, introducing additional delay until they
@@ -483,7 +483,7 @@ Defaults to 4096.
       <object class="GtkEntry" id="LowSpeedLimit">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets the minimal transfer rate in Bytes per Second below which the
 connection with the HTTP server will be considered too slow and aborted. All
 the data submitted over this connection will probably be lost. Defaults to 0,
@@ -515,7 +515,7 @@ which means no minimum transfer rate is enforced.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets the maximum time in milliseconds given for HTTP POST operations to
 complete. When this limit is reached, the POST operation will be aborted, and
 all the data in the current send buffer will probably be lost. Defaults to 0,

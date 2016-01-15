@@ -141,7 +141,7 @@ query.
       <object class="GtkEntry" id="Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specify the sql query statement which the plugin should execute. The string
 may contain the tokens $1, $2, etc. which are used to reference the
 first, second, etc. parameter. The value of the parameters is specified by the
@@ -178,7 +178,7 @@ The returned lines will be handled separately one after another.
       <object class="GtkEntry" id="Param">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specify the parameters which should be passed to the SQL query. The parameters
 are referred to in the SQL query as $1, $2, etc. in the same order as
 they appear in the configuration file. The value of the parameter is
@@ -226,7 +226,7 @@ version 3 and above which was introduced in version 7.4 of PostgreSQL.
       <object class="GtkEntry" id="Type">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The type name to be used when dispatching the values. The type describes
 how to handle the data and where to store it. See types.db(5) for more
 details on types and their configuration. The number and type of values (as
@@ -259,7 +259,7 @@ This option is required inside a Result block.
       <object class="GtkEntry" id="InstancesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specify how to create the "TypeInstance" for each data set (i. e. line).
 InstancePrefix defines a static prefix that will be prepended to all type
 instances. InstancesFrom defines the column names whose values will be used
@@ -296,7 +296,7 @@ empty.
       <object class="GtkEntry" id="ValuesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Names the columns whose content is used as the actual data for the data sets
 that are dispatched to the daemon. How many such columns you need is
 determined by the Type setting as explained above. If you specify too many
@@ -337,7 +337,7 @@ in the given order.
       <object class="GtkEntry" id="MaxVersion">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specify the minimum or maximum version of PostgreSQL that this query should be
 used with. Some statistics might only be available with certain versions of
 PostgreSQL. This allows you to specify multiple queries with the same name but

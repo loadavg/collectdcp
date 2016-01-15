@@ -64,7 +64,7 @@ The following options are understood by the write_sensu plugin:
       <object class="GtkEntry" id="Node">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The plugin's configuration consists of one or more Node blocks. Each block
 is given a unique Name and specifies one connection to an instance of
 Sensu. Inside the Node block, the following per-connection options are
@@ -130,7 +130,7 @@ no prefix will be used.
       <object class="GtkEntry" id="Tag">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Add the given string as an additional tag to the metric being sent to
 Sensu.
 </property>
@@ -160,7 +160,7 @@ Sensu.
       <object class="GtkEntry" id="Attribute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Consider the two given strings to be the key and value of an additional
 attribute for each metric being sent out to Sensu.
 </property>

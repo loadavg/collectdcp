@@ -65,7 +65,7 @@ signature):
       <object class="GtkEntry" id="">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The Server statement/block sets the server to send datagrams to. The
 statement may occur multiple times to send each datagram to multiple
 destinations.
@@ -131,7 +131,7 @@ not specified, re-resolves are never attempted.
       <object class="GtkEntry" id="">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The Listen statement sets the interfaces to bind to. When multiple
 statements are found the daemon will bind to multiple interfaces.
 The argument Host may be a hostname, an IPv4 address or an IPv6 address. If
@@ -198,7 +198,7 @@ traffic gets only accepted, if it arrives on the given interface.
       <object class="GtkEntry" id="TimeToLive">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Set the time-to-live of sent packets. This applies to all, unicast and
 multicast, and IPv4 and IPv6 packets. The default is to not change this value.
 That means that multicast packets will be sent with a TTL of 1 (one) on most
@@ -230,7 +230,7 @@ operating systems.
       <object class="GtkEntry" id="MaxPacketSize">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Set the maximum size for datagrams received over the network. Packets larger
 than this will be truncated. Defaults to 1452 bytes, which is the maximum
 payload size that can be transmitted in one Ethernet frame using IPv6 /
@@ -269,7 +269,7 @@ server.
       <object class="GtkEntry" id="Forward">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If set to true, write packets that were received via the network plugin to
 the sending sockets. This should only be activated when the Listen- and
 Server-statements differ. Otherwise packets may be send multiple times to
@@ -303,7 +303,7 @@ so the values will not loop.
       <object class="GtkEntry" id="ReportStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The network plugin cannot only receive and send statistics, it can also create
 statistics about itself. Collected data included the number of received and
 sent octets and packets, the length of the receive queue and the number of

@@ -41,7 +41,7 @@ collection only of specific disks.
       <object class="GtkEntry" id="Disk">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Select the disk Name. Whether it is collected or ignored depends on the
 IgnoreSelected setting, see below. As with other plugins that use the
 daemon's ignorelist functionality, a string that starts and ends with a slash
@@ -76,7 +76,7 @@ is interpreted as a regular expression. Examples:
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets whether selected disks, i. e. the ones matches by any of the Disk
 statements, are ignored or if all other disks are ignored. The behavior
 (hopefully) is intuitive: If no Disk option is configured, all disks are

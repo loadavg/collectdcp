@@ -35,7 +35,7 @@ output that is expected from it.
       <object class="GtkEntry" id="NotificationExec">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Execute the executable Executable as user User. If the user name is
 followed by a colon and a group name, the effective group is set to that group.
 The real group and saved-set group will be set to the default group of that

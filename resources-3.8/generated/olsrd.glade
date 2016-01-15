@@ -38,7 +38,7 @@ The following configuration options are understood:
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Connect to Host. Defaults to "localhost".
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -67,7 +67,7 @@ Connect to Host. Defaults to "localhost".
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specifies the port to connect to. This must be a string, even if you give the
 port as a number rather than a service name. Defaults to "2006".
 </property>
@@ -97,7 +97,7 @@ port as a number rather than a service name. Defaults to "2006".
       <object class="GtkEntry" id="CollectLinks">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specifies what information to collect about links, i. e. direct
 connections of the daemon queried. If set to No, no information is
 collected. If set to Summary, the number of links and the average of all
@@ -131,7 +131,7 @@ Defaults to Detail.
       <object class="GtkEntry" id="CollectRoutes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specifies what information to collect about routes of the daemon queried. If
 set to No, no information is collected. If set to Summary, the number of
 routes and the average metric and ETX is calculated. If set to Detail
@@ -164,7 +164,7 @@ Defaults to Summary.
       <object class="GtkEntry" id="CollectTopology">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specifies what information to collect about the global topology. If set to
 No, no information is collected. If set to Summary, the number of links
 in the entire topology and the average link quality (LQ) is calculated.

@@ -52,7 +52,7 @@ Synopsis
       <object class="GtkEntry" id="LogLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The sigrok logging level to pass on to the collectd log, as a number
 between 0 and 5 (inclusive). These levels correspond to None,
 Errors, Warnings, Informational, Debug and Spew, respectively.
@@ -85,7 +85,7 @@ their level, are always submitted to collectd at its INFO log level.
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 A sigrok-supported device, uniquely identified by this section's options. The
 Name is passed to collectd as the plugin instance.
 </property>
@@ -115,7 +115,7 @@ Name is passed to collectd as the plugin instance.
       <object class="GtkEntry" id="Driver">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The sigrok driver to use for this device.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -144,7 +144,7 @@ The sigrok driver to use for this device.
       <object class="GtkEntry" id="Conn">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If the device cannot be auto-discovered, or more than one might be discovered
 by the driver, ConnectionSpec specifies the connection string to the device.
 It can be of the form of a device path (e.g. /dev/ttyUSB2), or, in
@@ -178,7 +178,7 @@ specified as Bus.Address (e.g. 1.41).
       <object class="GtkEntry" id="SerialComm">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 For serial devices with non-standard port settings, this option can be used
 to specify them in a form understood by sigrok, e.g. 9600/8n1.
 This should not be necessary; drivers know how to communicate with devices they
@@ -210,7 +210,7 @@ support.
       <object class="GtkEntry" id="MinimumInterval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specifies the minimum time between measurement dispatches to collectd, in
 seconds. Since some sigrok supported devices can acquire measurements many
 times per second, it may be necessary to throttle these. For example, the

@@ -37,7 +37,7 @@ pages read from swap space.
       <object class="GtkEntry" id="Verbose">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enables verbose collection of information. This will start collecting page
 "actions", e. g. page allocations, (de)activations, steals and so on.
 Part of these statistics are collected on a "per zone" basis.

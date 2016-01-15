@@ -78,7 +78,7 @@ The following options are valid within Page blocks:
       <object class="GtkEntry" id="URL">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 URL of the web site to retrieve. Since a regular expression will be used to
 extract information from this data, non-binary data is a big plus here ;)
 </property>
@@ -108,7 +108,7 @@ extract information from this data, non-binary data is a big plus here ;)
       <object class="GtkEntry" id="User">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Username to use if authorization is required to read the page.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -137,7 +137,7 @@ Username to use if authorization is required to read the page.
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Password to use if authorization is required to read the page.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -166,7 +166,7 @@ Password to use if authorization is required to read the page.
       <object class="GtkEntry" id="Digest">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enable HTTP digest authentication.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -195,7 +195,7 @@ Enable HTTP digest authentication.
       <object class="GtkEntry" id="VerifyPeer">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enable or disable peer SSL certificate verification. See
 http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
 </property>
@@ -225,7 +225,7 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
       <object class="GtkEntry" id="VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enable or disable peer host name verification. If enabled, the plugin checks if
 the Common Name or a Subject Alternate Name field of the SSL certificate
 matches the host name provided by the URL option. If this identity check
@@ -258,7 +258,7 @@ SSL enabled server. Enabled by default.
       <object class="GtkEntry" id="CACert">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 File that holds one or more SSL certificates. If you want to use HTTPS you will
 possibly need this option. What CA certificates come bundled with libcurl
 and are checked by default depends on the distribution you use.
@@ -289,7 +289,7 @@ and are checked by default depends on the distribution you use.
       <object class="GtkEntry" id="Header">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 A HTTP header to add to the request. Multiple headers are added if this option
 is specified more than once.
 </property>
@@ -319,7 +319,7 @@ is specified more than once.
       <object class="GtkEntry" id="Post">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Specifies that the HTTP operation should be a POST instead of a GET. The
 complete data to be posted is given as the argument.  This option will usually
 need to be accompanied by a Header option to set an appropriate
@@ -352,7 +352,7 @@ application/x-www-form-urlencoded).
       <object class="GtkEntry" id="MeasureResponseTime">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Measure response time for the request. If this setting is enabled, Match
 blocks (see below) are optional. Disabled by default.
 Beware that requests will get aborted if they take too long to complete. Adjust
@@ -385,7 +385,7 @@ requests.
       <object class="GtkEntry" id="MeasureResponseCode">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Measure response code for the request. If this setting is enabled, Match
 blocks (see below) are optional. Disabled by default.
 </property>
@@ -415,7 +415,7 @@ blocks (see below) are optional. Disabled by default.
       <object class="GtkEntry" id="">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 One or more Match blocks that define how to match information in the data
 returned by libcurl. The curl plugin uses the same infrastructure that's
 used by the tail plugin, so please see the documentation of the tail
@@ -449,7 +449,7 @@ optional.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The Timeout option sets the overall timeout for HTTP requests to URL, in
 milliseconds. By default, the configured Interval is used to set the
 timeout. Prior to version 5.5.0, there was no timeout and requests could hang

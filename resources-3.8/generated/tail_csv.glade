@@ -59,7 +59,7 @@ extract.
       <object class="GtkEntry" id="Metric">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The Metric block configures a new metric to be extracted from the statistics
 file and how it is mapped on collectd's data model. The string Name is
 only used inside the Instance blocks to refer to this block, so you can use
@@ -106,7 +106,7 @@ the Type setting, see above.
       <object class="GtkEntry" id="File">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Each File block represents one CSV file to read. There must be at least one
 File block but there can be multiple if you have multiple CSV files.
 Instance PluginInstance

@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="DataDir">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Set the directory to store CSV-files under. Per default CSV-files are generated
 beneath the daemon's working directory, i. e. the BaseDir.
 The special strings stdout and stderr can be used to write to the standard
@@ -63,7 +63,7 @@ much sense when collectd is running in foreground- or non-daemon-mode.
       <object class="GtkEntry" id="StoreRates">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If set to true, convert counter values to rates. If set to false (the
 default) counter values are stored as is, i. e. as an increasing integer
 number.

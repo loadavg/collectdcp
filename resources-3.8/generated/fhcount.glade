@@ -37,7 +37,7 @@ The fhcount plugin provides the following configuration options:
       <object class="GtkEntry" id="ValuesAbsolute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enables or disables reporting of file handles usage in absolute numbers,
 e.g. file handles used. Defaults to true.
 </property>
@@ -67,7 +67,7 @@ e.g. file handles used. Defaults to true.
       <object class="GtkEntry" id="ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enables or disables reporting of file handles usage in percentages, e.g.
 percent of file handles used. Defaults to false.
 </property>

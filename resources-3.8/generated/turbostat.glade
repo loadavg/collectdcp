@@ -34,7 +34,7 @@ Intel processors by using the new Model Specific Registers.
       <object class="GtkEntry" id="CoreCstates">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Bitmask of the list of core C states supported by the processor.
 This option should only be used if the automated detection fails.
 Default value extracted from the cpu model and family.
@@ -67,7 +67,7 @@ Example: (1&lt;&lt;3)+(1&lt;&lt;6)+(1&lt;&lt;7) = 392 for all states
       <object class="GtkEntry" id="SystemManagementInterrupt">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Boolean enabling the collection of the I/O System-Management Interrupt
 counter'. This option should only be used if the automated detection
 fails or if you want to disable this feature.
@@ -98,7 +98,7 @@ fails or if you want to disable this feature.
       <object class="GtkEntry" id="DigitalTemperatureSensor">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Boolean enabling the collection of the temperature of each core.
 This option should only be used if the automated detectionfails or 
 if you want to disable this feature.
@@ -129,7 +129,7 @@ if you want to disable this feature.
       <object class="GtkEntry" id="DigitalTemperatureSensor">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Boolean enabling the collection of the temperature of each package.
 This option should only be used if the automated detectionfails or 
 if you want to disable this feature.
@@ -160,7 +160,7 @@ if you want to disable this feature.
       <object class="GtkEntry" id="TCCActivationTemp">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Thermal Control Circuit Activation Temperature of the installed
 CPU. This temperature is used when collecting the temperature of
 cores or packages. This option should only be used if the automated

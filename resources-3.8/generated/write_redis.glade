@@ -64,7 +64,7 @@ options are available:
       <object class="GtkEntry" id="Node">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The Node block identifies a new Redis node, that is a new Redis
 instance running in an specified host and port. The name for node is a
 canonical identifier which is used as plugin instance. It is limited to
@@ -96,7 +96,7 @@ canonical identifier which is used as plugin instance. It is limited to
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The Host option is the hostname or IP-address where the Redis instance is
 running on.
 </property>
@@ -126,7 +126,7 @@ running on.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The Port option is the TCP port on which the Redis instance accepts
 connections. Either a service name of a port number may be given. Please note
 that numerical port numbers must be given as a string, too.
@@ -157,7 +157,7 @@ that numerical port numbers must be given as a string, too.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The Timeout option sets the socket connection timeout, in milliseconds.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>

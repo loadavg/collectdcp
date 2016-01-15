@@ -61,7 +61,7 @@ The ceph plugin accepts the following configuration options:
       <object class="GtkEntry" id="LongRunAvgLatency">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If enabled, latency values(sum,count pairs) are calculated as the long run
 average - average since the ceph daemon was started = (sum / count).
 When disabled, latency values are calculated as the average since the last
@@ -94,7 +94,7 @@ Default: Disabled
       <object class="GtkEntry" id="ConvertSpecialMetricTypes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If enabled, special metrics (metrics that differ in type from similar counters)
 are converted to the type of those similar counters. This currently only
 applies to filestore.journal_wr_bytes which is a counter for OSD daemons. The

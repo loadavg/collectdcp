@@ -100,7 +100,7 @@ Synopsis:
       <object class="GtkEntry" id="Data">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Data blocks define a mapping between register numbers and the "types" used by
 collectd.
 Within &lt;Data /&gt; blocks, the following options are allowed:
@@ -150,7 +150,7 @@ unset, an empty string (no type instance) is used.
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Host blocks are used to specify to which hosts to connect and what data to read
 from their "slaves". The string argument Name is used as hostname when
 dispatching the values to collectd.

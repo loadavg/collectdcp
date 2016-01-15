@@ -53,7 +53,7 @@ Available configuration options:
       <object class="GtkEntry" id="JVMArg">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Argument that is to be passed to the Java Virtual Machine (JVM). This works
 exactly the way the arguments to the java binary on the command line work.
 Execute java--help for details.
@@ -87,7 +87,7 @@ later options will have to be ignored!
       <object class="GtkEntry" id="LoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Instantiates a new JavaClass object. The constructor of this object very
 likely then registers one or more callback methods with the server.
 See collectd-java(5) for details.
@@ -121,7 +121,7 @@ LoadPlugin options!
       <object class="GtkEntry" id="Plugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The entire block is passed to the Java plugin as an
 org.collectd.api.OConfigItem object.
 For this to work, the plugin has to register a configuration callback first,

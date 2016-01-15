@@ -33,7 +33,7 @@ The memory plugin provides the following configuration options:
       <object class="GtkEntry" id="ValuesAbsolute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enables or disables reporting of physical memory usage in absolute numbers,
 i.e. bytes. Defaults to true.
 </property>
@@ -63,7 +63,7 @@ i.e. bytes. Defaults to true.
       <object class="GtkEntry" id="ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enables or disables reporting of physical memory usage in percentages, e.g.
 percent of physical memory used. Defaults to false.
 This is useful for deploying collectd in a heterogeneous environment in

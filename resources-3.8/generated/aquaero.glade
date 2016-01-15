@@ -42,7 +42,7 @@ library provided by aquatools-ng.
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Device path of the Aquaero 5's USB HID (human interface device), usually
 in the form /dev/usb/hiddevX. If this option is no set the plugin will try
 to auto-detect the Aquaero 5 USB device based on vendor-ID and product-ID.

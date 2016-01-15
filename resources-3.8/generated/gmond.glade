@@ -73,7 +73,7 @@ Available configuration options:
       <object class="GtkEntry" id="MCReceiveFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets sets the multicast group and UDP port to which to subscribe.
 Default: 239.2.11.71 / 8649
 </property>
@@ -103,7 +103,7 @@ Default: 239.2.11.71 / 8649
       <object class="GtkEntry" id="Metric">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 These blocks add a new metric conversion to the internal table. Name, the
 string argument to the Metric block, is the metric name as used by Ganglia.
 Type Type

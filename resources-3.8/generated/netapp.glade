@@ -151,7 +151,7 @@ The netapp plugin accepts the following configuration options:
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 A host block defines one NetApp filer. It will appear in collectd with the name
 you specify here which does not have to be its real name nor its hostname (see
 the Address option below).
@@ -182,7 +182,7 @@ the Address option below).
       <object class="GtkEntry" id="VFiler">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 A VFiler block may only be used inside a host block. It accepts all the
 same options as the Host block (except for cascaded VFiler blocks) and
 will execute all NetApp API commands in the context of the specified
@@ -224,7 +224,7 @@ context.
       <object class="GtkEntry" id="Protocol">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The protocol collectd will use to query this host.
 Optional
 Type: string
@@ -257,7 +257,7 @@ Valid options: http, https
       <object class="GtkEntry" id="Address">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The hostname or IP address of the host.
 Optional
 Type: string
@@ -289,7 +289,7 @@ Default: The "host" block's name.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The TCP port to connect to on the host.
 Optional
 Type: integer
@@ -321,7 +321,7 @@ Default: 80 for protocol "http", 443 for protocol "https"
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The username and password to use to login to the NetApp.
 Mandatory
 Type: string
@@ -352,7 +352,7 @@ Type: string
       <object class="GtkEntry" id="VFilerName">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The name of the VFiler in which context to execute API commands. If not
 specified, the name provided to the VFiler block will be used instead.
 Optional
@@ -386,7 +386,7 @@ Note: This option may only be used inside VFiler blocks.
       <object class="GtkEntry" id="Interval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 TODO
 </property>
 	<property name="placeholder_text" translatable="yes"></property>

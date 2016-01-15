@@ -53,7 +53,7 @@ reasonable defaults will be collected.
       <object class="GtkEntry" id="Server">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The Server block defines one authoritative server to query, the Recursor
 does the same for an recursing server. The possible options in both blocks are
 the same, though. The argument defines a name for the server / recursor
@@ -116,7 +116,7 @@ will be used for the recursor.
       <object class="GtkEntry" id="LocalSocket">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Querying the recursor is done using UDP. When using UDP over UNIX domain
 sockets, the client socket needs a name in the file system, too. You can set
 this local name to Path using the LocalSocket option. The default is

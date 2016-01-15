@@ -38,7 +38,7 @@ missing (physically absent) disks.
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Select md devices based on device name. The device name is the basename of
 the device, i.e. the name of the block device without the leading /dev/.
 See IgnoreSelected for more details.
@@ -69,7 +69,7 @@ See IgnoreSelected for more details.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Invert device selection: If set to true, all md devices except those
 listed using Device are collected. If false (the default), only those
 listed are collected. If no configuration is given, the md plugin will

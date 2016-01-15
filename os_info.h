@@ -16,10 +16,12 @@
  *  get info about a Linux distro
  *  capturing from $ cat /etc/os-release
  */
+
 class os_info {
 public:
     os_info();
 
+    /// variables shared between Ubuntu 14.04 and CentOS 7
     std::string
         NAME,
         VERSION,

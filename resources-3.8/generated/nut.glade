@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="UPS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Add a UPS to collect data from. The format is identical to the one accepted by
 upsc(8).
 </property>

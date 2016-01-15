@@ -40,7 +40,7 @@ Only Connection is required.
       <object class="GtkEntry" id="Connection">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Connect to the hypervisor given by uri. For example if using Xen use:
 
  Connection "xen:///"
@@ -72,7 +72,7 @@ Details which URIs allowed are given at http://libvirt.org/uri.html.
       <object class="GtkEntry" id="RefreshInterval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Refresh the list of domains and devices every seconds. The default is 60
 seconds. Setting this to be the same or smaller than the Interval will cause
 the list of domains and devices to be refreshed on every iteration.
@@ -106,7 +106,7 @@ option is set to 0, refreshing is disabled completely.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Select which domains and devices are collected.
 If IgnoreSelected is not given or false then only the listed domains and
 disk/network devices are collected.
@@ -148,7 +148,7 @@ will be collected.
       <object class="GtkEntry" id="HostnameFormat">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When the virt plugin logs data, it sets the hostname of the collected data
 according to this setting. The default is to use the guest name as provided by
 the hypervisor, which is equal to setting name.
@@ -186,7 +186,7 @@ between, thus "foo:1234-1234-1234-1234").
       <object class="GtkEntry" id="InterfaceFormat">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When the virt plugin logs interface data, it sets the name of the collected
 data according to this setting. The default is to use the path as provided by
 the hypervisor (the "dev" property of the target node), which is equal to
@@ -220,7 +220,7 @@ interface path might change between reboots of a guest or across migrations.
       <object class="GtkEntry" id="PluginInstanceFormat">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When the virt plugin logs data, it sets the plugin_instance of the collected
 data according to this setting. The default is to use the guest name as provided
 by the hypervisor, which is equal to setting name.

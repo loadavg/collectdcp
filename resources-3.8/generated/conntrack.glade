@@ -33,7 +33,7 @@ This plugin collects IP conntrack statistics.
       <object class="GtkEntry" id="OldFiles">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Assume the conntrack_count and conntrack_max files to be found in
 /proc/sys/net/ipv4/netfilter instead of /proc/sys/net/netfilter/.
 </property>

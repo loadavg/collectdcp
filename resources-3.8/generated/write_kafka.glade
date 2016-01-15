@@ -47,7 +47,7 @@ The following options are understood by the write_kafka plugin:
       <object class="GtkEntry" id="Topic">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The plugin's configuration consists of one or more Topic blocks. Each block
 is given a unique Name and specifies one kafka producer.
 Inside the Topic block, the following per-topic options are
@@ -130,7 +130,7 @@ ds_type:derive:rate.
       <object class="GtkEntry" id="Property">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Configure the kafka producer through properties, you almost always will
 want to set metadata.broker.list to your Kafka broker list.
 </property>

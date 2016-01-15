@@ -40,7 +40,7 @@ Available configuration options:
       <object class="GtkEntry" id="From">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Email address from which the emails should appear to come from.
 Default: root@localhost
 </property>
@@ -70,7 +70,7 @@ Default: root@localhost
       <object class="GtkEntry" id="Recipient">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Configures the email address(es) to which the notifications should be mailed.
 May be repeated to send notifications to multiple addresses.
 At least one Recipient must be present for the plugin to work correctly.
@@ -101,7 +101,7 @@ At least one Recipient must be present for the plugin to work correctly.
       <object class="GtkEntry" id="SMTPServer">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Hostname of the SMTP server to connect to.
 Default: localhost
 </property>
@@ -131,7 +131,7 @@ Default: localhost
       <object class="GtkEntry" id="SMTPPort">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 TCP port to connect to.
 Default: 25
 </property>
@@ -161,7 +161,7 @@ Default: 25
       <object class="GtkEntry" id="SMTPUser">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Username for ASMTP authentication. Optional.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -190,7 +190,7 @@ Username for ASMTP authentication. Optional.
       <object class="GtkEntry" id="SMTPPassword">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Password for ASMTP authentication. Optional.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -219,7 +219,7 @@ Password for ASMTP authentication. Optional.
       <object class="GtkEntry" id="Subject">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Subject-template to use when sending emails. There must be exactly two
 string-placeholders in the subject, given in the standard printf(3) syntax,
 i. e. %s. The first will be replaced with the severity, the second

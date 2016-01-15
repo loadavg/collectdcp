@@ -35,7 +35,7 @@ cpuacct.stat files in the first cpuacct-mountpoint (typically
       <object class="GtkEntry" id="CGroup">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Select cgroup based on the name. Whether only matching cgroups are
 collected or if they are ignored is controlled by the IgnoreSelected option;
 see below.
@@ -66,7 +66,7 @@ see below.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Invert the selection: If set to true, all cgroups except the ones that
 match any one of the criteria are collected. By default only selected
 cgroups are collected if a selection is made. If no selection is configured

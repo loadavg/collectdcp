@@ -37,7 +37,7 @@ fine-tune the ports you are interested in:
       <object class="GtkEntry" id="ListeningPorts">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If this option is set to true, statistics for all local ports for which a
 listening socket exists are collected. The default depends on LocalPort and
 RemotePort (see below): If no port at all is specifically selected, the
@@ -72,7 +72,7 @@ specifically.
       <object class="GtkEntry" id="LocalPort">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Count the connections to a specific local port. This can be used to see how
 many connections are handled by a specific daemon, e. g. the mailserver.
 You have to specify the port in numeric form, so for the mailserver example
@@ -104,7 +104,7 @@ you'd need to set 25.
       <object class="GtkEntry" id="RemotePort">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Count the connections to a specific remote port. This is useful to see how
 much a remote service is used. This is most useful if you want to know how many
 connections a local service has opened to remote services, e. g. how many
@@ -138,7 +138,7 @@ port in numeric form.
       <object class="GtkEntry" id="AllPortsSummary">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If this option is set to true a summary of statistics from all connections
 are collectd. This option defaults to false.
 </property>

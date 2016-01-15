@@ -66,7 +66,7 @@ The following options are available inside a Table block:
       <object class="GtkEntry" id="Instance">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If specified, instance is used as the plugin instance. So, in the above
 example, the plugin name table-slabinfo would be used. If omitted, the
 filename of the table is used instead, with all special characters replaced
@@ -98,7 +98,7 @@ with an underscore (_).
       <object class="GtkEntry" id="Separator">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Any character of string is interpreted as a delimiter between the different
 columns of the table. A sequence of two or more contiguous delimiters in the
 table is considered to be a single delimiter, i. e. there cannot be any

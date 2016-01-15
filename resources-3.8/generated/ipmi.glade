@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="Sensor">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Selects sensors to collect or to ignore, depending on IgnoreSelected.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -59,7 +59,7 @@ Selects sensors to collect or to ignore, depending on IgnoreSelected.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If no configuration if given, the ipmi plugin will collect data from all
 sensors found of type "temperature", "voltage", "current" and "fanspeed".
 This option enables you to do that: By setting IgnoreSelected to true
@@ -92,7 +92,7 @@ all other sensors are collected.
       <object class="GtkEntry" id="NotifySensorAdd">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If a sensor appears after initialization time of a minute a notification
 is sent.
 </property>
@@ -122,7 +122,7 @@ is sent.
       <object class="GtkEntry" id="NotifySensorRemove">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If a sensor disappears a notification is sent.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -151,7 +151,7 @@ If a sensor disappears a notification is sent.
       <object class="GtkEntry" id="NotifySensorNotPresent">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If you have for example dual power supply and one of them is (un)plugged then
 a notification is sent.
 </property>

@@ -39,7 +39,7 @@ The following configuration options are available:
       <object class="GtkEntry" id="ReportRelative">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When enabled, system load divided by number of available CPU cores is reported
 for intervals 1 min, 5 min and 15 min. Defaults to false.
 </property>

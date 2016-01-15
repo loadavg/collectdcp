@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="Irq">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Select this irq. By default these irqs will then be collected. For a more
 detailed description see IgnoreSelected below.
 </property>
@@ -60,7 +60,7 @@ detailed description see IgnoreSelected below.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If no configuration if given, the irq-plugin will collect data from all
 irqs. This may not be practical, especially if no interrupts happen. Thus, you
 can use the Irq-option to pick the interrupt you're interested in.

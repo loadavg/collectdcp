@@ -48,7 +48,7 @@ Options:
       <object class="GtkEntry" id="Interface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Collect statistical information about interface Name.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -77,7 +77,7 @@ Collect statistical information about interface Name.
       <object class="GtkEntry" id="Map">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 By default, the plugin will submit values as type derive and type
 instance set to Name, the name of the metric as reported by the driver. If
 an appropriate Map option exists, the given Type and, optionally,
@@ -109,7 +109,7 @@ TypeInstance will be used.
       <object class="GtkEntry" id="MappedOnly">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When set to true, only metrics that can be mapped to to a type will be
 collected, all other metrics will be ignored. Defaults to false.
 </property>

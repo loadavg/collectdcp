@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="Chain">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Select the rules to count. If only Table and Chain are given, this plugin
 will collect the counters of all rules which have a comment-match. The comment
 is then used as type-instance.

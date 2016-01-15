@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Hostname of the host running ntpd. Defaults to localhost.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -59,7 +59,7 @@ Hostname of the host running ntpd. Defaults to localhost.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 UDP-Port to connect to. Defaults to 123.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -88,7 +88,7 @@ UDP-Port to connect to. Defaults to 123.
       <object class="GtkEntry" id="ReverseLookups">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets whether or not to perform reverse lookups on peers. Since the name or
 IP-address may be used in a filename it is recommended to disable reverse
 lookups. The default is to do reverse lookups to preserve backwards
@@ -120,7 +120,7 @@ compatibility, though.
       <object class="GtkEntry" id="IncludeUnitID">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When a peer is a refclock, include the unit ID in the type instance.
 Defaults to false for backward compatibility.
 If two refclock peers use the same driver and this is false, the plugin will

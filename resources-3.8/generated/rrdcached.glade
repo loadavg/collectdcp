@@ -56,7 +56,7 @@ does not result in RRD files being created / expected in the wrong place.
       <object class="GtkEntry" id="DaemonAddress">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Address of the daemon as understood by the rrdc_connect function of the RRD
 library. See rrdcached(1) for details. Example:
 
@@ -90,7 +90,7 @@ library. See rrdcached(1) for details. Example:
       <object class="GtkEntry" id="DataDir">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Set the base directory in which the RRD files reside. If this is a relative
 path, it is relative to the working base directory of the rrdcached daemon!
 Use of an absolute path is recommended.
@@ -121,7 +121,7 @@ Use of an absolute path is recommended.
       <object class="GtkEntry" id="CreateFiles">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enables or disables the creation of RRD files. If the daemon is not running
 locally, or DataDir is set to a relative path, this will not work as
 expected. Default is true.
@@ -152,7 +152,7 @@ expected. Default is true.
       <object class="GtkEntry" id="CreateFilesAsync">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When enabled, new RRD files are enabled asynchronously, using a separate thread
 that runs in the background. This prevents writes to block, which is a problem
 especially when many hundreds of files need to be created at once. However,
@@ -187,7 +187,7 @@ short while, while the file is being written.
       <object class="GtkEntry" id="StepSize">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Force the stepsize of newly created RRD-files. Ideally (and per default)
 this setting is unset and the stepsize is set to the interval in which the data
 is collected. Do not use this option unless you absolutely have to for some
@@ -220,7 +220,7 @@ exec plugin or when the daemon is set up to receive data from other hosts.
       <object class="GtkEntry" id="HeartBeat">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Force the heartbeat of newly created RRD-files. This setting should be unset
 in which case the heartbeat is set to twice the StepSize which should equal
 the interval in which data is collected. Do not set this option unless you have
@@ -252,7 +252,7 @@ a very good reason to do so.
       <object class="GtkEntry" id="RRARows">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The rrdtool plugin calculates the number of PDPs per CDP based on the
 StepSize, this setting and a timespan. This plugin creates RRD-files with
 three times five RRAs, i. e. five RRAs with the CFs MIN, AVERAGE, and
@@ -290,7 +290,7 @@ default is 1200.
       <object class="GtkEntry" id="RRATimespan">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Adds an RRA-timespan, given in seconds. Use this option multiple times to have
 more then one RRA. If this option is never used, the built-in default of (3600,
 86400, 604800, 2678400, 31622400) is used.
@@ -322,7 +322,7 @@ For more information on how RRA-sizes are calculated see RRARows above.
       <object class="GtkEntry" id="XFF">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Set the "XFiles Factor". The default is 0.1. If unsure, don't set this option.
 Factor must be in the range [0.0-1.0), i.e. between zero (inclusive) and
 one (exclusive).
@@ -353,7 +353,7 @@ one (exclusive).
       <object class="GtkEntry" id="CollectStatistics">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When set to true, various statistics about the rrdcached daemon will be
 collected, with "rrdcached" as the plugin name. Defaults to false.
 Statistics are read via rrdcacheds socket using the STATS command.

@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="Interface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 The dns plugin uses libpcap to capture dns traffic and analyzes it. This
 option sets the interface that should be used. If this option is not set, or
 set to "any", the plugin will try to get packets from all interfaces. This
@@ -62,7 +62,7 @@ may not work on certain platforms, such as Mac OS X.
       <object class="GtkEntry" id="IgnoreSource">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Ignore packets that originate from this address.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -91,7 +91,7 @@ Ignore packets that originate from this address.
       <object class="GtkEntry" id="SelectNumericQueryTypes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Enabled by default, collects unknown (and thus presented as numeric only) query types.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>

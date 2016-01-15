@@ -22,7 +22,7 @@
       <object class="GtkEntry" id="BaseDir">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets the base directory. This is the directory beneath all RRD-files are
 created. Possibly more subdirectories are created. This is also the working
 directory for the daemon.
@@ -53,7 +53,7 @@ directory for the daemon.
       <object class="GtkEntry" id="LoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Loads the plugin Plugin. This is required to load plugins, unless the
 AutoLoadPlugin option is enabled (see below). Without any loaded plugins,
 collectd will be mostly useless.
@@ -123,7 +123,7 @@ interval, that setting will take precedence.
       <object class="GtkEntry" id="AutoLoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When set to false (the default), each plugin needs to be loaded explicitly,
 using the LoadPlugin statement documented above. If a
 &lt;Plugin ...&gt; block is encountered and no configuration
@@ -160,7 +160,7 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       <object class="GtkEntry" id="CollectInternalStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 When set to true, various statistics about the collectd daemon will be
 collected, with "collectd" as the plugin name. Defaults to false.
 The "write_queue" plugin instance reports the number of elements currently
@@ -195,7 +195,7 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       <object class="GtkEntry" id="Include">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If Path points to a file, includes that file. If Path points to a
 directory, recursively includes all files within that directory and its
 subdirectories. If the wordexp function is available on your system,
@@ -258,7 +258,7 @@ file, but you cannot include files from within blocks.
       <object class="GtkEntry" id="PIDFile">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets where to write the PID file to. This file is overwritten when it exists
 and deleted when the program is stopped. Some init-scripts might override this
 setting using the -P command-line option.
@@ -289,7 +289,7 @@ setting using the -P command-line option.
       <object class="GtkEntry" id="PluginDir">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Path to the plugins (shared objects) of collectd.
 </property>
 	<property name="placeholder_text" translatable="yes"></property>
@@ -318,7 +318,7 @@ Path to the plugins (shared objects) of collectd.
       <object class="GtkEntry" id="TypesDB">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Set one or more files that contain the data-set descriptions. See
 types.db(5) for a description of the format of this file.
 </property>
@@ -348,7 +348,7 @@ types.db(5) for a description of the format of this file.
       <object class="GtkEntry" id="Interval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Configures the interval in which to query the read plugins. Obviously smaller
 values lead to a higher system load produced by collectd, while higher values
 lead to more coarse statistics.
@@ -382,7 +382,7 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       <object class="GtkEntry" id="MaxReadInterval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Read plugin doubles interval between queries after each failed attempt
 to get data.
 This options limits the maximum value of the interval. The default value is
@@ -414,7 +414,7 @@ This options limits the maximum value of the interval. The default value is
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Consider a value list "missing" when no update has been read or received for
 Iterations iterations. By default, collectd considers a value list
 missing when no update has been received for twice the update interval. Since
@@ -449,7 +449,7 @@ see collectd-threshold(5) for details.
       <object class="GtkEntry" id="ReadThreads">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Number of threads to start for reading plugins. The default value is 5, but
 you may want to increase this if you have more than five plugins that take a
 long time to read. Mostly those are plugins that do network-IO. Setting this to
@@ -481,7 +481,7 @@ a value higher than the number of registered read callbacks is not recommended.
       <object class="GtkEntry" id="WriteThreads">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Number of threads to start for dispatching value lists to write plugins. The
 default value is 5, but you may want to increase this if you have more than
 five plugins that may take relatively long to write to.
@@ -512,7 +512,7 @@ five plugins that may take relatively long to write to.
       <object class="GtkEntry" id="WriteQueueLimitLow">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Metrics are read by the read threads and then put into a queue to be handled
 by the write threads. If one of the write plugins is slow (e.g. network
 timeouts, I/O saturation of the disk) this queue will grow. In order to avoid
@@ -563,7 +563,7 @@ values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
       <object class="GtkEntry" id="Hostname">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets the hostname that identifies a host. If you omit this setting, the
 hostname will be determined using the gethostname(2) system call.
 </property>
@@ -593,7 +593,7 @@ hostname will be determined using the gethostname(2) system call.
       <object class="GtkEntry" id="FQDNLookup">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If Hostname is determined automatically this setting controls whether or not
 the daemon should try to figure out the "fully qualified domain name", FQDN.
 This is done using a lookup of the name returned by gethostname. This option
@@ -625,7 +625,7 @@ is enabled by default.
       <object class="GtkEntry" id="PostCacheChain">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Configure the name of the "pre-cache chain" and the "post-cache chain". Please
 see FILTER CONFIGURATION below on information on chains and how these
 setting change the daemon's behavior.

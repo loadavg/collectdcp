@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="Interface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Select this interface. By default these interfaces will then be collected. For
 a more detailed description see IgnoreSelected below.
 </property>
@@ -60,7 +60,7 @@ a more detailed description see IgnoreSelected below.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 If no configuration if given, the traffic-plugin will collect data from
 all interfaces. This may not be practical, especially for loopback- and
 similar interfaces. Thus, you can use the Interface-option to pick the

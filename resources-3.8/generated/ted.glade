@@ -40,7 +40,7 @@ Available configuration options:
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Path to the device on which TED is connected. collectd will need read and write
 permissions on that file.
 Default: /dev/ttyUSB0
@@ -71,7 +71,7 @@ Default: /dev/ttyUSB0
       <object class="GtkEntry" id="Retries">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Apparently reading from TED is not that reliable. You can therefore configure a
 number of retries here. You only configure the retries here, to if you
 specify zero, one reading will be performed (but no retries if that fails); if

@@ -30,7 +30,7 @@
       <object class="GtkEntry" id="LogLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Sets the log-level. If, for example, set to notice, then all events with
 severity notice, warning, or err will be submitted to the
 syslog-daemon.
@@ -63,7 +63,7 @@ debugging support.
       <object class="GtkEntry" id="NotifyLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup" translatable="yes">
+	<property name="tooltip_text" translatable="yes">
 Controls which notifications should be sent to syslog. The default behaviour is
 not to send any. Less severe notifications always imply logging more severe
 notifications: Setting this to OKAY means all notifications will be sent to
