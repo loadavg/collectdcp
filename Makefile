@@ -33,6 +33,7 @@ $(TARGET_FOLDER)/collectdcp:\
 	$(TARGET_FOLDER)/settings.o\
 	$(TARGET_FOLDER)/test_glade.o\
 	$(TARGET_FOLDER)/test_parse.o\
+        $(TARGET_FOLDER)/test_win.o\
 	$(TARGET_FOLDER)/ui_structure.o\
 	$(TARGET_FOLDER)/view_ast.o
 	g++ $^ -o $@ `pkg-config --libs gtkmm-3.0`
