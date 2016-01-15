@@ -20,6 +20,7 @@ $(TARGET_FOLDER)/collectdcp:\
 	$(TARGET_FOLDER)/app_window.o\
 	$(TARGET_FOLDER)/attr_helper.o\
         $(TARGET_FOLDER)/collectdcp.o\
+        $(TARGET_FOLDER)/collectdcp_win.o\
 	$(TARGET_FOLDER)/dlg_commands.o\
 	$(TARGET_FOLDER)/editor_window.o\
 	$(TARGET_FOLDER)/main.o\
