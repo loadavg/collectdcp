@@ -6,10 +6,10 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-BaseDir">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">BaseDir</property>
+	<property name="label" translatable="yes">BaseDir</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -22,12 +22,12 @@
       <object class="GtkEntry" id="BaseDir">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the base directory. This is the directory beneath all RRD-files are
 created. Possibly more subdirectories are created. This is also the working
 directory for the daemon.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -37,10 +37,10 @@ directory for the daemon.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-LoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">LoadPlugin</property>
+	<property name="label" translatable="yes">LoadPlugin</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -53,7 +53,7 @@ directory for the daemon.
       <object class="GtkEntry" id="LoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Loads the plugin Plugin. This is required to load plugins, unless the
 AutoLoadPlugin option is enabled (see below). Without any loaded plugins,
 collectd will be mostly useless.
@@ -97,7 +97,7 @@ global Interval setting. If a plugin provides own support for specifying an
 interval, that setting will take precedence.
 
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -107,10 +107,10 @@ interval, that setting will take precedence.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-AutoLoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">AutoLoadPlugin</property>
+	<property name="label" translatable="yes">AutoLoadPlugin</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -123,7 +123,7 @@ interval, that setting will take precedence.
       <object class="GtkEntry" id="AutoLoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When set to false (the default), each plugin needs to be loaded explicitly,
 using the LoadPlugin statement documented above. If a
 &lt;Plugin ...&gt; block is encountered and no configuration
@@ -134,7 +134,7 @@ When set to true, explicit LoadPlugin statements are not required. Each
 LoadPlugin statement. LoadPlugin statements are still required for
 plugins that don't provide any configuration, e.g. the Load plugin.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -144,10 +144,10 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectInternalStats">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectInternalStats</property>
+	<property name="label" translatable="yes">CollectInternalStats</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -160,7 +160,7 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       <object class="GtkEntry" id="CollectInternalStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When set to true, various statistics about the collectd daemon will be
 collected, with "collectd" as the plugin name. Defaults to false.
 The "write_queue" plugin instance reports the number of elements currently
@@ -169,7 +169,7 @@ WriteQueueLimitLow/WriteQueueLimitHigh mechanism.
 The "cache" plugin instance reports the number of elements in the value list
 cache (the cache you can interact with using collectd-unixsock(5)).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -179,10 +179,10 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Include">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Include</property>
+	<property name="label" translatable="yes">Include</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -195,7 +195,7 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       <object class="GtkEntry" id="Include">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If Path points to a file, includes that file. If Path points to a
 directory, recursively includes all files within that directory and its
 subdirectories. If the wordexp function is available on your system,
@@ -232,7 +232,7 @@ appropriate amount of pain.
 It is no problem to have a block like &lt;Plugin foo&gt; in more than one
 file, but you cannot include files from within blocks.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -242,10 +242,10 @@ file, but you cannot include files from within blocks.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-PIDFile">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">PIDFile</property>
+	<property name="label" translatable="yes">PIDFile</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -258,12 +258,12 @@ file, but you cannot include files from within blocks.
       <object class="GtkEntry" id="PIDFile">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets where to write the PID file to. This file is overwritten when it exists
 and deleted when the program is stopped. Some init-scripts might override this
 setting using the -P command-line option.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -273,10 +273,10 @@ setting using the -P command-line option.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-PluginDir">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">PluginDir</property>
+	<property name="label" translatable="yes">PluginDir</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -289,10 +289,10 @@ setting using the -P command-line option.
       <object class="GtkEntry" id="PluginDir">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Path to the plugins (shared objects) of collectd.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -302,10 +302,10 @@ Path to the plugins (shared objects) of collectd.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-TypesDB">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">TypesDB</property>
+	<property name="label" translatable="yes">TypesDB</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -318,11 +318,11 @@ Path to the plugins (shared objects) of collectd.
       <object class="GtkEntry" id="TypesDB">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Set one or more files that contain the data-set descriptions. See
 types.db(5) for a description of the format of this file.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -332,10 +332,10 @@ types.db(5) for a description of the format of this file.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Interval">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Interval</property>
+	<property name="label" translatable="yes">Interval</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -348,7 +348,7 @@ types.db(5) for a description of the format of this file.
       <object class="GtkEntry" id="Interval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Configures the interval in which to query the read plugins. Obviously smaller
 values lead to a higher system load produced by collectd, while higher values
 lead to more coarse statistics.
@@ -356,7 +356,7 @@ Warning: You should set this once and then never touch it again. If you do,
 you will have to delete all your RRD files or know some serious RRDtool
 magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -366,10 +366,10 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-MaxReadInterval">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">MaxReadInterval</property>
+	<property name="label" translatable="yes">MaxReadInterval</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -382,13 +382,13 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       <object class="GtkEntry" id="MaxReadInterval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Read plugin doubles interval between queries after each failed attempt
 to get data.
 This options limits the maximum value of the interval. The default value is
 86400.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -398,10 +398,10 @@ This options limits the maximum value of the interval. The default value is
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Timeout</property>
+	<property name="label" translatable="yes">Timeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -414,7 +414,7 @@ This options limits the maximum value of the interval. The default value is
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Consider a value list "missing" when no update has been read or received for
 Iterations iterations. By default, collectd considers a value list
 missing when no update has been received for twice the update interval. Since
@@ -423,7 +423,7 @@ on the Interval information contained in each value list. This is used in
 the Threshold configuration to dispatch notifications about missing values,
 see collectd-threshold(5) for details.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -433,10 +433,10 @@ see collectd-threshold(5) for details.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ReadThreads">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ReadThreads</property>
+	<property name="label" translatable="yes">ReadThreads</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -449,13 +449,13 @@ see collectd-threshold(5) for details.
       <object class="GtkEntry" id="ReadThreads">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Number of threads to start for reading plugins. The default value is 5, but
 you may want to increase this if you have more than five plugins that take a
 long time to read. Mostly those are plugins that do network-IO. Setting this to
 a value higher than the number of registered read callbacks is not recommended.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -465,10 +465,10 @@ a value higher than the number of registered read callbacks is not recommended.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-WriteThreads">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">WriteThreads</property>
+	<property name="label" translatable="yes">WriteThreads</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -481,12 +481,12 @@ a value higher than the number of registered read callbacks is not recommended.
       <object class="GtkEntry" id="WriteThreads">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Number of threads to start for dispatching value lists to write plugins. The
 default value is 5, but you may want to increase this if you have more than
 five plugins that may take relatively long to write to.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -496,10 +496,10 @@ five plugins that may take relatively long to write to.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-WriteQueueLimitLow">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">WriteQueueLimitLow</property>
+	<property name="label" translatable="yes">WriteQueueLimitLow</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -512,7 +512,7 @@ five plugins that may take relatively long to write to.
       <object class="GtkEntry" id="WriteQueueLimitLow">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Metrics are read by the read threads and then put into a queue to be handled
 by the write threads. If one of the write plugins is slow (e.g. network
 timeouts, I/O saturation of the disk) this queue will grow. In order to avoid
@@ -537,7 +537,7 @@ to the same value.
 Enabling the CollectInternalStats option is of great help to figure out the
 values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -547,10 +547,10 @@ values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Hostname">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Hostname</property>
+	<property name="label" translatable="yes">Hostname</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -563,11 +563,11 @@ values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
       <object class="GtkEntry" id="Hostname">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the hostname that identifies a host. If you omit this setting, the
 hostname will be determined using the gethostname(2) system call.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -577,10 +577,10 @@ hostname will be determined using the gethostname(2) system call.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-FQDNLookup">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">FQDNLookup</property>
+	<property name="label" translatable="yes">FQDNLookup</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -593,13 +593,13 @@ hostname will be determined using the gethostname(2) system call.
       <object class="GtkEntry" id="FQDNLookup">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If Hostname is determined automatically this setting controls whether or not
 the daemon should try to figure out the "fully qualified domain name", FQDN.
 This is done using a lookup of the name returned by gethostname. This option
 is enabled by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -609,10 +609,10 @@ is enabled by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-PostCacheChain">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">PostCacheChain</property>
+	<property name="label" translatable="yes">PostCacheChain</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -625,12 +625,12 @@ is enabled by default.
       <object class="GtkEntry" id="PostCacheChain">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Configure the name of the "pre-cache chain" and the "post-cache chain". Please
 see FILTER CONFIGURATION below on information on chains and how these
 setting change the daemon's behavior.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

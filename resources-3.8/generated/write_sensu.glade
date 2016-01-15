@@ -48,10 +48,10 @@ The following options are understood by the write_sensu plugin:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Node">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Node</property>
+	<property name="label" translatable="yes">Node</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -64,7 +64,7 @@ The following options are understood by the write_sensu plugin:
       <object class="GtkEntry" id="Node">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The plugin's configuration consists of one or more Node blocks. Each block
 is given a unique Name and specifies one connection to an instance of
 Sensu. Inside the Node block, the following per-connection options are
@@ -104,7 +104,7 @@ If EventServicePrefix not set or set to an empty string (""),
 no prefix will be used.
 
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -114,10 +114,10 @@ no prefix will be used.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Tag">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Tag</property>
+	<property name="label" translatable="yes">Tag</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -130,11 +130,11 @@ no prefix will be used.
       <object class="GtkEntry" id="Tag">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Add the given string as an additional tag to the metric being sent to
 Sensu.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -144,10 +144,10 @@ Sensu.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Attribute">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Attribute</property>
+	<property name="label" translatable="yes">Attribute</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -160,11 +160,11 @@ Sensu.
       <object class="GtkEntry" id="Attribute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Consider the two given strings to be the key and value of an additional
 attribute for each metric being sent out to Sensu.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

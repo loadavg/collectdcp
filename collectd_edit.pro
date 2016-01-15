@@ -41,7 +41,8 @@ SOURCES += main.cpp \
     app_window.cpp \
     os_info.cpp \
     collectdcp.cpp \
-    test_win.cpp
+    test_win.cpp \
+    collectdcp_win.cpp
 
 HEADERS += \
     parse_conf.h \
@@ -76,7 +77,8 @@ HEADERS += \
     os_info.h \
     split.h \
     collectdcp.h \
-    test_win.h
+    test_win.h \
+    collectdcp_win.h
 
 DISTFILES += \
     Makefile \

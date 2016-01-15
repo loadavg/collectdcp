@@ -18,10 +18,10 @@ statistics of various interface and routing aspects.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-VerboseInterface">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">VerboseInterface</property>
+	<property name="label" translatable="yes">VerboseInterface</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -34,7 +34,7 @@ statistics of various interface and routing aspects.
       <object class="GtkEntry" id="VerboseInterface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Instruct the plugin to collect interface statistics. This is basically the same
 as the statistics provided by the interface plugin (see above) but
 potentially much more detailed.
@@ -50,7 +50,7 @@ to get an idea of what awaits you:
   ip -s -s link list
 If Interface is All, all interfaces will be selected.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -60,10 +60,10 @@ If Interface is All, all interfaces will be selected.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Filter">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Filter</property>
+	<property name="label" translatable="yes">Filter</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -76,7 +76,7 @@ If Interface is All, all interfaces will be selected.
       <object class="GtkEntry" id="Filter">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Collect the octets and packets that pass a certain qdisc, class or filter.
 QDiscs and classes are identified by their type and handle (or classid).
 Filters don't necessarily have a handle, therefore the parent's handle is used.
@@ -104,7 +104,7 @@ Here are some examples to help you understand the above text more easily:
     Filter "ppp0" "u32-1:0"
   &lt;/Plugin&gt;
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -114,10 +114,10 @@ Here are some examples to help you understand the above text more easily:
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">IgnoreSelected</property>
+	<property name="label" translatable="yes">IgnoreSelected</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -130,14 +130,14 @@ Here are some examples to help you understand the above text more easily:
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The behavior is the same as with all other similar plugins: If nothing is
 selected at all, everything is collected. If some things are selected using the
 options described above, only these statistics are collected. If you set
 IgnoreSelected to true, this behavior is inverted, i. e. the
 specified statistics will not be collected.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

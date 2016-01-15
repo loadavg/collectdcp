@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include "test_win.h"
+#include "collectdcp_win.h"
 
 /**
  * @brief main
@@ -80,6 +81,7 @@ int main(int argc, char **argv)
         }
         */
 
+        /*
         test_win* window = 0;
         Glib::RefPtr<Gtk::Builder> builder;
         if (ui_structure::get_resource("collectdcp", builder)) {
@@ -90,7 +92,25 @@ int main(int argc, char **argv)
                 //window->app = app;
             }
         }
+        */
+        /*
+        collectdcp_win* window = 0;
+        Glib::RefPtr<Gtk::Builder> builder;
+        if (ui_structure::get_resource("collectdcp", builder)) {
+            builder->get_widget_derived("collectdcp_window", window);
+            if (window) {
+                window->show_all();
+                rc = app->run(*window, argc, argv);
+                //window->app = app;
+            }
+        }
+        */
 
+        if (auto w = collectdcp_win::setup(app)) {
+            w->show_all();
+            rc = app->run(*w, argc, argv);
+            delete w;
+        }
     }
     catch(std::exception &e) {
         std::cerr << e.what() << std::endl;

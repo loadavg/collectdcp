@@ -36,10 +36,10 @@ Synopsis
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-LogLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">LogLevel</property>
+	<property name="label" translatable="yes">LogLevel</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -52,14 +52,14 @@ Synopsis
       <object class="GtkEntry" id="LogLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The sigrok logging level to pass on to the collectd log, as a number
 between 0 and 5 (inclusive). These levels correspond to None,
 Errors, Warnings, Informational, Debug and Spew, respectively.
 The default is 2 (Warnings). The sigrok log messages, regardless of
 their level, are always submitted to collectd at its INFO log level.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -69,10 +69,10 @@ their level, are always submitted to collectd at its INFO log level.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Device">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Device</property>
+	<property name="label" translatable="yes">Device</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -85,11 +85,11 @@ their level, are always submitted to collectd at its INFO log level.
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 A sigrok-supported device, uniquely identified by this section's options. The
 Name is passed to collectd as the plugin instance.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -99,10 +99,10 @@ Name is passed to collectd as the plugin instance.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Driver">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Driver</property>
+	<property name="label" translatable="yes">Driver</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -115,10 +115,10 @@ Name is passed to collectd as the plugin instance.
       <object class="GtkEntry" id="Driver">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The sigrok driver to use for this device.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -128,10 +128,10 @@ The sigrok driver to use for this device.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Conn">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Conn</property>
+	<property name="label" translatable="yes">Conn</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -144,7 +144,7 @@ The sigrok driver to use for this device.
       <object class="GtkEntry" id="Conn">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If the device cannot be auto-discovered, or more than one might be discovered
 by the driver, ConnectionSpec specifies the connection string to the device.
 It can be of the form of a device path (e.g. /dev/ttyUSB2), or, in
@@ -152,7 +152,7 @@ case of a non-serial USB-connected device, the USB VendorID.ProductID
 separated by a period (e.g. 0403.6001). A USB device can also be
 specified as Bus.Address (e.g. 1.41).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -162,10 +162,10 @@ specified as Bus.Address (e.g. 1.41).
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-SerialComm">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">SerialComm</property>
+	<property name="label" translatable="yes">SerialComm</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -178,13 +178,13 @@ specified as Bus.Address (e.g. 1.41).
       <object class="GtkEntry" id="SerialComm">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 For serial devices with non-standard port settings, this option can be used
 to specify them in a form understood by sigrok, e.g. 9600/8n1.
 This should not be necessary; drivers know how to communicate with devices they
 support.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -194,10 +194,10 @@ support.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-MinimumInterval">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">MinimumInterval</property>
+	<property name="label" translatable="yes">MinimumInterval</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -210,7 +210,7 @@ support.
       <object class="GtkEntry" id="MinimumInterval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Specifies the minimum time between measurement dispatches to collectd, in
 seconds. Since some sigrok supported devices can acquire measurements many
 times per second, it may be necessary to throttle these. For example, the
@@ -219,7 +219,7 @@ The default MinimumInterval is 0, meaning measurements received from the
 device are always dispatched to collectd. When throttled, unused
 measurements are discarded.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

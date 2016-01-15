@@ -57,10 +57,10 @@ Available configuration options:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-MCReceiveFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">MCReceiveFrom</property>
+	<property name="label" translatable="yes">MCReceiveFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -73,11 +73,11 @@ Available configuration options:
       <object class="GtkEntry" id="MCReceiveFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets sets the multicast group and UDP port to which to subscribe.
 Default: 239.2.11.71 / 8649
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -87,10 +87,10 @@ Default: 239.2.11.71 / 8649
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Metric">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Metric</property>
+	<property name="label" translatable="yes">Metric</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -103,7 +103,7 @@ Default: 239.2.11.71 / 8649
       <object class="GtkEntry" id="Metric">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 These blocks add a new metric conversion to the internal table. Name, the
 string argument to the Metric block, is the metric name as used by Ganglia.
 Type Type
@@ -115,7 +115,7 @@ Data source to map this metric to. If the configured type has exactly one data
 source, this is optional. Otherwise the option is required.
 
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

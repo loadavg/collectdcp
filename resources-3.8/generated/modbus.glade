@@ -84,10 +84,10 @@ Synopsis:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Data">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Data</property>
+	<property name="label" translatable="yes">Data</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -100,7 +100,7 @@ Synopsis:
       <object class="GtkEntry" id="Data">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Data blocks define a mapping between register numbers and the "types" used by
 collectd.
 Within &lt;Data /&gt; blocks, the following options are allowed:
@@ -124,7 +124,7 @@ Sets the type instance to use when dispatching the value to collectd. If
 unset, an empty string (no type instance) is used.
 
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -134,10 +134,10 @@ unset, an empty string (no type instance) is used.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Host</property>
+	<property name="label" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -150,7 +150,7 @@ unset, an empty string (no type instance) is used.
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Host blocks are used to specify to which hosts to connect and what data to read
 from their "slaves". The string argument Name is used as hostname when
 dispatching the values to collectd.
@@ -188,7 +188,7 @@ Collect option is mandatory.
 
 
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

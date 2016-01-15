@@ -14,10 +14,10 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Device">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Device</property>
+	<property name="label" translatable="yes">Device</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -30,10 +30,10 @@
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Select partitions based on the devicename.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -43,10 +43,10 @@ Select partitions based on the devicename.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-MountPoint">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">MountPoint</property>
+	<property name="label" translatable="yes">MountPoint</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -59,10 +59,10 @@ Select partitions based on the devicename.
       <object class="GtkEntry" id="MountPoint">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Select partitions based on the mountpoint.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -72,10 +72,10 @@ Select partitions based on the mountpoint.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-FSType">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">FSType</property>
+	<property name="label" translatable="yes">FSType</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -88,10 +88,10 @@ Select partitions based on the mountpoint.
       <object class="GtkEntry" id="FSType">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Select partitions based on the filesystem type.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -101,10 +101,10 @@ Select partitions based on the filesystem type.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">IgnoreSelected</property>
+	<property name="label" translatable="yes">IgnoreSelected</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -117,13 +117,13 @@ Select partitions based on the filesystem type.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Invert the selection: If set to true, all partitions except the ones that
 match any one of the criteria are collected. By default only selected
 partitions are collected if a selection is made. If no selection is configured
 at all, all partitions are selected.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -133,10 +133,10 @@ at all, all partitions are selected.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ReportByDevice">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ReportByDevice</property>
+	<property name="label" translatable="yes">ReportByDevice</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -149,12 +149,12 @@ at all, all partitions are selected.
       <object class="GtkEntry" id="ReportByDevice">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Report using the device name rather than the mountpoint. i.e. with this false,
 (the default), it will report a disk as "root", but with it true, it will be
 "sda1" (or whichever).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -164,10 +164,10 @@ Report using the device name rather than the mountpoint. i.e. with this false,
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ReportInodes">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ReportInodes</property>
+	<property name="label" translatable="yes">ReportInodes</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -180,14 +180,14 @@ Report using the device name rather than the mountpoint. i.e. with this false,
       <object class="GtkEntry" id="ReportInodes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Enables or disables reporting of free, reserved and used inodes. Defaults to
 inode collection being disabled.
 Enable this option if inodes are a scarce resource for you, usually because
 many small files are stored on the disk. This is a usual scenario for mail
 transfer agents and web caches.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -197,10 +197,10 @@ transfer agents and web caches.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ValuesAbsolute">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ValuesAbsolute</property>
+	<property name="label" translatable="yes">ValuesAbsolute</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -213,11 +213,11 @@ transfer agents and web caches.
       <object class="GtkEntry" id="ValuesAbsolute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Enables or disables reporting of free and used disk space in 1K-blocks.
 Defaults to true.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -227,10 +227,10 @@ Defaults to true.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ValuesPercentage</property>
+	<property name="label" translatable="yes">ValuesPercentage</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -243,14 +243,14 @@ Defaults to true.
       <object class="GtkEntry" id="ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Enables or disables reporting of free and used disk space in percentage.
 Defaults to false.
 This is useful for deploying collectd on the cloud, where machines with
 different disk size may exist. Then it is more practical to configure
 thresholds based on relative disk size.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

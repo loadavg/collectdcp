@@ -49,10 +49,10 @@ signature):
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label"></property>
+	<property name="label" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -65,7 +65,7 @@ signature):
       <object class="GtkEntry" id="">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The Server statement/block sets the server to send datagrams to. The
 statement may occur multiple times to send each datagram to multiple
 destinations.
@@ -105,7 +105,7 @@ useful to force a regular DNS lookup to support a high availability setup. If
 not specified, re-resolves are never attempted.
 
 </property>
-	<property name="placeholder_text">&lt;Server</property>
+	<property name="placeholder_text" translatable="yes">&lt;Server</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -115,10 +115,10 @@ not specified, re-resolves are never attempted.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label"></property>
+	<property name="label" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -131,7 +131,7 @@ not specified, re-resolves are never attempted.
       <object class="GtkEntry" id="">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The Listen statement sets the interfaces to bind to. When multiple
 statements are found the daemon will bind to multiple interfaces.
 The argument Host may be a hostname, an IPv4 address or an IPv6 address. If
@@ -172,7 +172,7 @@ behavior is, to let the kernel choose the appropriate interface. Thus incoming
 traffic gets only accepted, if it arrives on the given interface.
 
 </property>
-	<property name="placeholder_text">&lt;Listen</property>
+	<property name="placeholder_text" translatable="yes">&lt;Listen</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -182,10 +182,10 @@ traffic gets only accepted, if it arrives on the given interface.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-TimeToLive">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">TimeToLive</property>
+	<property name="label" translatable="yes">TimeToLive</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -198,13 +198,13 @@ traffic gets only accepted, if it arrives on the given interface.
       <object class="GtkEntry" id="TimeToLive">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Set the time-to-live of sent packets. This applies to all, unicast and
 multicast, and IPv4 and IPv6 packets. The default is to not change this value.
 That means that multicast packets will be sent with a TTL of 1 (one) on most
 operating systems.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -214,10 +214,10 @@ operating systems.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-MaxPacketSize">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">MaxPacketSize</property>
+	<property name="label" translatable="yes">MaxPacketSize</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -230,7 +230,7 @@ operating systems.
       <object class="GtkEntry" id="MaxPacketSize">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Set the maximum size for datagrams received over the network. Packets larger
 than this will be truncated. Defaults to 1452 bytes, which is the maximum
 payload size that can be transmitted in one Ethernet frame using IPv6 /
@@ -243,7 +243,7 @@ buffer of 1024 bytes. Versions 4.8, 4.9 and 4.10 used a default
 value of 1024 bytes to avoid problems when sending data to an older
 server.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -253,10 +253,10 @@ server.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Forward">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Forward</property>
+	<property name="label" translatable="yes">Forward</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -269,7 +269,7 @@ server.
       <object class="GtkEntry" id="Forward">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If set to true, write packets that were received via the network plugin to
 the sending sockets. This should only be activated when the Listen- and
 Server-statements differ. Otherwise packets may be send multiple times to
@@ -277,7 +277,7 @@ the same multicast group. While this results in more network traffic than
 necessary it's not a huge problem since the plugin has a duplicate detection,
 so the values will not loop.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -287,10 +287,10 @@ so the values will not loop.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ReportStats">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ReportStats</property>
+	<property name="label" translatable="yes">ReportStats</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -303,14 +303,14 @@ so the values will not loop.
       <object class="GtkEntry" id="ReportStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The network plugin cannot only receive and send statistics, it can also create
 statistics about itself. Collected data included the number of received and
 sent octets and packets, the length of the receive queue and the number of
 values handled. When set to true, the Network plugin will make these
 statistics available. Defaults to false.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -65,10 +65,10 @@ values submitted to the daemon. Other than that, that name is not used.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ConnectID">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ConnectID</property>
+	<property name="label" translatable="yes">ConnectID</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -81,11 +81,11 @@ values submitted to the daemon. Other than that, that name is not used.
       <object class="GtkEntry" id="ConnectID">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Defines the "database alias" or "service name" to connect to. Usually, these
 names are defined in the file named $ORACLE_HOME/network/admin/tnsnames.ora.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -95,10 +95,10 @@ names are defined in the file named $ORACLE_HOME/network/admin/tnsnames.ora.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Host</property>
+	<property name="label" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -111,11 +111,11 @@ names are defined in the file named $ORACLE_HOME/network/admin/tnsnames.ora.
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Hostname to use when dispatching values for this database. Defaults to using
 the global hostname of the collectd instance.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -125,10 +125,10 @@ the global hostname of the collectd instance.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Username">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Username</property>
+	<property name="label" translatable="yes">Username</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -141,10 +141,10 @@ the global hostname of the collectd instance.
       <object class="GtkEntry" id="Username">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Username used for authentication.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -154,10 +154,10 @@ Username used for authentication.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Password">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Password</property>
+	<property name="label" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -170,10 +170,10 @@ Username used for authentication.
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Password used for authentication.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -183,10 +183,10 @@ Password used for authentication.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Query">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Query</property>
+	<property name="label" translatable="yes">Query</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -199,13 +199,13 @@ Password used for authentication.
       <object class="GtkEntry" id="Query">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Associates the query named QueryName with this database connection. The
 query needs to be defined before this statement, i. e. all query
 blocks you want to refer to must be placed above the database block you want to
 refer to them from.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -14,10 +14,10 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Interface">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Interface</property>
+	<property name="label" translatable="yes">Interface</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -30,11 +30,11 @@
       <object class="GtkEntry" id="Interface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Select this interface. By default these interfaces will then be collected. For
 a more detailed description see IgnoreSelected below.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -44,10 +44,10 @@ a more detailed description see IgnoreSelected below.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">IgnoreSelected</property>
+	<property name="label" translatable="yes">IgnoreSelected</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -60,7 +60,7 @@ a more detailed description see IgnoreSelected below.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If no configuration if given, the traffic-plugin will collect data from
 all interfaces. This may not be practical, especially for loopback- and
 similar interfaces. Thus, you can use the Interface-option to pick the
@@ -70,7 +70,7 @@ do that: By setting IgnoreSelected to true the effect of
 Interface is inverted: All selected interfaces are ignored and all
 other interfaces are collected.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

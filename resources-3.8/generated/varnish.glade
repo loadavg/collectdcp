@@ -61,10 +61,10 @@ Inside each &lt;Instance&gt; blocks, the following options are recognized:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectBackend">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectBackend</property>
+	<property name="label" translatable="yes">CollectBackend</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -77,11 +77,11 @@ Inside each &lt;Instance&gt; blocks, the following options are recognized:
       <object class="GtkEntry" id="CollectBackend">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Back-end connection statistics, such as successful, reused,
 and closed connections. True by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -91,10 +91,10 @@ and closed connections. True by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectBan">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectBan</property>
+	<property name="label" translatable="yes">CollectBan</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -107,12 +107,12 @@ and closed connections. True by default.
       <object class="GtkEntry" id="CollectBan">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Statistics about ban operations, such as number of bans added, retired, and
 number of objects tested against ban operations. Only available with Varnish
 3.x and above. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -122,10 +122,10 @@ number of objects tested against ban operations. Only available with Varnish
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectCache">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectCache</property>
+	<property name="label" translatable="yes">CollectCache</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -138,10 +138,10 @@ number of objects tested against ban operations. Only available with Varnish
       <object class="GtkEntry" id="CollectCache">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Cache hits and misses. True by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -151,10 +151,10 @@ Cache hits and misses. True by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectConnections">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectConnections</property>
+	<property name="label" translatable="yes">CollectConnections</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -167,10 +167,10 @@ Cache hits and misses. True by default.
       <object class="GtkEntry" id="CollectConnections">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Number of client connections received, accepted and dropped. True by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -180,10 +180,10 @@ Number of client connections received, accepted and dropped. True by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectDirectorDNS">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectDirectorDNS</property>
+	<property name="label" translatable="yes">CollectDirectorDNS</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -196,11 +196,11 @@ Number of client connections received, accepted and dropped. True by default.
       <object class="GtkEntry" id="CollectDirectorDNS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 DNS director lookup cache statistics. Only available with Varnish 3.x. False by
 default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -210,10 +210,10 @@ default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectESI">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectESI</property>
+	<property name="label" translatable="yes">CollectESI</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -226,10 +226,10 @@ default.
       <object class="GtkEntry" id="CollectESI">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Edge Side Includes (ESI) parse statistics. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -239,10 +239,10 @@ Edge Side Includes (ESI) parse statistics. False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectFetch">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectFetch</property>
+	<property name="label" translatable="yes">CollectFetch</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -255,10 +255,10 @@ Edge Side Includes (ESI) parse statistics. False by default.
       <object class="GtkEntry" id="CollectFetch">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Statistics about fetches (HTTP requests sent to the backend). False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -268,10 +268,10 @@ Statistics about fetches (HTTP requests sent to the backend). False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectHCB">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectHCB</property>
+	<property name="label" translatable="yes">CollectHCB</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -284,11 +284,11 @@ Statistics about fetches (HTTP requests sent to the backend). False by default.
       <object class="GtkEntry" id="CollectHCB">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Inserts and look-ups in the crit bit tree based hash. Look-ups are
 divided into locked and unlocked look-ups. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -298,10 +298,10 @@ divided into locked and unlocked look-ups. False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectObjects">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectObjects</property>
+	<property name="label" translatable="yes">CollectObjects</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -314,11 +314,11 @@ divided into locked and unlocked look-ups. False by default.
       <object class="GtkEntry" id="CollectObjects">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Statistics on cached objects: number of objects expired, nuked (prematurely
 expired), saved, moved, etc. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -328,10 +328,10 @@ expired), saved, moved, etc. False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectPurge">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectPurge</property>
+	<property name="label" translatable="yes">CollectPurge</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -344,12 +344,12 @@ expired), saved, moved, etc. False by default.
       <object class="GtkEntry" id="CollectPurge">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Statistics about purge operations, such as number of purges added, retired, and
 number of objects tested against purge operations. Only available with Varnish
 2.x. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -359,10 +359,10 @@ number of objects tested against purge operations. Only available with Varnish
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectSession">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectSession</property>
+	<property name="label" translatable="yes">CollectSession</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -375,13 +375,13 @@ number of objects tested against purge operations. Only available with Varnish
       <object class="GtkEntry" id="CollectSession">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Client session statistics. Number of past and current sessions, session herd and
 linger counters, etc. False by default. Note that if using Varnish 4.x, some
 metrics found in the Connections and Threads sections with previous versions of
 Varnish have been moved here.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -391,10 +391,10 @@ Varnish have been moved here.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectSHM">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectSHM</property>
+	<property name="label" translatable="yes">CollectSHM</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -407,11 +407,11 @@ Varnish have been moved here.
       <object class="GtkEntry" id="CollectSHM">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Statistics about the shared memory log, a memory region to store
 log messages which is flushed to disk when full. True by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -421,10 +421,10 @@ log messages which is flushed to disk when full. True by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectSMA">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectSMA</property>
+	<property name="label" translatable="yes">CollectSMA</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -437,12 +437,12 @@ log messages which is flushed to disk when full. True by default.
       <object class="GtkEntry" id="CollectSMA">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 malloc or umem (umem_alloc(3MALLOC) based) storage statistics. The umem storage
 component is Solaris specific. Only available with Varnish 2.x. False by
 default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -452,10 +452,10 @@ default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectSMS">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectSMS</property>
+	<property name="label" translatable="yes">CollectSMS</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -468,11 +468,11 @@ default.
       <object class="GtkEntry" id="CollectSMS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 synth (synthetic content) storage statistics. This storage
 component is used internally only. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -482,10 +482,10 @@ component is used internally only. False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectSM">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectSM</property>
+	<property name="label" translatable="yes">CollectSM</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -498,11 +498,11 @@ component is used internally only. False by default.
       <object class="GtkEntry" id="CollectSM">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 file (memory mapped file) storage statistics. Only available with Varnish 2.x.
 False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -512,10 +512,10 @@ False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectStruct">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectStruct</property>
+	<property name="label" translatable="yes">CollectStruct</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -528,12 +528,12 @@ False by default.
       <object class="GtkEntry" id="CollectStruct">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Current varnish internal state statistics. Number of current sessions, objects
 in cache store, open connections to backends (with Varnish 2.x), etc. False by
 default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -543,10 +543,10 @@ default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectTotals">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectTotals</property>
+	<property name="label" translatable="yes">CollectTotals</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -559,11 +559,11 @@ default.
       <object class="GtkEntry" id="CollectTotals">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Collects overview counters, such as the number of sessions created,
 the number of requests and bytes transferred. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -573,10 +573,10 @@ the number of requests and bytes transferred. False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectUptime">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectUptime</property>
+	<property name="label" translatable="yes">CollectUptime</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -589,10 +589,10 @@ the number of requests and bytes transferred. False by default.
       <object class="GtkEntry" id="CollectUptime">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Varnish uptime. Only available with Varnish 3.x and above. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -602,10 +602,10 @@ Varnish uptime. Only available with Varnish 3.x and above. False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectVCL">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectVCL</property>
+	<property name="label" translatable="yes">CollectVCL</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -618,10 +618,10 @@ Varnish uptime. Only available with Varnish 3.x and above. False by default.
       <object class="GtkEntry" id="CollectVCL">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Number of total (available + discarded) VCL (config files). False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -631,10 +631,10 @@ Number of total (available + discarded) VCL (config files). False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectVSM">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectVSM</property>
+	<property name="label" translatable="yes">CollectVSM</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -647,11 +647,11 @@ Number of total (available + discarded) VCL (config files). False by default.
       <object class="GtkEntry" id="CollectVSM">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Collect statistics about Varnish's shared memory usage (used by the logging and
 statistics subsystems). Only available with Varnish 4.x. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -661,10 +661,10 @@ statistics subsystems). Only available with Varnish 4.x. False by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CollectWorkers">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CollectWorkers</property>
+	<property name="label" translatable="yes">CollectWorkers</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -677,10 +677,10 @@ statistics subsystems). Only available with Varnish 4.x. False by default.
       <object class="GtkEntry" id="CollectWorkers">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Collect statistics about worker threads. False by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -24,10 +24,10 @@ Only Connection is required.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Connection">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Connection</property>
+	<property name="label" translatable="yes">Connection</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -40,13 +40,13 @@ Only Connection is required.
       <object class="GtkEntry" id="Connection">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Connect to the hypervisor given by uri. For example if using Xen use:
 
  Connection "xen:///"
 Details which URIs allowed are given at http://libvirt.org/uri.html.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -56,10 +56,10 @@ Details which URIs allowed are given at http://libvirt.org/uri.html.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-RefreshInterval">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">RefreshInterval</property>
+	<property name="label" translatable="yes">RefreshInterval</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -72,7 +72,7 @@ Details which URIs allowed are given at http://libvirt.org/uri.html.
       <object class="GtkEntry" id="RefreshInterval">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Refresh the list of domains and devices every seconds. The default is 60
 seconds. Setting this to be the same or smaller than the Interval will cause
 the list of domains and devices to be refreshed on every iteration.
@@ -80,7 +80,7 @@ Refreshing the devices in particular is quite a costly operation, so if your
 virtualization setup is static you might consider increasing this. If this
 option is set to 0, refreshing is disabled completely.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -90,10 +90,10 @@ option is set to 0, refreshing is disabled completely.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">IgnoreSelected</property>
+	<property name="label" translatable="yes">IgnoreSelected</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -106,7 +106,7 @@ option is set to 0, refreshing is disabled completely.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Select which domains and devices are collected.
 If IgnoreSelected is not given or false then only the listed domains and
 disk/network devices are collected.
@@ -122,7 +122,7 @@ Example:
 Ignore all hdb devices on any domain, but other block devices (eg. hda)
 will be collected.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -132,10 +132,10 @@ will be collected.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-HostnameFormat">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">HostnameFormat</property>
+	<property name="label" translatable="yes">HostnameFormat</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -148,7 +148,7 @@ will be collected.
       <object class="GtkEntry" id="HostnameFormat">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When the virt plugin logs data, it sets the hostname of the collected data
 according to this setting. The default is to use the guest name as provided by
 the hypervisor, which is equal to setting name.
@@ -160,7 +160,7 @@ You can also specify combinations of these fields. For example name uuid
 means to concatenate the guest name and UUID (with a literal colon character
 between, thus "foo:1234-1234-1234-1234").
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -170,10 +170,10 @@ between, thus "foo:1234-1234-1234-1234").
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-InterfaceFormat">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">InterfaceFormat</property>
+	<property name="label" translatable="yes">InterfaceFormat</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -186,7 +186,7 @@ between, thus "foo:1234-1234-1234-1234").
       <object class="GtkEntry" id="InterfaceFormat">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When the virt plugin logs interface data, it sets the name of the collected
 data according to this setting. The default is to use the path as provided by
 the hypervisor (the "dev" property of the target node), which is equal to
@@ -194,7 +194,7 @@ setting name.
 address means use the interface's mac address. This is useful since the
 interface path might change between reboots of a guest or across migrations.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -204,10 +204,10 @@ interface path might change between reboots of a guest or across migrations.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-PluginInstanceFormat">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">PluginInstanceFormat</property>
+	<property name="label" translatable="yes">PluginInstanceFormat</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -220,13 +220,13 @@ interface path might change between reboots of a guest or across migrations.
       <object class="GtkEntry" id="PluginInstanceFormat">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When the virt plugin logs data, it sets the plugin_instance of the collected
 data according to this setting. The default is to use the guest name as provided
 by the hypervisor, which is equal to setting name.
 uuid means use the guest's UUID.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

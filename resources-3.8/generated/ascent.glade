@@ -22,10 +22,10 @@ The configuration options are the same as for the apache plugin above:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-URL">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">URL</property>
+	<property name="label" translatable="yes">URL</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -38,10 +38,10 @@ The configuration options are the same as for the apache plugin above:
       <object class="GtkEntry" id="URL">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the URL of the XML status output.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -51,10 +51,10 @@ Sets the URL of the XML status output.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-User">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">User</property>
+	<property name="label" translatable="yes">User</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -67,10 +67,10 @@ Sets the URL of the XML status output.
       <object class="GtkEntry" id="User">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Optional user name needed for authentication.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -80,10 +80,10 @@ Optional user name needed for authentication.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Password">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Password</property>
+	<property name="label" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -96,10 +96,10 @@ Optional user name needed for authentication.
       <object class="GtkEntry" id="Password">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Optional password needed for authentication.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -109,10 +109,10 @@ Optional password needed for authentication.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-VerifyPeer">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">VerifyPeer</property>
+	<property name="label" translatable="yes">VerifyPeer</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -125,11 +125,11 @@ Optional password needed for authentication.
       <object class="GtkEntry" id="VerifyPeer">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Enable or disable peer SSL certificate verification. See
 http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -139,10 +139,10 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">VerifyHost</property>
+	<property name="label" translatable="yes">VerifyHost</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -155,14 +155,14 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
       <object class="GtkEntry" id="VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Enable or disable peer host name verification. If enabled, the plugin checks
 if the Common Name or a Subject Alternate Name field of the SSL
 certificate matches the host name provided by the URL option. If this
 identity check fails, the connection is aborted. Obviously, only works when
 connecting to a SSL enabled server. Enabled by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -172,10 +172,10 @@ connecting to a SSL enabled server. Enabled by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CACert">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CACert</property>
+	<property name="label" translatable="yes">CACert</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -188,12 +188,12 @@ connecting to a SSL enabled server. Enabled by default.
       <object class="GtkEntry" id="CACert">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 File that holds one or more SSL certificates. If you want to use HTTPS you will
 possibly need this option. What CA certificates come bundled with libcurl
 and are checked by default depends on the distribution you use.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -203,10 +203,10 @@ and are checked by default depends on the distribution you use.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Timeout</property>
+	<property name="label" translatable="yes">Timeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -219,12 +219,12 @@ and are checked by default depends on the distribution you use.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The Timeout option sets the overall timeout for HTTP requests to URL, in
 milliseconds. By default, the configured Interval is used to set the
 timeout.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

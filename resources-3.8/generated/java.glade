@@ -37,10 +37,10 @@ Available configuration options:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-JVMArg">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">JVMArg</property>
+	<property name="label" translatable="yes">JVMArg</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -53,7 +53,7 @@ Available configuration options:
       <object class="GtkEntry" id="JVMArg">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Argument that is to be passed to the Java Virtual Machine (JVM). This works
 exactly the way the arguments to the java binary on the command line work.
 Execute java--help for details.
@@ -61,7 +61,7 @@ Please note that all these options must appear before (i. e. above)
 any other options! When another option is found, the JVM will be started and
 later options will have to be ignored!
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -71,10 +71,10 @@ later options will have to be ignored!
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-LoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">LoadPlugin</property>
+	<property name="label" translatable="yes">LoadPlugin</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -87,7 +87,7 @@ later options will have to be ignored!
       <object class="GtkEntry" id="LoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Instantiates a new JavaClass object. The constructor of this object very
 likely then registers one or more callback methods with the server.
 See collectd-java(5) for details.
@@ -95,7 +95,7 @@ When the first such option is found, the virtual machine (JVM) is created. This
 means that all JVMArg options must appear before (i. e. above) all
 LoadPlugin options!
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -105,10 +105,10 @@ LoadPlugin options!
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Plugin">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Plugin</property>
+	<property name="label" translatable="yes">Plugin</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -121,7 +121,7 @@ LoadPlugin options!
       <object class="GtkEntry" id="Plugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The entire block is passed to the Java plugin as an
 org.collectd.api.OConfigItem object.
 For this to work, the plugin has to register a configuration callback first,
@@ -130,7 +130,7 @@ must appear after the appropriate LoadPlugin block. Also note, that Name
 depends on the (Java) plugin registering the callback and is completely
 independent from the JavaClass argument passed to LoadPlugin.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

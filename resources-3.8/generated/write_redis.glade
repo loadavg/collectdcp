@@ -48,10 +48,10 @@ options are available:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Node">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Node</property>
+	<property name="label" translatable="yes">Node</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -64,13 +64,13 @@ options are available:
       <object class="GtkEntry" id="Node">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The Node block identifies a new Redis node, that is a new Redis
 instance running in an specified host and port. The name for node is a
 canonical identifier which is used as plugin instance. It is limited to
 64 characters in length.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -80,10 +80,10 @@ canonical identifier which is used as plugin instance. It is limited to
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Host</property>
+	<property name="label" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -96,11 +96,11 @@ canonical identifier which is used as plugin instance. It is limited to
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The Host option is the hostname or IP-address where the Redis instance is
 running on.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -110,10 +110,10 @@ running on.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Port">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Port</property>
+	<property name="label" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -126,12 +126,12 @@ running on.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The Port option is the TCP port on which the Redis instance accepts
 connections. Either a service name of a port number may be given. Please note
 that numerical port numbers must be given as a string, too.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -141,10 +141,10 @@ that numerical port numbers must be given as a string, too.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Timeout</property>
+	<property name="label" translatable="yes">Timeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -157,10 +157,10 @@ that numerical port numbers must be given as a string, too.
       <object class="GtkEntry" id="Timeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The Timeout option sets the socket connection timeout, in milliseconds.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

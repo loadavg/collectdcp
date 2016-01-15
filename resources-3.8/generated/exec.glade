@@ -19,10 +19,10 @@ output that is expected from it.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-NotificationExec">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">NotificationExec</property>
+	<property name="label" translatable="yes">NotificationExec</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -35,7 +35,7 @@ output that is expected from it.
       <object class="GtkEntry" id="NotificationExec">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Execute the executable Executable as user User. If the user name is
 followed by a colon and a group name, the effective group is set to that group.
 The real group and saved-set group will be set to the default group of that
@@ -53,7 +53,7 @@ The Exec and NotificationExec statements change the semantics of the
 programs executed, i. e. the data passed to them and the response
 expected from them. This is documented in great detail in collectd-exec(5).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

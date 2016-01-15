@@ -43,10 +43,10 @@ extract.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Metric">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Metric</property>
+	<property name="label" translatable="yes">Metric</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -59,7 +59,7 @@ extract.
       <object class="GtkEntry" id="Metric">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The Metric block configures a new metric to be extracted from the statistics
 file and how it is mapped on collectd's data model. The string Name is
 only used inside the Instance blocks to refer to this block, so you can use
@@ -80,7 +80,7 @@ If the value is parsed as signed integer, unsigned integer or double depends on
 the Type setting, see above.
 
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -90,10 +90,10 @@ the Type setting, see above.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-File">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">File</property>
+	<property name="label" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -106,7 +106,7 @@ the Type setting, see above.
       <object class="GtkEntry" id="File">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Each File block represents one CSV file to read. There must be at least one
 File block but there can be multiple if you have multiple CSV files.
 Instance PluginInstance
@@ -124,7 +124,7 @@ from the field with the zero-based index Index. The value is interpreted as
 seconds since epoch. The value is parsed as a double and may be factional.
 
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

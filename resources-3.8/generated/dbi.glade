@@ -106,10 +106,10 @@ The following options are accepted:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Statement</property>
+	<property name="label" translatable="yes">Statement</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -122,7 +122,7 @@ The following options are accepted:
       <object class="GtkEntry" id="Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the statement that should be executed on the server. This is not
 interpreted by collectd, but simply passed to the database server. Therefore,
 the SQL dialect that's used depends on the server collectd is connected to.
@@ -138,7 +138,7 @@ something.)
 Please note that some databases, for example Oracle, will fail if you
 include a semicolon at the end of the statement.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -148,10 +148,10 @@ include a semicolon at the end of the statement.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-MaxVersion">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">MaxVersion</property>
+	<property name="label" translatable="yes">MaxVersion</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -164,7 +164,7 @@ include a semicolon at the end of the statement.
       <object class="GtkEntry" id="MaxVersion">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Only use this query for the specified database version. You can use these
 options to provide multiple queries with the same name but with a slightly
 different syntax. The plugin will use only those queries, where the specified
@@ -190,7 +190,7 @@ In the above example, there are three ranges that don't overlap. The last one
 goes from version "5.1.0" to infinity, meaning "all later versions". Versions
 before "4.0.0" are not specified.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -200,10 +200,10 @@ before "4.0.0" are not specified.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Type">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Type</property>
+	<property name="label" translatable="yes">Type</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -216,7 +216,7 @@ before "4.0.0" are not specified.
       <object class="GtkEntry" id="Type">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The type that's used for each line returned. See types.db(5) for more
 details on how types are defined. In short: A type is a predefined layout of
 data and the number of values and type of values has to match the type
@@ -226,7 +226,7 @@ specify "if_octets", you will need two counter columns. See the ValuesFrom
 setting below.
 There must be exactly one Type option inside each Result block.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -236,10 +236,10 @@ There must be exactly one Type option inside each Result block.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-InstancePrefix">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">InstancePrefix</property>
+	<property name="label" translatable="yes">InstancePrefix</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -252,13 +252,13 @@ There must be exactly one Type option inside each Result block.
       <object class="GtkEntry" id="InstancePrefix">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Prepends prefix to the type instance. If InstancesFrom (see below) is not
 given, the string is simply copied. If InstancesFrom is given, prefix and
 all strings returned in the appropriate columns are concatenated together,
 separated by dashes ("-").
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -268,10 +268,10 @@ separated by dashes ("-").
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-InstancesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">InstancesFrom</property>
+	<property name="label" translatable="yes">InstancesFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -284,7 +284,7 @@ separated by dashes ("-").
       <object class="GtkEntry" id="InstancesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Specifies the columns whose values will be used to create the "type-instance"
 for each row. If you specify more than one column, the value of all columns
 will be joined together with dashes ("-") as separation characters.
@@ -295,7 +295,7 @@ sure that only one row is returned in this case.
 If neither InstancePrefix nor InstancesFrom is given, the type-instance
 will be empty.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -305,10 +305,10 @@ will be empty.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ValuesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ValuesFrom</property>
+	<property name="label" translatable="yes">ValuesFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -321,7 +321,7 @@ will be empty.
       <object class="GtkEntry" id="ValuesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Names the columns whose content is used as the actual data for the data sets
 that are dispatched to the daemon. How many such columns you need is determined
 by the Type setting above. If you specify too many or not enough columns,
@@ -333,7 +333,7 @@ it should be able to handle integer an floating point types, as well as strings
 (if they include a number at the beginning).
 There must be at least one ValuesFrom option inside each Result block.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -343,10 +343,10 @@ There must be at least one ValuesFrom option inside each Result block.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-MetadataFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">MetadataFrom</property>
+	<property name="label" translatable="yes">MetadataFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -359,7 +359,7 @@ There must be at least one ValuesFrom option inside each Result block.
       <object class="GtkEntry" id="MetadataFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Names the columns whose content is used as metadata for the data sets
 that are dispatched to the daemon.
 The actual data type in the columns is not that important. The plugin will
@@ -367,7 +367,7 @@ automatically cast the values to the right type if it know how to do that. So
 it should be able to handle integer an floating point types, as well as strings
 (if they include a number at the beginning).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

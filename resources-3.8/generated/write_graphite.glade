@@ -40,10 +40,10 @@ blocks. Inside the Node blocks, the following options are recognized:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Host</property>
+	<property name="label" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -56,10 +56,10 @@ blocks. Inside the Node blocks, the following options are recognized:
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Hostname or address to connect to. Defaults to localhost.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -69,10 +69,10 @@ Hostname or address to connect to. Defaults to localhost.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Port">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Port</property>
+	<property name="label" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -85,10 +85,10 @@ Hostname or address to connect to. Defaults to localhost.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Service name or port number to connect to. Defaults to 2003.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -98,10 +98,10 @@ Service name or port number to connect to. Defaults to 2003.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Protocol">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Protocol</property>
+	<property name="label" translatable="yes">Protocol</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -114,10 +114,10 @@ Service name or port number to connect to. Defaults to 2003.
       <object class="GtkEntry" id="Protocol">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Protocol to use when connecting to Graphite. Defaults to tcp.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -127,10 +127,10 @@ Protocol to use when connecting to Graphite. Defaults to tcp.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-LogSendErrors">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">LogSendErrors</property>
+	<property name="label" translatable="yes">LogSendErrors</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -143,13 +143,13 @@ Protocol to use when connecting to Graphite. Defaults to tcp.
       <object class="GtkEntry" id="LogSendErrors">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If set to true (the default), logs errors when sending data to Graphite.
 If set to false, it will not log the errors. This is especially useful when
 using Protocol UDP since many times we want to use the "fire-and-forget"
 approach and logging errors fills syslog with unneeded messages.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -159,10 +159,10 @@ approach and logging errors fills syslog with unneeded messages.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Prefix">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Prefix</property>
+	<property name="label" translatable="yes">Prefix</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -175,11 +175,11 @@ approach and logging errors fills syslog with unneeded messages.
       <object class="GtkEntry" id="Prefix">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When set, String is added in front of the host name. Dots and whitespace are
 not escaped in this string (see EscapeCharacter below).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -189,10 +189,10 @@ not escaped in this string (see EscapeCharacter below).
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Postfix">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Postfix</property>
+	<property name="label" translatable="yes">Postfix</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -205,11 +205,11 @@ not escaped in this string (see EscapeCharacter below).
       <object class="GtkEntry" id="Postfix">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When set, String is appended to the host name. Dots and whitespace are
 not escaped in this string (see EscapeCharacter below).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -219,10 +219,10 @@ not escaped in this string (see EscapeCharacter below).
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-EscapeCharacter">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">EscapeCharacter</property>
+	<property name="label" translatable="yes">EscapeCharacter</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -235,13 +235,13 @@ not escaped in this string (see EscapeCharacter below).
       <object class="GtkEntry" id="EscapeCharacter">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Carbon uses the dot (.) as escape character and doesn't allow whitespace
 in the identifier. The EscapeCharacter option determines which character
 dots, whitespace and control characters are replaced with. Defaults to
 underscore (_).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -251,10 +251,10 @@ underscore (_).
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-StoreRates">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">StoreRates</property>
+	<property name="label" translatable="yes">StoreRates</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -267,12 +267,12 @@ underscore (_).
       <object class="GtkEntry" id="StoreRates">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If set to true (the default), convert counter values to rates. If set to
 false counter values are stored as is, i. e. as an increasing integer
 number.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -282,10 +282,10 @@ number.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-SeparateInstances">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">SeparateInstances</property>
+	<property name="label" translatable="yes">SeparateInstances</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -298,13 +298,13 @@ number.
       <object class="GtkEntry" id="SeparateInstances">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If set to true, the plugin instance and type instance will be in their own
 path component, for example host.cpu.0.cpu.idle. If set to false (the
 default), the plugin and plugin instance (and likewise the type and type
 instance) are put into one component, for example host.cpu-0.cpu-idle.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -314,10 +314,10 @@ instance) are put into one component, for example host.cpu-0.cpu-idle.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-AlwaysAppendDS">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">AlwaysAppendDS</property>
+	<property name="label" translatable="yes">AlwaysAppendDS</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -330,12 +330,12 @@ instance) are put into one component, for example host.cpu-0.cpu-idle.
       <object class="GtkEntry" id="AlwaysAppendDS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If set to true, append the name of the Data Source (DS) to the "metric"
 identifier. If set to false (the default), this is only done when there is
 more than one DS.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

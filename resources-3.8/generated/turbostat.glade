@@ -18,10 +18,10 @@ Intel processors by using the new Model Specific Registers.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-CoreCstates">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">CoreCstates</property>
+	<property name="label" translatable="yes">CoreCstates</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -34,14 +34,14 @@ Intel processors by using the new Model Specific Registers.
       <object class="GtkEntry" id="CoreCstates">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Bitmask of the list of core C states supported by the processor.
 This option should only be used if the automated detection fails.
 Default value extracted from the cpu model and family.
 Currently supported C-states (by this plugin): 3, 6, 7
 Example: (1&lt;&lt;3)+(1&lt;&lt;6)+(1&lt;&lt;7) = 392 for all states
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -51,10 +51,10 @@ Example: (1&lt;&lt;3)+(1&lt;&lt;6)+(1&lt;&lt;7) = 392 for all states
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-SystemManagementInterrupt">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">SystemManagementInterrupt</property>
+	<property name="label" translatable="yes">SystemManagementInterrupt</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -67,12 +67,12 @@ Example: (1&lt;&lt;3)+(1&lt;&lt;6)+(1&lt;&lt;7) = 392 for all states
       <object class="GtkEntry" id="SystemManagementInterrupt">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Boolean enabling the collection of the I/O System-Management Interrupt
 counter'. This option should only be used if the automated detection
 fails or if you want to disable this feature.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -82,10 +82,10 @@ fails or if you want to disable this feature.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-DigitalTemperatureSensor">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">DigitalTemperatureSensor</property>
+	<property name="label" translatable="yes">DigitalTemperatureSensor</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -98,12 +98,12 @@ fails or if you want to disable this feature.
       <object class="GtkEntry" id="DigitalTemperatureSensor">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Boolean enabling the collection of the temperature of each core.
 This option should only be used if the automated detectionfails or 
 if you want to disable this feature.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -113,10 +113,10 @@ if you want to disable this feature.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-DigitalTemperatureSensor">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">DigitalTemperatureSensor</property>
+	<property name="label" translatable="yes">DigitalTemperatureSensor</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -129,12 +129,12 @@ if you want to disable this feature.
       <object class="GtkEntry" id="DigitalTemperatureSensor">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Boolean enabling the collection of the temperature of each package.
 This option should only be used if the automated detectionfails or 
 if you want to disable this feature.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -144,10 +144,10 @@ if you want to disable this feature.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-TCCActivationTemp">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">TCCActivationTemp</property>
+	<property name="label" translatable="yes">TCCActivationTemp</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -160,13 +160,13 @@ if you want to disable this feature.
       <object class="GtkEntry" id="TCCActivationTemp">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Thermal Control Circuit Activation Temperature of the installed
 CPU. This temperature is used when collecting the temperature of
 cores or packages. This option should only be used if the automated
 detection fails. Default value extracted from MSR_IA32_TEMPERATURE_TARGET
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

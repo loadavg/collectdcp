@@ -61,10 +61,10 @@ be performed:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Regex">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Regex</property>
+	<property name="label" translatable="yes">Regex</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -77,7 +77,7 @@ be performed:
       <object class="GtkEntry" id="Regex">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the regular expression to use for matching against a line. The first
 subexpression has to match something that can be turned into a number by
 strtoll(3) or strtod(3), depending on the value of CounterAdd, see
@@ -88,7 +88,7 @@ want to match literal parentheses you need to do the following:
 
   Regex "SPAM \\(Score: (-?[0-9]+\\.[0-9]+)\\)"
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -98,10 +98,10 @@ want to match literal parentheses you need to do the following:
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ExcludeRegex">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ExcludeRegex</property>
+	<property name="label" translatable="yes">ExcludeRegex</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -114,13 +114,13 @@ want to match literal parentheses you need to do the following:
       <object class="GtkEntry" id="ExcludeRegex">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets an optional regular expression to use for excluding lines from the match.
 An example which excludes all connections from localhost from the match:
 
   ExcludeRegex "127\\.0\\.0\\.1"
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -130,10 +130,10 @@ An example which excludes all connections from localhost from the match:
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-DSType">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">DSType</property>
+	<property name="label" translatable="yes">DSType</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -146,7 +146,7 @@ An example which excludes all connections from localhost from the match:
       <object class="GtkEntry" id="DSType">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets how the values are cumulated. Type is one of:
 GaugeAverage
 Calculate the average.
@@ -175,7 +175,7 @@ interpret the submatch as a signed integer using strtoll(3). CounterInc
 and DeriveInc do not use the submatch at all and it may be omitted in this
 case.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -185,10 +185,10 @@ case.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Type">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Type</property>
+	<property name="label" translatable="yes">Type</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -201,11 +201,11 @@ case.
       <object class="GtkEntry" id="Type">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the type used to dispatch this value. Detailed information about types and
 their configuration can be found in types.db(5).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -215,10 +215,10 @@ their configuration can be found in types.db(5).
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Instance">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Instance</property>
+	<property name="label" translatable="yes">Instance</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -231,10 +231,10 @@ their configuration can be found in types.db(5).
       <object class="GtkEntry" id="Instance">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 This optional setting sets the type instance to use.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

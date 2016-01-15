@@ -21,19 +21,39 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <placeholder/>
+                  <object class="GtkEntry" id="te_password">
+                    <property name="name">te_password</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible_char">•</property>
+                    <property name="primary_icon_stock">gtk-dialog-warning</property>
+                    <property name="primary_icon_tooltip_text" translatable="yes">Enter your sudo password to access protected resources.
+It will not be saved anywhere by this program.</property>
+                    <property name="primary_icon_tooltip_markup" translatable="yes">Enter your sudo password to access protected resources.
+It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
+                    <property name="placeholder_text" translatable="yes">sudo password</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
+                  <object class="GtkButton" id="bt_start">
+                    <property name="label" translatable="yes">start</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>

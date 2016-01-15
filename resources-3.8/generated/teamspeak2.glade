@@ -20,10 +20,10 @@ options to configure it:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Host</property>
+	<property name="label" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -36,11 +36,11 @@ options to configure it:
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The hostname or ip which identifies the physical server.
 Default: 127.0.0.1
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -50,10 +50,10 @@ Default: 127.0.0.1
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Port">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Port</property>
+	<property name="label" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -66,11 +66,11 @@ Default: 127.0.0.1
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The query port of the physical server. This needs to be a string.
 Default: "51234"
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -80,10 +80,10 @@ Default: "51234"
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Server">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Server</property>
+	<property name="label" translatable="yes">Server</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -96,7 +96,7 @@ Default: "51234"
       <object class="GtkEntry" id="Server">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 This option has to be added once for every virtual server the plugin should
 query. If you want to query the virtual server on port 8767 this is what the
 option would look like:
@@ -106,7 +106,7 @@ This option, although numeric, needs to be a string, i. e. you must
 use quotes around it! If no such statement is given only global information
 will be collected.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

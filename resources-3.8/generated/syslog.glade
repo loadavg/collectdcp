@@ -14,10 +14,10 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-LogLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">LogLevel</property>
+	<property name="label" translatable="yes">LogLevel</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -30,14 +30,14 @@
       <object class="GtkEntry" id="LogLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the log-level. If, for example, set to notice, then all events with
 severity notice, warning, or err will be submitted to the
 syslog-daemon.
 Please note that debug is only available if collectd has been compiled with
 debugging support.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -47,10 +47,10 @@ debugging support.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-NotifyLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">NotifyLevel</property>
+	<property name="label" translatable="yes">NotifyLevel</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -63,7 +63,7 @@ debugging support.
       <object class="GtkEntry" id="NotifyLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Controls which notifications should be sent to syslog. The default behaviour is
 not to send any. Less severe notifications always imply logging more severe
 notifications: Setting this to OKAY means all notifications will be sent to
@@ -71,7 +71,7 @@ syslog, setting this to WARNING will send WARNING and FAILURE
 notifications but will dismiss OKAY notifications. Setting this option to
 FAILURE will only send failures to syslog.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

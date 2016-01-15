@@ -17,10 +17,10 @@ This plugin collects IP conntrack statistics.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-OldFiles">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">OldFiles</property>
+	<property name="label" translatable="yes">OldFiles</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -33,11 +33,11 @@ This plugin collects IP conntrack statistics.
       <object class="GtkEntry" id="OldFiles">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Assume the conntrack_count and conntrack_max files to be found in
 /proc/sys/net/ipv4/netfilter instead of /proc/sys/net/netfilter/.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

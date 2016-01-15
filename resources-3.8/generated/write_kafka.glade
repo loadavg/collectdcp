@@ -31,10 +31,10 @@ The following options are understood by the write_kafka plugin:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Topic">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Topic</property>
+	<property name="label" translatable="yes">Topic</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -47,7 +47,7 @@ The following options are understood by the write_kafka plugin:
       <object class="GtkEntry" id="Topic">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The plugin's configuration consists of one or more Topic blocks. Each block
 is given a unique Name and specifies one kafka producer.
 Inside the Topic block, the following per-topic options are
@@ -104,7 +104,7 @@ converted values will have "rate" appended to the data source type, e.g.
 ds_type:derive:rate.
 
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -114,10 +114,10 @@ ds_type:derive:rate.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Property">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Property</property>
+	<property name="label" translatable="yes">Property</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -130,11 +130,11 @@ ds_type:derive:rate.
       <object class="GtkEntry" id="Property">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Configure the kafka producer through properties, you almost always will
 want to set metadata.broker.list to your Kafka broker list.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -45,10 +45,10 @@ blocks, the following options are recognized:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Instance">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Instance</property>
+	<property name="label" translatable="yes">Instance</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -61,13 +61,13 @@ blocks, the following options are recognized:
       <object class="GtkEntry" id="Instance">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the plugin instance to Instance. That instance name must be unique, but
 it's your responsibility, the plugin doesn't check for that. If not given, the
 instance is set to the directory name with all slashes replaced by underscores
 and all leading underscores removed.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -77,10 +77,10 @@ and all leading underscores removed.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Name">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Name</property>
+	<property name="label" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -93,13 +93,13 @@ and all leading underscores removed.
       <object class="GtkEntry" id="Name">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Only count files that match Pattern, where Pattern is a shell-like
 wildcard as understood by fnmatch(3). Only the filename is checked
 against the pattern, not the entire path. In case this makes it easier for you:
 This option has been named after the -name parameter to find(1).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -109,10 +109,10 @@ This option has been named after the -name parameter to find(1).
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-MTime">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">MTime</property>
+	<property name="label" translatable="yes">MTime</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -125,7 +125,7 @@ This option has been named after the -name parameter to find(1).
       <object class="GtkEntry" id="MTime">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Count only files of a specific age: If Age is greater than zero, only files
 that haven't been touched in the last Age seconds are counted. If Age is
 a negative number, this is inversed. For example, if -60 is specified, only
@@ -138,7 +138,7 @@ minute). Valid multipliers are s (second), m (minute), h (hour), d
 also specify fractional numbers, e. g. "0.5d" is identical to
 "12h".
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -148,10 +148,10 @@ also specify fractional numbers, e. g. "0.5d" is identical to
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Size">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Size</property>
+	<property name="label" translatable="yes">Size</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -164,7 +164,7 @@ also specify fractional numbers, e. g. "0.5d" is identical to
       <object class="GtkEntry" id="Size">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Count only files of a specific size. When Size is a positive number, only
 files that are at least this big are counted. If Size is a negative number,
 this is inversed, i. e. only files smaller than the absolute value of
@@ -174,7 +174,7 @@ description see above. Valid multipliers here are b (byte), k (kilobyte),
 m (megabyte), g (gigabyte), t (terabyte), and p (petabyte). Please
 note that there are 1000 bytes in a kilobyte, not 1024.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -184,10 +184,10 @@ note that there are 1000 bytes in a kilobyte, not 1024.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Recursive">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Recursive</property>
+	<property name="label" translatable="yes">Recursive</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -200,10 +200,10 @@ note that there are 1000 bytes in a kilobyte, not 1024.
       <object class="GtkEntry" id="Recursive">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Controls whether or not to recurse into subdirectories. Enabled by default.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -213,10 +213,10 @@ Controls whether or not to recurse into subdirectories. Enabled by default.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-IncludeHidden">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">IncludeHidden</property>
+	<property name="label" translatable="yes">IncludeHidden</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -229,12 +229,12 @@ Controls whether or not to recurse into subdirectories. Enabled by default.
       <object class="GtkEntry" id="IncludeHidden">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Controls whether or not to include "hidden" files and directories in the count.
 "Hidden" files and directories are those, whose name begins with a dot.
 Defaults to false, i.e. by default hidden files and directories are ignored.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

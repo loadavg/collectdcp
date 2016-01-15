@@ -18,10 +18,10 @@ Linux and Solaris, the following options are available:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ReportByDevice">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ReportByDevice</property>
+	<property name="label" translatable="yes">ReportByDevice</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -34,7 +34,7 @@ Linux and Solaris, the following options are available:
       <object class="GtkEntry" id="ReportByDevice">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Configures how to report physical swap devices. If set to false (the
 default), the summary over all swap devices is reported only, i.e. the globally
 used and available space over all devices. If true is configured, the used
@@ -42,7 +42,7 @@ and available space of each device will be reported separately.
 This option is only available if the Swap plugin can read /proc/swaps
 (under Linux) or use the swapctl(2) mechanism (under Solaris).
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -52,10 +52,10 @@ This option is only available if the Swap plugin can read /proc/swaps
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ReportBytes">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ReportBytes</property>
+	<property name="label" translatable="yes">ReportBytes</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -68,11 +68,11 @@ This option is only available if the Swap plugin can read /proc/swaps
       <object class="GtkEntry" id="ReportBytes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When enabled, the swap I/O is reported in bytes. When disabled, the default,
 swap I/O is reported in pages. This option is available under Linux only.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -82,10 +82,10 @@ swap I/O is reported in pages. This option is available under Linux only.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ValuesAbsolute">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ValuesAbsolute</property>
+	<property name="label" translatable="yes">ValuesAbsolute</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -98,11 +98,11 @@ swap I/O is reported in pages. This option is available under Linux only.
       <object class="GtkEntry" id="ValuesAbsolute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Enables or disables reporting of absolute swap metrics, i.e. number of bytes
 available and used. Defaults to true.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -112,10 +112,10 @@ available and used. Defaults to true.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ValuesPercentage</property>
+	<property name="label" translatable="yes">ValuesPercentage</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -128,13 +128,13 @@ available and used. Defaults to true.
       <object class="GtkEntry" id="ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Enables or disables reporting of relative swap metrics, i.e. percent
 available and free. Defaults to false.
 This is useful for deploying collectd in a heterogeneous environment, where
 swap sizes differ and you want to specify generic thresholds or similar.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

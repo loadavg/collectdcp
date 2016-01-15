@@ -49,10 +49,10 @@ The plugin provides the following configuration options:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Address">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Address</property>
+	<property name="label" translatable="yes">Address</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -65,11 +65,11 @@ The plugin provides the following configuration options:
       <object class="GtkEntry" id="Address">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Configures the address used to open a listening socket. By default, plugin will
 bind to the any address ::0.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -79,10 +79,10 @@ bind to the any address ::0.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Port">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Port</property>
+	<property name="label" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -95,12 +95,12 @@ bind to the any address ::0.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Configures the port (service) to bind to. By default the default Pinba port
 "30002" will be used. The option accepts service names in addition to port
 numbers and thus requires a string argument.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -110,10 +110,10 @@ numbers and thus requires a string argument.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-View">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">View</property>
+	<property name="label" translatable="yes">View</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -126,7 +126,7 @@ numbers and thus requires a string argument.
       <object class="GtkEntry" id="View">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The packets sent by the Pinba extension include the hostname of the server, the
 server name (the name of the virtual host) and the script that was executed.
 Using View blocks it is possible to separate the data into multiple groups
@@ -146,7 +146,7 @@ $_SERVER["SCRIPT_NAME"] variable when within PHP. If not configured, all
 script names will be accepted.
 
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -22,10 +22,10 @@ missing (physically absent) disks.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Device">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Device</property>
+	<property name="label" translatable="yes">Device</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -38,12 +38,12 @@ missing (physically absent) disks.
       <object class="GtkEntry" id="Device">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Select md devices based on device name. The device name is the basename of
 the device, i.e. the name of the block device without the leading /dev/.
 See IgnoreSelected for more details.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -53,10 +53,10 @@ See IgnoreSelected for more details.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">IgnoreSelected</property>
+	<property name="label" translatable="yes">IgnoreSelected</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -69,13 +69,13 @@ See IgnoreSelected for more details.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Invert device selection: If set to true, all md devices except those
 listed using Device are collected. If false (the default), only those
 listed are collected. If no configuration is given, the md plugin will
 collect data from all md devices.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

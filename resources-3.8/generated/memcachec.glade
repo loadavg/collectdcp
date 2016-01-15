@@ -46,10 +46,10 @@ The configuration options are:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Page">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Page</property>
+	<property name="label" translatable="yes">Page</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -62,11 +62,11 @@ The configuration options are:
       <object class="GtkEntry" id="Page">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Each Page block defines one page to be queried from the memcached server.
 The block requires one string argument which is used as plugin instance.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -76,10 +76,10 @@ The block requires one string argument which is used as plugin instance.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Server">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Server</property>
+	<property name="label" translatable="yes">Server</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -92,11 +92,11 @@ The block requires one string argument which is used as plugin instance.
       <object class="GtkEntry" id="Server">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the server address to connect to when querying the page. Must be inside a
 Page block.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -106,10 +106,10 @@ Page block.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Key">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Key</property>
+	<property name="label" translatable="yes">Key</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -122,10 +122,10 @@ Page block.
       <object class="GtkEntry" id="Key">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When connected to the memcached server, asks for the page Key.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -135,10 +135,10 @@ When connected to the memcached server, asks for the page Key.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Match">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Match</property>
+	<property name="label" translatable="yes">Match</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -151,11 +151,11 @@ When connected to the memcached server, asks for the page Key.
       <object class="GtkEntry" id="Match">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Match blocks define which strings to look for and how matches substrings are
 interpreted. For a description of match blocks, please see Plugin tail.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

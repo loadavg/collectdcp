@@ -25,10 +25,10 @@ http://www.galago-project.org/specs/notification/.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-FailureTimeout">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">FailureTimeout</property>
+	<property name="label" translatable="yes">FailureTimeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -41,14 +41,14 @@ http://www.galago-project.org/specs/notification/.
       <object class="GtkEntry" id="FailureTimeout">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Set the timeout, in milliseconds, after which to expire the notification
 for OKAY, WARNING and FAILURE severities respectively. If zero has
 been specified, the displayed notification will not be closed at all - the
 user has to do so herself. These options default to 5000. If a negative number
 has been specified, the default is used as well.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

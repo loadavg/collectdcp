@@ -14,10 +14,10 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Host</property>
+	<property name="label" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -30,10 +30,10 @@
       <object class="GtkEntry" id="Host">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Hostname of the host running ntpd. Defaults to localhost.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -43,10 +43,10 @@ Hostname of the host running ntpd. Defaults to localhost.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Port">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Port</property>
+	<property name="label" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -59,10 +59,10 @@ Hostname of the host running ntpd. Defaults to localhost.
       <object class="GtkEntry" id="Port">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 UDP-Port to connect to. Defaults to 123.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -72,10 +72,10 @@ UDP-Port to connect to. Defaults to 123.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ReverseLookups">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ReverseLookups</property>
+	<property name="label" translatable="yes">ReverseLookups</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -88,13 +88,13 @@ UDP-Port to connect to. Defaults to 123.
       <object class="GtkEntry" id="ReverseLookups">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets whether or not to perform reverse lookups on peers. Since the name or
 IP-address may be used in a filename it is recommended to disable reverse
 lookups. The default is to do reverse lookups to preserve backwards
 compatibility, though.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -104,10 +104,10 @@ compatibility, though.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-IncludeUnitID">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">IncludeUnitID</property>
+	<property name="label" translatable="yes">IncludeUnitID</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -120,7 +120,7 @@ compatibility, though.
       <object class="GtkEntry" id="IncludeUnitID">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When a peer is a refclock, include the unit ID in the type instance.
 Defaults to false for backward compatibility.
 If two refclock peers use the same driver and this is false, the plugin will
@@ -128,7 +128,7 @@ try to write simultaneous measurements from both to the same type instance.
 This will result in error messages in the log and only one set of measurements
 making it through.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

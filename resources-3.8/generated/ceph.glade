@@ -45,10 +45,10 @@ The ceph plugin accepts the following configuration options:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-LongRunAvgLatency">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">LongRunAvgLatency</property>
+	<property name="label" translatable="yes">LongRunAvgLatency</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -61,14 +61,14 @@ The ceph plugin accepts the following configuration options:
       <object class="GtkEntry" id="LongRunAvgLatency">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If enabled, latency values(sum,count pairs) are calculated as the long run
 average - average since the ceph daemon was started = (sum / count).
 When disabled, latency values are calculated as the average since the last
 collection = (sum_now - sum_last) / (count_now - count_last).
 Default: Disabled
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -78,10 +78,10 @@ Default: Disabled
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ConvertSpecialMetricTypes">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ConvertSpecialMetricTypes</property>
+	<property name="label" translatable="yes">ConvertSpecialMetricTypes</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -94,7 +94,7 @@ Default: Disabled
       <object class="GtkEntry" id="ConvertSpecialMetricTypes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If enabled, special metrics (metrics that differ in type from similar counters)
 are converted to the type of those similar counters. This currently only
 applies to filestore.journal_wr_bytes which is a counter for OSD daemons. The
@@ -104,7 +104,7 @@ value and is treated as a derive type.
 When disabled, all metrics are treated as the types received from the ceph schema.
 Default: Enabled
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

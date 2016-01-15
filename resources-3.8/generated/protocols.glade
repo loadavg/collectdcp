@@ -21,10 +21,10 @@ Available configuration options:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Value">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Value</property>
+	<property name="label" translatable="yes">Value</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -37,7 +37,7 @@ Available configuration options:
       <object class="GtkEntry" id="Value">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Selects whether or not to select a specific value. The string being matched is
 of the form "Protocol:ValueName", where Protocol will be used as the
 plugin instance and ValueName will be used as type instance. An example of
@@ -51,7 +51,7 @@ Whether only matched values are selected or all matched values are ignored
 depends on the IgnoreSelected. By default, only matched values are selected.
 If no value is configured at all, all values will be selected.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -61,10 +61,10 @@ If no value is configured at all, all values will be selected.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">IgnoreSelected</property>
+	<property name="label" translatable="yes">IgnoreSelected</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -77,11 +77,11 @@ If no value is configured at all, all values will be selected.
       <object class="GtkEntry" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 If set to true, inverts the selection made by Value, i. e. all
 matching values will be ignored.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

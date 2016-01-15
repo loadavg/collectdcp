@@ -125,10 +125,10 @@ query.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Statement</property>
+	<property name="label" translatable="yes">Statement</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -141,7 +141,7 @@ query.
       <object class="GtkEntry" id="Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Specify the sql query statement which the plugin should execute. The string
 may contain the tokens $1, $2, etc. which are used to reference the
 first, second, etc. parameter. The value of the parameters is specified by the
@@ -152,7 +152,7 @@ allowed. Note, however, that only a single command may be used. Semicolons are
 allowed as long as a single non-empty command has been specified only.
 The returned lines will be handled separately one after another.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -162,10 +162,10 @@ The returned lines will be handled separately one after another.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Param">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Param</property>
+	<property name="label" translatable="yes">Param</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -178,7 +178,7 @@ The returned lines will be handled separately one after another.
       <object class="GtkEntry" id="Param">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Specify the parameters which should be passed to the SQL query. The parameters
 are referred to in the SQL query as $1, $2, etc. in the same order as
 they appear in the configuration file. The value of the parameter is
@@ -200,7 +200,7 @@ specific or global Interval options).
 Please note that parameters are only supported by PostgreSQL's protocol
 version 3 and above which was introduced in version 7.4 of PostgreSQL.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -210,10 +210,10 @@ version 3 and above which was introduced in version 7.4 of PostgreSQL.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Type">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Type</property>
+	<property name="label" translatable="yes">Type</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -226,14 +226,14 @@ version 3 and above which was introduced in version 7.4 of PostgreSQL.
       <object class="GtkEntry" id="Type">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 The type name to be used when dispatching the values. The type describes
 how to handle the data and where to store it. See types.db(5) for more
 details on types and their configuration. The number and type of values (as
 selected by the ValuesFrom option) has to match the type of the given name.
 This option is required inside a Result block.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -243,10 +243,10 @@ This option is required inside a Result block.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-InstancesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">InstancesFrom</property>
+	<property name="label" translatable="yes">InstancesFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -259,7 +259,7 @@ This option is required inside a Result block.
       <object class="GtkEntry" id="InstancesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Specify how to create the "TypeInstance" for each data set (i. e. line).
 InstancePrefix defines a static prefix that will be prepended to all type
 instances. InstancesFrom defines the column names whose values will be used
@@ -270,7 +270,7 @@ different. It is your responsibility to assure that each is unique.
 Both options are optional. If none is specified, the type instance will be
 empty.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -280,10 +280,10 @@ empty.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-ValuesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">ValuesFrom</property>
+	<property name="label" translatable="yes">ValuesFrom</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -296,7 +296,7 @@ empty.
       <object class="GtkEntry" id="ValuesFrom">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Names the columns whose content is used as the actual data for the data sets
 that are dispatched to the daemon. How many such columns you need is
 determined by the Type setting as explained above. If you specify too many
@@ -311,7 +311,7 @@ This option is required inside a Result block and may be specified multiple
 times. If multiple ValuesFrom options are specified, the columns are read
 in the given order.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -321,10 +321,10 @@ in the given order.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-MaxVersion">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">MaxVersion</property>
+	<property name="label" translatable="yes">MaxVersion</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -337,7 +337,7 @@ in the given order.
       <object class="GtkEntry" id="MaxVersion">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Specify the minimum or maximum version of PostgreSQL that this query should be
 used with. Some statistics might only be available with certain versions of
 PostgreSQL. This allows you to specify multiple queries with the same name but
@@ -347,7 +347,7 @@ The version has to be specified as the concatenation of the major, minor
 and patch-level versions, each represented as two-decimal-digit numbers. For
 example, version 8.2.3 will become 80203.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

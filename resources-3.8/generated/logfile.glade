@@ -14,10 +14,10 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-LogLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">LogLevel</property>
+	<property name="label" translatable="yes">LogLevel</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -30,13 +30,13 @@
       <object class="GtkEntry" id="LogLevel">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the log-level. If, for example, set to notice, then all events with
 severity notice, warning, or err will be written to the logfile.
 Please note that debug is only available if collectd has been compiled with
 debugging support.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -46,10 +46,10 @@ debugging support.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-File">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">File</property>
+	<property name="label" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -62,13 +62,13 @@ debugging support.
       <object class="GtkEntry" id="File">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Sets the file to write log messages to. The special strings stdout and
 stderr can be used to write to the standard output and standard error
 channels, respectively. This, of course, only makes much sense when collectd
 is running in foreground- or non-daemon-mode.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -78,10 +78,10 @@ is running in foreground- or non-daemon-mode.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-Timestamp">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">Timestamp</property>
+	<property name="label" translatable="yes">Timestamp</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -94,10 +94,10 @@ is running in foreground- or non-daemon-mode.
       <object class="GtkEntry" id="Timestamp">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 Prefix all lines printed by the current time. Defaults to true.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -107,10 +107,10 @@ Prefix all lines printed by the current time. Defaults to true.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label1">
+      <object class="GtkLabel" id="label-PrintSeverity">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label">PrintSeverity</property>
+	<property name="label" translatable="yes">PrintSeverity</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -123,11 +123,11 @@ Prefix all lines printed by the current time. Defaults to true.
       <object class="GtkEntry" id="PrintSeverity">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_markup">
+	<property name="tooltip_markup" translatable="yes">
 When enabled, all lines are prefixed by the severity of the log message, for
 example "warning". Defaults to false.
 </property>
-	<property name="placeholder_text"></property>
+	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
