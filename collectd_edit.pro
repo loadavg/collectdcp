@@ -40,9 +40,9 @@ SOURCES += main.cpp \
     settings.cpp \
     app_window.cpp \
     os_info.cpp \
-    collectdcp.cpp \
     test_win.cpp \
-    collectdcp_win.cpp
+    collectdcp_win.cpp \
+    plugin_to_store.cpp
 
 HEADERS += \
     parse_conf.h \
@@ -76,9 +76,9 @@ HEADERS += \
     var_assign.h \
     os_info.h \
     split.h \
-    collectdcp.h \
     test_win.h \
-    collectdcp_win.h
+    collectdcp_win.h \
+    plugin_to_store.h
 
 DISTFILES += \
     Makefile \

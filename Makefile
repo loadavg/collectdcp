@@ -19,7 +19,6 @@ $(TARGET_FOLDER)/collectdcp:\
 	$(TARGET_FOLDER)/add_plugin_block.o\
 	$(TARGET_FOLDER)/app_window.o\
 	$(TARGET_FOLDER)/attr_helper.o\
-        $(TARGET_FOLDER)/collectdcp.o\
         $(TARGET_FOLDER)/collectdcp_win.o\
 	$(TARGET_FOLDER)/dlg_commands.o\
 	$(TARGET_FOLDER)/editor_window.o\
@@ -29,6 +28,7 @@ $(TARGET_FOLDER)/collectdcp:\
         $(TARGET_FOLDER)/os_info.o\
 	$(TARGET_FOLDER)/parse_conf.o\
 	$(TARGET_FOLDER)/plugin_form.o\
+        $(TARGET_FOLDER)/plugin_to_store.o\
 	$(TARGET_FOLDER)/process_run.o\
 	$(TARGET_FOLDER)/range.o\
 	$(TARGET_FOLDER)/settings.o\

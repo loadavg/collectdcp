@@ -1,3 +1,11 @@
+/*
+ * project collectd_edit
+ * ing. Carlo Capelli
+ * Brescia 2015
+ * Copyright (c) 2015,2016 Sputnik7
+ * License MIT
+ */
+
 #ifndef TEST_WIN_H
 #define TEST_WIN_H
 

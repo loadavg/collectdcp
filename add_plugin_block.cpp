@@ -6,21 +6,21 @@
  * License MIT
  */
 
-#include "add_plugin_block.h"
-#include "ui_structure.h"
-#include <gtkmm/dialog.h>
-#include <gtkmm/treeview.h>
-
 #include "is_a.h"
 #include "join.h"
 #include "icompare.h"
 #include "depth_first.h"
+#include "ui_structure.h"
+#include "plugin_to_store.h"
+#include "add_plugin_block.h"
+
+#include <gtkmm/dialog.h>
+#include <gtkmm/treeview.h>
 
 #include <map>
 #include <iostream>
 
 #include "ns_all.h"
-using namespace ns_all;
 
 add_plugin_block::add_plugin_block(BaseObjectType *cobject, const RefPtr<Builder> &refBuilder)
     : Dialog(cobject)
@@ -98,7 +98,7 @@ int visit(path& buffer, const RANGE &node, function<void(const RANGE &top)> on_n
 */
 
 }
-
+/*
 struct add_plugin_block::plugin_to_store {
 
     typedef TreeStore::iterator Node;
@@ -134,11 +134,12 @@ struct add_plugin_block::plugin_to_store {
     }
 
 };
+*/
 
 void add_plugin_block::set_editor(view_ast *editor) {
     this->editor = editor;
     if (treestore) {
-        using namespace implementation;
+        //using namespace implementation;
 
         /*
         plugins_t tem_map(editor->ast_template);

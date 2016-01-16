@@ -12,6 +12,8 @@
 #include <gtkmm/window.h>
 #include <gtkmm/builder.h>
 
+#include "model.h"
+
 class collectdcp_win : public Gtk::Window
 {
 public:
@@ -20,6 +22,7 @@ public:
 
 private:
     Glib::RefPtr<Gtk::Application> app;
+    model::AST *plugins_defaults = 0;
 };
 
 #endif // COLLECTDCP_WIN_H

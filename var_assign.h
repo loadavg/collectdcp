@@ -1,7 +1,14 @@
+/*
+ * project collectd_edit
+ * ing. Carlo Capelli
+ * Brescia 2015
+ * Copyright (c) 2015,2016 Sputnik7
+ * License MIT
+ */
+
 #ifndef VAR_ASSIGN_H
 #define VAR_ASSIGN_H
 
-#include <string>
 #include "trim.h"
 
 /**

@@ -16,11 +16,14 @@
 
 namespace ns_all {
     using namespace std;
+
     using namespace Gtk;
     using namespace Glib;
+
     using namespace model;
     using namespace parse_conf;
     using namespace ui_structure;
 }
+using namespace ns_all;
 
 #endif // NS_ALL_H

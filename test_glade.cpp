@@ -6,19 +6,16 @@
  * License MIT
  */
 
+#include "ns_all.h"
+#include "settings.h"
 #include "test_glade.h"
 #include "plugin_form.h"
+#include "file2string.h"
 #include "ui_structure.h"
 
 #include <gtkmm/window.h>
-#include <gtkmm/application.h>
 #include <gtkmm/statusbar.h>
-
-#include "ns_all.h"
-#include "settings.h"
-#include "file2string.h"
-
-using namespace ns_all;
+#include <gtkmm/application.h>
 
 void test_load(int argc, char **argv) {
     auto app = Application::create(argc, argv, "org.loadavg.collectd.test");
