@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="netlink">
+  <object class="GtkLabel" id="label_netlink">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin netlink
@@ -12,7 +12,6 @@ The netlink plugin uses a netlink socket to query the Linux kernel about
 statistics of various interface and routing aspects.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="netlink">
     <property name="visible">True</property>

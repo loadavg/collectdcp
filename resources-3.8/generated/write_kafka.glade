@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="write_kafka">
+  <object class="GtkLabel" id="label_write_kafka">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin write_kafka
@@ -25,7 +25,6 @@ Synopsis:
 The following options are understood by the write_kafka plugin:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="write_kafka">
     <property name="visible">True</property>

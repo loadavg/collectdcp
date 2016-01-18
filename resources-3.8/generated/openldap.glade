@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="openldap">
+  <object class="GtkLabel" id="label_openldap">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin openldap
@@ -38,7 +38,6 @@ enforced by the plugin and it is your responsibility to ensure it is.
 The following options are accepted within each Instance block:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="openldap">
     <property name="visible">True</property>

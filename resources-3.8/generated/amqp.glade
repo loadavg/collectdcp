@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="amqp">
+  <object class="GtkLabel" id="label_amqp">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin amqp
@@ -64,7 +64,6 @@ reporting messages, but may be used to support flushing of certain
 Publish blocks in the future.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="amqp">
     <property name="visible">True</property>

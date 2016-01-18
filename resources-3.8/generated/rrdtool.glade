@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="rrdtool">
+  <object class="GtkLabel" id="label_rrdtool">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin rrdtool
@@ -14,7 +14,6 @@ using these settings. If you don't want to dive into the depths of RRDtool, you
 can safely ignore these settings.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="rrdtool">
     <property name="visible">True</property>

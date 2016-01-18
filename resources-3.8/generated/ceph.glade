@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="ceph">
+  <object class="GtkLabel" id="label_ceph">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin ceph
@@ -39,7 +39,6 @@ separate ceph daemons running on the same device (two OSDs, one MON, one MDS) :
 The ceph plugin accepts the following configuration options:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="ceph">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="powerdns">
+  <object class="GtkLabel" id="label_powerdns">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin powerdns
@@ -31,7 +31,6 @@ reasonable defaults will be collected.
   &lt;/Plugin&gt;
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="powerdns">
     <property name="visible">True</property>

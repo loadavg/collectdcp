@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="tail">
+  <object class="GtkLabel" id="label_tail">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin tail
@@ -55,7 +55,6 @@ Each Match block has the following options to describe how the match should
 be performed:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="tail">
     <property name="visible">True</property>

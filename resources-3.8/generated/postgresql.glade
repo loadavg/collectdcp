@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="postgresql">
+  <object class="GtkLabel" id="label_postgresql">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin postgresql
@@ -119,7 +119,6 @@ Multiple Result blocks may be used to extract multiple values from a single
 query.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="postgresql">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="pinba">
+  <object class="GtkLabel" id="label_pinba">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin pinba
@@ -43,7 +43,6 @@ Synopsis:
 The plugin provides the following configuration options:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="pinba">
     <property name="visible">True</property>

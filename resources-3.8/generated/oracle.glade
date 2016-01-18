@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="oracle">
+  <object class="GtkLabel" id="label_oracle">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin oracle
@@ -59,7 +59,6 @@ starting tag of the block. This name will be used as "PluginInstance" in the
 values submitted to the daemon. Other than that, that name is not used.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="oracle">
     <property name="visible">True</property>

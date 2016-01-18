@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="sensors">
+  <object class="GtkLabel" id="label_sensors">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin sensors
@@ -18,7 +18,6 @@ The lm_sensors homepage can be found at
 http://secure.netroedge.com/~lm78/.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="sensors">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="turbostat">
+  <object class="GtkLabel" id="label_turbostat">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin turbostat
@@ -12,7 +12,6 @@ The Turbostat plugin reads CPU frequency and C-state residency on modern
 Intel processors by using the new Model Specific Registers.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="turbostat">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="tcpconns">
+  <object class="GtkLabel" id="label_tcpconns">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin tcpconns
@@ -15,7 +15,6 @@ for which a listening socket is opened. You can use the following options to
 fine-tune the ports you are interested in:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="tcpconns">
     <property name="visible">True</property>

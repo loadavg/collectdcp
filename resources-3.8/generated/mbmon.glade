@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="mbmon">
+  <object class="GtkLabel" id="label_mbmon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin mbmon
@@ -22,7 +22,6 @@ Debian's /etc/init.d/mbmon script already does this, other people
 will need to ensure that this is the case.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="mbmon">
     <property name="visible">True</property>

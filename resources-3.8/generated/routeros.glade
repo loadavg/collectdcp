@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="routeros">
+  <object class="GtkLabel" id="label_routeros">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin routeros
@@ -42,7 +42,6 @@ one or more &lt;Router&gt; blocks. Within each block, the following
 options are understood:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="routeros">
     <property name="visible">True</property>

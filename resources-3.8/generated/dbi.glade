@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="dbi">
+  <object class="GtkLabel" id="label_dbi">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin dbi
@@ -100,7 +100,6 @@ Example:
 The following options are accepted:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="dbi">
     <property name="visible">True</property>

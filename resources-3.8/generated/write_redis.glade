@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="write_redis">
+  <object class="GtkLabel" id="label_write_redis">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin write_redis
@@ -42,7 +42,6 @@ one Node block for each instance. Within the Node blocks, the following
 options are available:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="write_redis">
     <property name="visible">True</property>

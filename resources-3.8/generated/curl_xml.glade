@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="curl_xml">
+  <object class="GtkLabel" id="label_curl_xml">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin curl_xml
@@ -53,7 +53,6 @@ that should be relative to the base element.
 Within the URL block the following options are accepted:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="curl_xml">
     <property name="visible">True</property>

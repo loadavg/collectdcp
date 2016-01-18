@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="bind">
+  <object class="GtkLabel" id="label_bind">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin bind
@@ -64,7 +64,6 @@ Synopsis:
 The bind plugin accepts the following configuration options:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="bind">
     <property name="visible">True</property>

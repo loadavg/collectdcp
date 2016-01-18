@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="lpar">
+  <object class="GtkLabel" id="label_lpar">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin lpar
@@ -17,7 +17,6 @@ system, I/O statistics.
 The following configuration options are available:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="lpar">
     <property name="visible">True</property>

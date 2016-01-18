@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="memory">
+  <object class="GtkLabel" id="label_memory">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin memory
@@ -11,7 +11,6 @@
 The memory plugin provides the following configuration options:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="memory">
     <property name="visible">True</property>

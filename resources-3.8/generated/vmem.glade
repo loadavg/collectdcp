@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="vmem">
+  <object class="GtkLabel" id="label_vmem">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin vmem
@@ -15,7 +15,6 @@ them on manually. Most people just want an overview over, such as the number of
 pages read from swap space.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="vmem">
     <property name="visible">True</property>

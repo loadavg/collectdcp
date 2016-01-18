@@ -19,8 +19,9 @@ PKGCONFIG += gtkmm-3.0
 DEFINES += USE_SOURCEVIEW
 PKGCONFIG += gtksourceviewmm-3.0
 
-DEFINES += RESOURCES_DIR=\\\"resources-3.10\\\"
-#DEFINES += RESOURCES_DIR=\\\"resources-3.8\\\"
+# Stick to 3-8, glade compatible upto 3-10.
+#DEFINES += RESOURCES_DIR=\\\"resources-3.10\\\"
+DEFINES += RESOURCES_DIR=\\\"resources-3.8\\\"
 
 SOURCES += main.cpp \
     parse_conf.cpp \

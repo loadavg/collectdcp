@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="modbus">
+  <object class="GtkLabel" id="label_modbus">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin modbus
@@ -78,7 +78,6 @@ Synopsis:
  &lt;/Host&gt;
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="modbus">
     <property name="visible">True</property>

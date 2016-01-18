@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="memcached">
+  <object class="GtkLabel" id="label_memcached">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin memcached
@@ -27,7 +27,6 @@ specify one memcached connection each. Within the Instance blocks, the
 following options are allowed:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="memcached">
     <property name="visible">True</property>

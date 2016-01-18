@@ -141,13 +141,6 @@ void add_plugin_block::set_editor(view_ast *editor) {
     if (treestore) {
         //using namespace implementation;
 
-        /*
-        plugins_t tem_map(editor->ast_template);
-        plugins_t in_view(editor->get_AST());
-        plugin_to_store p2s {tem_map.ast->text, treestore};
-        for (auto e: tem_map)
-            p2s.add_plugin(*e.second.back(), in_view);
-        */
         tem_map = new plugins_t(editor->ast_template);
         in_view = new plugins_t(editor->get_AST());
 

@@ -2,11 +2,10 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="cpufreq">
+  <object class="GtkLabel" id="label_cpufreq">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label"></property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="cpufreq">
     <property name="visible">True</property>

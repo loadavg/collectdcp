@@ -6,16 +6,15 @@
  * License MIT
  */
 
+#include <iostream>
+
 #include "model.h"
+#include "test_win.h"
 #include "app_window.h"
 #include "test_parse.h"
 #include "test_glade.h"
-#include "editor_window.h"
-#include "collectdcp.h"
 #include "ui_structure.h"
-
-#include <iostream>
-#include "test_win.h"
+#include "editor_window.h"
 #include "collectdcp_win.h"
 
 /**

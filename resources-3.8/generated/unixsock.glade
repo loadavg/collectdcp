@@ -2,13 +2,12 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="unixsock">
+  <object class="GtkLabel" id="label_unixsock">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin unixsock
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="unixsock">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="mysql">
+  <object class="GtkLabel" id="label_mysql">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin mysql
@@ -64,7 +64,6 @@ options are required. MySQL will use default values as documented in the
 section "mysql_real_connect()" in the MySQL reference manual.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="mysql">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="aggregation">
+  <object class="GtkLabel" id="label_aggregation">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin aggregation
@@ -75,7 +75,6 @@ The full example configuration looks like this:
 There are a couple of limitations you should be aware of:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="aggregation">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="notify_email">
+  <object class="GtkLabel" id="label_notify_email">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin notify_email
@@ -18,7 +18,6 @@ libESMTP is available from http://www.stafford.uklinux.net/libesmtp/.
 Available configuration options:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="notify_email">
     <property name="visible">True</property>

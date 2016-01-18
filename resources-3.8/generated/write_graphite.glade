@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="write_graphite">
+  <object class="GtkLabel" id="label_write_graphite">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin write_graphite
@@ -34,7 +34,6 @@ The configuration consists of one or more &lt;Node Name&gt;
 blocks. Inside the Node blocks, the following options are recognized:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="write_graphite">
     <property name="visible">True</property>

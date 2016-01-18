@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="barometer">
+  <object class="GtkLabel" id="label_barometer">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin barometer
@@ -12,7 +12,6 @@ This plugin reads absolute air pressure using digital barometer sensor on a I2C
 bus. Supported sensors are:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="barometer">
     <property name="visible">True</property>

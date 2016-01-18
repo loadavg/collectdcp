@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="rrdcached">
+  <object class="GtkLabel" id="label_rrdcached">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin rrdcached
@@ -34,7 +34,6 @@ setting should be set to an absolute path, so that a changed base directory
 does not result in RRD files being created / expected in the wrong place.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="rrdcached">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="netapp">
+  <object class="GtkLabel" id="label_netapp">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin netapp
@@ -129,7 +129,6 @@ Synopsis
 The netapp plugin accepts the following configuration options:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="netapp">
     <property name="visible">True</property>

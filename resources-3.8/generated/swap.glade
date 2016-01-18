@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="swap">
+  <object class="GtkLabel" id="label_swap">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin swap
@@ -12,7 +12,6 @@ The Swap plugin collects information about used and available swap space. On
 Linux and Solaris, the following options are available:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="swap">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="write_sensu">
+  <object class="GtkLabel" id="label_write_sensu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin write_sensu
@@ -42,7 +42,6 @@ Synopsis:
 The following options are understood by the write_sensu plugin:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="write_sensu">
     <property name="visible">True</property>

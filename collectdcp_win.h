@@ -11,18 +11,31 @@
 
 #include <gtkmm/window.h>
 #include <gtkmm/builder.h>
+#include <gtkmm/treeview.h>
+#include <gtkmm/scrolledwindow.h>
 
 #include "model.h"
 
+/**
+ * @brief The collectdcp_win class
+ *  redesigned control panel for whole application
+ */
 class collectdcp_win : public Gtk::Window
 {
 public:
     static collectdcp_win* setup(Glib::RefPtr<Gtk::Application> app);
     collectdcp_win(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder);
 
+protected:
+    void on_row_activated(const Gtk::TreeModel::Path &path, Gtk::TreeViewColumn *column);
+    void on_cursor_changed();
+
 private:
     Glib::RefPtr<Gtk::Application> app;
     model::AST *plugins_defaults = 0;
+    Gtk::TreeView *plugins_view = 0;
+    Gtk::ScrolledWindow *host_plugin_prop = 0;
+    Gtk::Label *plugin_description = 0;
 };
 
 #endif // COLLECTDCP_WIN_H

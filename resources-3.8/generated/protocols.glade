@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="protocols">
+  <object class="GtkLabel" id="label_protocols">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin protocols
@@ -15,7 +15,6 @@ TCP, UDP, etc.
 Available configuration options:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="protocols">
     <property name="visible">True</property>

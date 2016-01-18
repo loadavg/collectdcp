@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="tail_csv">
+  <object class="GtkLabel" id="label_tail_csv">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin tail_csv
@@ -37,7 +37,6 @@ which configure which file to read, in which interval and which metrics to
 extract.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="tail_csv">
     <property name="visible">True</property>

@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="apache">
+  <object class="GtkLabel" id="label_apache">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin apache
@@ -53,7 +53,6 @@ enforced by the plugin and it is your responsibility to ensure it.
 The following options are accepted within each Instance block:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="apache">
     <property name="visible">True</property>

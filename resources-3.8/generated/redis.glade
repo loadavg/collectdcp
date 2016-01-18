@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="redis">
+  <object class="GtkLabel" id="label_redis">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin redis
@@ -31,7 +31,6 @@ The information shown in the synopsis above is the default configuration
 which is used by the plugin if no configuration is present.
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="redis">
     <property name="visible">True</property>

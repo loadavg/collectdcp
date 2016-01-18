@@ -2,7 +2,7 @@
 
 <interface>
   <requires lib="gtk+" version="3.8"/>
-  <object class="GtkLabel" id="statsd">
+  <object class="GtkLabel" id="label_statsd">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="label">Plugin statsd
@@ -21,7 +21,6 @@ objects respectively.
 The following configuration options are valid:
 
 </property>
-    <property name="use_markup">True</property>
   </object>
   <object class="GtkGrid" id="statsd">
     <property name="visible">True</property>
