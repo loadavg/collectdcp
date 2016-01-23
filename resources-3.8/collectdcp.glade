@@ -36,18 +36,6 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry1">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkButton" id="btn_save">
                     <property name="label" translatable="yes">save</property>
                     <property name="visible">True</property>
@@ -63,9 +51,36 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkTextView" id="textview2">
+                  <object class="GtkEntry" id="te_password">
+                    <property name="name">te_password</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible_char">•</property>
+                    <property name="primary_icon_stock">gtk-dialog-warning</property>
+                    <property name="primary_icon_tooltip_text" translatable="yes">Enter your sudo password to access protected resources.
+It will not be saved anywhere by this program.</property>
+                    <property name="primary_icon_tooltip_markup" translatable="yes">Enter your sudo password to access protected resources.
+It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
+                    <property name="placeholder_text" translatable="yes">sudo password</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSearchEntry" id="te_search">
+                    <property name="name">te_search</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="progress_pulse_step">0.089999999999999997</property>
+                    <property name="primary_icon_name">edit-find-symbolic</property>
+                    <property name="primary_icon_activatable">False</property>
+                    <property name="primary_icon_sensitive">False</property>
+                    <property name="placeholder_text" translatable="yes">search...</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
