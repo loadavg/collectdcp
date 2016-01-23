@@ -49,7 +49,7 @@ is interpreted as a regular expression. Examples:
   Disk "sdd"
   Disk "/hda[34]/"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -72,7 +72,7 @@ is interpreted as a regular expression. Examples:
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelected">
+      <object class="GtkCheckButton" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -83,7 +83,6 @@ collected. If at least one Disk option is given and no IgnoreSelected or
 set to false, only matching disks will be collected. If IgnoreSelected
 is set to true, all disks are collected except the ones matched.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

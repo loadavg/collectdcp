@@ -89,7 +89,7 @@ The bind plugin accepts the following configuration options:
 URL from which to retrieve the XML data. If not specified,
 http://localhost:8053/ will be used.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">URL</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -112,7 +112,7 @@ http://localhost:8053/ will be used.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ParseTime">
+      <object class="GtkCheckButton" id="ParseTime">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -122,7 +122,6 @@ This setting is set to true by default for backwards compatibility; setting
 this to false is recommended to avoid problems with timezones and
 localization.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -145,7 +144,7 @@ localization.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="OpCodes">
+      <object class="GtkCheckButton" id="OpCodes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -153,7 +152,6 @@ When enabled, statistics about the "OpCodes", for example the number of
 QUERY packets, are collected.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -176,7 +174,7 @@ Default: Enabled.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="QTypes">
+      <object class="GtkCheckButton" id="QTypes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -184,7 +182,6 @@ When enabled, the number of incoming queries by query types (for example
 A, MX, AAAA) is collected.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -207,7 +204,7 @@ Default: Enabled.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ServerStats">
+      <object class="GtkCheckButton" id="ServerStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -215,7 +212,6 @@ Collect global server statistics, such as requests received over IPv4 and IPv6,
 successful queries, and failed updates.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -238,7 +234,7 @@ Default: Enabled.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ZoneMaintStats">
+      <object class="GtkCheckButton" id="ZoneMaintStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -246,7 +242,6 @@ Collect zone maintenance statistics, mostly information about notifications
 (zone updates) and zone transfers.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -269,7 +264,7 @@ Default: Enabled.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ResolverStats">
+      <object class="GtkCheckButton" id="ResolverStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -280,7 +275,6 @@ default. Use the ResolverStats option within a View "_default" block
 instead for the same functionality.
 Default: Disabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -310,7 +304,7 @@ Default: Disabled.
 Collect global memory statistics.
 Default: Enabled.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">?</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -341,7 +335,7 @@ The Timeout option sets the overall timeout for HTTP requests to URL, in
 milliseconds. By default, the configured Interval is used to set the
 timeout.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Milliseconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -398,7 +392,7 @@ zones.
 By default no detailed zone information is collected.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

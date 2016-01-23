@@ -63,7 +63,7 @@ The following options are accepted within each Instance block:
 Sets the URL to use to connect to the OpenLDAP server. This option is
 mandatory.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">ldap://host/binddn</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -86,14 +86,13 @@ mandatory.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="StartTLS">
+      <object class="GtkCheckButton" id="StartTLS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 Defines whether TLS must be used when connecting to the OpenLDAP server.
 Disabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -116,7 +115,7 @@ Disabled by default.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="VerifyHost">
+      <object class="GtkCheckButton" id="VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -125,7 +124,6 @@ if the Common Name or a Subject Alternate Name field of the SSL
 certificate matches the host name provided by the URL option. If this
 identity check fails, the connection is aborted. Enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -157,7 +155,7 @@ may possibly need this option. What CA certificates are checked by default
 depends on the distribution you use and can be changed with the usual ldap
 client configuration mechanisms. See ldap.conf(5) for the details.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -187,7 +185,7 @@ client configuration mechanisms. See ldap.conf(5) for the details.
 Sets the timeout value for ldap operations. Defaults to -1 which results in
 an infinite timeout.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Seconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -217,7 +215,7 @@ an infinite timeout.
 An integer which sets the LDAP protocol version number to use when connecting
 to the OpenLDAP server. Defaults to 3 for using LDAPv3.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Version</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

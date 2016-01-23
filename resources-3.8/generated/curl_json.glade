@@ -84,6 +84,36 @@ The following options are valid within URL blocks:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
+      <object class="GtkLabel" id="label-Post">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Post</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Post">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+These options behave exactly equivalent to the appropriate options of the
+cURL plugin. Please see there for a detailed description.
+</property>
+	<property name="placeholder_text" translatable="yes">Body</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkLabel" id="label-Instance">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -91,7 +121,7 @@ The following options are valid within URL blocks:
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -103,11 +133,11 @@ The following options are valid within URL blocks:
 	<property name="tooltip_text" translatable="yes">
 Sets the plugin instance to Instance.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Instance</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -120,7 +150,7 @@ Sets the plugin instance to Instance.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -133,11 +163,11 @@ Sets the plugin instance to Instance.
 Sets the interval (in seconds) in which the values will be collected from this
 URL. By default the global Interval setting will be used.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Interval</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -150,7 +180,7 @@ URL. By default the global Interval setting will be used.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -163,11 +193,11 @@ URL. By default the global Interval setting will be used.
 These options behave exactly equivalent to the appropriate options of the
 cURL plugin. Please see there for a detailed description.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Milliseconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

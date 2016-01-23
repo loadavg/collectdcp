@@ -34,7 +34,7 @@ bus. Supported sensors are:
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">no description available for MPL115A2</property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">?</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -61,7 +61,7 @@ bus. Supported sensors are:
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">no description available for MPL3115</property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">?</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -88,7 +88,7 @@ bus. Supported sensors are:
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">no description available for BMP085</property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">?</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

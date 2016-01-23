@@ -54,7 +54,7 @@ Available options:
 	<property name="tooltip_text" translatable="yes">
 Specifies the location of the status file.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -77,7 +77,7 @@ Specifies the location of the status file.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ImprovedNamingSchema">
+      <object class="GtkCheckButton" id="ImprovedNamingSchema">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -86,7 +86,6 @@ and the client's "common name" will be used as type instance. This is required
 when reading multiple status files. Enabling this option is recommended, but to
 maintain backwards compatibility this option is disabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -109,7 +108,7 @@ maintain backwards compatibility this option is disabled by default.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectCompression">
+      <object class="GtkCheckButton" id="CollectCompression">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -117,7 +116,6 @@ Sets whether or not statistics about the compression used by OpenVPN should be
 collected. This information is only available in single mode. Enabled by
 default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -140,7 +138,7 @@ default.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectIndividualUsers">
+      <object class="GtkCheckButton" id="CollectIndividualUsers">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -148,7 +146,6 @@ Sets whether or not traffic information is collected for each connected client
 individually. If set to false, currently no traffic data is collected at all
 because aggregating this data in a save manner is tricky. Defaults to true.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -171,7 +168,7 @@ because aggregating this data in a save manner is tricky. Defaults to true.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectUserCount">
+      <object class="GtkCheckButton" id="CollectUserCount">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -179,7 +176,6 @@ When enabled, the number of currently connected clients or users is collected.
 This is especially interesting when CollectIndividualUsers is disabled, but
 can be configured independently from that option. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

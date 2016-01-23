@@ -57,7 +57,7 @@ The ceph plugin accepts the following configuration options:
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="LongRunAvgLatency">
+      <object class="GtkCheckButton" id="LongRunAvgLatency">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -67,7 +67,6 @@ When disabled, latency values are calculated as the average since the last
 collection = (sum_now - sum_last) / (count_now - count_last).
 Default: Disabled
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -90,7 +89,7 @@ Default: Disabled
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ConvertSpecialMetricTypes">
+      <object class="GtkCheckButton" id="ConvertSpecialMetricTypes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -103,7 +102,6 @@ value and is treated as a derive type.
 When disabled, all metrics are treated as the types received from the ceph schema.
 Default: Enabled
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

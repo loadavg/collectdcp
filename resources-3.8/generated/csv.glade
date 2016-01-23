@@ -36,7 +36,7 @@ The special strings stdout and stderr can be used to write to the standard
 output and standard error channels, respectively. This, of course, only makes
 much sense when collectd is running in foreground- or non-daemon-mode.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Directory</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -59,7 +59,7 @@ much sense when collectd is running in foreground- or non-daemon-mode.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="StoreRates">
+      <object class="GtkCheckButton" id="StoreRates">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -67,7 +67,6 @@ If set to true, convert counter values to rates. If set to false (the
 default) counter values are stored as is, i. e. as an increasing integer
 number.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -29,14 +29,13 @@ The memory plugin provides the following configuration options:
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ValuesAbsolute">
+      <object class="GtkCheckButton" id="ValuesAbsolute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 Enables or disables reporting of physical memory usage in absolute numbers,
 i.e. bytes. Defaults to true.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -59,7 +58,7 @@ i.e. bytes. Defaults to true.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ValuesPercentage">
+      <object class="GtkCheckButton" id="ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -68,7 +67,6 @@ percent of physical memory used. Defaults to false.
 This is useful for deploying collectd in a heterogeneous environment in
 which the sizes of physical memory vary.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

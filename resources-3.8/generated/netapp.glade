@@ -134,6 +134,37 @@ The netapp plugin accepts the following configuration options:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
+      <object class="GtkLabel" id="label-User">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">User</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="User">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+The username and password to use to login to the NetApp.
+Mandatory
+Type: string
+</property>
+	<property name="placeholder_text" translatable="yes">User</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -141,7 +172,7 @@ The netapp plugin accepts the following configuration options:
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -155,11 +186,11 @@ A host block defines one NetApp filer. It will appear in collectd with the name
 you specify here which does not have to be its real name nor its hostname (see
 the Address option below).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -172,7 +203,7 @@ the Address option below).
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -197,11 +228,11 @@ This feature is useful, for example, when using a VFiler as SnapVault target
 available in the host filer (vfiler0) but only in the respective VFiler
 context.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -214,15 +245,19 @@ context.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Protocol">
+      <object class="GtkComboBoxText" id="Protocol">
+	<items>
+	  <item translatable="no">httpd</item>
+	  <item translatable="no">http</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 The protocol collectd will use to query this host.
 Optional
@@ -230,11 +265,10 @@ Type: string
 Default: https
 Valid options: http, https
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -247,7 +281,7 @@ Valid options: http, https
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -262,11 +296,11 @@ Optional
 Type: string
 Default: The "host" block's name.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Address</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -279,7 +313,7 @@ Default: The "host" block's name.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -294,11 +328,11 @@ Optional
 Type: integer
 Default: 80 for protocol "http", 443 for protocol "https"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -311,7 +345,7 @@ Default: 80 for protocol "http", 443 for protocol "https"
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -325,11 +359,11 @@ The username and password to use to login to the NetApp.
 Mandatory
 Type: string
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -342,7 +376,7 @@ Type: string
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -359,11 +393,11 @@ Type: string
 Default: name of the VFiler block
 Note: This option may only be used inside VFiler blocks.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -376,7 +410,7 @@ Note: This option may only be used inside VFiler blocks.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -388,11 +422,11 @@ Note: This option may only be used inside VFiler blocks.
 	<property name="tooltip_text" translatable="yes">
 TODO
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Interval</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

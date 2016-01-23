@@ -57,7 +57,7 @@ blocks. Inside the Node blocks, the following options are recognized:
 	<property name="tooltip_text" translatable="yes">
 Hostname or address to connect to. Defaults to localhost.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Address</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -86,7 +86,7 @@ Hostname or address to connect to. Defaults to localhost.
 	<property name="tooltip_text" translatable="yes">
 Service name or port number to connect to. Defaults to 4242.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Service</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -117,7 +117,7 @@ When set, HostTags is added to the end of the metric. It is intended to be
 used for name=value pairs that the TSD will tag the metric with. Dots and
 whitespace are not escaped in this string.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">String</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -140,7 +140,7 @@ whitespace are not escaped in this string.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="StoreRates">
+      <object class="GtkCheckButton" id="StoreRates">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -148,7 +148,6 @@ If set to true, convert counter values to rates. If set to false
 (the default) counter values are stored as is, as an increasing
 integer number.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -171,7 +170,7 @@ integer number.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="AlwaysAppendDS">
+      <object class="GtkCheckButton" id="AlwaysAppendDS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -179,7 +178,6 @@ If set the true, append the name of the Data Source (DS) to the "metric"
 identifier. If set to false (the default), this is only done when there is
 more than one DS.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

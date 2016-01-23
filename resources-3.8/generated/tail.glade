@@ -87,7 +87,7 @@ want to match literal parentheses you need to do the following:
 
   Regex "SPAM \\(Score: (-?[0-9]+\\.[0-9]+)\\)"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">regex</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -119,7 +119,7 @@ An example which excludes all connections from localhost from the match:
 
   ExcludeRegex "127\\.0\\.0\\.1"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">regex</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -174,7 +174,7 @@ interpret the submatch as a signed integer using strtoll(3). CounterInc
 and DeriveInc do not use the submatch at all and it may be omitted in this
 case.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Type</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -204,7 +204,7 @@ case.
 Sets the type used to dispatch this value. Detailed information about types and
 their configuration can be found in types.db(5).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Type</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -233,7 +233,7 @@ their configuration can be found in types.db(5).
 	<property name="tooltip_text" translatable="yes">
 This optional setting sets the type instance to use.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">TypeInstance</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

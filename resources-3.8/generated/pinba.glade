@@ -68,7 +68,7 @@ The plugin provides the following configuration options:
 Configures the address used to open a listening socket. By default, plugin will
 bind to the any address ::0.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Node</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -99,7 +99,7 @@ Configures the port (service) to bind to. By default the default Pinba port
 "30002" will be used. The option accepts service names in addition to port
 numbers and thus requires a string argument.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Service</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -145,7 +145,7 @@ $_SERVER["SCRIPT_NAME"] variable when within PHP. If not configured, all
 script names will be accepted.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

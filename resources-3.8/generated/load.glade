@@ -35,14 +35,13 @@ The following configuration options are available:
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ReportRelative">
+      <object class="GtkCheckButton" id="ReportRelative">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 When enabled, system load divided by number of available CPU cores is reported
 for intervals 1 min, 5 min and 15 min. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

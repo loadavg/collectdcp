@@ -36,7 +36,7 @@ This plugin collects IP conntrack statistics.
 Assume the conntrack_count and conntrack_max files to be found in
 /proc/sys/net/ipv4/netfilter instead of /proc/sys/net/netfilter/.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">?</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

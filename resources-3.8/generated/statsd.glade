@@ -26,6 +26,68 @@ The following configuration options are valid:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
+      <object class="GtkLabel" id="label-DeleteGauges">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">DeleteGauges</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="DeleteGauges">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+These options control what happens if metrics are not updated in an interval.
+If set to False, the default, metrics are dispatched unchanged, i.e. the
+rate of counters and size of sets will be zero, timers report NaN and gauges
+are unchanged. If set to True, the such metrics are not dispatched and
+removed from the internal cache.
+</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-TimerSum">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">TimerSum</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="TimerSum">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Calculate and dispatch various values out of Timer metrics received during
+an interval. If set to False, the default, these values aren't calculated /
+dispatched.
+</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -33,7 +95,7 @@ The following configuration options are valid:
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -46,11 +108,11 @@ The following configuration options are valid:
 Bind to the hostname / address Host. By default, the plugin will bind to the
 "any" address, i.e. accept packets sent to any of the hosts addresses.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -63,7 +125,7 @@ Bind to the hostname / address Host. By default, the plugin will bind to the
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -76,11 +138,11 @@ Bind to the hostname / address Host. By default, the plugin will bind to the
 UDP port to listen to. This can be either a service name or a port number.
 Defaults to 8125.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -93,13 +155,13 @@ Defaults to 8125.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="DeleteSets">
+      <object class="GtkCheckButton" id="DeleteSets">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -109,11 +171,10 @@ rate of counters and size of sets will be zero, timers report NaN and gauges
 are unchanged. If set to True, the such metrics are not dispatched and
 removed from the internal cache.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -126,7 +187,7 @@ removed from the internal cache.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -143,11 +204,11 @@ often done in Service Level Agreements (SLAs).
 Different percentiles can be calculated by setting this option several times.
 If none are specified, no percentiles are calculated / dispatched.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Percent</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -160,13 +221,13 @@ If none are specified, no percentiles are calculated / dispatched.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="TimerCount">
+      <object class="GtkCheckButton" id="TimerCount">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -174,11 +235,10 @@ Calculate and dispatch various values out of Timer metrics received during
 an interval. If set to False, the default, these values aren't calculated /
 dispatched.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

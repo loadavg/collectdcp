@@ -30,7 +30,7 @@ laptop batteries.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ValuesPercentage">
+      <object class="GtkCheckButton" id="ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -40,7 +40,6 @@ battery, most likely in "Wh". This option does not work with all input methods,
 in particular when only /proc/pmu is available on an old Linux system.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -63,7 +62,7 @@ Defaults to false.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ReportDegraded">
+      <object class="GtkCheckButton" id="ReportDegraded">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -80,7 +79,6 @@ When set to true, the battery plugin will report three values: charged
 and "remaining capacity") and degraded (difference between "design capacity"
 and "last full capacity").
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

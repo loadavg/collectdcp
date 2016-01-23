@@ -33,7 +33,7 @@
 Select this interface. By default these interfaces will then be collected. For
 a more detailed description see IgnoreSelected below.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Interface</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -56,7 +56,7 @@ a more detailed description see IgnoreSelected below.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelected">
+      <object class="GtkCheckButton" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -69,7 +69,6 @@ do that: By setting IgnoreSelected to true the effect of
 Interface is inverted: All selected interfaces are ignored and all
 other interfaces are collected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

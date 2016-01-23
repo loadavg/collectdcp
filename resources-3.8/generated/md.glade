@@ -42,7 +42,7 @@ Select md devices based on device name. The device name is the basename of
 the device, i.e. the name of the block device without the leading /dev/.
 See IgnoreSelected for more details.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Device</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -65,7 +65,7 @@ See IgnoreSelected for more details.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelected">
+      <object class="GtkCheckButton" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -74,7 +74,6 @@ listed using Device are collected. If false (the default), only those
 listed are collected. If no configuration is given, the md plugin will
 collect data from all md devices.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

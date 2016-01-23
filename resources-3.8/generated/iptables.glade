@@ -26,9 +26,16 @@
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Chain">
+      <object class="GtkComboBoxText" id="Chain">
+	<items>
+	  <item translatable="no">Table</item>
+	  <item translatable="no">Chain</item>
+	  <item translatable="no">Comment</item>
+	  <item translatable="no">Number</item>
+	  <item translatable="no">Name</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Select the rules to count. If only Table and Chain are given, this plugin
 will collect the counters of all rules which have a comment-match. The comment
@@ -39,7 +46,6 @@ used as the type-instance.
 If Name is supplied, it will be used as the type-instance instead of the
 comment or the number.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

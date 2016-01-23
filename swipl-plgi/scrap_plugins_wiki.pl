@@ -2,8 +2,6 @@
     Author:  Carlo,,,
     Created: Oct  3 2015
     Purpose: read plugins specification from wiki pages, store in local data file
-    License  : MIT
-    Copyright (c) 2015,2016 Sputnik7
 */
 
 :- module(scrap_plugins_wiki,
@@ -13,6 +11,7 @@
 	,open_page/1
 	,collectd_url/2
 	,get_page/2
+	,dl_model/2
 	]).
 
 :- use_module(library(http/http_open)).
@@ -30,6 +29,13 @@
 scrap_plugins_wiki :-
 	scrap_plugins_wiki(_, _).
 
+%% scrap_plugins_wiki(ToP, ManPages) is det.
+%
+%  get table of plugins and manpages from documentation wiki
+%
+%  @arg ToP table of plugins
+%  @arg ManPages descriptive manpages
+%
 scrap_plugins_wiki(ToP, ManPages) :-
 	url_page_cache_init,
 
@@ -39,6 +45,12 @@ scrap_plugins_wiki(ToP, ManPages) :-
 	collectd_url(man, ManPage),
 	get_manpages(ManPage, ManPages).
 
+%% open_page(Kind) is det.
+%
+%  show the wiki page in system configured browser
+%
+%  @arg Kind describe Kind
+%
 open_page(Kind) :-
 	collectd_url(Kind, Url),
 	www_open_url(Url).
@@ -68,33 +80,52 @@ get_h1_section(G, Name, Desc, Sub, Model) :-
 	capture_sections(R, h2, Sub), !,
 	(   Name == global_options
 	->  dl_model(G, Model)
-	    ,maplist(writeln,Model)
-	;   maplist(dl_model, Sub, Model)
+	;   true
 	).
 
+match(T1,T2,T3, G, R) :-
+	E1 = element(T1, _A1, _V1),
+	E2 = element(T2, _A2, _V2),
+	E3 = element(T3, _A3, _V3),
+	append(_, [E1,E2,E3|_], G),
+	field_base(E1, FB),
+	xpath(E3, /self(text), Desc),
+	R = FB.put(desc, Desc).
 match(T1,T2, G, R) :-
 	E1 = element(T1, _A1, _V1),
 	E2 = element(T2, _A2, _V2),
 	append(_, [E1,E2|_], G),
-	xpath(E1, /self(text), Tx1),
+	field_base(E1, FB),
 	xpath(E2, /self(text), Tx2),
-	R = field{name:Tx1, desc:Tx2}.
+	R = FB.put(desc, Tx2).
 match(T, G, R) :-
 	E = element(T, _A, _V),
-	append(_, [E|_], G),
-	xpath(E, /self(text), F),
-	R = field{name:F}.
+	member(E, G),
+	field_base(E, R).
+
+field_base(E, field{name:Name, values:Values}) :-
+	xpath(E, strong/a, A),
+	bagof(T,  strong_em(A, T), [Name|Values]).
+
+strong_em(A, S) :-
+	( xpath(A, //strong(text), T) ; xpath(A, //em(text), T) ),
+	split_alt(T, S).
+split_alt(T, S) :-
+	atomic_list_concat(L, '|', T), member(S, L).
 
 find(Tag, G, V) :-
-	E = element(Tag, _, V),
-	append(_, [E|_], G).
+	member(element(Tag, _, V), G).
 
-dl_model(G, DlDt) :- dldt(G, DlDt).
-dldt(G, DlDt) :-
+%%	dl_model(+G, -DlDt) is nondet
+%
+%	captures all variable dt+dd sections
+%	some dt doesn't have dd, some pair dt+dt have shared dd
+%
+dl_model(G, DlDt) :-
 	find(dl, G, DL),
-	findall(Def, (match(dt,dd, DL, Def) *-> true ; match(dt, DL, Def)), DlDt),
+	findall(Def, ( (match(dt,dt,dd, DL, Def) ; match(dt,dd, DL, Def)) *-> true ; match(dt, DL, Def)), DlDt),
 	!.
-dldt(_, []).
+dl_model(_, []).
 
 show_h1_section([A,_|S]) :-
 	writeln(A),

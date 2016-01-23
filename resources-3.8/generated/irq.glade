@@ -33,7 +33,7 @@
 Select this irq. By default these irqs will then be collected. For a more
 detailed description see IgnoreSelected below.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Irq</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -56,7 +56,7 @@ detailed description see IgnoreSelected below.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelected">
+      <object class="GtkCheckButton" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -68,7 +68,6 @@ few ones. This option enables you to do that: By setting IgnoreSelected to
 true the effect of Irq is inverted: All selected interrupts are ignored
 and all other interrupts are collected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

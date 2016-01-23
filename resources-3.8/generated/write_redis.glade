@@ -69,7 +69,7 @@ instance running in an specified host and port. The name for node is a
 canonical identifier which is used as plugin instance. It is limited to
 64 characters in length.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Nodename</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -99,7 +99,7 @@ canonical identifier which is used as plugin instance. It is limited to
 The Host option is the hostname or IP-address where the Redis instance is
 running on.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Hostname</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -130,7 +130,7 @@ The Port option is the TCP port on which the Redis instance accepts
 connections. Either a service name of a port number may be given. Please note
 that numerical port numbers must be given as a string, too.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -159,7 +159,7 @@ that numerical port numbers must be given as a string, too.
 	<property name="tooltip_text" translatable="yes">
 The Timeout option sets the socket connection timeout, in milliseconds.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Milliseconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

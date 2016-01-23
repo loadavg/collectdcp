@@ -103,7 +103,7 @@ converted values will have "rate" appended to the data source type, e.g.
 ds_type:derive:rate.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -126,14 +126,17 @@ ds_type:derive:rate.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Property">
+      <object class="GtkComboBoxText" id="Property">
+	<items>
+	  <item translatable="no">String</item>
+	  <item translatable="no">String</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Configure the kafka producer through properties, you almost always will
 want to set metadata.broker.list to your Kafka broker list.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

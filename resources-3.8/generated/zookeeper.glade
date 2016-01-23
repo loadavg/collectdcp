@@ -47,7 +47,7 @@ Synopsis:
 	<property name="tooltip_text" translatable="yes">
 Hostname or address to connect to. Defaults to localhost.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Address</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -76,7 +76,7 @@ Hostname or address to connect to. Defaults to localhost.
 	<property name="tooltip_text" translatable="yes">
 Service name or port number to connect to. Defaults to 2181.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Service</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

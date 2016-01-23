@@ -44,7 +44,7 @@ Path to the device on which TED is connected. collectd will need read and write
 permissions on that file.
 Default: /dev/ttyUSB0
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Path</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -78,7 +78,7 @@ you specify three, a maximum of four readings are performed. Negative values
 are illegal.
 Default: 0
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Num</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

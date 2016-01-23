@@ -89,7 +89,7 @@ an authoritative server and ${localstatedir}/run/pdns_recursor.controlsocket
 will be used for the recursor.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Recursor</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -121,7 +121,7 @@ sockets, the client socket needs a name in the file system, too. You can set
 this local name to Path using the LocalSocket option. The default is
 prefix/var/run/collectd-powerdns.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Path</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

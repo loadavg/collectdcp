@@ -11,19 +11,19 @@
  *  configuration block, i.e. a <Plugin...> block.
  *  --------
  *
- *  source file parse_conf.pl
+ *  source file /home/carlo/develop/work/karsten/loadavgd/configEditor/proto/pl/parse_conf.pl
  *  created at mer set 16 06:59:56 2015
  *
  *  @author carlo
  *  @version 0.9.9
- *
- *  License  : MIT
- *  Copyright (c) 2015,2016 Sputnik7
+ *  @copyright carlo
+ *  @license LGPL v2.1
  */
 
 :- module(parse_conf,
 	  [parse_conf/0
 	  ,parse_conf_cs/2
+	  ,unquoted//1
 	  ]).
 :- use_module(library(dcg/basics)).
 
@@ -98,19 +98,6 @@ parse_conf_cs(Cs, AST)	 :-
 	retractall(text_length(_)),
 	assert(text_length(TL)),
 	phrase(cfg(AST), Cs).
-	% adjust_pos(Cs, ASTp, AST).
-
-%%	adjust_pos(+Cs, +ASTp, -AST) is det.
-%
-%	Stored positions are offsets from EOF.
-%	Revert them at once.
-/*
-adjust_pos(Cs, ASTp, AST) :-
-	length(Cs, L),
-	maplist(adjust_pos_(L), ASTp, AST).
-adjust_pos_(L, T, A) :-
-	T =.. [F,X,Y,C], A =.. [F,U,V,C], U is L-X, V is L-Y.
-*/
 
 %%	cfg(-List)// is det.
 %
@@ -118,7 +105,6 @@ adjust_pos_(L, T, A) :-
 %	Parsing is deterministic, committed after each element.
 %
 
-% cfg(_) --> show_dcg.
 cfg([]) --> [].
 cfg([Comment|Ls]) -->
 	comment(Comment), !, cfg(Ls).
@@ -134,11 +120,11 @@ cfg(Ls) -->
 :- meta_predicate xml_like(0, +, +,-).
 
 comment(comment(X, Y, C)) -->
-	commline(X), xml_like(true, C), pos(Y).
+	commline(X), xml_like(true, C), pos(Y), !.
 comment(comment(X, Y, C)) -->
-	commline(X), key_value(C), pos(Y).
+	commline(X), key_value(C), pos(Y), !.
 comment(comment(X, Y, C)) -->
-	commline(X), string(S), eol(Y),
+	commline(X), string(S), eol(Y), !,
 	{atom_codes(C, S)}.
 
 commline(X) -->

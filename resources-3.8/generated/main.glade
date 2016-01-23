@@ -6,6 +6,88 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
+      <object class="GtkLabel" id="label-WriteQueueLimitHigh">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">WriteQueueLimitHigh</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="WriteQueueLimitHigh">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Metrics are read by the read threads and then put into a queue to be handled
+by the write threads. If one of the write plugins is slow (e.g. network
+timeouts, I/O saturation of the disk) this queue will grow. In order to avoid
+running into memory issues in such a case, you can limit the size of this
+queue.
+By default, there is no limit and memory may grow indefinitely. This is most
+likely not an issue for clients, i.e. instances that only handle the local
+metrics. For servers it is recommended to set this to a non-zero value, though.
+You can set the limits using WriteQueueLimitHigh and WriteQueueLimitLow.
+Each of them takes a numerical argument which is the number of metrics in the
+queue. If there are HighNum metrics in the queue, any new metrics will be
+dropped. If there are less than LowNum metrics in the queue, all new metrics
+will be enqueued. If the number of metrics currently in the queue is between
+LowNum and HighNum, the metric is dropped with a probability that is
+proportional to the number of metrics in the queue (i.e. it increases linearly
+until it reaches 100%.)
+If WriteQueueLimitHigh is set to non-zero and WriteQueueLimitLow is
+unset, the latter will default to half of WriteQueueLimitHigh.
+If you do not want to randomly drop values when the queue size is between
+LowNum and HighNum, set WriteQueueLimitHigh and WriteQueueLimitLow
+to the same value.
+Enabling the CollectInternalStats option is of great help to figure out the
+values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
+</property>
+	<property name="placeholder_text" translatable="yes">HighNum</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-PreCacheChain">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">PreCacheChain</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="PreCacheChain">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Configure the name of the "pre-cache chain" and the "post-cache chain". Please
+see FILTER CONFIGURATION below on information on chains and how these
+setting change the daemon's behavior.
+</property>
+	<property name="placeholder_text" translatable="yes">ChainName</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkLabel" id="label-BaseDir">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -13,7 +95,7 @@
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -27,11 +109,11 @@ Sets the base directory. This is the directory beneath all RRD-files are
 created. Possibly more subdirectories are created. This is also the working
 directory for the daemon.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Directory</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -44,7 +126,7 @@ directory for the daemon.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -97,11 +179,11 @@ global Interval setting. If a plugin provides own support for specifying an
 interval, that setting will take precedence.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Plugin</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -114,13 +196,13 @@ interval, that setting will take precedence.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="AutoLoadPlugin">
+      <object class="GtkCheckButton" id="AutoLoadPlugin">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -134,11 +216,10 @@ When set to true, explicit LoadPlugin statements are not required. Each
 LoadPlugin statement. LoadPlugin statements are still required for
 plugins that don't provide any configuration, e.g. the Load plugin.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -151,13 +232,13 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectInternalStats">
+      <object class="GtkCheckButton" id="CollectInternalStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -169,11 +250,10 @@ WriteQueueLimitLow/WriteQueueLimitHigh mechanism.
 The "cache" plugin instance reports the number of elements in the value list
 cache (the cache you can interact with using collectd-unixsock(5)).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -186,15 +266,19 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Include">
+      <object class="GtkComboBoxText" id="Include">
+	<items>
+	  <item translatable="no">Path</item>
+	  <item translatable="no">pattern</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 If Path points to a file, includes that file. If Path points to a
 directory, recursively includes all files within that directory and its
@@ -232,11 +316,10 @@ appropriate amount of pain.
 It is no problem to have a block like &lt;Plugin foo&gt; in more than one
 file, but you cannot include files from within blocks.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -249,7 +332,7 @@ file, but you cannot include files from within blocks.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -263,11 +346,11 @@ Sets where to write the PID file to. This file is overwritten when it exists
 and deleted when the program is stopped. Some init-scripts might override this
 setting using the -P command-line option.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -280,7 +363,7 @@ setting using the -P command-line option.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -292,11 +375,11 @@ setting using the -P command-line option.
 	<property name="tooltip_text" translatable="yes">
 Path to the plugins (shared objects) of collectd.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Directory</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -309,24 +392,27 @@ Path to the plugins (shared objects) of collectd.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">9</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="TypesDB">
+      <object class="GtkComboBoxText" id="TypesDB">
+	<items>
+	  <item translatable="no">File</item>
+	  <item translatable="no">File</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Set one or more files that contain the data-set descriptions. See
 types.db(5) for a description of the format of this file.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">9</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -339,7 +425,7 @@ types.db(5) for a description of the format of this file.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">8</property>
+	<property name="top_attach">10</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -356,11 +442,11 @@ Warning: You should set this once and then never touch it again. If you do,
 you will have to delete all your RRD files or know some serious RRDtool
 magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Seconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">8</property>
+	<property name="top_attach">10</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -373,7 +459,7 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">9</property>
+	<property name="top_attach">11</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -388,11 +474,11 @@ to get data.
 This options limits the maximum value of the interval. The default value is
 86400.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Seconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">9</property>
+	<property name="top_attach">11</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -405,7 +491,7 @@ This options limits the maximum value of the interval. The default value is
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">10</property>
+	<property name="top_attach">12</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -423,11 +509,11 @@ on the Interval information contained in each value list. This is used in
 the Threshold configuration to dispatch notifications about missing values,
 see collectd-threshold(5) for details.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Iterations</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">10</property>
+	<property name="top_attach">12</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -440,7 +526,7 @@ see collectd-threshold(5) for details.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">11</property>
+	<property name="top_attach">13</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -455,11 +541,11 @@ you may want to increase this if you have more than five plugins that take a
 long time to read. Mostly those are plugins that do network-IO. Setting this to
 a value higher than the number of registered read callbacks is not recommended.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Num</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">11</property>
+	<property name="top_attach">13</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -472,7 +558,7 @@ a value higher than the number of registered read callbacks is not recommended.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">12</property>
+	<property name="top_attach">14</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -486,11 +572,11 @@ Number of threads to start for dispatching value lists to write plugins. The
 default value is 5, but you may want to increase this if you have more than
 five plugins that may take relatively long to write to.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Num</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">12</property>
+	<property name="top_attach">14</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -503,7 +589,7 @@ five plugins that may take relatively long to write to.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">13</property>
+	<property name="top_attach">15</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -537,11 +623,11 @@ to the same value.
 Enabling the CollectInternalStats option is of great help to figure out the
 values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">LowNum</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">13</property>
+	<property name="top_attach">15</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -554,7 +640,7 @@ values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">14</property>
+	<property name="top_attach">16</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -567,11 +653,11 @@ values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
 Sets the hostname that identifies a host. If you omit this setting, the
 hostname will be determined using the gethostname(2) system call.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">14</property>
+	<property name="top_attach">16</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -584,13 +670,13 @@ hostname will be determined using the gethostname(2) system call.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">15</property>
+	<property name="top_attach">17</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="FQDNLookup">
+      <object class="GtkCheckButton" id="FQDNLookup">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -599,11 +685,10 @@ the daemon should try to figure out the "fully qualified domain name", FQDN.
 This is done using a lookup of the name returned by gethostname. This option
 is enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">15</property>
+	<property name="top_attach">17</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -616,7 +701,7 @@ is enabled by default.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">16</property>
+	<property name="top_attach">18</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -630,11 +715,11 @@ Configure the name of the "pre-cache chain" and the "post-cache chain". Please
 see FILTER CONFIGURATION below on information on chains and how these
 setting change the daemon's behavior.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">ChainName</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">16</property>
+	<property name="top_attach">18</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

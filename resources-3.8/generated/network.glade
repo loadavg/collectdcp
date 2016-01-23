@@ -48,10 +48,10 @@ signature):
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label-">
+      <object class="GtkLabel" id="label-&lt;Server">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes"></property>
+	<property name="label" translatable="yes">&lt;Server</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -61,9 +61,14 @@ signature):
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="">
+      <object class="GtkComboBoxText" id="&lt;Server">
+	<items>
+	  <item translatable="no">&gt;</item>
+	  <item translatable="no">Host</item>
+	  <item translatable="no">Port</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 The Server statement/block sets the server to send datagrams to. The
 statement may occur multiple times to send each datagram to multiple
@@ -104,7 +109,6 @@ useful to force a regular DNS lookup to support a high availability setup. If
 not specified, re-resolves are never attempted.
 
 </property>
-	<property name="placeholder_text" translatable="yes">&lt;Server</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -114,10 +118,10 @@ not specified, re-resolves are never attempted.
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="label-">
+      <object class="GtkLabel" id="label-&lt;Listen">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes"></property>
+	<property name="label" translatable="yes">&lt;Listen</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -127,9 +131,14 @@ not specified, re-resolves are never attempted.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="">
+      <object class="GtkComboBoxText" id="&lt;Listen">
+	<items>
+	  <item translatable="no">&gt;</item>
+	  <item translatable="no">Host</item>
+	  <item translatable="no">Port</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 The Listen statement sets the interfaces to bind to. When multiple
 statements are found the daemon will bind to multiple interfaces.
@@ -171,7 +180,6 @@ behavior is, to let the kernel choose the appropriate interface. Thus incoming
 traffic gets only accepted, if it arrives on the given interface.
 
 </property>
-	<property name="placeholder_text" translatable="yes">&lt;Listen</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -203,7 +211,7 @@ multicast, and IPv4 and IPv6 packets. The default is to not change this value.
 That means that multicast packets will be sent with a TTL of 1 (one) on most
 operating systems.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">1-255</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -242,7 +250,7 @@ buffer of 1024 bytes. Versions 4.8, 4.9 and 4.10 used a default
 value of 1024 bytes to avoid problems when sending data to an older
 server.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">1024-65535</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -265,7 +273,7 @@ server.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Forward">
+      <object class="GtkCheckButton" id="Forward">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -276,7 +284,6 @@ the same multicast group. While this results in more network traffic than
 necessary it's not a huge problem since the plugin has a duplicate detection,
 so the values will not loop.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -299,7 +306,7 @@ so the values will not loop.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ReportStats">
+      <object class="GtkCheckButton" id="ReportStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -309,7 +316,6 @@ sent octets and packets, the length of the receive queue and the number of
 values handled. When set to true, the Network plugin will make these
 statistics available. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

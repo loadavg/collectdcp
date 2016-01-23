@@ -58,13 +58,12 @@ The following options are valid inside the Plugin mic block:
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ShowCPU">
+      <object class="GtkCheckButton" id="ShowCPU">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If enabled (the default) a sum of the CPU usage across all cores is reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -87,13 +86,12 @@ If enabled (the default) a sum of the CPU usage across all cores is reported.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ShowCPUCores">
+      <object class="GtkCheckButton" id="ShowCPUCores">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If enabled (the default) per-core CPU usage is reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -116,14 +114,13 @@ If enabled (the default) per-core CPU usage is reported.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ShowMemory">
+      <object class="GtkCheckButton" id="ShowMemory">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If enabled (the default) the physical memory usage of the MIC system is
 reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -146,13 +143,12 @@ reported.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ShowTemperatures">
+      <object class="GtkCheckButton" id="ShowTemperatures">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If enabled (the default) various temperatures of the MIC system are reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -184,7 +180,7 @@ temperatures are being ignored or only matching temperatures are reported
 depends on the IgnoreSelectedTemperature setting below. By default all
 temperatures are reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -207,7 +203,7 @@ temperatures are reported.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelectedTemperature">
+      <object class="GtkCheckButton" id="IgnoreSelectedTemperature">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -233,7 +229,6 @@ vddq
 Voltage ddq
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -256,13 +251,12 @@ Voltage ddq
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ShowPower">
+      <object class="GtkCheckButton" id="ShowPower">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If enabled (the default) various temperatures of the MIC system are reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -294,7 +288,7 @@ power readings are being ignored or only matching power readings are reported
 depends on the IgnoreSelectedPower setting below. By default all
 power readings are reported.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -317,7 +311,7 @@ power readings are reported.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelectedPower">
+      <object class="GtkCheckButton" id="IgnoreSelectedPower">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -349,7 +343,6 @@ vddq
 Memory subsystem rail (uVolts).
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

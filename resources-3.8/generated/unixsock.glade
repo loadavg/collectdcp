@@ -32,7 +32,7 @@
 	<property name="tooltip_text" translatable="yes">
 Sets the socket-file which is to be created.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Path</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -62,7 +62,7 @@ Sets the socket-file which is to be created.
 If running as root change the group of the UNIX-socket after it has been
 created. Defaults to collectd.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Group</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -93,7 +93,7 @@ Change the file permissions of the UNIX-socket after it has been created. The
 permissions must be given as a numeric, octal value as you would pass to
 chmod(1). Defaults to 0770.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Permissions</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -116,7 +116,7 @@ chmod(1). Defaults to 0770.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="DeleteSocket">
+      <object class="GtkCheckButton" id="DeleteSocket">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -125,7 +125,6 @@ with the given name already exists. If collectd crashes a socket file may be
 left over, preventing the daemon from opening a new socket when restarted.
 Since this is potentially dangerous, this defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

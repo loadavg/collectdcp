@@ -103,7 +103,7 @@ If EventServicePrefix not set or set to an empty string (""),
 no prefix will be used.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -133,7 +133,7 @@ no prefix will be used.
 Add the given string as an additional tag to the metric being sent to
 Sensu.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">String</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -156,14 +156,17 @@ Sensu.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Attribute">
+      <object class="GtkComboBoxText" id="Attribute">
+	<items>
+	  <item translatable="no">String</item>
+	  <item translatable="no">String</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Consider the two given strings to be the key and value of an additional
 attribute for each metric being sent out to Sensu.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

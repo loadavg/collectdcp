@@ -71,17 +71,17 @@ collectdcp_win::collectdcp_win(BaseObjectType *cobject, const RefPtr<Builder>& r
         p2s.add_plugin(*e.second.back(), *in_view);
 
     host_plugin_prop = instance_widget<ScrolledWindow>(refBuilder, "host_plugin_prop");
-    plugin_description = instance_widget<Label>(refBuilder, "plugin_description");
+    plugin_description = instance_widget<TextView>(refBuilder, "plugin_description");
 }
 void collectdcp_win::on_row_activated(const TreeModel::Path& , TreeViewColumn* ) {
     cout << "on_row_activated" << endl;
 }
 void collectdcp_win::on_cursor_changed() {
     auto sel = plugins_view->get_selection();
-    auto it = sel->get_selected(); //add_destroy_notify_callback();
+    auto it = sel->get_selected();
     string p;
     it->get_value(0, p);
-    cout << "on_cursor_changed " << p << endl;
+
     if (!it->parent()) {
         host_plugin_prop->remove();
         RefPtr<Builder> builder;
@@ -92,8 +92,10 @@ void collectdcp_win::on_cursor_changed() {
                 host_plugin_prop->add(*grid);
             Label *desc = 0;
             builder->get_widget("label_" + p, desc);
-            if (desc)
-                plugin_description->set_text(desc->get_text());
+            if (desc) {
+                plugin_description->get_buffer()->set_text(desc->get_text());
+                //plugin_description->set_text(desc->get_text());
+            }
         }
         else
             message_box("no resource available for plugin " + p);

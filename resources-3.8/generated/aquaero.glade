@@ -46,7 +46,7 @@ Device path of the Aquaero 5's USB HID (human interface device), usually
 in the form /dev/usb/hiddevX. If this option is no set the plugin will try
 to auto-detect the Aquaero 5 USB device based on vendor-ID and product-ID.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">DevicePath</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -65,7 +65,7 @@ The configuration options are:
 Each Page block defines one page to be queried from the memcached server.
 The block requires one string argument which is used as plugin instance.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -95,7 +95,7 @@ The block requires one string argument which is used as plugin instance.
 Sets the server address to connect to when querying the page. Must be inside a
 Page block.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Address</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -124,7 +124,7 @@ Page block.
 	<property name="tooltip_text" translatable="yes">
 When connected to the memcached server, asks for the page Key.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Key</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -154,7 +154,7 @@ When connected to the memcached server, asks for the page Key.
 Match blocks define which strings to look for and how matches substrings are
 interpreted. For a description of match blocks, please see Plugin tail.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">?</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

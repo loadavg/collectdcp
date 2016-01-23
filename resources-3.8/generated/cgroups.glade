@@ -39,7 +39,7 @@ Select cgroup based on the name. Whether only matching cgroups are
 collected or if they are ignored is controlled by the IgnoreSelected option;
 see below.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Directory</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -62,7 +62,7 @@ see below.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelected">
+      <object class="GtkCheckButton" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -71,7 +71,6 @@ match any one of the criteria are collected. By default only selected
 cgroups are collected if a selection is made. If no selection is configured
 at all, all cgroups are selected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

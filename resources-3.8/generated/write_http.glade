@@ -56,7 +56,7 @@ block, the following options are available:
 	<property name="tooltip_text" translatable="yes">
 URL to which the values are submitted to. Mandatory.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">URL</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -85,7 +85,7 @@ URL to which the values are submitted to. Mandatory.
 	<property name="tooltip_text" translatable="yes">
 Optional user name needed for authentication.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Username</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -114,7 +114,7 @@ Optional user name needed for authentication.
 	<property name="tooltip_text" translatable="yes">
 Optional password needed for authentication.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -137,14 +137,13 @@ Optional password needed for authentication.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="VerifyPeer">
+      <object class="GtkCheckButton" id="VerifyPeer">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 Enable or disable peer SSL certificate verification. See
 http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -167,7 +166,7 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="VerifyHost">
+      <object class="GtkCheckButton" id="VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -177,7 +176,6 @@ matches the host name provided by the URL option. If this identity check
 fails, the connection is aborted. Obviously, only works when connecting to a
 SSL enabled server. Enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -208,7 +206,7 @@ File that holds one or more SSL certificates. If you want to use HTTPS you will
 possibly need this option. What CA certificates come bundled with libcurl
 and are checked by default depends on the distribution you use.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -240,7 +238,7 @@ some reason all the needed CA certificates aren't in the same file and can't be
 pointed to using the CACert option. Requires libcurl to be built against
 OpenSSL.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Directory</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -270,7 +268,7 @@ OpenSSL.
 File that holds the private key in PEM format to be used for certificate-based
 authentication.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -300,7 +298,7 @@ authentication.
 File that holds the SSL certificate to be used for certificate-based
 authentication.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -329,7 +327,7 @@ authentication.
 	<property name="tooltip_text" translatable="yes">
 Password required to load the private key in ClientKey.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -352,15 +350,22 @@ Password required to load the private key in ClientKey.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="SSLVersion">
+      <object class="GtkComboBoxText" id="SSLVersion">
+	<items>
+	  <item translatable="no">SSLv2</item>
+	  <item translatable="no">SSLv3</item>
+	  <item translatable="no">TLSv1</item>
+	  <item translatable="no">TLSv1_0</item>
+	  <item translatable="no">TLSv1_1</item>
+	  <item translatable="no">TLSv1_2</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Define which SSL protocol version must be used. By default libcurl will
 attempt to figure out the remote SSL protocol version. See
 curl_easy_setopt(3) for more details.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -383,16 +388,19 @@ curl_easy_setopt(3) for more details.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Format">
+      <object class="GtkComboBoxText" id="Format">
+	<items>
+	  <item translatable="no">Command</item>
+	  <item translatable="no">JSON</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Format of the output to generate. If set to Command, will create output that
 is understood by the Exec and UnixSock plugins. When set to JSON, will
 create output in the JavaScript Object Notation (JSON).
 Defaults to Command.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -415,14 +423,13 @@ Defaults to Command.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="StoreRates">
+      <object class="GtkCheckButton" id="StoreRates">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If set to true, convert counter values to rates. If set to false (the
 default) counter values are stored as is, i.e. as an increasing integer number.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -456,7 +463,7 @@ are available on the server side. Bytes must be at least 1024 and cannot
 exceed the size of an int, i.e. 2 GByte.
 Defaults to 4096.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Bytes</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -488,7 +495,7 @@ connection with the HTTP server will be considered too slow and aborted. All
 the data submitted over this connection will probably be lost. Defaults to 0,
 which means no minimum transfer rate is enforced.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Bytes per Second</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -525,7 +532,7 @@ and the size of BufferSize. The optimal value to set Timeout to is
 slightly below this interval, which you can estimate by monitoring the network
 traffic between collectd and the HTTP server.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Timeout</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

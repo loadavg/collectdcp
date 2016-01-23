@@ -58,7 +58,7 @@ blocks. Inside the Node blocks, the following options are recognized:
 	<property name="tooltip_text" translatable="yes">
 Hostname or address to connect to. Defaults to localhost.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Address</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -87,7 +87,7 @@ Hostname or address to connect to. Defaults to localhost.
 	<property name="tooltip_text" translatable="yes">
 Service name or port number to connect to. Defaults to 2003.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Service</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -116,7 +116,7 @@ Service name or port number to connect to. Defaults to 2003.
 	<property name="tooltip_text" translatable="yes">
 Protocol to use when connecting to Graphite. Defaults to tcp.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">String</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -139,7 +139,7 @@ Protocol to use when connecting to Graphite. Defaults to tcp.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="LogSendErrors">
+      <object class="GtkCheckButton" id="LogSendErrors">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -148,7 +148,6 @@ If set to false, it will not log the errors. This is especially useful when
 using Protocol UDP since many times we want to use the "fire-and-forget"
 approach and logging errors fills syslog with unneeded messages.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -178,7 +177,7 @@ approach and logging errors fills syslog with unneeded messages.
 When set, String is added in front of the host name. Dots and whitespace are
 not escaped in this string (see EscapeCharacter below).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">String</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -208,7 +207,7 @@ not escaped in this string (see EscapeCharacter below).
 When set, String is appended to the host name. Dots and whitespace are
 not escaped in this string (see EscapeCharacter below).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">String</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -240,7 +239,7 @@ in the identifier. The EscapeCharacter option determines which character
 dots, whitespace and control characters are replaced with. Defaults to
 underscore (_).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Char</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -263,7 +262,7 @@ underscore (_).
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="StoreRates">
+      <object class="GtkCheckButton" id="StoreRates">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -271,7 +270,6 @@ If set to true (the default), convert counter values to rates. If set to
 false counter values are stored as is, i. e. as an increasing integer
 number.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -294,7 +292,7 @@ number.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="SeparateInstances">
+      <object class="GtkCheckButton" id="SeparateInstances">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -303,7 +301,6 @@ path component, for example host.cpu.0.cpu.idle. If set to false (the
 default), the plugin and plugin instance (and likewise the type and type
 instance) are put into one component, for example host.cpu-0.cpu-idle.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -326,7 +323,7 @@ instance) are put into one component, for example host.cpu-0.cpu-idle.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="AlwaysAppendDS">
+      <object class="GtkCheckButton" id="AlwaysAppendDS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -334,7 +331,6 @@ If set to true, append the name of the Data Source (DS) to the "metric"
 identifier. If set to false (the default), this is only done when there is
 more than one DS.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

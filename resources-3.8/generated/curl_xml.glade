@@ -58,6 +58,36 @@ Within the URL block the following options are accepted:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
+      <object class="GtkLabel" id="label-Post">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Post</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Post">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+These options behave exactly equivalent to the appropriate options of the
+cURL plugin. Please see there for a detailed description.
+</property>
+	<property name="placeholder_text" translatable="yes">Body</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -65,7 +95,7 @@ Within the URL block the following options are accepted:
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -78,11 +108,11 @@ Within the URL block the following options are accepted:
 Use Name as the host name when submitting values. Defaults to the global
 host name setting.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -95,7 +125,7 @@ host name setting.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -108,11 +138,11 @@ host name setting.
 Use Instance as the plugin instance when submitting values. Defaults to an
 empty string (no plugin instance).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Instance</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -125,15 +155,19 @@ empty string (no plugin instance).
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Namespace">
+      <object class="GtkComboBoxText" id="Namespace">
+	<items>
+	  <item translatable="no">Prefix</item>
+	  <item translatable="no">URL</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 If an XPath expression references namespaces, they must be specified
 with this option. Prefix is the "namespace prefix" used in the XML document.
@@ -144,11 +178,10 @@ Examples:
   Namespace "s" "http://schemas.xmlsoap.org/soap/envelope/";
   Namespace "m" "http://www.w3.org/1998/Math/MathML";
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -161,7 +194,7 @@ Examples:
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -174,11 +207,11 @@ Examples:
 These options behave exactly equivalent to the appropriate options of the
 cURL plugin. Please see there for a detailed description.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Milliseconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -191,7 +224,7 @@ cURL plugin. Please see there for a detailed description.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -230,11 +263,11 @@ exactly one element. The element's value is then parsed as a number and used as
 value for the appropriate value in the value list dispatched to the daemon.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">XPath-expression</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

@@ -69,6 +69,36 @@ section "mysql_real_connect()" in the MySQL reference manual.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
+      <object class="GtkLabel" id="label-MasterStats">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">MasterStats</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="MasterStats">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Enable the collection of master / slave statistics in a replication setup. In
+order to be able to get access to these statistics, the user needs special
+privileges. See the User documentation above. Defaults to false.
+</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkLabel" id="label-Alias">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -76,7 +106,7 @@ section "mysql_real_connect()" in the MySQL reference manual.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -89,11 +119,11 @@ section "mysql_real_connect()" in the MySQL reference manual.
 Alias to use as sender instead of hostname when reporting. This may be useful
 when having cryptic hostnames.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Alias</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -106,7 +136,7 @@ when having cryptic hostnames.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -118,11 +148,11 @@ when having cryptic hostnames.
 	<property name="tooltip_text" translatable="yes">
 Hostname of the database server. Defaults to localhost.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Hostname</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -135,7 +165,7 @@ Hostname of the database server. Defaults to localhost.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -151,11 +181,11 @@ unless you want to collectd replication statistics (see MasterStats and
 SlaveStats below). In this case, the user needs the REPLICATION CLIENT
 (or SUPER) privileges. Else, any existing MySQL user will do.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Username</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -168,7 +198,7 @@ SlaveStats below). In this case, the user needs the REPLICATION CLIENT
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -180,11 +210,11 @@ SlaveStats below). In this case, the user needs the REPLICATION CLIENT
 	<property name="tooltip_text" translatable="yes">
 Password needed to log into the database.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -197,7 +227,7 @@ Password needed to log into the database.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -210,11 +240,11 @@ Password needed to log into the database.
 Select this database. Defaults to no database which is a perfectly reasonable
 option for what this plugin does.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Database</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -227,7 +257,7 @@ option for what this plugin does.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -244,11 +274,11 @@ must be passed as a string nonetheless. For example:
 If Host is set to localhost (the default), this setting has no effect.
 See the documentation for the mysql_real_connect function for details.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -261,7 +291,7 @@ See the documentation for the mysql_real_connect function for details.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -276,11 +306,11 @@ only has any effect, if Host is set to localhost (the default).
 Otherwise, use the Port option above. See the documentation for the
 mysql_real_connect function for details.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Socket</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -293,24 +323,23 @@ mysql_real_connect function for details.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="InnodbStats">
+      <object class="GtkCheckButton" id="InnodbStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If enabled, metrics about the InnoDB storage engine are collected.
 Disabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -323,13 +352,13 @@ Disabled by default.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">8</property>
+	<property name="top_attach">9</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="SlaveStats">
+      <object class="GtkCheckButton" id="SlaveStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -337,11 +366,10 @@ Enable the collection of master / slave statistics in a replication setup. In
 order to be able to get access to these statistics, the user needs special
 privileges. See the User documentation above. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">8</property>
+	<property name="top_attach">9</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -354,24 +382,23 @@ privileges. See the User documentation above. Defaults to false.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">9</property>
+	<property name="top_attach">10</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="SlaveNotifications">
+      <object class="GtkCheckButton" id="SlaveNotifications">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If enabled, the plugin sends a notification if the replication slave I/O and /
 or SQL threads are not running. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">9</property>
+	<property name="top_attach">10</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -384,7 +411,7 @@ or SQL threads are not running. Defaults to false.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">10</property>
+	<property name="top_attach">11</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -396,11 +423,11 @@ or SQL threads are not running. Defaults to false.
 	<property name="tooltip_text" translatable="yes">
 Sets the connect timeout for the MySQL client.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Seconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">10</property>
+	<property name="top_attach">11</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

@@ -66,7 +66,7 @@ options are understood:
 	<property name="tooltip_text" translatable="yes">
 Hostname or IP-address of the router to connect to.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -97,7 +97,7 @@ Port name or port number used when connecting. If left unspecified, the default
 will be chosen by librouteros, currently "8728". This option expects a
 string argument, even when a numeric port number is given.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -126,7 +126,7 @@ string argument, even when a numeric port number is given.
 	<property name="tooltip_text" translatable="yes">
 Use the user name User to authenticate. Defaults to "admin".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">User</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -155,7 +155,7 @@ Use the user name User to authenticate. Defaults to "admin".
 	<property name="tooltip_text" translatable="yes">
 Set the password used to authenticate.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -178,14 +178,13 @@ Set the password used to authenticate.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectInterface">
+      <object class="GtkCheckButton" id="CollectInterface">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 When set to true, interface statistics will be collected for all interfaces
 present on the device. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -208,14 +207,13 @@ present on the device. Defaults to false.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectRegistrationTable">
+      <object class="GtkCheckButton" id="CollectRegistrationTable">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 When set to true, information about wireless LAN connections will be
 collected. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -238,7 +236,7 @@ collected. Defaults to false.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectCPULoad">
+      <object class="GtkCheckButton" id="CollectCPULoad">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -246,7 +244,6 @@ When set to true, information about the CPU usage will be collected. The
 number is a dimensionless value where zero indicates no CPU usage at all.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -269,7 +266,7 @@ Defaults to false.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectMemory">
+      <object class="GtkCheckButton" id="CollectMemory">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -278,7 +275,6 @@ memory is calculated is unknown, for example whether or not caches are counted
 as used space.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -301,14 +297,13 @@ Defaults to false.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectDF">
+      <object class="GtkCheckButton" id="CollectDF">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 When enabled, the amount of used and free disk space will be collected.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -331,14 +326,13 @@ Defaults to false.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectDisk">
+      <object class="GtkCheckButton" id="CollectDisk">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 When enabled, the number of sectors written and bad blocks will be collected.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

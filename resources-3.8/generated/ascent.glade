@@ -40,7 +40,7 @@ The configuration options are the same as for the apache plugin above:
 	<property name="tooltip_text" translatable="yes">
 Sets the URL of the XML status output.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">http://localhost/ascent/status/</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -69,7 +69,7 @@ Sets the URL of the XML status output.
 	<property name="tooltip_text" translatable="yes">
 Optional user name needed for authentication.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Username</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -98,7 +98,7 @@ Optional user name needed for authentication.
 	<property name="tooltip_text" translatable="yes">
 Optional password needed for authentication.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -121,14 +121,13 @@ Optional password needed for authentication.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="VerifyPeer">
+      <object class="GtkCheckButton" id="VerifyPeer">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 Enable or disable peer SSL certificate verification. See
 http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -151,7 +150,7 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="VerifyHost">
+      <object class="GtkCheckButton" id="VerifyHost">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -161,7 +160,6 @@ certificate matches the host name provided by the URL option. If this
 identity check fails, the connection is aborted. Obviously, only works when
 connecting to a SSL enabled server. Enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -192,7 +190,7 @@ File that holds one or more SSL certificates. If you want to use HTTPS you will
 possibly need this option. What CA certificates come bundled with libcurl
 and are checked by default depends on the distribution you use.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -223,7 +221,7 @@ The Timeout option sets the overall timeout for HTTP requests to URL, in
 milliseconds. By default, the configured Interval is used to set the
 timeout.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Milliseconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

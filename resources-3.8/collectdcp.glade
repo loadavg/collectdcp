@@ -136,10 +136,16 @@
                 <property name="orientation">vertical</property>
                 <property name="homogeneous">True</property>
                 <child>
-                  <object class="GtkLabel" id="plugin_description">
+                  <object class="GtkScrolledWindow" id="scrolledwindow2">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">label</property>
+                    <property name="can_focus">True</property>
+                    <property name="shadow_type">in</property>
+                    <child>
+                      <object class="GtkTextView" id="plugin_description">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>

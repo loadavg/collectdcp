@@ -66,7 +66,7 @@ it's your responsibility, the plugin doesn't check for that. If not given, the
 instance is set to the directory name with all slashes replaced by underscores
 and all leading underscores removed.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Instance</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -98,7 +98,7 @@ wildcard as understood by fnmatch(3). Only the filename is checked
 against the pattern, not the entire path. In case this makes it easier for you:
 This option has been named after the -name parameter to find(1).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Pattern</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -137,7 +137,7 @@ minute). Valid multipliers are s (second), m (minute), h (hour), d
 also specify fractional numbers, e. g. "0.5d" is identical to
 "12h".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Age</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -173,7 +173,7 @@ description see above. Valid multipliers here are b (byte), k (kilobyte),
 m (megabyte), g (gigabyte), t (terabyte), and p (petabyte). Please
 note that there are 1000 bytes in a kilobyte, not 1024.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Size</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -196,13 +196,12 @@ note that there are 1000 bytes in a kilobyte, not 1024.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Recursive">
+      <object class="GtkCheckButton" id="Recursive">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 Controls whether or not to recurse into subdirectories. Enabled by default.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -225,7 +224,7 @@ Controls whether or not to recurse into subdirectories. Enabled by default.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IncludeHidden">
+      <object class="GtkCheckButton" id="IncludeHidden">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -233,7 +232,6 @@ Controls whether or not to include "hidden" files and directories in the count.
 "Hidden" files and directories are those, whose name begins with a dot.
 Defaults to false, i.e. by default hidden files and directories are ignored.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

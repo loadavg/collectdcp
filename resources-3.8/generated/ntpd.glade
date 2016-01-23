@@ -32,7 +32,7 @@
 	<property name="tooltip_text" translatable="yes">
 Hostname of the host running ntpd. Defaults to localhost.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Hostname</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -61,7 +61,7 @@ Hostname of the host running ntpd. Defaults to localhost.
 	<property name="tooltip_text" translatable="yes">
 UDP-Port to connect to. Defaults to 123.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -84,7 +84,7 @@ UDP-Port to connect to. Defaults to 123.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ReverseLookups">
+      <object class="GtkCheckButton" id="ReverseLookups">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -93,7 +93,6 @@ IP-address may be used in a filename it is recommended to disable reverse
 lookups. The default is to do reverse lookups to preserve backwards
 compatibility, though.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -116,7 +115,7 @@ compatibility, though.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IncludeUnitID">
+      <object class="GtkCheckButton" id="IncludeUnitID">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -127,7 +126,6 @@ try to write simultaneous measurements from both to the same type instance.
 This will result in error messages in the log and only one set of measurements
 making it through.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

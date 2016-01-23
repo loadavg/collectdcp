@@ -1,43 +1,95 @@
 /*  File:    gen_glade.pl
     Author:  Carlo,,,
     Created: Dec 30 2015
-    Purpose: generation of Glade editable user interface from collectd wiki documentation
-    License  : MIT
-    Copyright (c) 2015,2016 Sputnik7
+    Purpose: generate glade files from collectd wiki definitions
 */
 
 :- module(gen_glade,
-	  [gen_glade/0
-	  ,gen_main/0
-	  ,show_collectdcp/0
-	  ]).
+	[gen_collectdcp/0
+	,gen_main/0
+	,show_glade/0
+	,show_collectdcp/0
+	,show_object_instance/2
+	]).
 
 :- use_module(library(sgml)).
 :- use_module(library(xpath)).
-:- use_module(scrap_plugins_wiki).
 :- use_module(library(dcg/basics)).
 
-gen_glade :-
+:- use_module(scrap_plugins_wiki).
+:- use_module(parse_conf).
+:- use_module(xml_ize).
+
+%% gen_collectdcp is det.
+%
+%  generate main a plugins detailed configurations
+%
+gen_collectdcp :-
+	scrap_plugins_wiki(_ToP, Man),
+	gen_main(Man),
+	gen_plugins(Man).
+
+%% gen_main is det.
+%
+%  generate glade file for main collectd options
+%
+gen_main :-
+	scrap_plugins_wiki(_ToP, Man),
+	gen_main(Man).
+
+%% show_glade is det.
+%
+%  test glade file display.
+%
+show_glade :-
 	glade_file_full_path(glade_resource_folder, *, Path),
 	expand_file_name(Path, L),
 	maplist(show_glade, L).
 
-gen_main :-
-	scrap_plugins_wiki(_ToP, Man),
-	member(X, Man), _{name:global_options} :< X,
-	findall(FR, (nth0(R, X.data_model, F), gen_row(F, R, FR)), FRs),
-
-	gen_glade_target_path(main, Path),
-	open(Path, write, S),
-	flatten(FRs, FLs),
-	gen_grid_interface(_, FLs, GI),
-	xml_write(S, GI, []),
-	close(S).
-
+%% show_collectdcp is det.
+%
+%  display some info about content of all glade files in folder
+%
 show_collectdcp :-
-	glade_file_full_path(glade_resource_folder, dlg_commands, F), % collectdcp
+	glade_file_full_path(glade_resource_folder, collectdcp, F), % dlg_commands
 	load_xml(F, X, []),
 	maplist(writeln, X).
+
+show_object_instance(Class, File) :-
+	glade_file_full_path(glade_resource_folder, File, F), % dlg_commands
+	load_xml(F, X, []),
+	xpath(X, //object(@class=Class), Object),
+	writeln(Object).
+
+gen_plugins(Man) :-
+	member(X, Man), _{name:plugin_options} :< X,
+	forall(member(P, X.h2s), gen_plugin(P)).
+
+gen_plugin(P) :-
+	xpath(P, //a/code(text), Name),
+
+	(   append(BeforeDl, [element(dl, _,_)|_], P)
+	->  maplist(get_desc, BeforeDl, LDesc),
+	    atomic_list_concat(LDesc, '\n', PDesc)
+	;   PDesc = ''
+	),
+
+	dl_model(P, Dl),
+	findall(FR, (nth0(R, Dl, F), gen_row(F, R, FR)), FRs),
+	flatten(FRs, FLs),
+	gen_grid_interface(_, Name, FLs, PDesc, XML),
+	gen_glade_target_path(Name, Path),
+	xml_save_file(Path, XML), !.
+
+get_desc(X, Y) :-  xpath(X, /self(text), Y) -> true ; Y = X.
+
+gen_main(Man) :-
+	member(X, Man),	_{name:global_options} :< X,
+	findall(FR, (nth0(R, X.data_model, F), gen_row(F, R, FR)), FRs),
+	flatten(FRs, FLs),
+	gen_grid_interface(_, grid_main, FLs, XML),
+	gen_glade_target_path(main, Path),
+	xml_save_file(Path, XML).
 
 :- meta_predicate glade_file_full_path(1, +, -).
 
@@ -67,58 +119,89 @@ classes_counters(X, P) :-
 	maplist({X}/[C,C-N]>>aggregate(count, xpath(X, //object(@class), C), N),
 		Classes, P).
 
-gen_grid_interface(Id, Rows, E) :-
+gen_grid_interface(Ver, Id, Rows, E) :- gen_grid_interface(Ver, Id, Rows, _, E).
+
+gen_grid_interface(Ver, Id, Rows, PDesc, E) :-
+	( Ver = '3.8' ; true ),
 	( Id = grid1 ; true ),
-	E = element(interface, [],
-		    [element(requires,
-			    [lib='gtk+', version='3.8'],
-			    [])
-		    ,element(object,
-			     [class='GtkGrid', id=Id],
-			     [element(property, [name=visible], ['True'])
-			     ,element(property, [name=can_focus], ['False'])
-			     | Rows])
-		    ]).
+	Obj = object([class='GtkGrid', id=Id],
+		     [property([name=visible], ['True'])
+		     ,property([name=can_focus], ['False'])
+		     |Rows]),
+	(  atom(PDesc)
+	-> html_label(Id, PDesc, RowG),
+	   Interface = [RowG, Obj]
+	;  Interface = [Obj]
+        ),
+	xml_ize(interface([],
+			  [requires([lib='gtk+', version=Ver], [])|Interface]
+			 ), E).
+
+packing(Left_attach, Top_attach, Width, Height, P) :-
+	P = packing([],
+	     [property([name=left_attach], [Left_attach])
+	     ,property([name=top_attach], [Top_attach])
+	     ,property([name=width], [Width])
+	     ,property([name=height], [Height])
+	     ]).
+packing(Left_attach, Top_attach, P) :- packing(Left_attach, Top_attach, 1,1, P).
 
 gen_row(Field, Row, E) :-
-	_{name:NameValue} :< Field,
-	atom_codes(NameValue, Cs),
-	phrase((parse_conf:unquoted(NameCs),whites,string(PlaceholderCs)), Cs),
-	atom_codes(Name, NameCs),
-	atom_codes(Placeholder, PlaceholderCs),
+	_{name:Name, values:Values} :< Field,
 	( _{desc:Desc} :< Field ; format(atom(Desc), 'no description available for ~w', [Name]) ),
-	!, E = [element(child,
-		    [],
-		    [element(object,
-			     [class="GtkLabel", id="label1"],
-			     [element(property, [name=visible], ['True'])
-			     ,element(property, [name=can_focus], ['False'])
-			     ,element(property, [name=label, translatable=yes], [Name])
-			     ])
-		    ,element(packing,
-			     [],
-			     [element(property, [name=left_attach], [0])
-			     ,element(property, [name=top_attach], [Row])
-			     ,element(property, [name=width], [1])
-			     ,element(property, [name=height], [1])
-			     ])
-		    ])
-	    ,element(child,
-		    [],
-		    [element(object,
-			     [class="GtkEntry", id=Name],
-			     [element(property, [name=visible], ['True'])
-			     ,element(property, [name=can_focus], ['True'])
-			     ,element(property, [name=tooltip_markup, translatable=yes], [Desc])
-			     ,element(property, [name=placeholder_text, translatable=yes], [Placeholder])
-			     ])
-		    ,element(packing,
-			     [],
-			     [element(property, [name=left_attach], [1])
-			     ,element(property, [name=top_attach], [Row])
-			     ,element(property, [name=width], [1])
-			     ,element(property, [name=height], [1])
-			     ])
-		    ])
-	    ].
 
+	packing(0, Row, P1),
+	properties([visible(true)
+		   ,can_focus(false)
+		   ,label(Name, translatable=yes)], Ps1),
+	name_labelId(Name, Label),
+	Lab = [object([class="GtkLabel", id=Label], Ps1), P1],
+
+	packing(1, Row, P2),
+	(   Values = [Placeholder]
+	->  Class = 'GtkEntry',
+	    properties([visible(true)
+		       ,can_focus(true)
+		       ,tooltip_text(Desc, translatable=yes) %,tooltip_markup(Desc, translatable=yes)
+		       ,placeholder_text(Placeholder, translatable=yes)
+		       ], Ps2)
+	;   Values = []
+	->  Class = 'GtkEntry',
+	    properties([visible(true)
+		       ,can_focus(true)
+		       ,tooltip_text(Desc, translatable=yes) %,tooltip_markup(Desc, translatable=yes)
+		       ,placeholder_text(?, translatable=yes)
+		       ], Ps2)
+	;   booleans(Values)
+	->  Class = 'GtkCheckButton',
+	    properties([visible(true)
+		       ,can_focus(true)
+		       ,tooltip_text(Desc, translatable=yes)
+		       ], Ps2)
+	;   items(Values, Items)
+	->  Class = 'GtkComboBoxText',
+	    properties([visible(true)
+		       ,can_focus(false)
+		       ,tooltip_text(Desc, translatable=yes)
+		       ], Ps),
+	    Ps2 = [Items|Ps]
+	;   throw(cannot_generate_field(Field))
+	),
+	Obj = [object([class=Class, id=Name], Ps2), P2],
+	!, xml_ize([child([], Lab), child([], Obj)], E).
+
+booleans(Vs) :- sort(Vs, [false,true]).
+
+items(Values, items([], Items)) :-
+	length(Values, NValues),
+	NValues >= 2,
+	maplist(value_item, Values, Items).
+value_item(V, item([translatable=no],[V])).
+
+name_labelId(Name, Label) :-
+	atomic_list_concat([label,-,Name], Label).
+
+html_label(ID, HTML, X) :-
+	properties([visible(true), can_focus(false), label(HTML) /*, use_markup(true)*/], Ps),
+	atom_concat(label_, ID, LabelID),
+	xml_ize(object([class="GtkLabel", id=LabelID], Ps), X).

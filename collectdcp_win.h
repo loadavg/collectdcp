@@ -12,6 +12,7 @@
 #include <gtkmm/window.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/treeview.h>
+#include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
 #include "model.h"
@@ -35,7 +36,7 @@ private:
     model::AST *plugins_defaults = 0;
     Gtk::TreeView *plugins_view = 0;
     Gtk::ScrolledWindow *host_plugin_prop = 0;
-    Gtk::Label *plugin_description = 0;
+    Gtk::TextView *plugin_description = 0;
 };
 
 #endif // COLLECTDCP_WIN_H

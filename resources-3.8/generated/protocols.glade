@@ -50,7 +50,7 @@ Whether only matched values are selected or all matched values are ignored
 depends on the IgnoreSelected. By default, only matched values are selected.
 If no value is configured at all, all values will be selected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Selector</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -73,14 +73,13 @@ If no value is configured at all, all values will be selected.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelected">
+      <object class="GtkCheckButton" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If set to true, inverts the selection made by Value, i. e. all
 matching values will be ignored.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

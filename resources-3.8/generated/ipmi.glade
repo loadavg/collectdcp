@@ -32,7 +32,7 @@
 	<property name="tooltip_text" translatable="yes">
 Selects sensors to collect or to ignore, depending on IgnoreSelected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Sensor</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -55,7 +55,7 @@ Selects sensors to collect or to ignore, depending on IgnoreSelected.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelected">
+      <object class="GtkCheckButton" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -65,7 +65,6 @@ This option enables you to do that: By setting IgnoreSelected to true
 the effect of Sensor is inverted: All selected sensors are ignored and
 all other sensors are collected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -88,14 +87,13 @@ all other sensors are collected.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="NotifySensorAdd">
+      <object class="GtkCheckButton" id="NotifySensorAdd">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If a sensor appears after initialization time of a minute a notification
 is sent.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -118,13 +116,12 @@ is sent.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="NotifySensorRemove">
+      <object class="GtkCheckButton" id="NotifySensorRemove">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If a sensor disappears a notification is sent.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -147,14 +144,13 @@ If a sensor disappears a notification is sent.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="NotifySensorNotPresent">
+      <object class="GtkCheckButton" id="NotifySensorNotPresent">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 If you have for example dual power supply and one of them is (un)plugged then
 a notification is sent.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

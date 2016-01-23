@@ -71,7 +71,7 @@ example, the plugin name table-slabinfo would be used. If omitted, the
 filename of the table is used instead, with all special characters replaced
 with an underscore (_).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">instance</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -107,7 +107,7 @@ A horizontal tab, newline and carriage return may be specified by \\t,
 \\n and \\r respectively. Please note that the double backslashes are
 required because of collectd's config parsing.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">string</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

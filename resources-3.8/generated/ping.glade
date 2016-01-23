@@ -42,7 +42,7 @@ Available configuration options:
 Host to ping periodically. This option may be repeated several times to ping
 multiple hosts.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">IP-address</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -76,7 +76,7 @@ should be smaller than or equal to the global Interval setting. Fractional
 times, such as "1.24" are allowed.
 Default: 1.0
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Seconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -110,7 +110,7 @@ Interval setting above for the plugin to work correctly. Fractional
 arguments are accepted.
 Default: 0.9
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Seconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -139,7 +139,7 @@ Default: 0.9
 	<property name="tooltip_text" translatable="yes">
 Sets the Time-To-Live of generated ICMP packets.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">0-255</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -169,7 +169,7 @@ Sets the Time-To-Live of generated ICMP packets.
 Sets the source address to use. host may either be a numerical network
 address or a network hostname.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">host</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -200,7 +200,7 @@ Sets the outgoing network device to be used. name has to specify an
 interface name (e. g. eth0). This might not be supported by all
 operating systems.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -231,7 +231,7 @@ Trigger a DNS resolve after the host has not replied to Packets packets. This
 enables the use of dynamic DNS services (like dyndns.org) with the ping plugin.
 Default: -1 (disabled)
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Packets</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

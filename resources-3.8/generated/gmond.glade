@@ -69,14 +69,17 @@ Available configuration options:
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="MCReceiveFrom">
+      <object class="GtkComboBoxText" id="MCReceiveFrom">
+	<items>
+	  <item translatable="no">MCGroup</item>
+	  <item translatable="no">Port</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Sets sets the multicast group and UDP port to which to subscribe.
 Default: 239.2.11.71 / 8649
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -114,7 +117,7 @@ Data source to map this metric to. If the configured type has exactly one data
 source, this is optional. Otherwise the option is required.
 
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

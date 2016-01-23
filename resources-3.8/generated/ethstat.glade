@@ -50,7 +50,7 @@ Options:
 	<property name="tooltip_text" translatable="yes">
 Collect statistical information about interface Name.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -73,16 +73,20 @@ Collect statistical information about interface Name.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Map">
+      <object class="GtkComboBoxText" id="Map">
+	<items>
+	  <item translatable="no">Name</item>
+	  <item translatable="no">Type</item>
+	  <item translatable="no">TypeInstance</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 By default, the plugin will submit values as type derive and type
 instance set to Name, the name of the metric as reported by the driver. If
 an appropriate Map option exists, the given Type and, optionally,
 TypeInstance will be used.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -105,14 +109,13 @@ TypeInstance will be used.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="MappedOnly">
+      <object class="GtkCheckButton" id="MappedOnly">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 When set to true, only metrics that can be mapped to to a type will be
 collected, all other metrics will be ignored. Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

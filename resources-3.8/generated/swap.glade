@@ -30,7 +30,7 @@ Linux and Solaris, the following options are available:
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ReportByDevice">
+      <object class="GtkCheckButton" id="ReportByDevice">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -41,7 +41,6 @@ and available space of each device will be reported separately.
 This option is only available if the Swap plugin can read /proc/swaps
 (under Linux) or use the swapctl(2) mechanism (under Solaris).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -64,14 +63,13 @@ This option is only available if the Swap plugin can read /proc/swaps
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ReportBytes">
+      <object class="GtkCheckButton" id="ReportBytes">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 When enabled, the swap I/O is reported in bytes. When disabled, the default,
 swap I/O is reported in pages. This option is available under Linux only.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -94,14 +92,13 @@ swap I/O is reported in pages. This option is available under Linux only.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ValuesAbsolute">
+      <object class="GtkCheckButton" id="ValuesAbsolute">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 Enables or disables reporting of absolute swap metrics, i.e. number of bytes
 available and used. Defaults to true.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -124,7 +121,7 @@ available and used. Defaults to true.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ValuesPercentage">
+      <object class="GtkCheckButton" id="ValuesPercentage">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -133,7 +130,6 @@ available and free. Defaults to false.
 This is useful for deploying collectd in a heterogeneous environment, where
 swap sizes differ and you want to specify generic thresholds or similar.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

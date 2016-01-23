@@ -69,6 +69,36 @@ Publish blocks in the future.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
+      <object class="GtkLabel" id="label-User">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">User</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="User">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Credentials used to authenticate to the AMQP broker. By default "guest"/"guest"
+is used.
+</property>
+	<property name="placeholder_text" translatable="yes">User</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -76,7 +106,7 @@ Publish blocks in the future.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -89,11 +119,11 @@ Publish blocks in the future.
 Hostname or IP-address of the AMQP broker. Defaults to the default behavior of
 the underlying communications library, rabbitmq-c, which is "localhost".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -106,7 +136,7 @@ the underlying communications library, rabbitmq-c, which is "localhost".
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -120,11 +150,11 @@ Service name or port number on which the AMQP broker accepts connections. This
 argument must be a string, even if the numeric form is used. Defaults to
 "5672".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -137,7 +167,7 @@ argument must be a string, even if the numeric form is used. Defaults to
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -149,11 +179,11 @@ argument must be a string, even if the numeric form is used. Defaults to
 	<property name="tooltip_text" translatable="yes">
 Name of the virtual host on the AMQP broker to use. Defaults to "/".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">VHost</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -166,7 +196,7 @@ Name of the virtual host on the AMQP broker to use. Defaults to "/".
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -179,11 +209,11 @@ Name of the virtual host on the AMQP broker to use. Defaults to "/".
 Credentials used to authenticate to the AMQP broker. By default "guest"/"guest"
 is used.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -196,7 +226,7 @@ is used.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -212,11 +242,11 @@ In Subscribe blocks this option is optional. If given, a binding between
 the given exchange and the queue is created, using the routing key if
 configured. See the Queue and RoutingKey options below.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Exchange</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -229,7 +259,7 @@ configured. See the Queue and RoutingKey options below.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -243,11 +273,11 @@ If given, the plugin will try to create the configured exchange with this
 type after connecting. When in a Subscribe block, the queue will then
 be bound to this exchange.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Type</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -260,7 +290,7 @@ be bound to this exchange.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -273,11 +303,11 @@ be bound to this exchange.
 Configures the queue name to subscribe to. If no queue name was configured
 explicitly, a unique queue name will be created by the broker.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Queue</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -290,13 +320,13 @@ explicitly, a unique queue name will be created by the broker.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="QueueDurable">
+      <object class="GtkCheckButton" id="QueueDurable">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -306,11 +336,10 @@ or transient (will disappear if the AMQP broker is restarted). Defaults to
 This option should be used in conjunction with the Persistent option on the
 publish side.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -323,7 +352,7 @@ publish side.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">8</property>
+	<property name="top_attach">9</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -345,11 +374,11 @@ used to filter messages when using a "topic" exchange. If you're only
 interested in CPU statistics, you could use the routing key "collectd.*.cpu.#"
 for example.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Key</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">8</property>
+	<property name="top_attach">9</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -362,7 +391,7 @@ for example.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">9</property>
+	<property name="top_attach">10</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -377,11 +406,11 @@ wait before attempting to reconnect. Defaults to 0, which implies collectd will
 attempt to reconnect at each read interval (in Subscribe mode) or each time
 values are ready for submission (in Publish mode).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Delay</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">9</property>
+	<property name="top_attach">10</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -394,15 +423,20 @@ values are ready for submission (in Publish mode).
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">10</property>
+	<property name="top_attach">11</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Format">
+      <object class="GtkComboBoxText" id="Format">
+	<items>
+	  <item translatable="no">Command</item>
+	  <item translatable="no">JSON</item>
+	  <item translatable="no">Graphite</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Selects the format in which messages are sent to the broker. If set to
 Command (the default), values are sent as PUTVAL commands which are
@@ -418,11 +452,10 @@ A subscribing client should use the Content-Type header field to
 determine how to decode the values. Currently, the AMQP plugin itself can
 only decode the Command format.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">10</property>
+	<property name="top_attach">11</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -435,25 +468,28 @@ only decode the Command format.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">11</property>
+	<property name="top_attach">12</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="GraphitePrefix">
+      <object class="GtkComboBoxText" id="GraphitePrefix">
+	<items>
+	  <item translatable="no">Format</item>
+	  <item translatable="no">Graphite</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 A prefix can be added in the metric name when outputting in the Graphite format.
 It's added before the Host name.
 Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;type&gt;&lt;name&gt;"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">11</property>
+	<property name="top_attach">12</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -466,25 +502,28 @@ Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">12</property>
+	<property name="top_attach">13</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="GraphitePostfix">
+      <object class="GtkComboBoxText" id="GraphitePostfix">
+	<items>
+	  <item translatable="no">Format</item>
+	  <item translatable="no">Graphite</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 A postfix can be added in the metric name when outputting in the Graphite format.
 It's added after the Host name.
 Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;type&gt;&lt;name&gt;"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">12</property>
+	<property name="top_attach">13</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -497,26 +536,29 @@ Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">13</property>
+	<property name="top_attach">14</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="GraphiteEscapeChar">
+      <object class="GtkComboBoxText" id="GraphiteEscapeChar">
+	<items>
+	  <item translatable="no">Format</item>
+	  <item translatable="no">Graphite</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Specify a character to replace dots (.) in the host part of the metric name.
 In Graphite metric name, dots are used as separators between different
 metric parts (host, plugin, type).
 Default is "_" (Underscore).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">13</property>
+	<property name="top_attach">14</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -529,13 +571,13 @@ Default is "_" (Underscore).
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">14</property>
+	<property name="top_attach">15</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="GraphiteSeparateInstances">
+      <object class="GtkCheckButton" id="GraphiteSeparateInstances">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -544,11 +586,10 @@ path component, for example host.cpu.0.cpu.idle. If set to false (the
 default), the plugin and plugin instance (and likewise the type and type
 instance) are put into one component, for example host.cpu-0.cpu-idle.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">14</property>
+	<property name="top_attach">15</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -561,13 +602,13 @@ instance) are put into one component, for example host.cpu-0.cpu-idle.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">15</property>
+	<property name="top_attach">16</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="GraphiteAlwaysAppendDS">
+      <object class="GtkCheckButton" id="GraphiteAlwaysAppendDS">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -575,11 +616,10 @@ If set to true, append the name of the Data Source (DS) to the "metric"
 identifier. If set to false (the default), this is only done when there is
 more than one DS.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">15</property>
+	<property name="top_attach">16</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

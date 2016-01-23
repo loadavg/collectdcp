@@ -30,16 +30,22 @@ messages as JSON events for logstash to parse and input.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="LogLevel">
+      <object class="GtkComboBoxText" id="LogLevel">
+	<items>
+	  <item translatable="no">debug</item>
+	  <item translatable="no">info</item>
+	  <item translatable="no">notice</item>
+	  <item translatable="no">warning</item>
+	  <item translatable="no">err</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Sets the log-level. If, for example, set to notice, then all events with
 severity notice, warning, or err will be written to the logfile.
 Please note that debug is only available if collectd has been compiled with
 debugging support.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -71,7 +77,7 @@ stderr can be used to write to the standard output and standard error
 channels, respectively. This, of course, only makes much sense when collectd
 is running in foreground- or non-daemon-mode.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">File</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

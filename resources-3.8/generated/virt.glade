@@ -23,10 +23,10 @@ Only Connection is required.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label-Connection">
+      <object class="GtkLabel" id="label-InterfaceDevice">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Connection</property>
+	<property name="label" translatable="yes">InterfaceDevice</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -36,73 +36,7 @@ Only Connection is required.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Connection">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Connect to the hypervisor given by uri. For example if using Xen use:
-
- Connection "xen:///"
-Details which URIs allowed are given at http://libvirt.org/uri.html.
-</property>
-	<property name="placeholder_text" translatable="yes"></property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label-RefreshInterval">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">RefreshInterval</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="RefreshInterval">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Refresh the list of domains and devices every seconds. The default is 60
-seconds. Setting this to be the same or smaller than the Interval will cause
-the list of domains and devices to be refreshed on every iteration.
-Refreshing the devices in particular is quite a costly operation, so if your
-virtualization setup is static you might consider increasing this. If this
-option is set to 0, refreshing is disabled completely.
-</property>
-	<property name="placeholder_text" translatable="yes"></property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label-IgnoreSelected">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">IgnoreSelected</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="IgnoreSelected">
+      <object class="GtkEntry" id="InterfaceDevice">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -121,11 +55,118 @@ Example:
 Ignore all hdb devices on any domain, but other block devices (eg. hda)
 will be collected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">name:dev</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-Connection">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Connection</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Connection">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Connect to the hypervisor given by uri. For example if using Xen use:
+
+ Connection "xen:///"
+Details which URIs allowed are given at http://libvirt.org/uri.html.
+</property>
+	<property name="placeholder_text" translatable="yes">uri</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-RefreshInterval">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">RefreshInterval</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="RefreshInterval">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Refresh the list of domains and devices every seconds. The default is 60
+seconds. Setting this to be the same or smaller than the Interval will cause
+the list of domains and devices to be refreshed on every iteration.
+Refreshing the devices in particular is quite a costly operation, so if your
+virtualization setup is static you might consider increasing this. If this
+option is set to 0, refreshing is disabled completely.
+</property>
+	<property name="placeholder_text" translatable="yes">seconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
 	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-IgnoreSelected">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">IgnoreSelected</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Select which domains and devices are collected.
+If IgnoreSelected is not given or false then only the listed domains and
+disk/network devices are collected.
+If IgnoreSelected is true then the test is reversed and the listed
+domains and disk/network devices are ignored, while the rest are collected.
+The domain name and device names may use a regular expression, if the name is
+surrounded by /.../ and collectd was compiled with support for regexps.
+The default is to collect statistics for all domains and all their devices.
+Example:
+
+ BlockDevice "/:hdb/"
+ IgnoreSelected "true"
+Ignore all hdb devices on any domain, but other block devices (eg. hda)
+will be collected.
+</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -138,15 +179,21 @@ will be collected.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="HostnameFormat">
+      <object class="GtkComboBoxText" id="HostnameFormat">
+	<items>
+	  <item translatable="no">name</item>
+	  <item translatable="no">uuid</item>
+	  <item translatable="no">hostname</item>
+	  <item translatable="no">...</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 When the virt plugin logs data, it sets the hostname of the collected data
 according to this setting. The default is to use the guest name as provided by
@@ -159,11 +206,10 @@ You can also specify combinations of these fields. For example name uuid
 means to concatenate the guest name and UUID (with a literal colon character
 between, thus "foo:1234-1234-1234-1234").
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -176,15 +222,19 @@ between, thus "foo:1234-1234-1234-1234").
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="InterfaceFormat">
+      <object class="GtkComboBoxText" id="InterfaceFormat">
+	<items>
+	  <item translatable="no">name</item>
+	  <item translatable="no">address</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 When the virt plugin logs interface data, it sets the name of the collected
 data according to this setting. The default is to use the path as provided by
@@ -193,11 +243,10 @@ setting name.
 address means use the interface's mac address. This is useful since the
 interface path might change between reboots of a guest or across migrations.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -210,26 +259,29 @@ interface path might change between reboots of a guest or across migrations.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="PluginInstanceFormat">
+      <object class="GtkComboBoxText" id="PluginInstanceFormat">
+	<items>
+	  <item translatable="no">name</item>
+	  <item translatable="no">uuid</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 When the virt plugin logs data, it sets the plugin_instance of the collected
 data according to this setting. The default is to use the guest name as provided
 by the hypervisor, which is equal to setting name.
 uuid means use the guest's UUID.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

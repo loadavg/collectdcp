@@ -58,7 +58,7 @@ Errors, Warnings, Informational, Debug and Spew, respectively.
 The default is 2 (Warnings). The sigrok log messages, regardless of
 their level, are always submitted to collectd at its INFO log level.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">0-5</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -88,7 +88,7 @@ their level, are always submitted to collectd at its INFO log level.
 A sigrok-supported device, uniquely identified by this section's options. The
 Name is passed to collectd as the plugin instance.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -117,7 +117,7 @@ Name is passed to collectd as the plugin instance.
 	<property name="tooltip_text" translatable="yes">
 The sigrok driver to use for this device.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">DriverName</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -151,7 +151,7 @@ case of a non-serial USB-connected device, the USB VendorID.ProductID
 separated by a period (e.g. 0403.6001). A USB device can also be
 specified as Bus.Address (e.g. 1.41).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">ConnectionSpec</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -183,7 +183,7 @@ to specify them in a form understood by sigrok, e.g. 9600/8n1.
 This should not be necessary; drivers know how to communicate with devices they
 support.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">SerialSpec</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -218,7 +218,7 @@ The default MinimumInterval is 0, meaning measurements received from the
 device are always dispatched to collectd. When throttled, unused
 measurements are discarded.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Seconds</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

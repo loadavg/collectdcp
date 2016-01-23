@@ -33,7 +33,7 @@ pages read from swap space.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="Verbose">
+      <object class="GtkCheckButton" id="Verbose">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -41,7 +41,6 @@ Enables verbose collection of information. This will start collecting page
 "actions", e. g. page allocations, (de)activations, steals and so on.
 Part of these statistics are collected on a "per zone" basis.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -26,7 +26,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ForceUseProcfs">
+      <object class="GtkCheckButton" id="ForceUseProcfs">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -35,7 +35,6 @@ sysfs interface. If that is not available, the plugin falls back to the
 procfs interface. By setting this option to true, you can force the
 plugin to use the latter. This option defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -66,7 +65,7 @@ Selects the name of the thermal device that you want to collect or ignore,
 depending on the value of the IgnoreSelected option. This option may be
 used multiple times to specify a list of devices.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Device</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -89,7 +88,7 @@ used multiple times to specify a list of devices.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="IgnoreSelected">
+      <object class="GtkCheckButton" id="IgnoreSelected">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -98,7 +97,6 @@ match the device names specified by the Device option are collected. By
 default only selected devices are collected if a selection is made. If no
 selection is configured at all, all devices are selected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

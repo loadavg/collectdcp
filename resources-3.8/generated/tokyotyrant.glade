@@ -37,7 +37,7 @@ couple metrics: number of records, and database size on disk.
 The hostname or ip which identifies the server.
 Default: 127.0.0.1
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Hostname/IP</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -68,7 +68,7 @@ The query port of the server. This needs to be a string, even if the port is
 given in its numeric form.
 Default: 1978
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Service/Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

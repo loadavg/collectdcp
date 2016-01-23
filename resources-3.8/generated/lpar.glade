@@ -35,7 +35,7 @@ The following configuration options are available:
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CpuPoolStats">
+      <object class="GtkCheckButton" id="CpuPoolStats">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -43,7 +43,6 @@ When enabled, statistics about the processor pool are read, too. The partition
 needs to have pool authority in order to be able to acquire this information.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -66,7 +65,7 @@ Defaults to false.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ReportBySerial">
+      <object class="GtkCheckButton" id="ReportBySerial">
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -76,7 +75,6 @@ is reported in the plugin instance. Otherwise, the logical hostname will be
 used (just like other plugins) and the plugin instance will be empty.
 Defaults to false.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

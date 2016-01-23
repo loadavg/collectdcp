@@ -105,6 +105,58 @@ The following options are accepted:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
+      <object class="GtkLabel" id="label-MinVersion">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">MinVersion</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="MinVersion">
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Only use this query for the specified database version. You can use these
+options to provide multiple queries with the same name but with a slightly
+different syntax. The plugin will use only those queries, where the specified
+minimum and maximum versions fit the version of the database in use.
+The database version is determined by dbi_conn_get_engine_version, see the
+libdbi documentation
+for details. Basically, each part of the version is assumed to be in the range
+from 00 to 99 and all dots are removed. So version "4.1.2" becomes
+"40102", version "5.0.42" becomes "50042".
+Warning: The plugin will use all matching queries, so if you specify
+multiple queries with the same name and overlapping ranges, weird stuff will
+happen. Don't to it! A valid example would be something along these lines:
+
+  MinVersion 40000
+  MaxVersion 49999
+  ...
+  MinVersion 50000
+  MaxVersion 50099
+  ...
+  MinVersion 50100
+  # No maximum
+In the above example, there are three ranges that don't overlap. The last one
+goes from version "5.1.0" to infinity, meaning "all later versions". Versions
+before "4.0.0" are not specified.
+</property>
+	<property name="placeholder_text" translatable="yes">Version</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkLabel" id="label-Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -112,7 +164,7 @@ The following options are accepted:
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -137,11 +189,11 @@ something.)
 Please note that some databases, for example Oracle, will fail if you
 include a semicolon at the end of the statement.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">SQL</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -154,7 +206,7 @@ include a semicolon at the end of the statement.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -189,11 +241,11 @@ In the above example, there are three ranges that don't overlap. The last one
 goes from version "5.1.0" to infinity, meaning "all later versions". Versions
 before "4.0.0" are not specified.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Value</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -206,7 +258,7 @@ before "4.0.0" are not specified.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -225,11 +277,11 @@ specify "if_octets", you will need two counter columns. See the ValuesFrom
 setting below.
 There must be exactly one Type option inside each Result block.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Type</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -242,7 +294,7 @@ There must be exactly one Type option inside each Result block.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -257,11 +309,11 @@ given, the string is simply copied. If InstancesFrom is given, prefix and
 all strings returned in the appropriate columns are concatenated together,
 separated by dashes ("-").
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">prefix</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -274,15 +326,19 @@ separated by dashes ("-").
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="InstancesFrom">
+      <object class="GtkComboBoxText" id="InstancesFrom">
+	<items>
+	  <item translatable="no">column0</item>
+	  <item translatable="no">column1</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Specifies the columns whose values will be used to create the "type-instance"
 for each row. If you specify more than one column, the value of all columns
@@ -294,11 +350,10 @@ sure that only one row is returned in this case.
 If neither InstancePrefix nor InstancesFrom is given, the type-instance
 will be empty.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -311,15 +366,19 @@ will be empty.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="ValuesFrom">
+      <object class="GtkComboBoxText" id="ValuesFrom">
+	<items>
+	  <item translatable="no">column0</item>
+	  <item translatable="no">column1</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Names the columns whose content is used as the actual data for the data sets
 that are dispatched to the daemon. How many such columns you need is determined
@@ -332,11 +391,10 @@ it should be able to handle integer an floating point types, as well as strings
 (if they include a number at the beginning).
 There must be at least one ValuesFrom option inside each Result block.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -349,15 +407,19 @@ There must be at least one ValuesFrom option inside each Result block.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="MetadataFrom">
+      <object class="GtkComboBoxText" id="MetadataFrom">
+	<items>
+	  <item translatable="no">column0</item>
+	  <item translatable="no">column1</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Names the columns whose content is used as metadata for the data sets
 that are dispatched to the daemon.
@@ -366,11 +428,10 @@ automatically cast the values to the right type if it know how to do that. So
 it should be able to handle integer an floating point types, as well as strings
 (if they include a number at the beginning).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

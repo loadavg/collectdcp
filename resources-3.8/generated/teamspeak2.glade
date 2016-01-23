@@ -39,7 +39,7 @@ options to configure it:
 The hostname or ip which identifies the physical server.
 Default: 127.0.0.1
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">hostname/ip</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -69,7 +69,7 @@ Default: 127.0.0.1
 The query port of the physical server. This needs to be a string.
 Default: "51234"
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -105,7 +105,7 @@ This option, although numeric, needs to be a string, i. e. you must
 use quotes around it! If no such statement is given only global information
 will be collected.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

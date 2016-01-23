@@ -40,7 +40,7 @@ The following configuration options are understood:
 	<property name="tooltip_text" translatable="yes">
 Connect to Host. Defaults to "localhost".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Host</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -70,7 +70,7 @@ Connect to Host. Defaults to "localhost".
 Specifies the port to connect to. This must be a string, even if you give the
 port as a number rather than a service name. Defaults to "2006".
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -93,9 +93,14 @@ port as a number rather than a service name. Defaults to "2006".
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectLinks">
+      <object class="GtkComboBoxText" id="CollectLinks">
+	<items>
+	  <item translatable="no">No</item>
+	  <item translatable="no">Summary</item>
+	  <item translatable="no">Detail</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Specifies what information to collect about links, i. e. direct
 connections of the daemon queried. If set to No, no information is
@@ -104,7 +109,6 @@ link quality (LQ) and neighbor link quality (NLQ) values is calculated.
 If set to Detail LQ and NLQ are collected per link.
 Defaults to Detail.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -127,9 +131,14 @@ Defaults to Detail.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectRoutes">
+      <object class="GtkComboBoxText" id="CollectRoutes">
+	<items>
+	  <item translatable="no">No</item>
+	  <item translatable="no">Summary</item>
+	  <item translatable="no">Detail</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Specifies what information to collect about routes of the daemon queried. If
 set to No, no information is collected. If set to Summary, the number of
@@ -137,7 +146,6 @@ routes and the average metric and ETX is calculated. If set to Detail
 metric and ETX are collected per route.
 Defaults to Summary.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -160,9 +168,14 @@ Defaults to Summary.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="CollectTopology">
+      <object class="GtkComboBoxText" id="CollectTopology">
+	<items>
+	  <item translatable="no">No</item>
+	  <item translatable="no">Summary</item>
+	  <item translatable="no">Detail</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Specifies what information to collect about the global topology. If set to
 No, no information is collected. If set to Summary, the number of links
@@ -170,7 +183,6 @@ in the entire topology and the average link quality (LQ) is calculated.
 If set to Detail LQ and NLQ are collected for each link in the entire topology.
 Defaults to Summary.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

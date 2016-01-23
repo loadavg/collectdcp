@@ -43,7 +43,7 @@ Available configuration options:
 Email address from which the emails should appear to come from.
 Default: root@localhost
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Address</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -74,7 +74,7 @@ Configures the email address(es) to which the notifications should be mailed.
 May be repeated to send notifications to multiple addresses.
 At least one Recipient must be present for the plugin to work correctly.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Address</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -104,7 +104,7 @@ At least one Recipient must be present for the plugin to work correctly.
 Hostname of the SMTP server to connect to.
 Default: localhost
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Hostname</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -134,7 +134,7 @@ Default: localhost
 TCP port to connect to.
 Default: 25
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -163,7 +163,7 @@ Default: 25
 	<property name="tooltip_text" translatable="yes">
 Username for ASMTP authentication. Optional.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Username</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -192,7 +192,7 @@ Username for ASMTP authentication. Optional.
 	<property name="tooltip_text" translatable="yes">
 Password for ASMTP authentication. Optional.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -225,7 +225,7 @@ i. e. %s. The first will be replaced with the severity, the second
 with the hostname.
 Default: Collectd notify: %s@%s
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Subject</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

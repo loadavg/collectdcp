@@ -26,14 +26,20 @@
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="UPS">
+      <object class="GtkComboBoxText" id="UPS">
+	<items>
+	  <item translatable="no">@</item>
+	  <item translatable="no">:</item>
+	  <item translatable="no">upsname</item>
+	  <item translatable="no">hostname</item>
+	  <item translatable="no">port</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Add a UPS to collect data from. The format is identical to the one accepted by
 upsc(8).
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

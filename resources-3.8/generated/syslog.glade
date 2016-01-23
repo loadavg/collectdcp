@@ -26,9 +26,16 @@
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="LogLevel">
+      <object class="GtkComboBoxText" id="LogLevel">
+	<items>
+	  <item translatable="no">debug</item>
+	  <item translatable="no">info</item>
+	  <item translatable="no">notice</item>
+	  <item translatable="no">warning</item>
+	  <item translatable="no">err</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Sets the log-level. If, for example, set to notice, then all events with
 severity notice, warning, or err will be submitted to the
@@ -36,7 +43,6 @@ syslog-daemon.
 Please note that debug is only available if collectd has been compiled with
 debugging support.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -59,9 +65,14 @@ debugging support.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="NotifyLevel">
+      <object class="GtkComboBoxText" id="NotifyLevel">
+	<items>
+	  <item translatable="no">OKAY</item>
+	  <item translatable="no">WARNING</item>
+	  <item translatable="no">FAILURE</item>
+	</items>
 	<property name="visible">True</property>
-	<property name="can_focus">True</property>
+	<property name="can_focus">False</property>
 	<property name="tooltip_text" translatable="yes">
 Controls which notifications should be sent to syslog. The default behaviour is
 not to send any. Less severe notifications always imply logging more severe
@@ -70,7 +81,6 @@ syslog, setting this to WARNING will send WARNING and FAILURE
 notifications but will dismiss OKAY notifications. Setting this option to
 FAILURE will only send failures to syslog.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

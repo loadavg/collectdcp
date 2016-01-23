@@ -51,7 +51,7 @@ following options are allowed:
 	<property name="tooltip_text" translatable="yes">
 Hostname to connect to. Defaults to 127.0.0.1.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Hostname</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -80,7 +80,7 @@ Hostname to connect to. Defaults to 127.0.0.1.
 	<property name="tooltip_text" translatable="yes">
 TCP-Port to connect to. Defaults to 11211.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Port</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -110,7 +110,7 @@ TCP-Port to connect to. Defaults to 11211.
 Connect to memcached using the UNIX domain socket at Path. If this
 setting is given, the Host and Port settings are ignored.
 </property>
-	<property name="placeholder_text" translatable="yes"></property>
+	<property name="placeholder_text" translatable="yes">Path</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
