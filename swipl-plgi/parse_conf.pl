@@ -14,10 +14,8 @@
  *  source file /home/carlo/develop/work/karsten/loadavgd/configEditor/proto/pl/parse_conf.pl
  *  created at mer set 16 06:59:56 2015
  *
- *  @author carlo
- *  @version 0.9.9
- *  @copyright carlo
- *  @license LGPL v2.1
+ * License  : MIT
+ * Copyright (c) 2015,2016 Sputnik7
  */
 
 :- module(parse_conf,

@@ -1,7 +1,9 @@
 /*  File:    xml_ize.pl
     Author:  Carlo,,,
     Created: Jan  9 2016
-    Purpose:
+
+    License  : MIT
+    Copyright (c) 2015,2016 Sputnik7
 */
 
 :- module(xml_ize,

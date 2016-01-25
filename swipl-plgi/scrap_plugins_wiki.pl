@@ -2,6 +2,8 @@
     Author:  Carlo,,,
     Created: Oct  3 2015
     Purpose: read plugins specification from wiki pages, store in local data file
+    License  : MIT
+    Copyright (c) 2015,2016 Sputnik7
 */
 
 :- module(scrap_plugins_wiki,

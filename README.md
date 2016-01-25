@@ -8,7 +8,7 @@ project collectd_edit
 
 >Brescia 2015
 
->Copyright 2015 Sputnik7
+>Copyright (c) 2015,2016 Sputnik7
 
 Build instructions:
 -----

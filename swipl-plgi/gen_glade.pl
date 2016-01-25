@@ -2,6 +2,8 @@
     Author:  Carlo,,,
     Created: Dec 30 2015
     Purpose: generate glade files from collectd wiki definitions
+    License  : MIT
+    Copyright (c) 2015,2016 Sputnik7
 */
 
 :- module(gen_glade,

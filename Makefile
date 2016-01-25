@@ -4,7 +4,7 @@
 #
 # ing. Carlo Capelli
 # Brescia 2015
-# Copyright 2015 Sputnik7
+# Copyright 2015,2016 Sputnik7
 #
 
 TARGET_FOLDER=../build-collectdcp
