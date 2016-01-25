@@ -139,10 +139,28 @@ inline T* instance_widget(Glib::RefPtr<Gtk::Builder> builder, std::string name) 
     builder->get_widget(name, widget);
     if (!widget) {
         std::string msg = "cannot instantiate " + name;
-        message_box(msg);
-        throw msg;
+        //message_box(msg);
+        throw std::runtime_error(msg);
     }
     return widget;
+}
+
+/**
+ * @brief instance_derived
+ *  get a typed, named widget from resource_file
+ */
+template <class T>
+inline T* instance_derived(std::string resource_file, std::string widget_name) {
+    auto b = get_resource(resource_file);
+    if (!b)
+        throw std::runtime_error(prints("no resource file '%s'", resource_file.c_str()));
+
+    T* obj = 0;
+    b->get_widget_derived(widget_name, obj);
+    if (!obj)
+        throw std::runtime_error(prints("cannot instance '%s' from resource '%s'", widget_name.c_str(), resource_file.c_str()));
+
+    return obj;
 }
 
 #if 0

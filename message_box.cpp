@@ -7,6 +7,7 @@
  */
 
 #include "message_box.h"
+#include <glibmm/exception.h>
 #include <gtkmm/messagedialog.h>
 
 bool message_box(std::string msg, mode md) {
@@ -22,4 +23,20 @@ bool message_box(std::string msg, mode md) {
     }
     MessageDialog dlg(msg, use_markup, type, buttons, modal);
     return dlg.run() == expect;
+}
+
+bool CATCH_SHOW(std::function<void()> f) {
+    std::string msg;
+    try {
+        f();
+        return true;
+    }
+    catch(std::exception &e) {
+        msg = e.what();
+    }
+    catch(Glib::Exception &e) {
+        msg = e.what();
+    }
+    message_box("exception:" + msg);
+    return false;
 }

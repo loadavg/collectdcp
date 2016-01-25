@@ -10,6 +10,7 @@
 #define MESSAGE_BOX_H
 
 #include <string>
+#include <functional>
 
 /**
  * @brief message_box
@@ -21,5 +22,15 @@
  */
 enum mode { OK, YES_NO };
 bool message_box(std::string msg, mode md = OK);
+
+/**
+ * @brief CATCH_SHOW
+ *  catch errors from f() and show in box
+ * @param f
+ *  applicative procedure
+ * @return
+ *  true if no errors to show
+ */
+bool CATCH_SHOW(std::function<void()> f);
 
 #endif // MESSAGE_BOX_H

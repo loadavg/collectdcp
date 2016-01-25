@@ -21,6 +21,8 @@ using namespace std;
 Glib::RefPtr<Gtk::Builder> get_resource(string what) {
     Glib::RefPtr<Gtk::Builder> builder;
     get_resource(what, builder);
+    //if (!builder)
+        //throw runtime_error("cannot open resource " + what);
     return builder;
 }
 
@@ -28,6 +30,7 @@ bool get_resource(std::string what, Glib::RefPtr<Gtk::Builder> &builder) {
 
     // Load the GtkBuilder file and instantiate its widgets:
     builder = Gtk::Builder::create();
+    /*
     try {
         builder->add_from_file(get_resource_path(what, "glade"));
     }
@@ -43,7 +46,8 @@ bool get_resource(std::string what, Glib::RefPtr<Gtk::Builder> &builder) {
         cerr << "BuilderError: " << ex.what() << endl;
         return false;
     }
-
+    */
+    builder->add_from_file(get_resource_path(what, "glade"));
     return true;
 }
 
