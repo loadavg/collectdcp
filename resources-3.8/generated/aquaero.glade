@@ -39,6 +39,7 @@ library provided by aquatools-ng.
     </child>
     <child>
       <object class="GtkEntry" id="Device">
+	<property name="name">Device</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

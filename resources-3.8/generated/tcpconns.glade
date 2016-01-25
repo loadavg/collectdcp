@@ -34,6 +34,7 @@ fine-tune the ports you are interested in:
     </child>
     <child>
       <object class="GtkCheckButton" id="ListeningPorts">
+	<property name="name">ListeningPorts</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -68,6 +69,7 @@ specifically.
     </child>
     <child>
       <object class="GtkEntry" id="LocalPort">
+	<property name="name">LocalPort</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -100,6 +102,7 @@ you'd need to set 25.
     </child>
     <child>
       <object class="GtkEntry" id="RemotePort">
+	<property name="name">RemotePort</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -134,6 +137,7 @@ port in numeric form.
     </child>
     <child>
       <object class="GtkCheckButton" id="AllPortsSummary">
+	<property name="name">AllPortsSummary</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

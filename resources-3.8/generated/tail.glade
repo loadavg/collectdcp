@@ -74,6 +74,7 @@ be performed:
     </child>
     <child>
       <object class="GtkEntry" id="Regex">
+	<property name="name">Regex</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -111,6 +112,7 @@ want to match literal parentheses you need to do the following:
     </child>
     <child>
       <object class="GtkEntry" id="ExcludeRegex">
+	<property name="name">ExcludeRegex</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -143,6 +145,7 @@ An example which excludes all connections from localhost from the match:
     </child>
     <child>
       <object class="GtkEntry" id="DSType">
+	<property name="name">DSType</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -198,6 +201,7 @@ case.
     </child>
     <child>
       <object class="GtkEntry" id="Type">
+	<property name="name">Type</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -228,6 +232,7 @@ their configuration can be found in types.db(5).
     </child>
     <child>
       <object class="GtkEntry" id="Instance">
+	<property name="name">Instance</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

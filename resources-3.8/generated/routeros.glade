@@ -61,6 +61,7 @@ options are understood:
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -90,6 +91,7 @@ Hostname or IP-address of the router to connect to.
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -121,6 +123,7 @@ string argument, even when a numeric port number is given.
     </child>
     <child>
       <object class="GtkEntry" id="User">
+	<property name="name">User</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -150,6 +153,7 @@ Use the user name User to authenticate. Defaults to "admin".
     </child>
     <child>
       <object class="GtkEntry" id="Password">
+	<property name="name">Password</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -179,6 +183,7 @@ Set the password used to authenticate.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectInterface">
+	<property name="name">CollectInterface</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -208,6 +213,7 @@ present on the device. Defaults to false.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectRegistrationTable">
+	<property name="name">CollectRegistrationTable</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -237,6 +243,7 @@ collected. Defaults to false.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectCPULoad">
+	<property name="name">CollectCPULoad</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -267,6 +274,7 @@ Defaults to false.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectMemory">
+	<property name="name">CollectMemory</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -298,6 +306,7 @@ Defaults to false.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectDF">
+	<property name="name">CollectDF</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -327,6 +336,7 @@ Defaults to false.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectDisk">
+	<property name="name">CollectDisk</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

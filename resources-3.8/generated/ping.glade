@@ -36,6 +36,7 @@ Available configuration options:
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -66,6 +67,7 @@ multiple hosts.
     </child>
     <child>
       <object class="GtkEntry" id="Interval">
+	<property name="name">Interval</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -100,6 +102,7 @@ Default: 1.0
     </child>
     <child>
       <object class="GtkEntry" id="Timeout">
+	<property name="name">Timeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -134,6 +137,7 @@ Default: 0.9
     </child>
     <child>
       <object class="GtkEntry" id="TTL">
+	<property name="name">TTL</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -163,6 +167,7 @@ Sets the Time-To-Live of generated ICMP packets.
     </child>
     <child>
       <object class="GtkEntry" id="SourceAddress">
+	<property name="name">SourceAddress</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -193,6 +198,7 @@ address or a network hostname.
     </child>
     <child>
       <object class="GtkEntry" id="Device">
+	<property name="name">Device</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -224,6 +230,7 @@ operating systems.
     </child>
     <child>
       <object class="GtkEntry" id="MaxMissed">
+	<property name="name">MaxMissed</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

@@ -74,10 +74,527 @@ The full example configuration looks like this:
 
 There are a couple of limitations you should be aware of:
 
+
+
+
+The Type cannot be left unspecified, because it is not reasonable to add
+apples to oranges. Also, the internal lookup structure won't work if you try
+to group by type.
+
+
+There must be at least one unspecified, ungrouped field. Otherwise nothing
+will be aggregated.
+
+
+
+As you can see in the example above, each aggregation has its own
+Aggregation block. You can have multiple aggregation blocks and aggregation
+blocks may match the same values, i.e. one value list can update multiple
+aggregations. The following options are valid inside Aggregation blocks:
+
 </property>
   </object>
   <object class="GtkGrid" id="aggregation">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label-Host">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Host</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for Host</property>
+	<property name="placeholder_text" translatable="yes">Host</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-Plugin">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Plugin</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Plugin">
+	<property name="name">Plugin</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for Plugin</property>
+	<property name="placeholder_text" translatable="yes">Plugin</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-PluginInstance">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">PluginInstance</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="PluginInstance">
+	<property name="name">PluginInstance</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for PluginInstance</property>
+	<property name="placeholder_text" translatable="yes">PluginInstance</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-Type">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Type</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Type">
+	<property name="name">Type</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for Type</property>
+	<property name="placeholder_text" translatable="yes">Type</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-TypeInstance">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">TypeInstance</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="TypeInstance">
+	<property name="name">TypeInstance</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Selects the value lists to be added to this aggregation. Type must be a
+valid data set name, see types.db(5) for details.
+If the string starts with and ends with a slash (/), the string is
+interpreted as a regular expression. The regex flavor used are POSIX
+extended regular expressions as described in regex(7). Example usage:
+
+ Host "/^db[0-9]\\.example\\.com$/"
+</property>
+	<property name="placeholder_text" translatable="yes">TypeInstance</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-GroupBy">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">GroupBy</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkComboBoxText" id="GroupBy">
+	<property name="name">GroupBy</property>
+	<items>
+	  <item translatable="no">Host</item>
+	  <item translatable="no">Plugin</item>
+	  <item translatable="no">PluginInstance</item>
+	  <item translatable="no">TypeInstance</item>
+	</items>
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="tooltip_text" translatable="yes">
+Group valued by the specified field. The GroupBy option may be repeated to
+group by multiple fields.
+</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-SetHost">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">SetHost</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">6</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="SetHost">
+	<property name="name">SetHost</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for SetHost</property>
+	<property name="placeholder_text" translatable="yes">Host</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">6</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-SetPlugin">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">SetPlugin</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">7</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="SetPlugin">
+	<property name="name">SetPlugin</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for SetPlugin</property>
+	<property name="placeholder_text" translatable="yes">Plugin</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">7</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-SetPluginInstance">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">SetPluginInstance</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">8</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="SetPluginInstance">
+	<property name="name">SetPluginInstance</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for SetPluginInstance</property>
+	<property name="placeholder_text" translatable="yes">PluginInstance</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">8</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-SetTypeInstance">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">SetTypeInstance</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">9</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="SetTypeInstance">
+	<property name="name">SetTypeInstance</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Sets the appropriate part of the identifier to the provided string.
+The PluginInstance should include the placeholder %{aggregation} which
+will be replaced with the aggregation function, e.g. "average". Not including
+the placeholder will result in duplication warnings and/or messed up values if
+more than one aggregation function are enabled.
+The following example calculates the average usage of all "even" CPUs:
+
+ &lt;Plugin "aggregation"&gt;
+   &lt;Aggregation&gt;
+     Plugin "cpu"
+     PluginInstance "/[0,2,4,6,8]$/"
+     Type "cpu"
+
+     SetPlugin "cpu"
+     SetPluginInstance "even-%{aggregation}"
+
+     GroupBy "Host"
+     GroupBy "TypeInstance"
+
+     CalculateAverage true
+   &lt;/Aggregation&gt;
+ &lt;/Plugin&gt;
+This will create the files:
+
+
+foo.example.com/cpu-even-average/cpu-idle
+
+
+foo.example.com/cpu-even-average/cpu-system
+
+
+foo.example.com/cpu-even-average/cpu-user
+
+
+...
+
+</property>
+	<property name="placeholder_text" translatable="yes">TypeInstance</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">9</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-CalculateNum">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">CalculateNum</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">10</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="CalculateNum">
+	<property name="name">CalculateNum</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for CalculateNum</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">10</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-CalculateSum">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">CalculateSum</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">11</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="CalculateSum">
+	<property name="name">CalculateSum</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for CalculateSum</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">11</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-CalculateAverage">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">CalculateAverage</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">12</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="CalculateAverage">
+	<property name="name">CalculateAverage</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for CalculateAverage</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">12</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-CalculateMinimum">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">CalculateMinimum</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">13</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="CalculateMinimum">
+	<property name="name">CalculateMinimum</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for CalculateMinimum</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">13</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-CalculateMaximum">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">CalculateMaximum</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">14</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="CalculateMaximum">
+	<property name="name">CalculateMaximum</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for CalculateMaximum</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">14</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-CalculateStddev">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">CalculateStddev</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">15</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="CalculateStddev">
+	<property name="name">CalculateStddev</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Boolean options for enabling calculation of the number of value lists, their
+sum, average, minimum, maximum and / or standard deviation. All options
+are disabled by default.
+</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">15</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
   </object>
 </interface>

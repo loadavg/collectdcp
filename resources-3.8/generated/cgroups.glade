@@ -32,6 +32,7 @@ cpuacct.stat files in the first cpuacct-mountpoint (typically
     </child>
     <child>
       <object class="GtkEntry" id="CGroup">
+	<property name="name">CGroup</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -63,6 +64,7 @@ see below.
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

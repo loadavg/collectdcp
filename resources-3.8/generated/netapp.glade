@@ -134,37 +134,6 @@ The netapp plugin accepts the following configuration options:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label-User">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">User</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="User">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-The username and password to use to login to the NetApp.
-Mandatory
-Type: string
-</property>
-	<property name="placeholder_text" translatable="yes">User</property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -172,13 +141,14 @@ Type: string
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -190,7 +160,7 @@ the Address option below).
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -203,13 +173,14 @@ the Address option below).
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="VFiler">
+	<property name="name">VFiler</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -232,7 +203,7 @@ context.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -245,13 +216,14 @@ context.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="Protocol">
+	<property name="name">Protocol</property>
 	<items>
 	  <item translatable="no">httpd</item>
 	  <item translatable="no">http</item>
@@ -268,7 +240,7 @@ Valid options: http, https
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -281,13 +253,14 @@ Valid options: http, https
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Address">
+	<property name="name">Address</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -300,7 +273,7 @@ Default: The "host" block's name.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -313,13 +286,14 @@ Default: The "host" block's name.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -329,6 +303,34 @@ Type: integer
 Default: 80 for protocol "http", 443 for protocol "https"
 </property>
 	<property name="placeholder_text" translatable="yes">Port</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-User">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">User</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="User">
+	<property name="name">User</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for User</property>
+	<property name="placeholder_text" translatable="yes">User</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -352,6 +354,7 @@ Default: 80 for protocol "http", 443 for protocol "https"
     </child>
     <child>
       <object class="GtkEntry" id="Password">
+	<property name="name">Password</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -383,6 +386,7 @@ Type: string
     </child>
     <child>
       <object class="GtkEntry" id="VFilerName">
+	<property name="name">VFilerName</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -417,6 +421,7 @@ Note: This option may only be used inside VFiler blocks.
     </child>
     <child>
       <object class="GtkEntry" id="Interval">
+	<property name="name">Interval</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

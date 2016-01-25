@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="Irq">
+	<property name="name">Irq</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -57,6 +58,7 @@ detailed description see IgnoreSelected below.
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

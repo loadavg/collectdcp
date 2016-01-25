@@ -61,6 +61,7 @@ The following options are understood by the write_sensu plugin:
     </child>
     <child>
       <object class="GtkEntry" id="Node">
+	<property name="name">Node</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -127,6 +128,7 @@ no prefix will be used.
     </child>
     <child>
       <object class="GtkEntry" id="Tag">
+	<property name="name">Tag</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -157,6 +159,7 @@ Sensu.
     </child>
     <child>
       <object class="GtkComboBoxText" id="Attribute">
+	<property name="name">Attribute</property>
 	<items>
 	  <item translatable="no">String</item>
 	  <item translatable="no">String</item>

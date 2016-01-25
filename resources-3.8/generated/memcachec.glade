@@ -59,6 +59,7 @@ The configuration options are:
     </child>
     <child>
       <object class="GtkEntry" id="Page">
+	<property name="name">Page</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -89,6 +90,7 @@ The block requires one string argument which is used as plugin instance.
     </child>
     <child>
       <object class="GtkEntry" id="Server">
+	<property name="name">Server</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -119,6 +121,7 @@ Page block.
     </child>
     <child>
       <object class="GtkEntry" id="Key">
+	<property name="name">Key</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -148,6 +151,7 @@ When connected to the memcached server, asks for the page Key.
     </child>
     <child>
       <object class="GtkEntry" id="Match">
+	<property name="name">Match</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

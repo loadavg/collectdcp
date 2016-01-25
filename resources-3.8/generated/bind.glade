@@ -83,6 +83,7 @@ The bind plugin accepts the following configuration options:
     </child>
     <child>
       <object class="GtkEntry" id="URL">
+	<property name="name">URL</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -113,6 +114,7 @@ http://localhost:8053/ will be used.
     </child>
     <child>
       <object class="GtkCheckButton" id="ParseTime">
+	<property name="name">ParseTime</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -145,6 +147,7 @@ localization.
     </child>
     <child>
       <object class="GtkCheckButton" id="OpCodes">
+	<property name="name">OpCodes</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -175,6 +178,7 @@ Default: Enabled.
     </child>
     <child>
       <object class="GtkCheckButton" id="QTypes">
+	<property name="name">QTypes</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -205,6 +209,7 @@ Default: Enabled.
     </child>
     <child>
       <object class="GtkCheckButton" id="ServerStats">
+	<property name="name">ServerStats</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -235,6 +240,7 @@ Default: Enabled.
     </child>
     <child>
       <object class="GtkCheckButton" id="ZoneMaintStats">
+	<property name="name">ZoneMaintStats</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -265,6 +271,7 @@ Default: Enabled.
     </child>
     <child>
       <object class="GtkCheckButton" id="ResolverStats">
+	<property name="name">ResolverStats</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -298,6 +305,7 @@ Default: Disabled.
     </child>
     <child>
       <object class="GtkEntry" id="MemoryStats">
+	<property name="name">MemoryStats</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -328,6 +336,7 @@ Default: Enabled.
     </child>
     <child>
       <object class="GtkEntry" id="Timeout">
+	<property name="name">Timeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -359,6 +368,7 @@ timeout.
     </child>
     <child>
       <object class="GtkEntry" id="View">
+	<property name="name">View</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

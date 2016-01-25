@@ -17,10 +17,59 @@ shutdowns and migration.
 
 The following methods are used to find the machine's UUID, in order:
 
+
+
+
+Check /etc/uuid (or UUIDFile).
+
+
+Check for UUID from HAL (http://www.freedesktop.org/wiki/Software/hal) if
+present.
+
+
+Check for UUID from dmidecode / SMBIOS.
+
+
+Check for UUID from Xen hypervisor.
+
+
+
+If no UUID can be found then the hostname is not modified.
+
 </property>
   </object>
   <object class="GtkGrid" id="uuid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label-UUIDFile">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">UUIDFile</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="UUIDFile">
+	<property name="name">UUIDFile</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+Take the UUID from the given file (default /etc/uuid).
+</property>
+	<property name="placeholder_text" translatable="yes">Path</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
   </object>
 </interface>

@@ -24,10 +24,10 @@ http://www.galago-project.org/specs/notification/.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label-WarningTimeout">
+      <object class="GtkLabel" id="label-OkayTimeout">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">WarningTimeout</property>
+	<property name="label" translatable="yes">OkayTimeout</property>
       </object>
       <packing>
 	<property name="left_attach">0</property>
@@ -37,21 +37,44 @@ http://www.galago-project.org/specs/notification/.
       </packing>
     </child>
     <child>
-      <object class="GtkEntry" id="WarningTimeout">
+      <object class="GtkEntry" id="OkayTimeout">
+	<property name="name">OkayTimeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Set the timeout, in milliseconds, after which to expire the notification
-for OKAY, WARNING and FAILURE severities respectively. If zero has
-been specified, the displayed notification will not be closed at all - the
-user has to do so herself. These options default to 5000. If a negative number
-has been specified, the default is used as well.
-</property>
+	<property name="tooltip_text" translatable="yes">no description available for OkayTimeout</property>
 	<property name="placeholder_text" translatable="yes">timeout</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
 	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-WarningTimeout">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">WarningTimeout</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="WarningTimeout">
+	<property name="name">WarningTimeout</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for WarningTimeout</property>
+	<property name="placeholder_text" translatable="yes">timeout</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -64,13 +87,14 @@ has been specified, the default is used as well.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="FailureTimeout">
+	<property name="name">FailureTimeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -84,7 +108,7 @@ has been specified, the default is used as well.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

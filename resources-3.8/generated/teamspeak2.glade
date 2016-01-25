@@ -33,6 +33,7 @@ options to configure it:
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -63,6 +64,7 @@ Default: 127.0.0.1
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -93,6 +95,7 @@ Default: "51234"
     </child>
     <child>
       <object class="GtkEntry" id="Server">
+	<property name="name">Server</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

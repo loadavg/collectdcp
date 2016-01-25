@@ -188,10 +188,12 @@ private:
             RANGE vs = begin(VALUES_l), v;
             while (value(v)) {
                 vs << v;
+                offset_t v_end = off();
                 skip();
                 if (eol()) {
                     next();
-                    end(vs);
+                    //end(vs);
+                    vs.end = v_end;
                     return l.commit(kv << k << vs);
                 }
             }

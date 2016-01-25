@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="Device">
+	<property name="name">Device</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -56,6 +57,7 @@ Select partitions based on the devicename.
     </child>
     <child>
       <object class="GtkEntry" id="MountPoint">
+	<property name="name">MountPoint</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -85,6 +87,7 @@ Select partitions based on the mountpoint.
     </child>
     <child>
       <object class="GtkEntry" id="FSType">
+	<property name="name">FSType</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -114,6 +117,7 @@ Select partitions based on the filesystem type.
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -145,6 +149,7 @@ at all, all partitions are selected.
     </child>
     <child>
       <object class="GtkCheckButton" id="ReportByDevice">
+	<property name="name">ReportByDevice</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -175,6 +180,7 @@ Report using the device name rather than the mountpoint. i.e. with this false,
     </child>
     <child>
       <object class="GtkCheckButton" id="ReportInodes">
+	<property name="name">ReportInodes</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -207,6 +213,7 @@ transfer agents and web caches.
     </child>
     <child>
       <object class="GtkCheckButton" id="ValuesAbsolute">
+	<property name="name">ValuesAbsolute</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -236,6 +243,7 @@ Defaults to true.
     </child>
     <child>
       <object class="GtkCheckButton" id="ValuesPercentage">
+	<property name="name">ValuesPercentage</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

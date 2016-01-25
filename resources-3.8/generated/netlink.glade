@@ -31,86 +31,15 @@ statistics of various interface and routing aspects.
     </child>
     <child>
       <object class="GtkEntry" id="Interface">
+	<property name="name">Interface</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Instruct the plugin to collect interface statistics. This is basically the same
-as the statistics provided by the interface plugin (see above) but
-potentially much more detailed.
-When configuring with Interface only the basic statistics will be collected,
-namely octets, packets, and errors. These statistics are collected by
-the interface plugin, too, so using both at the same time is no benefit.
-When configured with VerboseInterface all counters except the basic ones,
-so that no data needs to be collected twice if you use the interface plugin.
-This includes dropped packets, received multicast packets, collisions and a
-whole zoo of differentiated RX and TX errors. You can try the following command
-to get an idea of what awaits you:
-
-  ip -s -s link list
-If Interface is All, all interfaces will be selected.
-</property>
+	<property name="tooltip_text" translatable="yes">no description available for Interface</property>
 	<property name="placeholder_text" translatable="yes">Interface</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
 	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label-Class">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">Class</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkComboBoxText" id="Class">
-	<items>
-	  <item translatable="no">Interface</item>
-	  <item translatable="no">Class</item>
-	</items>
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="tooltip_text" translatable="yes">
-Collect the octets and packets that pass a certain qdisc, class or filter.
-QDiscs and classes are identified by their type and handle (or classid).
-Filters don't necessarily have a handle, therefore the parent's handle is used.
-The notation used in collectd differs from that used in tc(1) in that it
-doesn't skip the major or minor number if it's zero and doesn't print special
-ids by their name. So, for example, a qdisc may be identified by
-pfifo_fast-1:0 even though the minor number of all qdiscs is zero and
-thus not displayed by tc(1).
-If QDisc, Class, or Filter is given without the second argument,
-i. .e. without an identifier, all qdiscs, classes, or filters that are
-associated with that interface will be collected.
-Since a filter itself doesn't necessarily have a handle, the parent's handle is
-used. This may lead to problems when more than one filter is attached to a
-qdisc or class. This isn't nice, but we don't know how this could be done any
-better. If you have a idea, please don't hesitate to tell us.
-As with the Interface option you can specify All as the interface,
-meaning all interfaces.
-Here are some examples to help you understand the above text more easily:
-
-  &lt;Plugin netlink&gt;
-    VerboseInterface "All"
-    QDisc "eth0" "pfifo_fast-1:0"
-    QDisc "ppp0"
-    Class "ppp0" "htb-1:10"
-    Filter "ppp0" "u32-1:0"
-  &lt;/Plugin&gt;
-</property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -123,13 +52,14 @@ Here are some examples to help you understand the above text more easily:
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="VerboseInterface">
+	<property name="name">VerboseInterface</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -152,7 +82,69 @@ If Interface is All, all interfaces will be selected.
       </object>
       <packing>
 	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-QDisc">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">QDisc</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
 	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkComboBoxText" id="QDisc">
+	<property name="name">QDisc</property>
+	<items>
+	  <item translatable="no">Interface</item>
+	  <item translatable="no">QDisc</item>
+	</items>
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="tooltip_text" translatable="yes">no description available for QDisc</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-Class">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Class</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkComboBoxText" id="Class">
+	<property name="name">Class</property>
+	<items>
+	  <item translatable="no">Interface</item>
+	  <item translatable="no">Class</item>
+	</items>
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="tooltip_text" translatable="yes">no description available for Class</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -165,13 +157,14 @@ If Interface is All, all interfaces will be selected.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="Filter">
+	<property name="name">Filter</property>
 	<items>
 	  <item translatable="no">Interface</item>
 	  <item translatable="no">Filter</item>
@@ -209,7 +202,7 @@ Here are some examples to help you understand the above text more easily:
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -222,13 +215,14 @@ Here are some examples to help you understand the above text more easily:
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -242,7 +236,7 @@ specified statistics will not be collected.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

@@ -70,7 +70,8 @@ gen_plugins(Man) :-
 gen_plugin(P) :-
 	xpath(P, //a/code(text), Name),
 
-	(   append(BeforeDl, [element(dl, _,_)|_], P)
+	(   % append(BeforeDl, [element(dl, _,_)|_], P)
+	    find_dl(P, _, BeforeDl, _)
 	->  maplist(get_desc, BeforeDl, LDesc),
 	    atomic_list_concat(LDesc, '\n', PDesc)
 	;   PDesc = ''
@@ -189,7 +190,7 @@ gen_row(Field, Row, E) :-
 	    Ps2 = [Items|Ps]
 	;   throw(cannot_generate_field(Field))
 	),
-	Obj = [object([class=Class, id=Name], Ps2), P2],
+	Obj = [object([class=Class, id=Name], [property([name=name],[Name])|Ps2]), P2],
 	!, xml_ize([child([], Lab), child([], Obj)], E).
 
 booleans(Vs) :- sort(Vs, [false,true]).

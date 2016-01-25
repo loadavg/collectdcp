@@ -78,6 +78,7 @@ values submitted to the daemon. Other than that, that name is not used.
     </child>
     <child>
       <object class="GtkEntry" id="ConnectID">
+	<property name="name">ConnectID</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -108,6 +109,7 @@ names are defined in the file named $ORACLE_HOME/network/admin/tnsnames.ora.
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -138,6 +140,7 @@ the global hostname of the collectd instance.
     </child>
     <child>
       <object class="GtkEntry" id="Username">
+	<property name="name">Username</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -167,6 +170,7 @@ Username used for authentication.
     </child>
     <child>
       <object class="GtkEntry" id="Password">
+	<property name="name">Password</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -196,6 +200,7 @@ Password used for authentication.
     </child>
     <child>
       <object class="GtkEntry" id="Query">
+	<property name="name">Query</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

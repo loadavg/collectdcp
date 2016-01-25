@@ -74,6 +74,7 @@ Inside each &lt;Instance&gt; blocks, the following options are recognized:
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectBackend">
+	<property name="name">CollectBackend</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -103,6 +104,7 @@ and closed connections. True by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectBan">
+	<property name="name">CollectBan</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -133,6 +135,7 @@ number of objects tested against ban operations. Only available with Varnish
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectCache">
+	<property name="name">CollectCache</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -161,6 +164,7 @@ Cache hits and misses. True by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectConnections">
+	<property name="name">CollectConnections</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -189,6 +193,7 @@ Number of client connections received, accepted and dropped. True by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectDirectorDNS">
+	<property name="name">CollectDirectorDNS</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -218,6 +223,7 @@ default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectESI">
+	<property name="name">CollectESI</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -246,6 +252,7 @@ Edge Side Includes (ESI) parse statistics. False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectFetch">
+	<property name="name">CollectFetch</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -274,6 +281,7 @@ Statistics about fetches (HTTP requests sent to the backend). False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectHCB">
+	<property name="name">CollectHCB</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -303,6 +311,7 @@ divided into locked and unlocked look-ups. False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectObjects">
+	<property name="name">CollectObjects</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -332,6 +341,7 @@ expired), saved, moved, etc. False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectPurge">
+	<property name="name">CollectPurge</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -362,6 +372,7 @@ number of objects tested against purge operations. Only available with Varnish
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectSession">
+	<property name="name">CollectSession</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -393,6 +404,7 @@ Varnish have been moved here.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectSHM">
+	<property name="name">CollectSHM</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -422,6 +434,7 @@ log messages which is flushed to disk when full. True by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectSMA">
+	<property name="name">CollectSMA</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -452,6 +465,7 @@ default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectSMS">
+	<property name="name">CollectSMS</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -481,6 +495,7 @@ component is used internally only. False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectSM">
+	<property name="name">CollectSM</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -510,6 +525,7 @@ False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectStruct">
+	<property name="name">CollectStruct</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -540,6 +556,7 @@ default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectTotals">
+	<property name="name">CollectTotals</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -569,6 +586,7 @@ the number of requests and bytes transferred. False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectUptime">
+	<property name="name">CollectUptime</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -597,6 +615,7 @@ Varnish uptime. Only available with Varnish 3.x and above. False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectVCL">
+	<property name="name">CollectVCL</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -625,6 +644,7 @@ Number of total (available + discarded) VCL (config files). False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectVSM">
+	<property name="name">CollectVSM</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -654,6 +674,7 @@ statistics subsystems). Only available with Varnish 4.x. False by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectWorkers">
+	<property name="name">CollectWorkers</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

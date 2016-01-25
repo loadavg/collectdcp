@@ -49,6 +49,7 @@ Synopsis
     </child>
     <child>
       <object class="GtkEntry" id="LogLevel">
+	<property name="name">LogLevel</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -82,6 +83,7 @@ their level, are always submitted to collectd at its INFO log level.
     </child>
     <child>
       <object class="GtkEntry" id="Device">
+	<property name="name">Device</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -112,6 +114,7 @@ Name is passed to collectd as the plugin instance.
     </child>
     <child>
       <object class="GtkEntry" id="Driver">
+	<property name="name">Driver</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -141,6 +144,7 @@ The sigrok driver to use for this device.
     </child>
     <child>
       <object class="GtkEntry" id="Conn">
+	<property name="name">Conn</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -175,6 +179,7 @@ specified as Bus.Address (e.g. 1.41).
     </child>
     <child>
       <object class="GtkEntry" id="SerialComm">
+	<property name="name">SerialComm</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -207,6 +212,7 @@ support.
     </child>
     <child>
       <object class="GtkEntry" id="MinimumInterval">
+	<property name="name">MinimumInterval</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

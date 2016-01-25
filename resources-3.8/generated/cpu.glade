@@ -11,10 +11,124 @@
 The CPU plugin collects CPU usage metrics. By default, CPU usage is reported
 as Jiffies, using the cpu type. Two aggregations are available:
 
+
+
+
+Sum, per-state, over all CPUs installed in the system; and
+
+
+Sum, per-CPU, over all non-idle states of a CPU, creating an "active" state.
+
+
+
+The two aggregations can be combined, leading to collectd only emitting a
+single "active" metric for the entire system. As soon as one of these
+aggregations (or both) is enabled, the cpu plugin will report a percentage,
+rather than Jiffies. In addition, you can request individual, per-state,
+per-CPU metrics to be reported as percentage.
+
+
+The following configuration options are available:
+
 </property>
   </object>
   <object class="GtkGrid" id="cpu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <child>
+      <object class="GtkLabel" id="label-ReportByState">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">ReportByState</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="ReportByState">
+	<property name="name">ReportByState</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+When set to true, the default, reports per-state metrics, e.g. "system",
+"user" and "idle".
+When set to false, aggregates (sums) all non-idle states into one
+"active" metric.
+</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-ReportByCpu">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">ReportByCpu</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="ReportByCpu">
+	<property name="name">ReportByCpu</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+When set to true, the default, reports per-CPU (per-core) metrics.
+When set to false, instead of reporting metrics for individual CPUs, only a
+global sum of CPU states is emitted.
+</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-ValuesPercentage">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">ValuesPercentage</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="ValuesPercentage">
+	<property name="name">ValuesPercentage</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">
+This option is only considered when both, ReportByCpu and ReportByState
+are set to true. In this case, by default, metrics will be reported as
+Jiffies. By setting this option to true, you can request percentage values
+in the un-aggregated (per-CPU, per-state) mode as well.
+</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
   </object>
 </interface>

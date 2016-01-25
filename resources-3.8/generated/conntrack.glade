@@ -30,6 +30,7 @@ This plugin collects IP conntrack statistics.
     </child>
     <child>
       <object class="GtkEntry" id="OldFiles">
+	<property name="name">OldFiles</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

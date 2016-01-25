@@ -36,6 +36,7 @@ The following configuration options are available:
     </child>
     <child>
       <object class="GtkCheckButton" id="CpuPoolStats">
+	<property name="name">CpuPoolStats</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -66,6 +67,7 @@ Defaults to false.
     </child>
     <child>
       <object class="GtkCheckButton" id="ReportBySerial">
+	<property name="name">ReportBySerial</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

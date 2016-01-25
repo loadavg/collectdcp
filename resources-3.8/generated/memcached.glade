@@ -46,6 +46,7 @@ following options are allowed:
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -75,6 +76,7 @@ Hostname to connect to. Defaults to 127.0.0.1.
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -104,6 +106,7 @@ TCP-Port to connect to. Defaults to 11211.
     </child>
     <child>
       <object class="GtkEntry" id="Socket">
+	<property name="name">Socket</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

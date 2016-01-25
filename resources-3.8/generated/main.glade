@@ -6,88 +6,6 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label-WriteQueueLimitHigh">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">WriteQueueLimitHigh</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="WriteQueueLimitHigh">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Metrics are read by the read threads and then put into a queue to be handled
-by the write threads. If one of the write plugins is slow (e.g. network
-timeouts, I/O saturation of the disk) this queue will grow. In order to avoid
-running into memory issues in such a case, you can limit the size of this
-queue.
-By default, there is no limit and memory may grow indefinitely. This is most
-likely not an issue for clients, i.e. instances that only handle the local
-metrics. For servers it is recommended to set this to a non-zero value, though.
-You can set the limits using WriteQueueLimitHigh and WriteQueueLimitLow.
-Each of them takes a numerical argument which is the number of metrics in the
-queue. If there are HighNum metrics in the queue, any new metrics will be
-dropped. If there are less than LowNum metrics in the queue, all new metrics
-will be enqueued. If the number of metrics currently in the queue is between
-LowNum and HighNum, the metric is dropped with a probability that is
-proportional to the number of metrics in the queue (i.e. it increases linearly
-until it reaches 100%.)
-If WriteQueueLimitHigh is set to non-zero and WriteQueueLimitLow is
-unset, the latter will default to half of WriteQueueLimitHigh.
-If you do not want to randomly drop values when the queue size is between
-LowNum and HighNum, set WriteQueueLimitHigh and WriteQueueLimitLow
-to the same value.
-Enabling the CollectInternalStats option is of great help to figure out the
-values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
-</property>
-	<property name="placeholder_text" translatable="yes">HighNum</property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label-PreCacheChain">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">PreCacheChain</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="PreCacheChain">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Configure the name of the "pre-cache chain" and the "post-cache chain". Please
-see FILTER CONFIGURATION below on information on chains and how these
-setting change the daemon's behavior.
-</property>
-	<property name="placeholder_text" translatable="yes">ChainName</property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkLabel" id="label-BaseDir">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -95,13 +13,14 @@ setting change the daemon's behavior.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="BaseDir">
+	<property name="name">BaseDir</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -113,7 +32,7 @@ directory for the daemon.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -126,13 +45,14 @@ directory for the daemon.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="LoadPlugin">
+	<property name="name">LoadPlugin</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -183,7 +103,7 @@ interval, that setting will take precedence.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -196,13 +116,14 @@ interval, that setting will take precedence.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkCheckButton" id="AutoLoadPlugin">
+	<property name="name">AutoLoadPlugin</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -219,7 +140,7 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -232,13 +153,14 @@ plugins that don't provide any configuration, e.g. the Load plugin.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectInternalStats">
+	<property name="name">CollectInternalStats</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -253,7 +175,7 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -266,13 +188,14 @@ cache (the cache you can interact with using collectd-unixsock(5)).
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="Include">
+	<property name="name">Include</property>
 	<items>
 	  <item translatable="no">Path</item>
 	  <item translatable="no">pattern</item>
@@ -319,7 +242,7 @@ file, but you cannot include files from within blocks.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -332,13 +255,14 @@ file, but you cannot include files from within blocks.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="PIDFile">
+	<property name="name">PIDFile</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -350,7 +274,7 @@ setting using the -P command-line option.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">7</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -363,13 +287,14 @@ setting using the -P command-line option.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">8</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="PluginDir">
+	<property name="name">PluginDir</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -379,7 +304,7 @@ Path to the plugins (shared objects) of collectd.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">8</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -392,13 +317,14 @@ Path to the plugins (shared objects) of collectd.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">9</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="TypesDB">
+	<property name="name">TypesDB</property>
 	<items>
 	  <item translatable="no">File</item>
 	  <item translatable="no">File</item>
@@ -412,7 +338,7 @@ types.db(5) for a description of the format of this file.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">9</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -425,13 +351,14 @@ types.db(5) for a description of the format of this file.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">10</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Interval">
+	<property name="name">Interval</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -446,7 +373,7 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">10</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -459,13 +386,14 @@ magic! (Assuming you're using the RRDtool or RRDCacheD plugin.)
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">11</property>
+	<property name="top_attach">9</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="MaxReadInterval">
+	<property name="name">MaxReadInterval</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -478,7 +406,7 @@ This options limits the maximum value of the interval. The default value is
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">11</property>
+	<property name="top_attach">9</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -491,13 +419,14 @@ This options limits the maximum value of the interval. The default value is
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">12</property>
+	<property name="top_attach">10</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Timeout">
+	<property name="name">Timeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -513,7 +442,7 @@ see collectd-threshold(5) for details.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">12</property>
+	<property name="top_attach">10</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -526,13 +455,14 @@ see collectd-threshold(5) for details.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">13</property>
+	<property name="top_attach">11</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="ReadThreads">
+	<property name="name">ReadThreads</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -545,7 +475,7 @@ a value higher than the number of registered read callbacks is not recommended.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">13</property>
+	<property name="top_attach">11</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -558,13 +488,14 @@ a value higher than the number of registered read callbacks is not recommended.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">14</property>
+	<property name="top_attach">12</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="WriteThreads">
+	<property name="name">WriteThreads</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -576,7 +507,35 @@ five plugins that may take relatively long to write to.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">14</property>
+	<property name="top_attach">12</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-WriteQueueLimitHigh">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">WriteQueueLimitHigh</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">13</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="WriteQueueLimitHigh">
+	<property name="name">WriteQueueLimitHigh</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for WriteQueueLimitHigh</property>
+	<property name="placeholder_text" translatable="yes">HighNum</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">13</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -589,13 +548,14 @@ five plugins that may take relatively long to write to.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">15</property>
+	<property name="top_attach">14</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="WriteQueueLimitLow">
+	<property name="name">WriteQueueLimitLow</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -627,7 +587,7 @@ values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">15</property>
+	<property name="top_attach">14</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -640,13 +600,14 @@ values to set WriteQueueLimitHigh and WriteQueueLimitLow to.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">16</property>
+	<property name="top_attach">15</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Hostname">
+	<property name="name">Hostname</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -657,7 +618,7 @@ hostname will be determined using the gethostname(2) system call.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">16</property>
+	<property name="top_attach">15</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -670,13 +631,14 @@ hostname will be determined using the gethostname(2) system call.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">17</property>
+	<property name="top_attach">16</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkCheckButton" id="FQDNLookup">
+	<property name="name">FQDNLookup</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -685,6 +647,34 @@ the daemon should try to figure out the "fully qualified domain name", FQDN.
 This is done using a lookup of the name returned by gethostname. This option
 is enabled by default.
 </property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">16</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-PreCacheChain">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">PreCacheChain</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">17</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="PreCacheChain">
+	<property name="name">PreCacheChain</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for PreCacheChain</property>
+	<property name="placeholder_text" translatable="yes">ChainName</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -708,6 +698,7 @@ is enabled by default.
     </child>
     <child>
       <object class="GtkEntry" id="PostCacheChain">
+	<property name="name">PostCacheChain</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

@@ -52,6 +52,7 @@ blocks. Inside the Node blocks, the following options are recognized:
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -81,6 +82,7 @@ Hostname or address to connect to. Defaults to localhost.
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -110,6 +112,7 @@ Service name or port number to connect to. Defaults to 4242.
     </child>
     <child>
       <object class="GtkEntry" id="HostTags">
+	<property name="name">HostTags</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -141,6 +144,7 @@ whitespace are not escaped in this string.
     </child>
     <child>
       <object class="GtkCheckButton" id="StoreRates">
+	<property name="name">StoreRates</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -171,6 +175,7 @@ integer number.
     </child>
     <child>
       <object class="GtkCheckButton" id="AlwaysAppendDS">
+	<property name="name">AlwaysAppendDS</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

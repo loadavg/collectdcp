@@ -31,6 +31,7 @@ bus. Supported sensors are:
     </child>
     <child>
       <object class="GtkEntry" id="MPL115A2">
+	<property name="name">MPL115A2</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">no description available for MPL115A2</property>
@@ -58,6 +59,7 @@ bus. Supported sensors are:
     </child>
     <child>
       <object class="GtkEntry" id="MPL3115">
+	<property name="name">MPL3115</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">no description available for MPL3115</property>
@@ -85,6 +87,7 @@ bus. Supported sensors are:
     </child>
     <child>
       <object class="GtkEntry" id="BMP085">
+	<property name="name">BMP085</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">no description available for BMP085</property>

@@ -50,6 +50,7 @@ Available configuration options:
     </child>
     <child>
       <object class="GtkEntry" id="JVMArg">
+	<property name="name">JVMArg</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -84,6 +85,7 @@ later options will have to be ignored!
     </child>
     <child>
       <object class="GtkEntry" id="LoadPlugin">
+	<property name="name">LoadPlugin</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -118,6 +120,7 @@ LoadPlugin options!
     </child>
     <child>
       <object class="GtkEntry" id="Plugin">
+	<property name="name">Plugin</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

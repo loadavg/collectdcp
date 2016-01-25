@@ -34,6 +34,7 @@ The fhcount plugin provides the following configuration options:
     </child>
     <child>
       <object class="GtkCheckButton" id="ValuesAbsolute">
+	<property name="name">ValuesAbsolute</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -63,6 +64,7 @@ e.g. file handles used. Defaults to true.
     </child>
     <child>
       <object class="GtkCheckButton" id="ValuesPercentage">
+	<property name="name">ValuesPercentage</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

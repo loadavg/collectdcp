@@ -69,6 +69,7 @@ Sensor then the whole addressing (all sensors) is considered to be this way
     </child>
     <child>
       <object class="GtkEntry" id="Device">
+	<property name="name">Device</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -108,6 +109,7 @@ This directive is required and does not have a default value.
     </child>
     <child>
       <object class="GtkEntry" id="Sensor">
+	<property name="name">Sensor</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -147,6 +149,7 @@ multiple Sensor elements).
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -182,6 +185,7 @@ Used only in the standard mode - see above.
     </child>
     <child>
       <object class="GtkEntry" id="Interval">
+	<property name="name">Interval</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

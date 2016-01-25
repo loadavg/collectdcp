@@ -36,6 +36,7 @@ The following configuration options are available:
     </child>
     <child>
       <object class="GtkCheckButton" id="ReportRelative">
+	<property name="name">ReportRelative</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

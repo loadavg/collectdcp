@@ -59,6 +59,7 @@ The following options are valid inside the Plugin mic block:
     </child>
     <child>
       <object class="GtkCheckButton" id="ShowCPU">
+	<property name="name">ShowCPU</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -87,6 +88,7 @@ If enabled (the default) a sum of the CPU usage across all cores is reported.
     </child>
     <child>
       <object class="GtkCheckButton" id="ShowCPUCores">
+	<property name="name">ShowCPUCores</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -115,6 +117,7 @@ If enabled (the default) per-core CPU usage is reported.
     </child>
     <child>
       <object class="GtkCheckButton" id="ShowMemory">
+	<property name="name">ShowMemory</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -144,6 +147,7 @@ reported.
     </child>
     <child>
       <object class="GtkCheckButton" id="ShowTemperatures">
+	<property name="name">ShowTemperatures</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -172,6 +176,7 @@ If enabled (the default) various temperatures of the MIC system are reported.
     </child>
     <child>
       <object class="GtkEntry" id="Temperature">
+	<property name="name">Temperature</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -204,6 +209,7 @@ temperatures are reported.
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelectedTemperature">
+	<property name="name">IgnoreSelectedTemperature</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -252,6 +258,7 @@ Voltage ddq
     </child>
     <child>
       <object class="GtkCheckButton" id="ShowPower">
+	<property name="name">ShowPower</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -280,6 +287,7 @@ If enabled (the default) various temperatures of the MIC system are reported.
     </child>
     <child>
       <object class="GtkEntry" id="Power">
+	<property name="name">Power</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -312,6 +320,7 @@ power readings are reported.
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelectedPower">
+	<property name="name">IgnoreSelectedPower</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

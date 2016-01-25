@@ -45,6 +45,7 @@ Options:
     </child>
     <child>
       <object class="GtkEntry" id="Interface">
+	<property name="name">Interface</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -74,6 +75,7 @@ Collect statistical information about interface Name.
     </child>
     <child>
       <object class="GtkComboBoxText" id="Map">
+	<property name="name">Map</property>
 	<items>
 	  <item translatable="no">Name</item>
 	  <item translatable="no">Type</item>
@@ -110,6 +112,7 @@ TypeInstance will be used.
     </child>
     <child>
       <object class="GtkCheckButton" id="MappedOnly">
+	<property name="name">MappedOnly</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="SocketFile">
+	<property name="name">SocketFile</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -56,6 +57,7 @@ Sets the socket-file which is to be created.
     </child>
     <child>
       <object class="GtkEntry" id="SocketGroup">
+	<property name="name">SocketGroup</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -86,6 +88,7 @@ created. Defaults to collectd.
     </child>
     <child>
       <object class="GtkEntry" id="SocketPerms">
+	<property name="name">SocketPerms</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -117,6 +120,7 @@ chmod(1). Defaults to 0770.
     </child>
     <child>
       <object class="GtkEntry" id="MaxConns">
+	<property name="name">MaxConns</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

@@ -97,6 +97,7 @@ Synopsis:
     </child>
     <child>
       <object class="GtkEntry" id="Data">
+	<property name="name">Data</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -147,6 +148,7 @@ unset, an empty string (no type instance) is used.
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

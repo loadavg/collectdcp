@@ -31,6 +31,7 @@ Linux and Solaris, the following options are available:
     </child>
     <child>
       <object class="GtkCheckButton" id="ReportByDevice">
+	<property name="name">ReportByDevice</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -64,6 +65,7 @@ This option is only available if the Swap plugin can read /proc/swaps
     </child>
     <child>
       <object class="GtkCheckButton" id="ReportBytes">
+	<property name="name">ReportBytes</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -93,6 +95,7 @@ swap I/O is reported in pages. This option is available under Linux only.
     </child>
     <child>
       <object class="GtkCheckButton" id="ValuesAbsolute">
+	<property name="name">ValuesAbsolute</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -122,6 +125,7 @@ available and used. Defaults to true.
     </child>
     <child>
       <object class="GtkCheckButton" id="ValuesPercentage">
+	<property name="name">ValuesPercentage</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

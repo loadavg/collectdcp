@@ -51,6 +51,7 @@ block, the following options are available:
     </child>
     <child>
       <object class="GtkEntry" id="URL">
+	<property name="name">URL</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -80,6 +81,7 @@ URL to which the values are submitted to. Mandatory.
     </child>
     <child>
       <object class="GtkEntry" id="User">
+	<property name="name">User</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -109,6 +111,7 @@ Optional user name needed for authentication.
     </child>
     <child>
       <object class="GtkEntry" id="Password">
+	<property name="name">Password</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -138,6 +141,7 @@ Optional password needed for authentication.
     </child>
     <child>
       <object class="GtkCheckButton" id="VerifyPeer">
+	<property name="name">VerifyPeer</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -167,6 +171,7 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="VerifyHost">
+	<property name="name">VerifyHost</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -199,6 +204,7 @@ SSL enabled server. Enabled by default.
     </child>
     <child>
       <object class="GtkEntry" id="CACert">
+	<property name="name">CACert</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -230,6 +236,7 @@ and are checked by default depends on the distribution you use.
     </child>
     <child>
       <object class="GtkEntry" id="CAPath">
+	<property name="name">CAPath</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -262,6 +269,7 @@ OpenSSL.
     </child>
     <child>
       <object class="GtkEntry" id="ClientKey">
+	<property name="name">ClientKey</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -292,6 +300,7 @@ authentication.
     </child>
     <child>
       <object class="GtkEntry" id="ClientCert">
+	<property name="name">ClientCert</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -322,6 +331,7 @@ authentication.
     </child>
     <child>
       <object class="GtkEntry" id="ClientKeyPass">
+	<property name="name">ClientKeyPass</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -351,6 +361,7 @@ Password required to load the private key in ClientKey.
     </child>
     <child>
       <object class="GtkComboBoxText" id="SSLVersion">
+	<property name="name">SSLVersion</property>
 	<items>
 	  <item translatable="no">SSLv2</item>
 	  <item translatable="no">SSLv3</item>
@@ -389,6 +400,7 @@ curl_easy_setopt(3) for more details.
     </child>
     <child>
       <object class="GtkComboBoxText" id="Format">
+	<property name="name">Format</property>
 	<items>
 	  <item translatable="no">Command</item>
 	  <item translatable="no">JSON</item>
@@ -424,6 +436,7 @@ Defaults to Command.
     </child>
     <child>
       <object class="GtkCheckButton" id="StoreRates">
+	<property name="name">StoreRates</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -453,6 +466,7 @@ default) counter values are stored as is, i.e. as an increasing integer number.
     </child>
     <child>
       <object class="GtkEntry" id="BufferSize">
+	<property name="name">BufferSize</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -487,6 +501,7 @@ Defaults to 4096.
     </child>
     <child>
       <object class="GtkEntry" id="LowSpeedLimit">
+	<property name="name">LowSpeedLimit</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -519,6 +534,7 @@ which means no minimum transfer rate is enforced.
     </child>
     <child>
       <object class="GtkEntry" id="Timeout">
+	<property name="name">Timeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

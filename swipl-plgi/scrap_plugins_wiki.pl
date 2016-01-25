@@ -14,6 +14,7 @@
 	,collectd_url/2
 	,get_page/2
 	,dl_model/2
+	,find_dl/4
 	]).
 
 :- use_module(library(http/http_open)).
@@ -85,26 +86,6 @@ get_h1_section(G, Name, Desc, Sub, Model) :-
 	;   true
 	).
 
-match(T1,T2,T3, G, R) :-
-	E1 = element(T1, _A1, _V1),
-	E2 = element(T2, _A2, _V2),
-	E3 = element(T3, _A3, _V3),
-	append(_, [E1,E2,E3|_], G),
-	field_base(E1, FB),
-	xpath(E3, /self(text), Desc),
-	R = FB.put(desc, Desc).
-match(T1,T2, G, R) :-
-	E1 = element(T1, _A1, _V1),
-	E2 = element(T2, _A2, _V2),
-	append(_, [E1,E2|_], G),
-	field_base(E1, FB),
-	xpath(E2, /self(text), Tx2),
-	R = FB.put(desc, Tx2).
-match(T, G, R) :-
-	E = element(T, _A, _V),
-	member(E, G),
-	field_base(E, R).
-
 field_base(E, field{name:Name, values:Values}) :-
 	xpath(E, strong/a, A),
 	bagof(T,  strong_em(A, T), [Name|Values]).
@@ -115,8 +96,11 @@ strong_em(A, S) :-
 split_alt(T, S) :-
 	atomic_list_concat(L, '|', T), member(S, L).
 
-find(Tag, G, V) :-
-	member(element(Tag, _, V), G).
+find_dl(G, V, Before, After) :-
+	%member(element(dl, _, V), G).
+	append(Before, [element(dl, _, V)|After], G),
+	xpath(V, //dt(normalize_space), DtText),
+	DtText \= ''.
 
 %%	dl_model(+G, -DlDt) is nondet
 %
@@ -124,10 +108,33 @@ find(Tag, G, V) :-
 %	some dt doesn't have dd, some pair dt+dt have shared dd
 %
 dl_model(G, DlDt) :-
-	find(dl, G, DL),
-	findall(Def, ( (match(dt,dt,dd, DL, Def) ; match(dt,dd, DL, Def)) *-> true ; match(dt, DL, Def)), DlDt),
-	!.
+	find_dl(G, DL, _, _),
+	scan_dt(DL, DlDt), !.
 dl_model(_, []).
+
+scan_dt([], []).
+/*
+scan_dt([A,B,C|R], [D1,D2|Ds]) :-
+	dt_dd(A,C,D1),
+	dt_dd(B,C,D2),
+	!, scan_dt(R, Ds).
+*/
+scan_dt([A,B|R], [D|Ds]) :-
+	dt_dd(A,B,D),
+	!, scan_dt(R, Ds).
+scan_dt([A|R], [D|Ds]) :-
+	A = element(dt, _A1, _V1),
+	field_base(A, D),
+	!, scan_dt(R, Ds).
+scan_dt([_|R], Ds) :-
+	scan_dt(R, Ds).
+
+dt_dd(A,B,D) :-
+	A = element(dt, _, _),
+	B = element(dd, _, _),
+	field_base(A, FB),
+	xpath(B, /self(text), Desc),
+	D = FB.put(desc, Desc).
 
 show_h1_section([A,_|S]) :-
 	writeln(A),

@@ -37,6 +37,7 @@ Available configuration options:
     </child>
     <child>
       <object class="GtkEntry" id="Device">
+	<property name="name">Device</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -68,6 +69,7 @@ Default: /dev/ttyUSB0
     </child>
     <child>
       <object class="GtkEntry" id="Retries">
+	<property name="name">Retries</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

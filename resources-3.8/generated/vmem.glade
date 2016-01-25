@@ -34,6 +34,7 @@ pages read from swap space.
     </child>
     <child>
       <object class="GtkCheckButton" id="Verbose">
+	<property name="name">Verbose</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

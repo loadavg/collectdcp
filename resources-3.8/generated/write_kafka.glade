@@ -44,6 +44,7 @@ The following options are understood by the write_kafka plugin:
     </child>
     <child>
       <object class="GtkEntry" id="Topic">
+	<property name="name">Topic</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -127,6 +128,7 @@ ds_type:derive:rate.
     </child>
     <child>
       <object class="GtkComboBoxText" id="Property">
+	<property name="name">Property</property>
 	<items>
 	  <item translatable="no">String</item>
 	  <item translatable="no">String</item>

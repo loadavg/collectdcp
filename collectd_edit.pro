@@ -43,7 +43,8 @@ SOURCES += main.cpp \
     os_info.cpp \
     test_win.cpp \
     collectdcp_win.cpp \
-    plugin_to_store.cpp
+    plugin_to_store.cpp \
+    ast_loader.cpp
 
 HEADERS += \
     parse_conf.h \
@@ -79,7 +80,8 @@ HEADERS += \
     split.h \
     test_win.h \
     collectdcp_win.h \
-    plugin_to_store.h
+    plugin_to_store.h \
+    ast_loader.h
 
 DISTFILES += \
     Makefile \

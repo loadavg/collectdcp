@@ -21,13 +21,6 @@ namespace model
     using namespace parse_conf;
 
     /**
-     * @brief set_root
-     *  set the root folder, defaults to /etc/collectd
-     * @param root
-    void set_root(string root);
-     */
-
-    /**
      * @brief check_root
      *  need to adapt to different collectd base folders
      */
@@ -66,6 +59,25 @@ namespace model
         plugins_t(const AST *ast);
     };
 
+    /**
+     * @brief The entries_t struct
+     *  index all elements by name
+     */
+    struct entries_t : map<string, RANGE::path_t, iless> {
+        const AST *ast;
+        entries_t(const AST *ast);
+    };
+
+    /**
+     * @brief entry_symbol
+     */
+
+    /**
+     * @brief entry_symbol
+     * @return
+     *  normally, "collectd"
+     */
+    string entry_symbol();
 }
 
 #endif // MODEL_H

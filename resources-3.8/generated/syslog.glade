@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkComboBoxText" id="LogLevel">
+	<property name="name">LogLevel</property>
 	<items>
 	  <item translatable="no">debug</item>
 	  <item translatable="no">info</item>
@@ -66,6 +67,7 @@ debugging support.
     </child>
     <child>
       <object class="GtkComboBoxText" id="NotifyLevel">
+	<property name="name">NotifyLevel</property>
 	<items>
 	  <item translatable="no">OKAY</item>
 	  <item translatable="no">WARNING</item>

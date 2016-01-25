@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="DataDir">
+	<property name="name">DataDir</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -60,6 +61,7 @@ much sense when collectd is running in foreground- or non-daemon-mode.
     </child>
     <child>
       <object class="GtkCheckButton" id="StoreRates">
+	<property name="name">StoreRates</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

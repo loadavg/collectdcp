@@ -50,6 +50,7 @@ reasonable defaults will be collected.
     </child>
     <child>
       <object class="GtkEntry" id="Server">
+	<property name="name">Server</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -113,6 +114,7 @@ will be used for the recursor.
     </child>
     <child>
       <object class="GtkEntry" id="LocalSocket">
+	<property name="name">LocalSocket</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

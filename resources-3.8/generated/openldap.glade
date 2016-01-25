@@ -57,6 +57,7 @@ The following options are accepted within each Instance block:
     </child>
     <child>
       <object class="GtkEntry" id="URL">
+	<property name="name">URL</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -87,6 +88,7 @@ mandatory.
     </child>
     <child>
       <object class="GtkCheckButton" id="StartTLS">
+	<property name="name">StartTLS</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -116,6 +118,7 @@ Disabled by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="VerifyHost">
+	<property name="name">VerifyHost</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -147,6 +150,7 @@ identity check fails, the connection is aborted. Enabled by default.
     </child>
     <child>
       <object class="GtkEntry" id="CACert">
+	<property name="name">CACert</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -179,6 +183,7 @@ client configuration mechanisms. See ldap.conf(5) for the details.
     </child>
     <child>
       <object class="GtkEntry" id="Timeout">
+	<property name="name">Timeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -209,6 +214,7 @@ an infinite timeout.
     </child>
     <child>
       <object class="GtkEntry" id="Version">
+	<property name="name">Version</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

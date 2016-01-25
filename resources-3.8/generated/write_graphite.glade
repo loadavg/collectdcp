@@ -53,6 +53,7 @@ blocks. Inside the Node blocks, the following options are recognized:
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -82,6 +83,7 @@ Hostname or address to connect to. Defaults to localhost.
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -111,6 +113,7 @@ Service name or port number to connect to. Defaults to 2003.
     </child>
     <child>
       <object class="GtkEntry" id="Protocol">
+	<property name="name">Protocol</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -140,6 +143,7 @@ Protocol to use when connecting to Graphite. Defaults to tcp.
     </child>
     <child>
       <object class="GtkCheckButton" id="LogSendErrors">
+	<property name="name">LogSendErrors</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -171,6 +175,7 @@ approach and logging errors fills syslog with unneeded messages.
     </child>
     <child>
       <object class="GtkEntry" id="Prefix">
+	<property name="name">Prefix</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -201,6 +206,7 @@ not escaped in this string (see EscapeCharacter below).
     </child>
     <child>
       <object class="GtkEntry" id="Postfix">
+	<property name="name">Postfix</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -231,6 +237,7 @@ not escaped in this string (see EscapeCharacter below).
     </child>
     <child>
       <object class="GtkEntry" id="EscapeCharacter">
+	<property name="name">EscapeCharacter</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -263,6 +270,7 @@ underscore (_).
     </child>
     <child>
       <object class="GtkCheckButton" id="StoreRates">
+	<property name="name">StoreRates</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -293,6 +301,7 @@ number.
     </child>
     <child>
       <object class="GtkCheckButton" id="SeparateInstances">
+	<property name="name">SeparateInstances</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -324,6 +333,7 @@ instance) are put into one component, for example host.cpu-0.cpu-idle.
     </child>
     <child>
       <object class="GtkCheckButton" id="AlwaysAppendDS">
+	<property name="name">AlwaysAppendDS</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

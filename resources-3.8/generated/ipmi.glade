@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="Sensor">
+	<property name="name">Sensor</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -56,6 +57,7 @@ Selects sensors to collect or to ignore, depending on IgnoreSelected.
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -88,6 +90,7 @@ all other sensors are collected.
     </child>
     <child>
       <object class="GtkCheckButton" id="NotifySensorAdd">
+	<property name="name">NotifySensorAdd</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -117,6 +120,7 @@ is sent.
     </child>
     <child>
       <object class="GtkCheckButton" id="NotifySensorRemove">
+	<property name="name">NotifySensorRemove</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -145,6 +149,7 @@ If a sensor disappears a notification is sent.
     </child>
     <child>
       <object class="GtkCheckButton" id="NotifySensorNotPresent">
+	<property name="name">NotifySensorNotPresent</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

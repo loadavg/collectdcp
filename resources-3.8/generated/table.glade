@@ -63,6 +63,7 @@ The following options are available inside a Table block:
     </child>
     <child>
       <object class="GtkEntry" id="Instance">
+	<property name="name">Instance</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -95,6 +96,7 @@ with an underscore (_).
     </child>
     <child>
       <object class="GtkEntry" id="Separator">
+	<property name="name">Separator</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

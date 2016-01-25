@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -56,6 +57,7 @@ Hostname of the host running ntpd. Defaults to localhost.
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -85,6 +87,7 @@ UDP-Port to connect to. Defaults to 123.
     </child>
     <child>
       <object class="GtkCheckButton" id="ReverseLookups">
+	<property name="name">ReverseLookups</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -116,6 +119,7 @@ compatibility, though.
     </child>
     <child>
       <object class="GtkCheckButton" id="IncludeUnitID">
+	<property name="name">IncludeUnitID</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

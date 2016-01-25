@@ -35,6 +35,7 @@ The following configuration options are understood:
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -64,6 +65,7 @@ Connect to Host. Defaults to "localhost".
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -94,6 +96,7 @@ port as a number rather than a service name. Defaults to "2006".
     </child>
     <child>
       <object class="GtkComboBoxText" id="CollectLinks">
+	<property name="name">CollectLinks</property>
 	<items>
 	  <item translatable="no">No</item>
 	  <item translatable="no">Summary</item>
@@ -132,6 +135,7 @@ Defaults to Detail.
     </child>
     <child>
       <object class="GtkComboBoxText" id="CollectRoutes">
+	<property name="name">CollectRoutes</property>
 	<items>
 	  <item translatable="no">No</item>
 	  <item translatable="no">Summary</item>
@@ -169,6 +173,7 @@ Defaults to Summary.
     </child>
     <child>
       <object class="GtkComboBoxText" id="CollectTopology">
+	<property name="name">CollectTopology</property>
 	<items>
 	  <item translatable="no">No</item>
 	  <item translatable="no">Summary</item>

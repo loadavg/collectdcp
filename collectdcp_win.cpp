@@ -10,15 +10,18 @@
 #include "ui_structure.h"
 #include "message_box.h"
 #include "file2string.h"
+#include "ast_loader.h"
 
 #include "plugin_to_store.h"
 #include "ns_all.h"
 
 #include <gtkmm/grid.h>
-#include <gtkmm/scrolledwindow.h>
 #include <gtkmm/treeview.h>
 #include <gtkmm/treestore.h>
+#include <gtkmm/checkbutton.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/treeselection.h>
+#include <gtkmm/scrolledwindow.h>
 
 #include <iostream>
 
@@ -28,10 +31,39 @@ collectdcp_win* collectdcp_win::setup(RefPtr<Application> app) {
     return w;
 }
 
+void ast_to_grid(const AST *ast, Grid *g) {
+    entries_t entries(ast);
+
+    for (int nrows = 0; ; ++nrows) {
+        auto c = g->get_child_at(1, nrows);
+        if (c == 0)
+            break;
+
+        auto n = c->get_name();
+        auto p = entries.find(n);
+        if (p != entries.end()) {
+            if (auto en = dynamic_cast<Entry*>(c)) {
+                auto r = *p->second.back();
+                if (r.type == KEY_VALUES_t) {
+                    string vs = r[VALUES_l](ast->text);
+                    en->set_text(vs);
+                }
+                continue;
+            }
+            if (auto cbt = dynamic_cast<ComboBoxText*>(c)) {
+                continue;
+            }
+            if (auto yn = dynamic_cast<CheckButton*>(c)) {
+                continue;
+            }
+        }
+    }
+}
+
 collectdcp_win::collectdcp_win(BaseObjectType *cobject, const RefPtr<Builder>& refBuilder)
     : Window(cobject)
 {
-    main_config = new AST(conf_file("collectd"));
+    main_config = ast_loader(model::entry_symbol()).ast;
 
     auto text = file2string(get_resource_path("plugins", "template"));
     plugins_defaults = new AST(text);
@@ -39,6 +71,8 @@ collectdcp_win::collectdcp_win(BaseObjectType *cobject, const RefPtr<Builder>& r
     auto sw = instance_widget<ScrolledWindow>(refBuilder, "scrolledwindow1");
     auto grid_main = instance_widget<Grid>(get_resource("generated/main"), "grid_main");
     sw->add(*grid_main);
+
+    ast_to_grid(main_config, grid_main);
 
     auto b = get_resource("add_plugin_treeview");
     auto ts = RefPtr<TreeStore>::cast_dynamic(b->get_object("add_plugin_treestore"));

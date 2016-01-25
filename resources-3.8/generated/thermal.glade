@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkCheckButton" id="ForceUseProcfs">
+	<property name="name">ForceUseProcfs</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -58,6 +59,7 @@ plugin to use the latter. This option defaults to false.
     </child>
     <child>
       <object class="GtkEntry" id="Device">
+	<property name="name">Device</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -89,6 +91,7 @@ used multiple times to specify a list of devices.
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

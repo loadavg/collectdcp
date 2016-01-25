@@ -33,6 +33,7 @@ can safely ignore these settings.
     </child>
     <child>
       <object class="GtkEntry" id="DataDir">
+	<property name="name">DataDir</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -63,6 +64,7 @@ beneath the daemon's working directory, i.e. the BaseDir.
     </child>
     <child>
       <object class="GtkCheckButton" id="CreateFilesAsync">
+	<property name="name">CreateFilesAsync</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -97,6 +99,7 @@ short while, while the file is being written.
     </child>
     <child>
       <object class="GtkEntry" id="StepSize">
+	<property name="name">StepSize</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -130,6 +133,7 @@ exec plugin or when the daemon is set up to receive data from other hosts.
     </child>
     <child>
       <object class="GtkEntry" id="HeartBeat">
+	<property name="name">HeartBeat</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -162,6 +166,7 @@ a very good reason to do so.
     </child>
     <child>
       <object class="GtkEntry" id="RRARows">
+	<property name="name">RRARows</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -200,6 +205,7 @@ default is 1200.
     </child>
     <child>
       <object class="GtkEntry" id="RRATimespan">
+	<property name="name">RRATimespan</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -232,6 +238,7 @@ For more information on how RRA-sizes are calculated see RRARows above.
     </child>
     <child>
       <object class="GtkEntry" id="XFF">
+	<property name="name">XFF</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -263,6 +270,7 @@ one (exclusive).
     </child>
     <child>
       <object class="GtkEntry" id="CacheFlush">
+	<property name="name">CacheFlush</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -301,6 +309,7 @@ normally do much harm either.
     </child>
     <child>
       <object class="GtkEntry" id="CacheTimeout">
+	<property name="name">CacheTimeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -334,6 +343,7 @@ used.
     </child>
     <child>
       <object class="GtkEntry" id="WritesPerSecond">
+	<property name="name">WritesPerSecond</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -381,6 +391,7 @@ graphs and basically a "backup" of your values every hour.
     </child>
     <child>
       <object class="GtkEntry" id="RandomTimeout">
+	<property name="name">RandomTimeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

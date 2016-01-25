@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkComboBoxText" id="UPS">
+	<property name="name">UPS</property>
 	<items>
 	  <item translatable="no">@</item>
 	  <item translatable="no">:</item>

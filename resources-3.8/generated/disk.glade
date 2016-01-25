@@ -38,6 +38,7 @@ collection only of specific disks.
     </child>
     <child>
       <object class="GtkEntry" id="Disk">
+	<property name="name">Disk</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -73,6 +74,7 @@ is interpreted as a regular expression. Examples:
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -106,6 +108,7 @@ is set to true, all disks are collected except the ones matched.
     </child>
     <child>
       <object class="GtkCheckButton" id="UseBSDName">
+	<property name="name">UseBSDName</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -136,6 +139,7 @@ IOKitLib support.
     </child>
     <child>
       <object class="GtkEntry" id="UdevNameAttr">
+	<property name="name">UdevNameAttr</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

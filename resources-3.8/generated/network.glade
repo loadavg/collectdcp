@@ -62,6 +62,7 @@ signature):
     </child>
     <child>
       <object class="GtkComboBoxText" id="&lt;Server">
+	<property name="name">&lt;Server</property>
 	<items>
 	  <item translatable="no">&gt;</item>
 	  <item translatable="no">Host</item>
@@ -132,6 +133,7 @@ not specified, re-resolves are never attempted.
     </child>
     <child>
       <object class="GtkComboBoxText" id="&lt;Listen">
+	<property name="name">&lt;Listen</property>
 	<items>
 	  <item translatable="no">&gt;</item>
 	  <item translatable="no">Host</item>
@@ -203,6 +205,7 @@ traffic gets only accepted, if it arrives on the given interface.
     </child>
     <child>
       <object class="GtkEntry" id="TimeToLive">
+	<property name="name">TimeToLive</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -235,6 +238,7 @@ operating systems.
     </child>
     <child>
       <object class="GtkEntry" id="MaxPacketSize">
+	<property name="name">MaxPacketSize</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -274,6 +278,7 @@ server.
     </child>
     <child>
       <object class="GtkCheckButton" id="Forward">
+	<property name="name">Forward</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -307,6 +312,7 @@ so the values will not loop.
     </child>
     <child>
       <object class="GtkCheckButton" id="ReportStats">
+	<property name="name">ReportStats</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

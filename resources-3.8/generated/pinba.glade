@@ -62,6 +62,7 @@ The plugin provides the following configuration options:
     </child>
     <child>
       <object class="GtkEntry" id="Address">
+	<property name="name">Address</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -92,6 +93,7 @@ bind to the any address ::0.
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -123,6 +125,7 @@ numbers and thus requires a string argument.
     </child>
     <child>
       <object class="GtkEntry" id="View">
+	<property name="name">View</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

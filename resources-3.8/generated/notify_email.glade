@@ -37,6 +37,7 @@ Available configuration options:
     </child>
     <child>
       <object class="GtkEntry" id="From">
+	<property name="name">From</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -67,6 +68,7 @@ Default: root@localhost
     </child>
     <child>
       <object class="GtkEntry" id="Recipient">
+	<property name="name">Recipient</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -98,6 +100,7 @@ At least one Recipient must be present for the plugin to work correctly.
     </child>
     <child>
       <object class="GtkEntry" id="SMTPServer">
+	<property name="name">SMTPServer</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -128,6 +131,7 @@ Default: localhost
     </child>
     <child>
       <object class="GtkEntry" id="SMTPPort">
+	<property name="name">SMTPPort</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -158,6 +162,7 @@ Default: 25
     </child>
     <child>
       <object class="GtkEntry" id="SMTPUser">
+	<property name="name">SMTPUser</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -187,6 +192,7 @@ Username for ASMTP authentication. Optional.
     </child>
     <child>
       <object class="GtkEntry" id="SMTPPassword">
+	<property name="name">SMTPPassword</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -216,6 +222,7 @@ Password for ASMTP authentication. Optional.
     </child>
     <child>
       <object class="GtkEntry" id="Subject">
+	<property name="name">Subject</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

@@ -23,48 +23,6 @@ Only Connection is required.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label-InterfaceDevice">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">InterfaceDevice</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="InterfaceDevice">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Select which domains and devices are collected.
-If IgnoreSelected is not given or false then only the listed domains and
-disk/network devices are collected.
-If IgnoreSelected is true then the test is reversed and the listed
-domains and disk/network devices are ignored, while the rest are collected.
-The domain name and device names may use a regular expression, if the name is
-surrounded by /.../ and collectd was compiled with support for regexps.
-The default is to collect statistics for all domains and all their devices.
-Example:
-
- BlockDevice "/:hdb/"
- IgnoreSelected "true"
-Ignore all hdb devices on any domain, but other block devices (eg. hda)
-will be collected.
-</property>
-	<property name="placeholder_text" translatable="yes">name:dev</property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkLabel" id="label-Connection">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -72,13 +30,14 @@ will be collected.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Connection">
+	<property name="name">Connection</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -91,7 +50,7 @@ Details which URIs allowed are given at http://libvirt.org/uri.html.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -104,13 +63,14 @@ Details which URIs allowed are given at http://libvirt.org/uri.html.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="RefreshInterval">
+	<property name="name">RefreshInterval</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -125,7 +85,91 @@ option is set to 0, refreshing is disabled completely.
       </object>
       <packing>
 	<property name="left_attach">1</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-Domain">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">Domain</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
 	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="Domain">
+	<property name="name">Domain</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for Domain</property>
+	<property name="placeholder_text" translatable="yes">name</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-BlockDevice">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">BlockDevice</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="BlockDevice">
+	<property name="name">BlockDevice</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for BlockDevice</property>
+	<property name="placeholder_text" translatable="yes">name:dev</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-InterfaceDevice">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">InterfaceDevice</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">4</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="InterfaceDevice">
+	<property name="name">InterfaceDevice</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for InterfaceDevice</property>
+	<property name="placeholder_text" translatable="yes">name:dev</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -138,13 +182,14 @@ option is set to 0, refreshing is disabled completely.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -166,7 +211,7 @@ will be collected.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -179,13 +224,14 @@ will be collected.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="HostnameFormat">
+	<property name="name">HostnameFormat</property>
 	<items>
 	  <item translatable="no">name</item>
 	  <item translatable="no">uuid</item>
@@ -209,7 +255,7 @@ between, thus "foo:1234-1234-1234-1234").
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -222,13 +268,14 @@ between, thus "foo:1234-1234-1234-1234").
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="InterfaceFormat">
+	<property name="name">InterfaceFormat</property>
 	<items>
 	  <item translatable="no">name</item>
 	  <item translatable="no">address</item>
@@ -246,7 +293,7 @@ interface path might change between reboots of a guest or across migrations.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">7</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -259,13 +306,14 @@ interface path might change between reboots of a guest or across migrations.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="PluginInstanceFormat">
+	<property name="name">PluginInstanceFormat</property>
 	<items>
 	  <item translatable="no">name</item>
 	  <item translatable="no">uuid</item>
@@ -281,7 +329,7 @@ uuid means use the guest's UUID.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">8</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>

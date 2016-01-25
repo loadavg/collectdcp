@@ -58,6 +58,7 @@ blocks, the following options are recognized:
     </child>
     <child>
       <object class="GtkEntry" id="Instance">
+	<property name="name">Instance</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -90,6 +91,7 @@ and all leading underscores removed.
     </child>
     <child>
       <object class="GtkEntry" id="Name">
+	<property name="name">Name</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -122,6 +124,7 @@ This option has been named after the -name parameter to find(1).
     </child>
     <child>
       <object class="GtkEntry" id="MTime">
+	<property name="name">MTime</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -161,6 +164,7 @@ also specify fractional numbers, e. g. "0.5d" is identical to
     </child>
     <child>
       <object class="GtkEntry" id="Size">
+	<property name="name">Size</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -197,6 +201,7 @@ note that there are 1000 bytes in a kilobyte, not 1024.
     </child>
     <child>
       <object class="GtkCheckButton" id="Recursive">
+	<property name="name">Recursive</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -225,6 +230,7 @@ Controls whether or not to recurse into subdirectories. Enabled by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="IncludeHidden">
+	<property name="name">IncludeHidden</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

@@ -53,6 +53,7 @@ does not result in RRD files being created / expected in the wrong place.
     </child>
     <child>
       <object class="GtkEntry" id="DaemonAddress">
+	<property name="name">DaemonAddress</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -87,6 +88,7 @@ library. See rrdcached(1) for details. Example:
     </child>
     <child>
       <object class="GtkEntry" id="DataDir">
+	<property name="name">DataDir</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -118,6 +120,7 @@ Use of an absolute path is recommended.
     </child>
     <child>
       <object class="GtkCheckButton" id="CreateFiles">
+	<property name="name">CreateFiles</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -148,6 +151,7 @@ expected. Default is true.
     </child>
     <child>
       <object class="GtkCheckButton" id="CreateFilesAsync">
+	<property name="name">CreateFilesAsync</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -182,6 +186,7 @@ short while, while the file is being written.
     </child>
     <child>
       <object class="GtkEntry" id="StepSize">
+	<property name="name">StepSize</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -215,6 +220,7 @@ exec plugin or when the daemon is set up to receive data from other hosts.
     </child>
     <child>
       <object class="GtkEntry" id="HeartBeat">
+	<property name="name">HeartBeat</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -247,6 +253,7 @@ a very good reason to do so.
     </child>
     <child>
       <object class="GtkEntry" id="RRARows">
+	<property name="name">RRARows</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -285,6 +292,7 @@ default is 1200.
     </child>
     <child>
       <object class="GtkEntry" id="RRATimespan">
+	<property name="name">RRATimespan</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -317,6 +325,7 @@ For more information on how RRA-sizes are calculated see RRARows above.
     </child>
     <child>
       <object class="GtkEntry" id="XFF">
+	<property name="name">XFF</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -348,6 +357,7 @@ one (exclusive).
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectStatistics">
+	<property name="name">CollectStatistics</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

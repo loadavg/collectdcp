@@ -69,36 +69,6 @@ Publish blocks in the future.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label-User">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">User</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="User">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Credentials used to authenticate to the AMQP broker. By default "guest"/"guest"
-is used.
-</property>
-	<property name="placeholder_text" translatable="yes">User</property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkLabel" id="label-Host">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -106,13 +76,14 @@ is used.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -123,7 +94,7 @@ the underlying communications library, rabbitmq-c, which is "localhost".
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -136,13 +107,14 @@ the underlying communications library, rabbitmq-c, which is "localhost".
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -154,7 +126,7 @@ argument must be a string, even if the numeric form is used. Defaults to
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -167,19 +139,48 @@ argument must be a string, even if the numeric form is used. Defaults to
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="VHost">
+	<property name="name">VHost</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
 Name of the virtual host on the AMQP broker to use. Defaults to "/".
 </property>
 	<property name="placeholder_text" translatable="yes">VHost</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-User">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">User</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="User">
+	<property name="name">User</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for User</property>
+	<property name="placeholder_text" translatable="yes">User</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -203,6 +204,7 @@ Name of the virtual host on the AMQP broker to use. Defaults to "/".
     </child>
     <child>
       <object class="GtkEntry" id="Password">
+	<property name="name">Password</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -233,6 +235,7 @@ is used.
     </child>
     <child>
       <object class="GtkEntry" id="Exchange">
+	<property name="name">Exchange</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -266,6 +269,7 @@ configured. See the Queue and RoutingKey options below.
     </child>
     <child>
       <object class="GtkEntry" id="ExchangeType">
+	<property name="name">ExchangeType</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -297,6 +301,7 @@ be bound to this exchange.
     </child>
     <child>
       <object class="GtkEntry" id="Queue">
+	<property name="name">Queue</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -327,6 +332,7 @@ explicitly, a unique queue name will be created by the broker.
     </child>
     <child>
       <object class="GtkCheckButton" id="QueueDurable">
+	<property name="name">QueueDurable</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -359,6 +365,7 @@ publish side.
     </child>
     <child>
       <object class="GtkEntry" id="RoutingKey">
+	<property name="name">RoutingKey</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -398,6 +405,7 @@ for example.
     </child>
     <child>
       <object class="GtkEntry" id="ConnectionRetryDelay">
+	<property name="name">ConnectionRetryDelay</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -430,6 +438,7 @@ values are ready for submission (in Publish mode).
     </child>
     <child>
       <object class="GtkComboBoxText" id="Format">
+	<property name="name">Format</property>
 	<items>
 	  <item translatable="no">Command</item>
 	  <item translatable="no">JSON</item>
@@ -475,6 +484,7 @@ only decode the Command format.
     </child>
     <child>
       <object class="GtkComboBoxText" id="GraphitePrefix">
+	<property name="name">GraphitePrefix</property>
 	<items>
 	  <item translatable="no">Format</item>
 	  <item translatable="no">Graphite</item>
@@ -509,6 +519,7 @@ Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;
     </child>
     <child>
       <object class="GtkComboBoxText" id="GraphitePostfix">
+	<property name="name">GraphitePostfix</property>
 	<items>
 	  <item translatable="no">Format</item>
 	  <item translatable="no">Graphite</item>
@@ -543,6 +554,7 @@ Metric name will be "&lt;prefix&gt;&lt;host&gt;&lt;postfix&gt;&lt;plugin&gt;&lt;
     </child>
     <child>
       <object class="GtkComboBoxText" id="GraphiteEscapeChar">
+	<property name="name">GraphiteEscapeChar</property>
 	<items>
 	  <item translatable="no">Format</item>
 	  <item translatable="no">Graphite</item>
@@ -578,6 +590,7 @@ Default is "_" (Underscore).
     </child>
     <child>
       <object class="GtkCheckButton" id="GraphiteSeparateInstances">
+	<property name="name">GraphiteSeparateInstances</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -609,6 +622,7 @@ instance) are put into one component, for example host.cpu-0.cpu-idle.
     </child>
     <child>
       <object class="GtkCheckButton" id="GraphiteAlwaysAppendDS">
+	<property name="name">GraphiteAlwaysAppendDS</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

@@ -105,58 +105,6 @@ The following options are accepted:
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label-MinVersion">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MinVersion</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="MinVersion">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Only use this query for the specified database version. You can use these
-options to provide multiple queries with the same name but with a slightly
-different syntax. The plugin will use only those queries, where the specified
-minimum and maximum versions fit the version of the database in use.
-The database version is determined by dbi_conn_get_engine_version, see the
-libdbi documentation
-for details. Basically, each part of the version is assumed to be in the range
-from 00 to 99 and all dots are removed. So version "4.1.2" becomes
-"40102", version "5.0.42" becomes "50042".
-Warning: The plugin will use all matching queries, so if you specify
-multiple queries with the same name and overlapping ranges, weird stuff will
-happen. Don't to it! A valid example would be something along these lines:
-
-  MinVersion 40000
-  MaxVersion 49999
-  ...
-  MinVersion 50000
-  MaxVersion 50099
-  ...
-  MinVersion 50100
-  # No maximum
-In the above example, there are three ranges that don't overlap. The last one
-goes from version "5.1.0" to infinity, meaning "all later versions". Versions
-before "4.0.0" are not specified.
-</property>
-	<property name="placeholder_text" translatable="yes">Version</property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkLabel" id="label-Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -164,13 +112,14 @@ before "4.0.0" are not specified.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Statement">
+	<property name="name">Statement</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -190,6 +139,34 @@ Please note that some databases, for example Oracle, will fail if you
 include a semicolon at the end of the statement.
 </property>
 	<property name="placeholder_text" translatable="yes">SQL</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">0</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-MinVersion">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">MinVersion</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">1</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="MinVersion">
+	<property name="name">MinVersion</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for MinVersion</property>
+	<property name="placeholder_text" translatable="yes">Version</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -213,6 +190,7 @@ include a semicolon at the end of the statement.
     </child>
     <child>
       <object class="GtkEntry" id="MaxVersion">
+	<property name="name">MaxVersion</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -265,6 +243,7 @@ before "4.0.0" are not specified.
     </child>
     <child>
       <object class="GtkEntry" id="Type">
+	<property name="name">Type</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -301,6 +280,7 @@ There must be exactly one Type option inside each Result block.
     </child>
     <child>
       <object class="GtkEntry" id="InstancePrefix">
+	<property name="name">InstancePrefix</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -333,6 +313,7 @@ separated by dashes ("-").
     </child>
     <child>
       <object class="GtkComboBoxText" id="InstancesFrom">
+	<property name="name">InstancesFrom</property>
 	<items>
 	  <item translatable="no">column0</item>
 	  <item translatable="no">column1</item>
@@ -373,6 +354,7 @@ will be empty.
     </child>
     <child>
       <object class="GtkComboBoxText" id="ValuesFrom">
+	<property name="name">ValuesFrom</property>
 	<items>
 	  <item translatable="no">column0</item>
 	  <item translatable="no">column1</item>
@@ -414,6 +396,7 @@ There must be at least one ValuesFrom option inside each Result block.
     </child>
     <child>
       <object class="GtkComboBoxText" id="MetadataFrom">
+	<property name="name">MetadataFrom</property>
 	<items>
 	  <item translatable="no">column0</item>
 	  <item translatable="no">column1</item>

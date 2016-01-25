@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="Process">
+	<property name="name">Process</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -59,6 +60,7 @@ io data (where available) and minor and major pagefaults.
     </child>
     <child>
       <object class="GtkComboBoxText" id="ProcessMatch">
+	<property name="name">ProcessMatch</property>
 	<items>
 	  <item translatable="no">name</item>
 	  <item translatable="no">regex</item>

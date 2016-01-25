@@ -1,0 +1,32 @@
+/*
+ * project collectd_edit
+ * ing. Carlo Capelli
+ * Brescia 2015
+ * Copyright (c) 2015,2016 Sputnik7
+ * License MIT
+ */
+
+#ifndef AST_LOADER_H
+#define AST_LOADER_H
+
+#include "parse_conf.h"
+
+/**
+ * @brief The ast_loader class
+ *  get file content with user interface to show errors
+ */
+struct ast_loader {
+
+    /**
+     * @brief ast_loader
+     *  constructor
+     * @param conf
+     *  symbolic .conf name (for instance, collectd)
+     */
+    ast_loader(std::string conf);
+
+    std::string text;
+    parse_conf::AST *ast = 0;
+};
+
+#endif // AST_LOADER_H

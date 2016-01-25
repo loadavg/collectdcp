@@ -38,6 +38,7 @@ collection only of specific disks.
     </child>
     <child>
       <object class="GtkEntry" id="Disk">
+	<property name="name">Disk</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -73,6 +74,7 @@ is interpreted as a regular expression. Examples:
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

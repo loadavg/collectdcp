@@ -58,6 +58,7 @@ The ceph plugin accepts the following configuration options:
     </child>
     <child>
       <object class="GtkCheckButton" id="LongRunAvgLatency">
+	<property name="name">LongRunAvgLatency</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -90,6 +91,7 @@ Default: Disabled
     </child>
     <child>
       <object class="GtkCheckButton" id="ConvertSpecialMetricTypes">
+	<property name="name">ConvertSpecialMetricTypes</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

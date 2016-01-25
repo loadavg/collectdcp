@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="Interface">
+	<property name="name">Interface</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -59,6 +60,7 @@ may not work on certain platforms, such as Mac OS X.
     </child>
     <child>
       <object class="GtkEntry" id="IgnoreSource">
+	<property name="name">IgnoreSource</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -88,6 +90,7 @@ Ignore packets that originate from this address.
     </child>
     <child>
       <object class="GtkCheckButton" id="SelectNumericQueryTypes">
+	<property name="name">SelectNumericQueryTypes</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

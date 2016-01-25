@@ -34,6 +34,7 @@ Available configuration options:
     </child>
     <child>
       <object class="GtkEntry" id="Value">
+	<property name="name">Value</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -74,6 +75,7 @@ If no value is configured at all, all values will be selected.
     </child>
     <child>
       <object class="GtkCheckButton" id="IgnoreSelected">
+	<property name="name">IgnoreSelected</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

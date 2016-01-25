@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -58,6 +59,7 @@ apcupsd can handle it.
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -87,6 +89,7 @@ TCP-Port to connect to. Defaults to 3551.
     </child>
     <child>
       <object class="GtkCheckButton" id="ReportSeconds">
+	<property name="name">ReportSeconds</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

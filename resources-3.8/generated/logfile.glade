@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkComboBoxText" id="LogLevel">
+	<property name="name">LogLevel</property>
 	<items>
 	  <item translatable="no">debug</item>
 	  <item translatable="no">info</item>
@@ -65,6 +66,7 @@ debugging support.
     </child>
     <child>
       <object class="GtkEntry" id="File">
+	<property name="name">File</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -97,6 +99,7 @@ is running in foreground- or non-daemon-mode.
     </child>
     <child>
       <object class="GtkCheckButton" id="Timestamp">
+	<property name="name">Timestamp</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -125,6 +128,7 @@ Prefix all lines printed by the current time. Defaults to true.
     </child>
     <child>
       <object class="GtkCheckButton" id="PrintSeverity">
+	<property name="name">PrintSeverity</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

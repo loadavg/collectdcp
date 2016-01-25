@@ -9,6 +9,7 @@
 #include "prints.h"
 #include "fileuty.h"
 #include "view_ast.h"
+#include "ast_loader.h"
 #include "process_run.h"
 #include "attr_helper.h"
 #include "file2string.h"
@@ -22,7 +23,6 @@
 
 #include <glibmm/fileutils.h>
 #include <glibmm/stringutils.h>
-//#include <gtksourceview/gtksource.h>
 
 using namespace attr_helper;
 using namespace std;
@@ -34,6 +34,9 @@ view_ast::view_ast(string conf) :
     prepare_attributes(buf);
     set_buffer(buf);
 
+    ast_loader loader(conf);
+    ast = loader.ast;
+/*
     auto path = model::conf_file(conf);
     string text;
     if (fileuty(path)) {
@@ -48,6 +51,7 @@ view_ast::view_ast(string conf) :
             message_box(e.what());
         }
     }
+*/
 
     #ifdef USE_SOURCEVIEW
     RefPtr<Gsv::UndoManager> um = buf->get_undo_manager();
@@ -63,7 +67,7 @@ view_ast::view_ast(string conf) :
         apply_AST_attributes(buf);
     }
     else
-        buf->set_text(text);
+        buf->set_text(loader.text);
 
     #ifdef USE_SOURCEVIEW
     um->end_not_undoable_action();

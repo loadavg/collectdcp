@@ -35,6 +35,7 @@ The configuration options are the same as for the apache plugin above:
     </child>
     <child>
       <object class="GtkEntry" id="URL">
+	<property name="name">URL</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -64,6 +65,7 @@ Sets the URL of the XML status output.
     </child>
     <child>
       <object class="GtkEntry" id="User">
+	<property name="name">User</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -93,6 +95,7 @@ Optional user name needed for authentication.
     </child>
     <child>
       <object class="GtkEntry" id="Password">
+	<property name="name">Password</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -122,6 +125,7 @@ Optional password needed for authentication.
     </child>
     <child>
       <object class="GtkCheckButton" id="VerifyPeer">
+	<property name="name">VerifyPeer</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -151,6 +155,7 @@ http://curl.haxx.se/docs/sslcerts.html for details. Enabled by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="VerifyHost">
+	<property name="name">VerifyHost</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -183,6 +188,7 @@ connecting to a SSL enabled server. Enabled by default.
     </child>
     <child>
       <object class="GtkEntry" id="CACert">
+	<property name="name">CACert</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -214,6 +220,7 @@ and are checked by default depends on the distribution you use.
     </child>
     <child>
       <object class="GtkEntry" id="Timeout">
+	<property name="name">Timeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

@@ -49,6 +49,7 @@ Available options:
     </child>
     <child>
       <object class="GtkEntry" id="StatusFile">
+	<property name="name">StatusFile</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -78,6 +79,7 @@ Specifies the location of the status file.
     </child>
     <child>
       <object class="GtkCheckButton" id="ImprovedNamingSchema">
+	<property name="name">ImprovedNamingSchema</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -109,6 +111,7 @@ maintain backwards compatibility this option is disabled by default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectCompression">
+	<property name="name">CollectCompression</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -139,6 +142,7 @@ default.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectIndividualUsers">
+	<property name="name">CollectIndividualUsers</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -169,6 +173,7 @@ because aggregating this data in a save manner is tricky. Defaults to true.
     </child>
     <child>
       <object class="GtkCheckButton" id="CollectUserCount">
+	<property name="name">CollectUserCount</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

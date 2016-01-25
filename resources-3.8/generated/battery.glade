@@ -31,6 +31,7 @@ laptop batteries.
     </child>
     <child>
       <object class="GtkCheckButton" id="ValuesPercentage">
+	<property name="name">ValuesPercentage</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -63,6 +64,7 @@ Defaults to false.
     </child>
     <child>
       <object class="GtkCheckButton" id="ReportDegraded">
+	<property name="name">ReportDegraded</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

@@ -27,6 +27,7 @@
     </child>
     <child>
       <object class="GtkComboBoxText" id="Chain">
+	<property name="name">Chain</property>
 	<items>
 	  <item translatable="no">Table</item>
 	  <item translatable="no">Chain</item>

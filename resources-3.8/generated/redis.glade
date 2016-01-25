@@ -50,6 +50,7 @@ which is used by the plugin if no configuration is present.
     </child>
     <child>
       <object class="GtkEntry" id="Node">
+	<property name="name">Node</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -82,6 +83,7 @@ identifier which is used as plugin instance. It is limited to
     </child>
     <child>
       <object class="GtkEntry" id="Host">
+	<property name="name">Host</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -112,6 +114,7 @@ running on.
     </child>
     <child>
       <object class="GtkEntry" id="Port">
+	<property name="name">Port</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -143,6 +146,7 @@ that numerical port numbers must be given as a string, too.
     </child>
     <child>
       <object class="GtkEntry" id="Password">
+	<property name="name">Password</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -172,6 +176,7 @@ Use Password to authenticate when connecting to Redis.
     </child>
     <child>
       <object class="GtkEntry" id="Timeout">
+	<property name="name">Timeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -204,6 +209,7 @@ than Interval defined globally.
     </child>
     <child>
       <object class="GtkEntry" id="Query">
+	<property name="name">Query</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -234,6 +240,7 @@ There may be an arbitrary number of queries to execute.
     </child>
     <child>
       <object class="GtkEntry" id="Type">
+	<property name="name">Type</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -264,6 +271,7 @@ the result of the query. When not supplied, will default to gauge.
     </child>
     <child>
       <object class="GtkEntry" id="Instance">
+	<property name="name">Instance</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">

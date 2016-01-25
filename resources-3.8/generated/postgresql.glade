@@ -124,79 +124,6 @@ query.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkLabel" id="label-InstancePrefix">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">InstancePrefix</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="InstancePrefix">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Specify how to create the "TypeInstance" for each data set (i. e. line).
-InstancePrefix defines a static prefix that will be prepended to all type
-instances. InstancesFrom defines the column names whose values will be used
-to create the type instance. Multiple values will be joined together using the
-hyphen (-) as separation character.
-The plugin itself does not check whether or not all built instances are
-different. It is your responsibility to assure that each is unique.
-Both options are optional. If none is specified, the type instance will be
-empty.
-</property>
-	<property name="placeholder_text" translatable="yes">prefix</property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">0</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label-MinVersion">
-	<property name="visible">True</property>
-	<property name="can_focus">False</property>
-	<property name="label" translatable="yes">MinVersion</property>
-      </object>
-      <packing>
-	<property name="left_attach">0</property>
-	<property name="top_attach">1</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="MinVersion">
-	<property name="visible">True</property>
-	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">
-Specify the minimum or maximum version of PostgreSQL that this query should be
-used with. Some statistics might only be available with certain versions of
-PostgreSQL. This allows you to specify multiple queries with the same name but
-which apply to different versions, thus allowing you to use the same
-configuration in a heterogeneous environment.
-The version has to be specified as the concatenation of the major, minor
-and patch-level versions, each represented as two-decimal-digit numbers. For
-example, version 8.2.3 will become 80203.
-</property>
-	<property name="placeholder_text" translatable="yes">version</property>
-      </object>
-      <packing>
-	<property name="left_attach">1</property>
-	<property name="top_attach">1</property>
-	<property name="width">1</property>
-	<property name="height">1</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkLabel" id="label-Statement">
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
@@ -204,13 +131,14 @@ example, version 8.2.3 will become 80203.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Statement">
+	<property name="name">Statement</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -228,7 +156,7 @@ The returned lines will be handled separately one after another.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">2</property>
+	<property name="top_attach">0</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -241,13 +169,14 @@ The returned lines will be handled separately one after another.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="Param">
+	<property name="name">Param</property>
 	<items>
 	  <item translatable="no">hostname</item>
 	  <item translatable="no">database</item>
@@ -281,7 +210,7 @@ version 3 and above which was introduced in version 7.4 of PostgreSQL.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">3</property>
+	<property name="top_attach">1</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -294,13 +223,14 @@ version 3 and above which was introduced in version 7.4 of PostgreSQL.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">2</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkEntry" id="Type">
+	<property name="name">Type</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
@@ -314,7 +244,35 @@ This option is required inside a Result block.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">4</property>
+	<property name="top_attach">2</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-InstancePrefix">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">InstancePrefix</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">3</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="InstancePrefix">
+	<property name="name">InstancePrefix</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for InstancePrefix</property>
+	<property name="placeholder_text" translatable="yes">prefix</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
+	<property name="top_attach">3</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -327,13 +285,14 @@ This option is required inside a Result block.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="InstancesFrom">
+	<property name="name">InstancesFrom</property>
 	<items>
 	  <item translatable="no">column0</item>
 	  <item translatable="no">column1</item>
@@ -354,7 +313,7 @@ empty.
       </object>
       <packing>
 	<property name="left_attach">1</property>
-	<property name="top_attach">5</property>
+	<property name="top_attach">4</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
@@ -367,13 +326,14 @@ empty.
       </object>
       <packing>
 	<property name="left_attach">0</property>
-	<property name="top_attach">6</property>
+	<property name="top_attach">5</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkComboBoxText" id="ValuesFrom">
+	<property name="name">ValuesFrom</property>
 	<items>
 	  <item translatable="no">column0</item>
 	  <item translatable="no">column1</item>
@@ -398,6 +358,34 @@ in the given order.
       </object>
       <packing>
 	<property name="left_attach">1</property>
+	<property name="top_attach">5</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label-MinVersion">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="label" translatable="yes">MinVersion</property>
+      </object>
+      <packing>
+	<property name="left_attach">0</property>
+	<property name="top_attach">6</property>
+	<property name="width">1</property>
+	<property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="MinVersion">
+	<property name="name">MinVersion</property>
+	<property name="visible">True</property>
+	<property name="can_focus">True</property>
+	<property name="tooltip_text" translatable="yes">no description available for MinVersion</property>
+	<property name="placeholder_text" translatable="yes">version</property>
+      </object>
+      <packing>
+	<property name="left_attach">1</property>
 	<property name="top_attach">6</property>
 	<property name="width">1</property>
 	<property name="height">1</property>
@@ -418,6 +406,7 @@ in the given order.
     </child>
     <child>
       <object class="GtkEntry" id="MaxVersion">
+	<property name="name">MaxVersion</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
 	<property name="tooltip_text" translatable="yes">
