@@ -96,8 +96,11 @@ strong_em(A, S) :-
 split_alt(T, S) :-
 	atomic_list_concat(L, '|', T), member(S, L).
 
+%%	find_dl(+G, -V, -Before, -After)
+%
+%	get value V of sought element dl
+%
 find_dl(G, V, Before, After) :-
-	%member(element(dl, _, V), G).
 	append(Before, [element(dl, _, V)|After], G),
 	xpath(V, //dt(normalize_space), DtText),
 	DtText \= ''.
@@ -163,9 +166,19 @@ capture_section([], _Tag, [], []).
 manpages(PluginManpages, ManPage, PluginName) :-
 	atomic_list_concat([UrlPage, PluginName], #, PluginManpages),
 	get_page(UrlPage, ManPage).
+
+%%	plugin_url_name(+Plugin, -UrlPage, -PluginName)
+%
+%	decode collectd wiki convention for references to plugin
+%	documentation pages
+%
 plugin_url_name(Plugin, UrlPage, PluginName) :-
 	atomic_list_concat([UrlPage, PluginName], #, Plugin.manpages).
 
+%%	collectd_url(+Type, -Url)
+%
+%	resolve a shorthand symbol to actual URL
+%
 collectd_url(top, Url) :- !,
 	collectd_url('/wiki/index.php/Table_of_Plugins', Url).
 collectd_url(man, Url) :- !,
@@ -209,6 +222,10 @@ clean_tail(HrefD, What, HRef) :-
 	atom_length(HrefD, LHrefD), W1 is LHrefD - W,
 	sub_atom(HrefD, 0,W1,_, HRef).
 
+%%	get_page(+Url, -Html)
+%
+%	if not page cached, grab it and cache
+%
 get_page(Url, Html) :-
 	url_page(Url, Html), !.
 get_page(Url, Html) :-

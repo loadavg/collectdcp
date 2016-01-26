@@ -23,6 +23,9 @@
 #include <gtkmm/treeselection.h>
 #include <gtkmm/scrolledwindow.h>
 
+#include <gtkmm/cssprovider.h>
+//#include <gtkmm/styleproperty.h>
+
 #include <iostream>
 
 collectdcp_win* collectdcp_win::setup(RefPtr<Application> app) {
@@ -92,6 +95,30 @@ collectdcp_win::collectdcp_win(BaseObjectType *cobject, const RefPtr<Builder>& r
 
     host_plugin_prop = instance_widget<ScrolledWindow>(refBuilder, "host_plugin_prop");
     plugin_description = instance_widget<TextView>(refBuilder, "plugin_description");
+
+    /*
+    if (auto label = instance_widget<Label>(refBuilder, "label1")) {
+        string data = "GtkLabel {color: #ff00ea;font: Comic Sans MS 16}";
+        auto css = CssProvider::create();
+        if (!css->load_from_data(data)) {
+            cerr << "Failed to load css\n";
+            std::exit(1);
+        }
+        auto screen = Gdk::Screen::get_default();
+        auto ctx = label->get_style_context();
+        ctx->add_provider_for_screen(screen, css, 0); //GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+    */
+
+    auto css = CssProvider::create();
+    auto path = get_resource_path("button", "css");
+    if (!css->load_from_path(path)) {
+        cerr << "Failed to load css\n";
+        std::exit(1);
+    }
+    auto screen = Gdk::Screen::get_default();
+    auto ctx = get_style_context();
+    ctx->add_provider_for_screen(screen, css, 0); //GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 /*

@@ -225,4 +225,5 @@ DISTFILES += \
     resources-3.8/generated/write_tsdb.glade \
     resources-3.8/generated/zookeeper.glade \
     swipl-plgi/xml_ize.pl \
-    license.txt
+    license.txt \
+    resources-3.8/button.css

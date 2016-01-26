@@ -84,7 +84,8 @@ gen_plugin(P) :-
 	gen_glade_target_path(Name, Path),
 	xml_save_file(Path, XML), !.
 
-get_desc(X, Y) :-  xpath(X, /self(text), Y) -> true ; Y = X.
+get_desc(X, Y) :-
+	xpath(X, /self(text), Y) -> true ; Y = X.
 
 gen_main(Man) :-
 	member(X, Man),	_{name:global_options} :< X,
@@ -161,6 +162,7 @@ gen_row(Field, Row, E) :-
 	Lab = [object([class="GtkLabel", id=Label], Ps1), P1],
 
 	packing(1, Row, P2),
+	/*
 	(   Values = [Placeholder]
 	->  Class = 'GtkEntry',
 	    properties([visible(true)
@@ -188,10 +190,45 @@ gen_row(Field, Row, E) :-
 		       ,tooltip_text(Desc, translatable=yes)
 		       ], Ps),
 	    Ps2 = [Items|Ps]
-	;   throw(cannot_generate_field(Field))
+	;   throw(cannot_generate_field(Name, on, Values))
 	),
+	*/
+	(   entry(Values, Placeholder)
+	->  Class = 'GtkEntry',
+	    properties([visible(true)
+		       ,can_focus(true)
+		       ,tooltip_text(Desc, translatable=yes) %,tooltip_markup(Desc, translatable=yes)
+		       ,placeholder_text(Placeholder, translatable=yes)
+		       ], Ps2)
+	;   booleans(Values)
+	->  Class = 'GtkCheckButton',
+	    properties([visible(true)
+		       ,can_focus(true)
+		       ,tooltip_text(Desc, translatable=yes)
+		       ], Ps2)
+	;   items(Values, Items)
+	->  Class = 'GtkComboBoxText',
+	    properties([visible(true)
+		       ,can_focus(false)
+		       ,tooltip_text(Desc, translatable=yes)
+		       ], Ps),
+	    Ps2 = [Items|Ps]
+	;   throw(cannot_generate_field(Name, on, Values))
+	),
+
 	Obj = [object([class=Class, id=Name], [property([name=name],[Name])|Ps2]), P2],
 	!, xml_ize([child([], Lab), child([], Obj)], E).
+
+entry(Values, Placeholder) :-
+	(   Values = [Placeholder]
+	->  true
+	;   Values = [Value, Optionals]
+	->  sub_atom(Optionals, 0,1,_, '['),
+	    sub_atom(Optionals, _,1,0, ']'),
+	    format(atom(Placeholder), '~w ~w', [Value, Optionals])
+	;   Values = []
+	->  Placeholder = ?
+	).
 
 booleans(Vs) :- sort(Vs, [false,true]).
 
