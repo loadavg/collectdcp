@@ -224,4 +224,5 @@ DISTFILES += \
     resources-3.8/generated/write_sensu.glade \
     resources-3.8/generated/write_tsdb.glade \
     resources-3.8/generated/zookeeper.glade \
-    swipl-plgi/xml_ize.pl
+    swipl-plgi/xml_ize.pl \
+    license.txt
