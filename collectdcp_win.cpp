@@ -71,6 +71,8 @@ collectdcp_win::collectdcp_win(BaseObjectType *cobject, const RefPtr<Builder>& r
     auto text = file2string(get_resource_path("plugins", "template"));
     plugins_defaults = new AST(text);
 
+    CATCH_SHOW([this] { load_css(); });
+
     auto sw = instance_widget<ScrolledWindow>(refBuilder, "scrolledwindow1");
     auto grid_main = instance_widget<Grid>(get_resource("generated/main"), "grid_main");
     sw->add(*grid_main);
@@ -95,37 +97,7 @@ collectdcp_win::collectdcp_win(BaseObjectType *cobject, const RefPtr<Builder>& r
 
     host_plugin_prop = instance_widget<ScrolledWindow>(refBuilder, "host_plugin_prop");
     plugin_description = instance_widget<TextView>(refBuilder, "plugin_description");
-
-    /*
-    if (auto label = instance_widget<Label>(refBuilder, "label1")) {
-        string data = "GtkLabel {color: #ff00ea;font: Comic Sans MS 16}";
-        auto css = CssProvider::create();
-        if (!css->load_from_data(data)) {
-            cerr << "Failed to load css\n";
-            std::exit(1);
-        }
-        auto screen = Gdk::Screen::get_default();
-        auto ctx = label->get_style_context();
-        ctx->add_provider_for_screen(screen, css, 0); //GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-    }
-    */
-
-    auto css = CssProvider::create();
-    auto path = get_resource_path("button", "css");
-    if (!css->load_from_path(path)) {
-        cerr << "Failed to load css\n";
-        std::exit(1);
-    }
-    auto screen = Gdk::Screen::get_default();
-    auto ctx = get_style_context();
-    ctx->add_provider_for_screen(screen, css, 0); //GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
-
-/*
-void collectdcp_win::on_row_activated(const TreeModel::Path& , TreeViewColumn* ) {
-    cout << "on_row_activated" << endl;
-}
-*/
 
 void collectdcp_win::on_cursor_changed() {
     auto sel = plugins_view->get_selection();
@@ -146,4 +118,15 @@ void collectdcp_win::on_cursor_changed() {
             plugin_description->get_buffer()->set_text(desc->get_text());
         });
     }
+}
+
+void collectdcp_win::load_css() {
+    auto css = CssProvider::create();
+    auto path = get_resource_path("button", "css");
+    if (!css->load_from_path(path))
+        throw runtime_error("Failed to load " + path);
+
+    auto screen = Gdk::Screen::get_default();
+    auto ctx = get_style_context();
+    ctx->add_provider_for_screen(screen, css, GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }

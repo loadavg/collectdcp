@@ -46,8 +46,9 @@ public:
     collectdcp_win(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder);
 
 protected:
-    //void on_row_activated(const Gtk::TreeModel::Path &path, Gtk::TreeViewColumn *column);
+
     void on_cursor_changed();
+    void load_css();
 
 private:
     Glib::RefPtr<Gtk::Application> app;
