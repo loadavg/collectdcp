@@ -62,8 +62,9 @@ namespace model
     /**
      * @brief The entries_t struct
      *  index all elements by name
+     *  we can easily have duplicated entries
      */
-    struct entries_t : map<string, RANGE::path_t, iless> {
+    struct entries_t : multimap<string, RANGE::path_t, iless> {
         const AST *ast;
         entries_t(const AST *ast);
     };

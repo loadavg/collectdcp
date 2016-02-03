@@ -23,7 +23,7 @@ class editor_window;
 class view_ast : public edit_text_view
 {
 public:
-    view_ast(std::string conf);
+    view_ast(std::string conf, std::string path = "");
     ~view_ast();
 
     void save();

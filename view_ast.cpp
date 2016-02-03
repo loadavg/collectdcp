@@ -27,31 +27,15 @@
 using namespace attr_helper;
 using namespace std;
 
-view_ast::view_ast(string conf) :
+view_ast::view_ast(string conf, string path) :
     conf(conf)
 {
     RefPtr<edit_text_buf> buf = edit_text_buf::create();
     prepare_attributes(buf);
     set_buffer(buf);
 
-    ast_loader loader(conf);
+    ast_loader loader(conf, path);
     ast = loader.ast;
-/*
-    auto path = model::conf_file(conf);
-    string text;
-    if (fileuty(path)) {
-        text = file2string(path);
-        try {
-            vector<string> errors;
-            ast = new model::AST(text, conf, &errors);
-            if (!errors.empty())
-                message_box(model::AST::format_errors(errors));
-        }
-        catch(exception &e) {
-            message_box(e.what());
-        }
-    }
-*/
 
     #ifdef USE_SOURCEVIEW
     RefPtr<Gsv::UndoManager> um = buf->get_undo_manager();

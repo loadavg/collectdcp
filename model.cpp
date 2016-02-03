@@ -97,16 +97,21 @@ plugins_t::plugins_t(const AST *ast) : ast(ast) {
 
 entries_t::entries_t(const AST *ast) : ast(ast) {
     depth_first df;
+    auto sto = [df, this](string k, const RANGE &r) {
+        RANGE::path_t path = df;
+        path.push_back(&r);
+        emplace(make_pair(k, path));
+    };
     df.visit(ast->elements, [&](const RANGE &r) {
         switch (r.type) {
         case XML_LIKE_t: {
-            auto id = plugin_id(r, ast->text);
-            if (!id.empty())
-                ((*this)[id] = df).push_back(&r);
+            auto &h = r[HEAD_l][HTAG_l];
+            auto tag = unquote(h, ast->text);
+            sto(tag, r);
         } break;
         case KEY_VALUES_t: {
-            auto id = unquote(r[KEY_l], ast->text);
-            ((*this)[id] = df).push_back(&r);
+            auto k = unquote(r[KEY_l], ast->text);
+            sto(k, r);
         } break;
 
         }

@@ -183,8 +183,10 @@ namespace parse_conf
      *  define token access functions
      */
     struct token : pair<const RANGE &, kstring> {
+        token(const RANGE &r, const AST *ast) : pair<const RANGE &, kstring>(r, ast->text) { }
         string unquote() const { return parse_conf::unquote(first, second); }
         string plugin_id() const { return parse_conf::plugin_id(first, second); }
+        string text() const { return first(second); }
     };
 
 }

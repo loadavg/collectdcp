@@ -14,9 +14,9 @@
 
 using namespace std;
 
-ast_loader::ast_loader(string conf) {
-
-    auto path = model::conf_file(conf);
+ast_loader::ast_loader(string conf, string path) {
+    if (path.empty())
+        path = model::conf_file(conf);
     string text;
     if (fileuty(path)) {
         text = file2string(path);

@@ -44,7 +44,8 @@ SOURCES += main.cpp \
     test_win.cpp \
     collectdcp_win.cpp \
     plugin_to_store.cpp \
-    ast_loader.cpp
+    ast_loader.cpp \
+    glob_path_pattern.cpp
 
 HEADERS += \
     parse_conf.h \
@@ -81,7 +82,8 @@ HEADERS += \
     test_win.h \
     collectdcp_win.h \
     plugin_to_store.h \
-    ast_loader.h
+    ast_loader.h \
+    glob_path_pattern.h
 
 DISTFILES += \
     Makefile \
@@ -226,4 +228,5 @@ DISTFILES += \
     resources-3.8/generated/zookeeper.glade \
     swipl-plgi/xml_ize.pl \
     license.txt \
-    resources-3.8/button.css
+    resources-3.8/button.css \
+    resources-3.8/collectdcp_win.glade
