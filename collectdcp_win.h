@@ -194,7 +194,7 @@ protected:
     void on_cursor_changed();
     void load_css();
     void handle_includes();
-    void add_conf_file(std::string symbol, std::string path);
+    view_ast* add_conf_file(std::string symbol, std::string path);
 
     typedef std::map<std::string, view_ast *> t_ast_views_sym;
     t_ast_views_sym views_by_symbol() const;

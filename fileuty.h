@@ -14,15 +14,17 @@
 #include <string>
 
 struct fileuty {
-    fileuty(std::string file) {
+    fileuty(std::string file) : file(file) {
         valid = stat(file.c_str(), &info) == 0;
     }
     bool is_dir() const {
         return valid && (info.st_mode & S_IFDIR) == S_IFDIR;
     }
     operator bool() const { return valid; }
+    std::string path() const { return file; }
 
 private:
+    std::string file;
     bool valid = false;
     struct stat info;
 };

@@ -31,13 +31,7 @@ public:
     Gtk::Notebook* view_notebook();
     Gtk::Label* label();
 
-    Glib::RefPtr<edit_text_buf> buffer() {
-#ifdef USE_SOURCEVIEW
-        return get_source_buffer();
-#else
-        return get_buffer();
-#endif
-    }
+    Glib::RefPtr<edit_text_buf> buffer();
 
     const model::AST *get_AST() const { return ast; }
     std::string conf;

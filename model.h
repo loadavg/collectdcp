@@ -71,10 +71,6 @@ namespace model
 
     /**
      * @brief entry_symbol
-     */
-
-    /**
-     * @brief entry_symbol
      * @return
      *  normally, "collectd"
      */

@@ -69,6 +69,14 @@ view_ast::~view_ast() {
     delete ast_template;
 }
 
+Glib::RefPtr<edit_text_buf> view_ast::buffer() {
+#ifdef USE_SOURCEVIEW
+        return get_source_buffer();
+#else
+        return get_buffer();
+#endif
+}
+
 editor_window* view_ast::app_window() const {
     for (auto p = get_parent(); p; p = p->get_parent())
         if (auto e = is_a<editor_window>(p))
