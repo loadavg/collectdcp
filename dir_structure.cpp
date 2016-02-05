@@ -15,7 +15,7 @@
 
 static dir_structure *p_str = nullptr;
 static int store_info(const char *fpath, const struct stat *, int , struct FTW *) {
-    p_str->push_back(fpath);
+    p_str->push_back(fileuty(fpath));
     return 0;
 }
 

@@ -104,6 +104,8 @@ entries_t::entries_t(const AST *ast) : ast(ast) {
     };
     df.visit(ast->elements, [&](const RANGE &r) {
         switch (r.type) {
+        case COMMENT_t: // ??
+            return false;
         case XML_LIKE_t: {
             auto &h = r[HEAD_l][HTAG_l];
             auto tag = unquote(h, ast->text);

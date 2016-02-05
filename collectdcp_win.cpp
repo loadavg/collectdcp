@@ -122,6 +122,9 @@ void collectdcp_win::handle_includes() {
     for (auto e = main.equal_range("include"); e.first != e.second; ++e.first) {
         entries_t::const_iterator i = e.first;
         const RANGE::path_t &p = i->second;
+//for (auto x : p)
+    //cout << (*x)(main.ast->text) << endl;
+
         if (commented(p))
             continue;
 
@@ -132,10 +135,11 @@ void collectdcp_win::handle_includes() {
             if (type) {
                 if (type.is_dir())
                     for (auto p: dir_structure(path))
-                        add_conf_file(string(), p);
+                        add_conf_file(string(), p.path());
             }
             else for (auto p : glob_path_pattern(path))
-                add_conf_file(string(), p.path());
+                if (p.is_file())
+                    add_conf_file(string(), p.path());
         }
         else if (r.type == XML_LIKE_t) {
             auto dir = parse_conf::unquote(r[HEAD_l][HARGS_l][0], main.ast->text);
@@ -151,7 +155,7 @@ void collectdcp_win::handle_includes() {
                         }
                         else if (p.is_dir())
                             for (auto n: dir_structure(p.path()))
-                                add_conf_file(string(), n);
+                                add_conf_file(string(), n.path());
                 }
         }
     }
@@ -192,7 +196,7 @@ void collectdcp_win::load_css() {
 view_ast* collectdcp_win::add_conf_file(string symbol, string path) {
     if (symbol.empty()) {
         if (!fileuty(path).is_file())
-            throw invalid_argument(path);
+            throw invalid_argument("not a file:" + path);
         symbol = filename_base(path);
     }
     auto v = new view_ast(symbol, path);

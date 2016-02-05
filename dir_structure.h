@@ -10,9 +10,9 @@
 #define DIR_STRUCTURE_H
 
 #include <vector>
-#include <string>
+#include "fileuty.h"
 
-struct dir_structure : std::vector<std::string> {
+struct dir_structure : std::vector<fileuty> {
     dir_structure(std::string root);
 };
 
