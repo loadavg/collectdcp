@@ -115,47 +115,44 @@ inline bool commented(const RANGE::path_t &p) {
 
 void collectdcp_win::handle_includes() {
     auto sym = model::entry_symbol();
-    auto v = add_conf_file(sym, string());
+    auto file = model::conf_file(sym);
+    auto v = add_conf_file(sym, file);
     entries_t main(v->get_AST());   // find_view not available yet
 
     for (auto e = main.equal_range("include"); e.first != e.second; ++e.first) {
         entries_t::const_iterator i = e.first;
         const RANGE::path_t &p = i->second;
-        if (!commented(p)) {
-            const RANGE &r = *p.back();
-            // handle_include_statement(r);
-            if (r.type == KEY_VALUES_t) {
-                auto path = r[VALUES_l](main.ast->text);
-                fileuty type(path);
-                if (type) {
-                    if (type.is_dir()) {
-                        for (auto p: dir_structure(path)) {
-                            add_conf_file(string(), p);
-                        }
-                    }
-                }
-                else {
-                    for (auto p : glob_path_pattern(path)) {
-                        add_conf_file(string(), p.path());
-                    }
-                }
-            }
-            else if (r.type == XML_LIKE_t) {
-                auto args = r[HEAD_l][HARGS_l];
-                for (auto a : args.nesting) {
-                    //auto folder_or_file = token(a, main_config).text();
-                    if (a.type == KEY_VALUES_t) {
-                        auto pattern = a[VALUES_l](main.ast->text);
-                        for (auto p : glob_path_pattern(pattern)) {
-                            add_conf_file(string(), p.path());
-                        }
-                    }
-                }
-                //auto folder_or_file = (main_config->text);
-            }
+        if (commented(p))
+            continue;
 
-            //string x = r(main_config->text);
-            //cout << x.text() << endl;
+        const RANGE &r = *p.back();
+        if (r.type == KEY_VALUES_t) {
+            auto path = r[VALUES_l](main.ast->text);
+            fileuty type(path);
+            if (type) {
+                if (type.is_dir())
+                    for (auto p: dir_structure(path))
+                        add_conf_file(string(), p);
+            }
+            else for (auto p : glob_path_pattern(path))
+                add_conf_file(string(), p.path());
+        }
+        else if (r.type == XML_LIKE_t) {
+            auto dir = parse_conf::unquote(r[HEAD_l][HARGS_l][0], main.ast->text);
+            auto args = r[BODY_l];
+            for (auto a : args.nesting)
+                if (a.type == KEY_VALUES_t) {
+                    auto pattern = parse_conf::unquote(a[VALUES_l], main.ast->text);
+                    auto ppath = dir + '/' + pattern;
+                    for (auto p : glob_path_pattern(ppath))
+                        if (p.is_file()) {
+                            if (p.path() != file)
+                                add_conf_file(string(), p.path());
+                        }
+                        else if (p.is_dir())
+                            for (auto n: dir_structure(p.path()))
+                                add_conf_file(string(), n);
+                }
         }
     }
 }
@@ -194,32 +191,9 @@ void collectdcp_win::load_css() {
 
 view_ast* collectdcp_win::add_conf_file(string symbol, string path) {
     if (symbol.empty()) {
-        fileuty f(path);
-        if (f) {
-            if (f.is_dir())
-                throw invalid_argument(path);
-
-            auto filename = [](string path) {
-                auto ll = path.find_last_of('/');
-                if (ll != string::npos && ll + 1 < path.size())
-                    return path.substr(ll + 1);
-                return path;
-            };
-            auto filename_base = [filename](string path) {
-                auto ll = path.find_last_of('/');
-                if (ll != string::npos && ll < path.size()) {
-                    path = path.substr(ll + 1);
-                }
-                auto file = filename(path);
-                auto pp = file.find_last_of('.');
-                if (pp != string::npos && pp < file.size())
-                    return file.substr(0, string::npos - 1);
-                return file;
-            };
-            symbol = filename_base(f.path());
-        }
-        else
+        if (!fileuty(path).is_file())
             throw invalid_argument(path);
+        symbol = filename_base(path);
     }
     auto v = new view_ast(symbol, path);
     auto w = new ScrolledWindow;

@@ -341,8 +341,8 @@ string AST::format_errors(strings errors, size_t ellipsis) {
 
 string unquote(const RANGE &r, kstring t) {
     string v = r(t);
-    if (r.type == quoted_v)
-        return v.substr(1, v.length() - 2);
+    if (r.type == quoted_v || (v[0] == v[v.size() - 1] && (v[0] == '"' || v[0] == '\'')))
+        return v.substr(1, v.size() - 2);
     return v;
 }
 

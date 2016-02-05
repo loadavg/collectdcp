@@ -7,8 +7,7 @@
  */
 
 #include "dir_structure.h"
-//#include "depth_first.h"
-//#include <dirent.h>
+
 #include <ftw.h>
 #include <cerrno>
 #include <cstring>
@@ -26,16 +25,4 @@ dir_structure::dir_structure(std::string root) {
     p_str = nullptr;
     if (rc)
         throw std::invalid_argument(std::strerror(errno));
-    /*
-    DIR *d = opendir(root.c_str());
-    if (d) {
-        dirent *e = readdir(d);
-        if (e) {
-            //d->d_ino       file serial number
-            push_back(d->name);
-        }
-        closedir(d);
-    }
-    */
-
 }
