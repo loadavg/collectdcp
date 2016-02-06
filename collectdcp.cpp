@@ -111,7 +111,7 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
 void collectdcp_app::setup_actions(const RefPtr<Builder>& builder) {
 
     // install idle time handler
-    Glib::signal_timeout().connect(sigc::mem_fun(*this, &collectdcp_app::on_timer), 100);
+    Glib::signal_timeout().connect_seconds(sigc::mem_fun(*this, &collectdcp_app::on_timer), 1);
 
     auto menuitem_prepare = [&](string action, void(collectdcp_app::*callback)(), bool sensitive = true) {
         MenuItem* mn = 0;
