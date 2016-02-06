@@ -17,6 +17,7 @@
 #include "plugin_to_store.h"
 #include "glob_path_pattern.h"
 
+#include <glibmm.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/treeview.h>
 #include <gtkmm/treestore.h>
@@ -111,7 +112,7 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
 void collectdcp_app::setup_actions(const RefPtr<Builder>& builder) {
 
     // install idle time handler
-    Glib::signal_timeout().connect_seconds(sigc::mem_fun(*this, &collectdcp_app::on_timer), 1);
+    Glib::signal_timeout().connect(sigc::mem_fun(*this, &collectdcp_app::on_timer), 100);
 
     auto menuitem_prepare = [&](string action, void(collectdcp_app::*callback)(), bool sensitive = true) {
         MenuItem* mn = 0;
