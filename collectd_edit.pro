@@ -46,7 +46,8 @@ SOURCES += main.cpp \
     plugin_to_store.cpp \
     ast_loader.cpp \
     glob_path_pattern.cpp \
-    dir_structure.cpp
+    dir_structure.cpp \
+    collectdcp.cpp
 
 HEADERS += \
     parse_conf.h \
@@ -85,7 +86,8 @@ HEADERS += \
     plugin_to_store.h \
     ast_loader.h \
     glob_path_pattern.h \
-    dir_structure.h
+    dir_structure.h \
+    collectdcp.h
 
 DISTFILES += \
     Makefile \

@@ -10,12 +10,12 @@
 
 #include "model.h"
 #include "test_win.h"
+#include "collectdcp.h"
 #include "app_window.h"
 #include "test_parse.h"
 #include "test_glade.h"
 #include "ui_structure.h"
 #include "editor_window.h"
-#include "collectdcp_win.h"
 
 /**
  * @brief main
@@ -105,7 +105,14 @@ int main(int argc, char **argv)
         }
         */
 
+        /*
         if (auto w = collectdcp_win::setup(app)) {
+            w->show_all();
+            rc = app->run(*w, argc, argv);
+            delete w;
+        }
+        */
+        if (auto w = collectdcp_app::setup(app)) {
             w->show_all();
             rc = app->run(*w, argc, argv);
             delete w;
