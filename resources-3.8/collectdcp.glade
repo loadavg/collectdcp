@@ -720,7 +720,7 @@ It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
                             <child>
                               <object class="GtkCellRendererText" id="cr_arguments"/>
                               <attributes>
-                                <attribute name="text">3</attribute>
+                                <attribute name="text">1</attribute>
                               </attributes>
                             </child>
                           </object>

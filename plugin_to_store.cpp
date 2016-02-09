@@ -26,6 +26,12 @@ void plugin_to_store::append(const RANGE &s, Node parent) {
             Node c = treestore->append(parent->children());
             c->set_value(0, e[HEAD_l][HTAG_l](text));
             append(e, c);
+
+            strings args;
+            for (auto a: e[HEAD_l][HARGS_l].nesting)
+                args.push_back(a(text));
+            auto t = join(args, ',');
+            c->set_value(1, t);
         }
         if (e.type == KEY_VALUES_t) {
             Node c = treestore->append(parent->children());
@@ -33,7 +39,8 @@ void plugin_to_store::append(const RANGE &s, Node parent) {
             strings args;
             for (auto a: e[VALUES_l].nesting)
                 args.push_back(a(text));
-            c->set_value(1, join(args, ','));
+            auto t = join(args, ',');
+            c->set_value(1, t);
         }
     }
 }
