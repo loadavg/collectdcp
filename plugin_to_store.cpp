@@ -15,7 +15,7 @@ void plugin_to_store::add_plugin(const RANGE &r, const plugins_t &in_view) {
     Node i = treestore->append();
     auto pid = plugin_id(r, text);
     i->set_value(0, pid);
-    i->set_value(1, in_view.find(pid) != in_view.end());
+    //i->set_value(1, in_view.find(pid) != in_view.end());
     append(r, i);
 }
 
@@ -33,7 +33,7 @@ void plugin_to_store::append(const RANGE &s, Node parent) {
             strings args;
             for (auto a: e[VALUES_l].nesting)
                 args.push_back(a(text));
-            c->set_value(3, join(args, ','));
+            c->set_value(1, join(args, ','));
         }
     }
 }

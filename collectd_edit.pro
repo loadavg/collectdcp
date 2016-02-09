@@ -47,7 +47,7 @@ SOURCES += main.cpp \
     ast_loader.cpp \
     glob_path_pattern.cpp \
     dir_structure.cpp \
-    collectdcp.cpp
+    collectdcp_app.cpp
 
 HEADERS += \
     parse_conf.h \
@@ -87,7 +87,7 @@ HEADERS += \
     ast_loader.h \
     glob_path_pattern.h \
     dir_structure.h \
-    collectdcp.h
+    collectdcp_app.h
 
 DISTFILES += \
     Makefile \

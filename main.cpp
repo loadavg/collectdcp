@@ -10,7 +10,7 @@
 
 #include "model.h"
 #include "test_win.h"
-#include "collectdcp.h"
+#include "collectdcp_app.h"
 #include "app_window.h"
 #include "test_parse.h"
 #include "test_glade.h"

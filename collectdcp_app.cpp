@@ -8,12 +8,12 @@
 
 #include "join.h"
 #include "ns_all.h"
-#include "collectdcp.h"
 #include "ast_loader.h"
 #include "file2string.h"
 #include "message_box.h"
 #include "ui_structure.h"
 #include "dir_structure.h"
+#include "collectdcp_app.h"
 #include "plugin_to_store.h"
 #include "glob_path_pattern.h"
 
@@ -83,8 +83,8 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
 
     //ast_to_grid(main_config, grid_main);
 
-    auto b = get_resource("add_plugin_treeview");
-    //auto ts = RefPtr<TreeStore>::cast_dynamic(b->get_object("add_plugin_treestore"));
+    /*auto b = get_resource("add_plugin_treeview");
+    auto ts = RefPtr<TreeStore>::cast_dynamic(b->get_object("add_plugin_treestore"));
 
     plugins_view = instance_widget<TreeView>(b, "add_plugin_treeview");
     plugins_view->signal_cursor_changed().connect(sigc::mem_fun(this, &collectdcp_app::on_cursor_changed));
@@ -92,7 +92,6 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
     auto host_plugins_tv = instance_widget<ScrolledWindow>(refBuilder, "host_plugins_tv");
     plugins_view->reparent(*host_plugins_tv);
 
-    /*
     auto tem_map = new plugins_t(plugins_defaults);
     auto in_view = new plugins_t(main_config);
 
@@ -107,6 +106,26 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
     handle_includes();
 
     setup_actions(refBuilder);
+
+    setup_plugins_treeview(refBuilder);
+}
+
+void collectdcp_app::setup_plugins_treeview(const RefPtr<Builder>& refBuilder) {
+    if (auto v = find_view(model::entry_symbol())) {
+        auto ts = RefPtr<TreeStore>::cast_dynamic(refBuilder->get_object("plugin_treestore"));
+        plugins_view = instance_widget<TreeView>(refBuilder, "plugin_treeview");
+        plugins_view->signal_cursor_changed().connect(sigc::mem_fun(this, &collectdcp_app::on_cursor_changed));
+
+        //auto host_plugins_tv = instance_widget<ScrolledWindow>(refBuilder, "host_plugins_tv");
+        //plugins_view->reparent(*host_plugins_tv);
+
+        auto tem_map = new plugins_t(plugins_defaults);
+        auto in_view = new plugins_t(v->get_AST());
+
+        plugin_to_store p2s {plugins_defaults->text, ts};
+        for (auto e: *tem_map)
+            p2s.add_plugin(*e.second.back(), *in_view);
+    }
 }
 
 void collectdcp_app::setup_actions(const RefPtr<Builder>& builder) {
@@ -153,7 +172,6 @@ void collectdcp_app::setup_actions(const RefPtr<Builder>& builder) {
 
     menuitem_prepare("mn_help_about", &collectdcp_app::on_help_about);
     menuitem_prepare("mn_file_quit", &collectdcp_app::on_file_quit);
-
 }
 
 inline bool commented(const RANGE::path_t &p) {

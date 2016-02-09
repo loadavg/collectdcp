@@ -6,8 +6,8 @@
  * License MIT
  */
 
-#ifndef COLLECTDCP_H
-#define COLLECTDCP_H
+#ifndef COLLECTDCP_APP_H
+#define COLLECTDCP_APP_H
 
 #include <gtkmm/window.h>
 #include <gtkmm/builder.h>
@@ -206,7 +206,9 @@ protected:
     Gtk::TreeView *plugins_view = 0;
     Gtk::ScrolledWindow *host_plugin_prop = 0;
     Gtk::TextView *plugin_description = 0;
+
     void setup_actions(const Glib::RefPtr<Gtk::Builder>& refBuilder);
+    void setup_plugins_treeview(const Glib::RefPtr<Gtk::Builder>& refBuilder);
 };
 
-#endif // COLLECTDCP_H
+#endif // COLLECTDCP_APP_H
