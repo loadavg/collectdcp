@@ -474,31 +474,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolItem" id="tb_passwd_host">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_markup" translatable="yes">Enter your sudo password to access protected resources.
-It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
-                <child>
-                  <object class="GtkEntry" id="te_password">
-                    <property name="name">te_password</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="visibility">False</property>
-                    <property name="invisible_char">•</property>
-                    <property name="primary_icon_stock">gtk-dialog-warning</property>
-                    <property name="primary_icon_tooltip_markup" translatable="yes">Enter your sudo password to access protected resources.
-It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
-                    <property name="placeholder_text" translatable="yes">sudo password</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">True</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkSeparatorToolItem" id="separatortoolitem5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -554,6 +529,9 @@ It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
                   <object class="GtkGrid" id="grid1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="row_spacing">10</property>
+                    <property name="column_spacing">10</property>
+                    <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkButton" id="btn_start">
                         <property name="label" translatable="yes">start</property>
@@ -569,22 +547,7 @@ It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btn_save">
-                        <property name="label" translatable="yes">save</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image_position">right</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="te_password1">
+                      <object class="GtkEntry" id="sudo_password">
                         <property name="name">te_password</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -599,52 +562,58 @@ It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSearchEntry" id="te_search1">
-                        <property name="name">te_search</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="progress_pulse_step">0.089999999999999997</property>
-                        <property name="primary_icon_name">edit-find-symbolic</property>
-                        <property name="primary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">False</property>
-                        <property name="placeholder_text" translatable="yes">search...</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
                         <property name="top_attach">1</property>
                         <property name="width">1</property>
                         <property name="height">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label2">
+                      <object class="GtkButton" id="btn_stop">
+                        <property name="label" translatable="yes">stop</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">label</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image_position">right</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
                         <property name="width">1</property>
                         <property name="height">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label3">
+                      <object class="GtkLabel" id="label1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">label</property>
+                        <property name="label" translatable="yes">The sudo password is required to
+save any change to configuration,
+and to start stop the collectd service</property>
                       </object>
                       <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
                         <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow" id="scrolledwindow3">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <object class="GtkTextView" id="logging">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
+                        <property name="width">2</property>
                         <property name="height">1</property>
                       </packing>
                     </child>

@@ -11,9 +11,9 @@
 
 #include <string>
 
-inline std::string trim(std::string str) {
-    str.erase(0, str.find_first_not_of(' '));       //prefixing spaces
-    str.erase(str.find_last_not_of(' ')+1);         //surfixing spaces
+inline std::string trim(std::string str, std::string blanks = " \n\t\r") {
+    str.erase(0, str.find_first_not_of(blanks));       //prefixing spaces
+    str.erase(str.find_last_not_of(blanks) + 1);       //surfixing spaces
     return str;
 }
 

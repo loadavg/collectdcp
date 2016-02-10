@@ -31,6 +31,8 @@ public:
         VERSION_ID,
         HOME_URL,
         BUG_REPORT_URL;
+
+    void dump();
 };
 
 #endif // OS_INFO_H

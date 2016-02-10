@@ -6,11 +6,15 @@
  * License MIT
  */
 
+#include "trim.h"
 #include "join.h"
 #include "ns_all.h"
+#include "os_info.h"
 #include "ast_loader.h"
+#include "process_run.h"
 #include "file2string.h"
 #include "message_box.h"
+#include "dlg_commands.h"
 #include "ui_structure.h"
 #include "dir_structure.h"
 #include "collectdcp_app.h"
@@ -36,36 +40,6 @@ collectdcp_app* collectdcp_app::setup(RefPtr<Application> app) {
     return w;
 }
 
-void ast_to_grid(const AST *ast, Grid *g) {
-    entries_t entries(ast);
-
-    for (int nrows = 0; ; ++nrows) {
-        auto c = g->get_child_at(1, nrows);
-        if (c == 0)
-            break;
-
-        auto n = c->get_name();
-        auto p = entries.find(n);
-        if (p != entries.end()) {
-            if (auto en = dynamic_cast<Entry*>(c)) {
-                auto r = *p->second.back();
-                if (r.type == KEY_VALUES_t) {
-                    string vs = r[VALUES_l](ast->text);
-                    en->set_text(vs);
-                }
-                continue;
-            }
-            /*
-            if (auto cbt = dynamic_cast<ComboBoxText*>(c)) {
-                continue;
-            }
-            if (auto yn = dynamic_cast<CheckButton*>(c)) {
-                continue;
-            }*/
-        }
-    }
-}
-
 collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& refBuilder)
     : Window(cobject)
 {
@@ -81,33 +55,55 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
     auto grid_main = instance_widget<Grid>(get_resource("generated/main"), "grid_main");
     sw->add(*grid_main);
 
-    //ast_to_grid(main_config, grid_main);
-
-    /*auto b = get_resource("add_plugin_treeview");
-    auto ts = RefPtr<TreeStore>::cast_dynamic(b->get_object("add_plugin_treestore"));
-
-    plugins_view = instance_widget<TreeView>(b, "add_plugin_treeview");
-    plugins_view->signal_cursor_changed().connect(sigc::mem_fun(this, &collectdcp_app::on_cursor_changed));
-
-    auto host_plugins_tv = instance_widget<ScrolledWindow>(refBuilder, "host_plugins_tv");
-    plugins_view->reparent(*host_plugins_tv);
-
-    auto tem_map = new plugins_t(plugins_defaults);
-    auto in_view = new plugins_t(main_config);
-
-    plugin_to_store p2s {plugins_defaults->text, ts};
-    for (auto e: *tem_map)
-        p2s.add_plugin(*e.second.back(), *in_view);
-    */
-
     host_plugin_prop = instance_widget<ScrolledWindow>(refBuilder, "host_plugin_prop");
     plugin_description = instance_widget<TextView>(refBuilder, "plugin_description");
+
+    logging = instance_widget<TextView>(refBuilder, "logging");
 
     handle_includes();
 
     setup_actions(refBuilder);
-
     setup_plugins_treeview(refBuilder);
+    setup_system_interface(refBuilder);
+
+    log_message("done setup");
+}
+
+void collectdcp_app::setup_system_interface(const RefPtr<Builder>& refBuilder) {
+    start = instance_widget<Button>(refBuilder, "btn_start");
+    stop = instance_widget<Button>(refBuilder, "btn_stop");
+
+    password = instance_widget<Entry>(refBuilder, "sudo_password");
+
+    //start->set_sensitive(false);
+    //stop->set_sensitive(false);
+    start->signal_clicked().connect(sigc::mem_fun(this, &collectdcp_app::on_start));
+    stop->signal_clicked().connect(sigc::mem_fun(this, &collectdcp_app::on_stop));
+
+    Glib::signal_timeout().connect_once(sigc::mem_fun(*this, &collectdcp_app::on_status_check), 1000);
+
+    os_info info;
+    info.dump();
+    if (info.ID == "ubuntu") {
+        cmd_start = "/etc/init.d/collectd start";
+        cmd_stop = "/etc/init.d/collectd stop";
+        cmd_status = "service collectd status";
+        cmd_status_running = "* collectd is running";
+    }
+    else if (info.ID == "centos7") {
+        cmd_start = "systemctl stop collectd";
+        cmd_stop = "systemctl stop collectd";
+        cmd_status = "systemctl collectd";
+    }
+    else
+        message_box(prints("unknown system '%s'", info.ID.c_str()));
+}
+
+void collectdcp_app::log_message(std::string msg) {
+    if (logging) {
+        auto b = logging->get_buffer();
+        b->insert(b->end(), msg + "\n");
+    }
 }
 
 void collectdcp_app::setup_plugins_treeview(const RefPtr<Builder>& refBuilder) {
@@ -388,7 +384,8 @@ void collectdcp_app::on_file_save() {
 }
 
 void collectdcp_app::route_to_view(string sig) {
-    g_signal_emit_by_name(current_view()->gobj(), sig.c_str());
+    if (auto v = current_view())
+        g_signal_emit_by_name(v->gobj(), sig.c_str());
 }
 
 void collectdcp_app::on_edit_copy() {
@@ -426,8 +423,13 @@ void collectdcp_app::on_enable_block() {
         status_message("cannot enable block");
 }
 
-const collectdcp_app::strings_t& collectdcp_app::conf_editable() {
-    static strings_t e = {"collectd", "filters", "thresholds"};
+collectdcp_app::strings_t collectdcp_app::conf_editable() {
+    strings_t e;
+    if (auto nb = get_notebook())
+        for (int p = 0; p < nb->get_n_pages(); ++p)
+            if (auto sc = is_a<Container>(nb->get_nth_page(p)))
+                if (auto v = is_a<view_ast>(sc->get_children()[0]))
+                    e.push_back(v->conf);
     return e;
 }
 
@@ -453,13 +455,11 @@ void collectdcp_app::on_file_quit() {
 }
 
 void collectdcp_app::on_commands() {
-/*
     instance_ui_object<dlg_commands>("dlg_commands", "dlg_commands", [&](dlg_commands* dia) {
         if (dia->password)
-            dia->password->set_text(password()->get_text());
+            dia->password->set_text(get_password()->get_text());
         return run_dialog(dia);
     });
-*/
 }
 
 void collectdcp_app::action_status(string action, bool status) {
@@ -469,8 +469,8 @@ void collectdcp_app::action_status(string action, bool status) {
         tb->set_sensitive(status);
 }
 
-Entry* collectdcp_app::password() {
-    return is_a<Entry>(locate_by_name(get_toolbar(), "te_password"));
+Entry* collectdcp_app::get_password() {
+    return password; //is_a<Entry>(locate_by_name(get_toolbar(), "te_password"));
 }
 
 void collectdcp_app::on_search() {
@@ -482,3 +482,101 @@ void collectdcp_app::on_search() {
 
 /////
 ///// end from collectdcp_app
+
+void collectdcp_app::ast_to_grid(const AST *ast, Grid *g) {
+    entries_t entries(ast);
+
+    for (int nrows = 0; ; ++nrows) {
+        auto c = g->get_child_at(1, nrows);
+        if (c == 0)
+            break;
+
+        auto n = c->get_name();
+        auto p = entries.find(n);
+        if (p != entries.end()) {
+            if (auto en = dynamic_cast<Entry*>(c)) {
+                auto r = *p->second.back();
+                if (r.type == KEY_VALUES_t) {
+                    string vs = r[VALUES_l](ast->text);
+                    en->set_text(vs);
+                }
+                continue;
+            }
+            /*
+            if (auto cbt = dynamic_cast<ComboBoxText*>(c)) {
+                continue;
+            }
+            if (auto yn = dynamic_cast<CheckButton*>(c)) {
+                continue;
+            }*/
+        }
+    }
+}
+
+/**
+ * @brief collectdcp_app::service_is_running
+ *  check the daemon status
+ * @return
+ */
+bool collectdcp_app::service_is_running() const {
+    return start && start->is_sensitive();
+}
+bool collectdcp_app::stop_service() {
+    if (service_is_running()) {
+        start->set_sensitive(true);
+        stop->set_sensitive(false);
+        log_message("service stopped");
+        return true;
+    }
+    return false;
+}
+
+bool collectdcp_app::start_service() {
+    if (!service_is_running()) {
+        start->set_sensitive(false);
+        stop->set_sensitive(true);
+        log_message("service started");
+        return true;
+    }
+    return false;
+}
+
+void collectdcp_app::on_status_check() {
+    g_assert(service_status == unknown);
+    /*
+    switch (service_status) {
+    case unknown: {
+        process_run P(cmd_status);  // no password for check
+        log_message(P.result);
+    }   break;
+    case running:
+    case stopped:
+    case error:
+        break;
+    }
+    */
+    process_run P(cmd_status);  // no password for check
+    log_message(P.result);
+    string rc = trim(P.result);
+cout << rc << endl;
+    if (rc == cmd_status_running) {
+        start->set_sensitive(false);
+        stop->set_sensitive(true);
+        //log_message("collectd is running");
+    }
+    else {
+        start->set_sensitive(true);
+        stop->set_sensitive(false);
+        //log_message("collectd is NOT running");
+    }
+}
+
+void collectdcp_app::on_start() {
+    process_run P(cmd_start, password->get_text());
+    log_message(P.result);
+}
+
+void collectdcp_app::on_stop() {
+    process_run P(cmd_stop, password->get_text());
+    log_message(P.result);
+}

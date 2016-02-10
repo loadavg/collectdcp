@@ -9,7 +9,9 @@
 #ifndef COLLECTDCP_APP_H
 #define COLLECTDCP_APP_H
 
+#include <gtkmm/grid.h>
 #include <gtkmm/window.h>
+#include <gtkmm/button.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/toolbar.h>
 #include <gtkmm/notebook.h>
@@ -84,7 +86,7 @@ public:
      * @return
      *  user interface to define password
      */
-    Gtk::Entry* password();
+    Gtk::Entry* get_password();
 
 protected:
 
@@ -162,7 +164,7 @@ protected:
      *  a list of foreseen symbols, without extension or folder
      */
     typedef std::vector<std::string> strings_t;
-    static const strings_t& conf_editable();
+    strings_t conf_editable();
 
     /**
      * @brief check_quit
@@ -209,6 +211,37 @@ protected:
 
     void setup_actions(const Glib::RefPtr<Gtk::Builder>& refBuilder);
     void setup_plugins_treeview(const Glib::RefPtr<Gtk::Builder>& refBuilder);
+    void setup_system_interface(const Glib::RefPtr<Gtk::Builder>& refBuilder);
+
+    Gtk::TextView *logging = 0;
+    void log_message(std::string msg);
+    void ast_to_grid(const model::AST *ast, Gtk::Grid *g);
+
+    /**
+     *  collectd daemon status control and check
+     */
+    enum {
+        unknown,
+        running,
+        stopped,
+        error
+    }   service_status = unknown;
+
+    std::string cmd_start;
+    std::string cmd_stop;
+    std::string cmd_status;
+    std::string cmd_status_running;
+
+    Gtk::Button *start = 0;
+    Gtk::Button *stop = 0;
+    Gtk::Entry *password = 0;
+
+    void on_start();
+    void on_stop();
+    bool service_is_running() const;
+    bool stop_service();
+    bool start_service();
+    void on_status_check();
 };
 
 #endif // COLLECTDCP_APP_H

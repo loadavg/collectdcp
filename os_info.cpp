@@ -6,10 +6,12 @@
  * License MIT
  */
 
+#include <iostream>
+
+#include "split.h"
 #include "os_info.h"
 #include "var_assign.h"
 #include "process_run.h"
-#include "split.h"
 
 os_info::os_info() {
     using namespace std;
@@ -25,6 +27,22 @@ os_info::os_info() {
             KV(VERSION_ID)
             KV(HOME_URL)
             KV(BUG_REPORT_URL)
+            #undef KV
         }
     }
+}
+
+void os_info::dump() {
+    using namespace std;
+    #define KV(k) << #k << ':' << k << endl
+    cout
+        KV(NAME)
+        KV(VERSION)
+        KV(ID)
+        KV(ID_LIKE)
+        KV(PRETTY_NAME)
+        KV(VERSION_ID)
+        KV(HOME_URL)
+        KV(BUG_REPORT_URL);
+    #undef KV
 }
