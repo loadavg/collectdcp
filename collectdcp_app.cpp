@@ -90,10 +90,11 @@ void collectdcp_app::setup_system_interface(const RefPtr<Builder>& refBuilder) {
         cmd_status = "service collectd status";
         cmd_status_running = "* collectd is running";
     }
-    else if (info.ID == "centos7") {
+    else if (info.ID == "centos") {
         cmd_start = "systemctl stop collectd";
         cmd_stop = "systemctl stop collectd";
-        cmd_status = "systemctl collectd";
+        cmd_status = "systemctl status collectd";
+        cmd_status_running = "Active: active (running)";
     }
     else
         message_box(prints("unknown system '%s'", info.ID.c_str()));
@@ -558,8 +559,8 @@ void collectdcp_app::on_status_check() {
     process_run P(cmd_status);  // no password for check
     log_message(P.result);
     string rc = trim(P.result);
-cout << rc << endl;
-    if (rc == cmd_status_running) {
+
+    if (rc.find(cmd_status_running) != string::npos){
         start->set_sensitive(false);
         stop->set_sensitive(true);
         //log_message("collectd is running");
