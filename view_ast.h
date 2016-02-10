@@ -14,7 +14,8 @@
 #include <gtkmm/label.h>
 #include <gtkmm/notebook.h>
 
-class editor_window;
+//class editor_window;
+class collectdcp_app;
 
 /**
  * @brief The view_ast class
@@ -53,7 +54,8 @@ public:
 
     bool is_dirty();
 
-    editor_window* app_window() const;
+    //editor_window* app_window() const;
+    collectdcp_app* app_window();
 
     /**
      * @brief ast_template
@@ -108,7 +110,7 @@ private:
     void set_dirty(bool dirty = true);
     void reparse_buffer();
 
-    void action_status(std::string action, bool on_off) const;
+    void action_status(std::string action, bool on_off);
 };
 
 #endif // VIEW_AST_H

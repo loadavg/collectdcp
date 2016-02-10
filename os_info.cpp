@@ -13,6 +13,13 @@
 #include "var_assign.h"
 #include "process_run.h"
 
+static os_info *checked;
+os_info* os_info::info() {
+    if (!checked)
+        checked = new os_info;
+    return checked;
+}
+
 os_info::os_info() {
     using namespace std;
     process_run p("cat /etc/os-release");

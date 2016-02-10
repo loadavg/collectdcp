@@ -16,7 +16,8 @@
 #include "message_box.h"
 #include "depth_first.h"
 #include "ui_structure.h"
-#include "editor_window.h"
+#include "collectdcp_app.h"
+//#include "editor_window.h"
 
 #include <fstream>
 #include <iostream>
@@ -76,12 +77,16 @@ Glib::RefPtr<edit_text_buf> view_ast::buffer() {
         return get_buffer();
 #endif
 }
-
+/*
 editor_window* view_ast::app_window() const {
     for (auto p = get_parent(); p; p = p->get_parent())
         if (auto e = is_a<editor_window>(p))
             return const_cast<editor_window*>(e);
     return 0;
+}
+*/
+collectdcp_app* view_ast::app_window() {
+    return find_parent<collectdcp_app>(this);
 }
 
 void view_ast::on_search(string text) {
@@ -120,7 +125,7 @@ void view_ast::add_plugin(string text) {
     reparse_buffer();
 }
 
-void view_ast::action_status(std::string action, bool on_off) const {
+void view_ast::action_status(std::string action, bool on_off) {
     app_window()->action_status(action, on_off);
 }
 
@@ -135,7 +140,7 @@ void view_ast::save()
     auto path = model::conf_file(conf);
     string error;
 
-    string pwd = app_window()->password()->get_text();
+    string pwd = app_window()->get_password()->get_text();
     if (!pwd.empty()) {
         string tmp;
         int fd = Glib::file_open_tmp(tmp);

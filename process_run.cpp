@@ -6,8 +6,9 @@
  * License MIT
  */
 
-#include "process_run.h"
 #include "prints.h"
+#include "os_info.h"
+#include "process_run.h"
 
 #include <stdio.h>
 #include <stdexcept>
@@ -27,8 +28,11 @@ process_run::process_run(std::string cmd, std::string pwd, bool add_stderr)
 {
     std::string arg;
 
-    if (!pwd.empty())
+    if (!pwd.empty()) {
+        if (os_info::info()->is_centos())
+            pwd += "\n";
         arg += "echo " + pwd + " | sudo -S " + cmd;
+    }
     else
         arg += cmd;
 

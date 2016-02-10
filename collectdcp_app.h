@@ -238,10 +238,11 @@ protected:
 
     void on_start();
     void on_stop();
-    bool service_is_running() const;
+    /*bool service_is_running() const;
     bool stop_service();
-    bool start_service();
+    bool start_service();*/
     void on_status_check();
+    void schedule_status_check(int msec = 1000);
 };
 
 #endif // COLLECTDCP_APP_H

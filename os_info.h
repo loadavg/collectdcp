@@ -19,6 +19,7 @@
 
 class os_info {
 public:
+
     os_info();
 
     /// variables shared between Ubuntu 14.04 and CentOS 7
@@ -33,6 +34,11 @@ public:
         BUG_REPORT_URL;
 
     void dump();
+
+    bool is_ubuntu() const { return ID == "ubuntu"; }
+    bool is_centos() const { return ID == "centos"; }
+
+    static os_info *info();
 };
 
 #endif // OS_INFO_H

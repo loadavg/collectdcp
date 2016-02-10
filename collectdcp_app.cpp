@@ -79,25 +79,23 @@ void collectdcp_app::setup_system_interface(const RefPtr<Builder>& refBuilder) {
     //stop->set_sensitive(false);
     start->signal_clicked().connect(sigc::mem_fun(this, &collectdcp_app::on_start));
     stop->signal_clicked().connect(sigc::mem_fun(this, &collectdcp_app::on_stop));
+    schedule_status_check();
 
-    Glib::signal_timeout().connect_once(sigc::mem_fun(*this, &collectdcp_app::on_status_check), 1000);
-
-    os_info info;
-    info.dump();
-    if (info.ID == "ubuntu") {
+    auto info = os_info::info();
+    if (info->is_ubuntu()) {
         cmd_start = "/etc/init.d/collectd start";
         cmd_stop = "/etc/init.d/collectd stop";
         cmd_status = "service collectd status";
         cmd_status_running = "* collectd is running";
     }
-    else if (info.ID == "centos") {
+    else if (info->is_centos()) {
         cmd_start = "systemctl stop collectd";
         cmd_stop = "systemctl stop collectd";
         cmd_status = "systemctl status collectd";
         cmd_status_running = "Active: active (running)";
     }
     else
-        message_box(prints("unknown system '%s'", info.ID.c_str()));
+        message_box(prints("unknown system '%s'", info->ID.c_str()));
 }
 
 void collectdcp_app::log_message(std::string msg) {
@@ -519,6 +517,7 @@ void collectdcp_app::ast_to_grid(const AST *ast, Grid *g) {
  *  check the daemon status
  * @return
  */
+/*
 bool collectdcp_app::service_is_running() const {
     return start && start->is_sensitive();
 }
@@ -541,6 +540,7 @@ bool collectdcp_app::start_service() {
     }
     return false;
 }
+*/
 
 void collectdcp_app::on_status_check() {
     g_assert(service_status == unknown);
@@ -556,28 +556,39 @@ void collectdcp_app::on_status_check() {
         break;
     }
     */
-    process_run P(cmd_status);  // no password for check
-    log_message(P.result);
-    string rc = trim(P.result);
+    CATCH_SHOW([this] {
+        process_run P(cmd_status);  // no password for check
+        log_message(P.result);
+        string rc = trim(P.result);
 
-    if (rc.find(cmd_status_running) != string::npos){
-        start->set_sensitive(false);
-        stop->set_sensitive(true);
-        //log_message("collectd is running");
-    }
-    else {
-        start->set_sensitive(true);
-        stop->set_sensitive(false);
-        //log_message("collectd is NOT running");
-    }
+        if (rc.find(cmd_status_running) != string::npos){
+            start->set_sensitive(false);
+            stop->set_sensitive(true);
+            //log_message("collectd is running");
+        }
+        else {
+            start->set_sensitive(true);
+            stop->set_sensitive(false);
+            //log_message("collectd is NOT running");
+        }
+    });
 }
 
 void collectdcp_app::on_start() {
-    process_run P(cmd_start, password->get_text());
-    log_message(P.result);
+    CATCH_SHOW([this] {
+        process_run P(cmd_start, password->get_text());
+        log_message(P.result);
+        schedule_status_check();
+    });
 }
 
 void collectdcp_app::on_stop() {
-    process_run P(cmd_stop, password->get_text());
-    log_message(P.result);
+    CATCH_SHOW([this] {
+        process_run P(cmd_stop, password->get_text());
+        log_message(P.result);
+        schedule_status_check();
+    });
+}
+void collectdcp_app::schedule_status_check(int msec) {
+    Glib::signal_timeout().connect_once(sigc::mem_fun(*this, &collectdcp_app::on_status_check), msec);
 }
