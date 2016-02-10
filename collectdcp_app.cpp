@@ -89,7 +89,7 @@ void collectdcp_app::setup_system_interface(const RefPtr<Builder>& refBuilder) {
         cmd_status_running = "* collectd is running";
     }
     else if (info->is_centos()) {
-        cmd_start = "systemctl stop collectd";
+        cmd_start = "systemctl start collectd";
         cmd_stop = "systemctl stop collectd";
         cmd_status = "systemctl status collectd";
         cmd_status_running = "Active: active (running)";

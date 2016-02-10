@@ -29,8 +29,8 @@ process_run::process_run(std::string cmd, std::string pwd, bool add_stderr)
     std::string arg;
 
     if (!pwd.empty()) {
-        if (os_info::info()->is_centos())
-            pwd += "\n";
+        //if (os_info::info()->is_centos())
+            //pwd += "\n";
         arg += "echo " + pwd + " | sudo -S " + cmd;
     }
     else
@@ -49,6 +49,8 @@ process_run::process_run(std::string cmd, std::string pwd, bool add_stderr)
             result += buffer;
 
     pclose(pipe);
+
+printf("---\n%s\n---\n", result.c_str());
 
     if (!pwd.empty()) {
         // remove eventual warning
