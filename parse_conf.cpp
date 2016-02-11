@@ -357,4 +357,10 @@ string plugin_id(const RANGE &r, kstring t) {
     return string();
 }
 
+bool AST::get_bool(const RANGE &r) const {
+    string v = unquote(r, text);
+    if (icompare(v, "true") == 0 || v == "1")
+        return true;
+    return false;
+}
 }

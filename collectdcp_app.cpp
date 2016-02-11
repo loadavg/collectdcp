@@ -43,13 +43,13 @@ collectdcp_app* collectdcp_app::setup(RefPtr<Application> app) {
 collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& refBuilder)
     : Window(cobject)
 {
+    CATCH_SHOW([this] { load_css(); });
+
     notebook = instance_widget<Notebook>(refBuilder, "notebook1");
     //main_config = ast_loader(model::entry_symbol()).ast;
 
     auto text = file2string(get_resource_path("plugins", "template"));
     plugins_defaults = new AST(text);
-
-    CATCH_SHOW([this] { load_css(); });
 
     auto sw = instance_widget<ScrolledWindow>(refBuilder, "scrolledwindow1");
     auto grid_main = instance_widget<Grid>(get_resource("generated/main"), "grid_main");
@@ -65,6 +65,9 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
     setup_actions(refBuilder);
     setup_plugins_treeview(refBuilder);
     setup_system_interface(refBuilder);
+
+    if (auto v = find_view(model::entry_symbol()))
+        ast_to_grid(v->get_AST(), grid_main);
 
     log_message("done setup");
 }
@@ -490,24 +493,49 @@ void collectdcp_app::ast_to_grid(const AST *ast, Grid *g) {
         if (c == 0)
             break;
 
+        // check control type
+        //m_button1.signal_clicked().connect( sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &HelloWorld::on_button_clicked), "button 1") )
+
+        auto en = dynamic_cast<Entry*>(c);
+        if (en)
+            en->signal_changed().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(this, &collectdcp_app::on_entry_changed), en->get_name()));
+
+        auto cbt = dynamic_cast<ComboBoxText*>(c);
+        if (cbt)
+            cbt->signal_changed().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(this, &collectdcp_app::on_combo_changed), cbt->get_name()));
+
+        auto yn = dynamic_cast<CheckButton*>(c);
+        if (yn)
+            yn->signal_activate().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(this, &collectdcp_app::on_check_activate), yn->get_name()));
+
+        // lookup by name
         auto n = c->get_name();
         auto p = entries.find(n);
         if (p != entries.end()) {
-            if (auto en = dynamic_cast<Entry*>(c)) {
-                auto r = *p->second.back();
+            auto r = *p->second.back();
+            if (en) {
                 if (r.type == KEY_VALUES_t) {
                     string vs = r[VALUES_l](ast->text);
                     en->set_text(vs);
                 }
                 continue;
             }
-            /*
-            if (auto cbt = dynamic_cast<ComboBoxText*>(c)) {
+            if (cbt) {
+                if (r.type == XML_LIKE_t) {
+                    for (auto e : r[BODY_l].nesting) {
+                        string v = e(ast->text);
+                        cbt->append(v);
+                    }
+                }
                 continue;
             }
-            if (auto yn = dynamic_cast<CheckButton*>(c)) {
+            if (yn) {
+                if (r.type == KEY_VALUES_t) {
+                    for (auto e : r[VALUES_l].nesting)
+                        yn->set_active(ast->get_bool(e));
+                }
                 continue;
-            }*/
+            }
         }
     }
 }
@@ -591,4 +619,14 @@ void collectdcp_app::on_stop() {
 }
 void collectdcp_app::schedule_status_check(int msec) {
     Glib::signal_timeout().connect_once(sigc::mem_fun(*this, &collectdcp_app::on_status_check), msec);
+}
+
+void collectdcp_app::on_check_activate(Glib::ustring name) {
+    cout << "on_check_activate " << name << endl;
+}
+void collectdcp_app::on_combo_changed(Glib::ustring name) {
+    cout << "on_combo_changed " << name << endl;
+}
+void collectdcp_app::on_entry_changed(Glib::ustring name) {
+    cout << "on_entry_changed " << name << endl;
 }

@@ -215,6 +215,16 @@ protected:
 
     Gtk::TextView *logging = 0;
     void log_message(std::string msg);
+
+    /**
+     * @brief ast_to_grid
+     *  matches names between AST' entries and generated glade controls
+     *  load the values depending on control type
+     * @param ast
+     *  parsed AST values
+     * @param g
+     *  a Gtk::Grid with named controls
+     */
     void ast_to_grid(const model::AST *ast, Gtk::Grid *g);
 
     /**
@@ -243,6 +253,14 @@ protected:
     bool start_service();*/
     void on_status_check();
     void schedule_status_check(int msec = 1000);
+
+    /**
+     * @brief on_check_activate
+     *  editing on glade generated usre interface
+     */
+    void on_check_activate(Glib::ustring name);
+    void on_combo_changed(Glib::ustring name);
+    void on_entry_changed(Glib::ustring name);
 };
 
 #endif // COLLECTDCP_APP_H

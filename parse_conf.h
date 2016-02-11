@@ -151,6 +151,16 @@ namespace parse_conf
          *  a multiline string mesasge
          */
         static string format_errors(strings errors, size_t ellipsis = 3);
+
+        /**
+         * @brief get_bool
+         *  convert text value to boolean
+         * @param r
+         *  text range to convert
+         * @return
+         *  true or false
+         */
+        bool get_bool(const RANGE &r) const;
     };
 
     /**
