@@ -79,6 +79,15 @@ public:
      */
     void add_plugin(std::string text);
 
+    /**
+     * @brief update_value
+     *  check the value and set
+     * @param p
+     * @param v
+     */
+    void update_value(RANGE::path_t p, bool v);
+    void update_value(RANGE::path_t p, std::string v);
+
 private:
 
     /**

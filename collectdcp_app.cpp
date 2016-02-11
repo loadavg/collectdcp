@@ -22,15 +22,10 @@
 #include "glob_path_pattern.h"
 
 #include <glibmm.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/treeview.h>
 #include <gtkmm/treestore.h>
 #include <gtkmm/cssprovider.h>
-#include <gtkmm/checkbutton.h>
 #include <gtkmm/searchentry.h>
-#include <gtkmm/comboboxtext.h>
 #include <gtkmm/treeselection.h>
-#include <gtkmm/scrolledwindow.h>
 
 #include <iostream>
 
@@ -43,22 +38,24 @@ collectdcp_app* collectdcp_app::setup(RefPtr<Application> app) {
 collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& refBuilder)
     : Window(cobject)
 {
-    CATCH_SHOW([this] { load_css(); });
+    //CATCH_SHOW([this] { load_css(); });
 
     notebook = instance_widget<Notebook>(refBuilder, "notebook1");
-    //main_config = ast_loader(model::entry_symbol()).ast;
 
     auto text = file2string(get_resource_path("plugins", "template"));
     plugins_defaults = new AST(text);
 
-    auto sw = instance_widget<ScrolledWindow>(refBuilder, "scrolledwindow1");
-    auto grid_main = instance_widget<Grid>(get_resource("generated/main"), "grid_main");
-    sw->add(*grid_main);
+    if (auto sw = instance_widget<ScrolledWindow>(refBuilder, "scrolledwindow1"))
+        if ((global_options = instance_widget<Grid>(get_resource("generated/main"), "grid_main")) != 0)
+            sw->add(*global_options);
 
     host_plugin_prop = instance_widget<ScrolledWindow>(refBuilder, "host_plugin_prop");
     plugin_description = instance_widget<TextView>(refBuilder, "plugin_description");
 
     logging = instance_widget<TextView>(refBuilder, "logging");
+
+    if (auto ts = instance_widget<SearchEntry>(refBuilder, "te_search"))
+        ts->signal_activate().connect(sigc::mem_fun(*this, &collectdcp_app::on_search));
 
     handle_includes();
 
@@ -67,7 +64,10 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
     setup_system_interface(refBuilder);
 
     if (auto v = find_view(model::entry_symbol()))
-        ast_to_grid(v->get_AST(), grid_main);
+        if (global_options) {
+            ast_to_grid(v->get_AST(), dynamic_cast<Grid*>(global_options));
+            accept_changes = true;
+        }
 
     log_message("done setup");
 }
@@ -231,9 +231,15 @@ void collectdcp_app::on_cursor_changed() {
     auto sel = plugins_view->get_selection();
     auto it = sel->get_selected();
     string p;
-    it->get_value(0, p);
+    //it->get_value(0, p);
 
-    if (!it->parent()) {
+    TreeIter root = it;
+    while (root->parent())
+        root = root->parent();
+    root->get_value(0, p);
+
+    /*if (!it->parent())*/ {
+        plugin_options = 0;
         host_plugin_prop->remove();
         plugin_description->get_buffer()->set_text("");
         CATCH_SHOW([&]() {
@@ -244,6 +250,11 @@ void collectdcp_app::on_cursor_changed() {
 
             auto desc = instance_widget<Label>(builder, "label_" + p);
             plugin_description->get_buffer()->set_text(desc->get_text());
+
+            if (auto v = find_view(model::entry_symbol())) {
+                ast_to_grid(v->get_AST(), grid);
+                plugin_options = grid;
+            }
         });
     }
 }
@@ -493,20 +504,21 @@ void collectdcp_app::ast_to_grid(const AST *ast, Grid *g) {
         if (c == 0)
             break;
 
-        // check control type
-        //m_button1.signal_clicked().connect( sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &HelloWorld::on_button_clicked), "button 1") )
+        // use a shared callback to sync changes received from GUI controls
+        auto fun = sigc::mem_fun(this, &collectdcp_app::on_widget_changed);
 
-        auto en = dynamic_cast<Entry*>(c);
+        // check control type and bind
+        auto en = is_a<Entry>(c);
         if (en)
-            en->signal_changed().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(this, &collectdcp_app::on_entry_changed), en->get_name()));
+            en->signal_changed().connect(sigc::bind<Widget*>(fun, en));
 
-        auto cbt = dynamic_cast<ComboBoxText*>(c);
+        auto cbt = is_a<ComboBoxText>(c);
         if (cbt)
-            cbt->signal_changed().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(this, &collectdcp_app::on_combo_changed), cbt->get_name()));
+            cbt->signal_changed().connect(sigc::bind<Widget*>(fun, cbt));
 
-        auto yn = dynamic_cast<CheckButton*>(c);
+        auto yn = is_a<CheckButton>(c);
         if (yn)
-            yn->signal_activate().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(this, &collectdcp_app::on_check_activate), yn->get_name()));
+            yn->signal_clicked().connect(sigc::bind<Widget*>(fun, yn));
 
         // lookup by name
         auto n = c->get_name();
@@ -518,23 +530,20 @@ void collectdcp_app::ast_to_grid(const AST *ast, Grid *g) {
                     string vs = r[VALUES_l](ast->text);
                     en->set_text(vs);
                 }
-                continue;
             }
-            if (cbt) {
+            else if (cbt) {
                 if (r.type == XML_LIKE_t) {
                     for (auto e : r[BODY_l].nesting) {
                         string v = e(ast->text);
                         cbt->append(v);
                     }
                 }
-                continue;
             }
-            if (yn) {
+            else if (yn) {
                 if (r.type == KEY_VALUES_t) {
                     for (auto e : r[VALUES_l].nesting)
                         yn->set_active(ast->get_bool(e));
                 }
-                continue;
             }
         }
     }
@@ -621,12 +630,33 @@ void collectdcp_app::schedule_status_check(int msec) {
     Glib::signal_timeout().connect_once(sigc::mem_fun(*this, &collectdcp_app::on_status_check), msec);
 }
 
-void collectdcp_app::on_check_activate(Glib::ustring name) {
-    cout << "on_check_activate " << name << endl;
-}
-void collectdcp_app::on_combo_changed(Glib::ustring name) {
-    cout << "on_combo_changed " << name << endl;
-}
-void collectdcp_app::on_entry_changed(Glib::ustring name) {
-    cout << "on_entry_changed " << name << endl;
+void collectdcp_app::on_widget_changed(Widget* w) {
+    if (!accept_changes)
+        return;
+
+    string name = w->get_name();
+    cout << "on_widget_changed " << name << endl;
+
+    // lookup the container of this widget
+    auto g = find_parent<Grid>(w);
+    if (g) {
+
+        auto v = find_view(model::entry_symbol());
+        entries_t entries(v->get_AST());
+        for (auto er = entries.equal_range(name); er.first != er.second; ++er.first) {
+            if (auto b = is_a<CheckButton>(w))
+                v->update_value(er.first->second, b->get_active());
+            if (auto c = is_a<ComboBoxText>(w))
+                v->update_value(er.first->second, c->get_active_text());
+            if (auto e = is_a<Entry>(w))
+                v->update_value(er.first->second, e->get_text());
+        }
+
+        // scan the appropriate data model
+        if (g == global_options) {
+        }
+        if (g == plugin_options) {
+
+        }
+    }
 }

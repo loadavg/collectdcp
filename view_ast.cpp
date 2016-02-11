@@ -406,3 +406,19 @@ void view_ast::reparse_buffer() {
         message_box(e.what());
     }
 }
+
+void view_ast::update_value(RANGE::path_t p, bool v) {
+    string newvalue = v ? "true" : "false";
+    update_value(p, newvalue);
+}
+void view_ast::update_value(RANGE::path_t p, string newvalue) {
+    auto s = *p.back();
+    if (s.type == parse_conf::KEY_VALUES_t) {
+        auto r = s[parse_conf::VALUES_l].nesting[0];
+        auto q = r(ast->text);
+        string newtext = ast->text.substr(0, r.begin) + newvalue + ast->text.substr(r.end);
+        buffer()->set_text(newtext);
+        set_dirty();
+        reparse_buffer();
+    }
+}

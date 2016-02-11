@@ -18,6 +18,8 @@
 #include <gtkmm/treeview.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/statusbar.h>
+#include <gtkmm/checkbutton.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/scrolledwindow.h>
 
 #include "model.h"
@@ -193,8 +195,18 @@ protected:
 
 protected:
 
+    /**
+     * @brief on_cursor_changed
+     *  when user acting on plugins instance tree, load the specific generated GUI
+     */
     void on_cursor_changed();
+
+    /**
+     * @brief load_css
+     *  attempt to style the GUI for better appearance
+     */
     void load_css();
+
     void handle_includes();
     view_ast* add_conf_file(std::string symbol, std::string path);
 
@@ -217,17 +229,6 @@ protected:
     void log_message(std::string msg);
 
     /**
-     * @brief ast_to_grid
-     *  matches names between AST' entries and generated glade controls
-     *  load the values depending on control type
-     * @param ast
-     *  parsed AST values
-     * @param g
-     *  a Gtk::Grid with named controls
-     */
-    void ast_to_grid(const model::AST *ast, Gtk::Grid *g);
-
-    /**
      *  collectd daemon status control and check
      */
     enum {
@@ -248,19 +249,29 @@ protected:
 
     void on_start();
     void on_stop();
-    /*bool service_is_running() const;
-    bool stop_service();
-    bool start_service();*/
     void on_status_check();
     void schedule_status_check(int msec = 1000);
 
     /**
-     * @brief on_check_activate
-     *  editing on glade generated usre interface
+     * @brief on_widget_changed
+     *  editing AST using generated (glade editable) user interface
+     *  validate and transfer modified data to AST
      */
-    void on_check_activate(Glib::ustring name);
-    void on_combo_changed(Glib::ustring name);
-    void on_entry_changed(Glib::ustring name);
+    void on_widget_changed(Gtk::Widget *item);
+    bool accept_changes = false;
+    Gtk::Container *global_options = 0;
+    Gtk::Container *plugin_options = 0;
+
+    /**
+     * @brief ast_to_grid
+     *  matches names between AST' entries and generated glade controls
+     *  load the values depending on control type
+     * @param ast
+     *  parsed AST values
+     * @param g
+     *  a Gtk::Grid with named controls
+     */
+    void ast_to_grid(const model::AST *ast, Gtk::Grid *g);
 };
 
 #endif // COLLECTDCP_APP_H
