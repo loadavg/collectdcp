@@ -14,7 +14,6 @@
 #include <gtkmm/label.h>
 #include <gtkmm/notebook.h>
 
-//class editor_window;
 class collectdcp_app;
 
 /**
@@ -54,7 +53,6 @@ public:
 
     bool is_dirty();
 
-    //editor_window* app_window() const;
     collectdcp_app* app_window();
 
     /**

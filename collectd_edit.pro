@@ -29,20 +29,12 @@ SOURCES += main.cpp \
     view_ast.cpp \
     ui_structure.cpp \
     message_box.cpp \
-    add_plugin_block.cpp \
     range.cpp \
     dlg_commands.cpp \
     attr_helper.cpp \
     process_run.cpp \
-    editor_window.cpp \
-    test_parse.cpp \
-    plugin_form.cpp \
-    test_glade.cpp \
     settings.cpp \
-    app_window.cpp \
     os_info.cpp \
-    test_win.cpp \
-    collectdcp_win.cpp \
     plugin_to_store.cpp \
     ast_loader.cpp \
     glob_path_pattern.cpp \
@@ -56,7 +48,6 @@ HEADERS += \
     view_ast.h \
     ui_structure.h \
     message_box.h \
-    add_plugin_block.h \
     prints.h \
     icompare.h \
     range.h \
@@ -65,24 +56,17 @@ HEADERS += \
     dlg_commands.h \
     attr_helper.h \
     process_run.h \
-    editor_window.h \
-    test_parse.h \
     is_a.h \
     depth_first.h \
     edittext.h \
-    plugin_form.h \
-    test_glade.h \
     ns_all.h \
     settings.h \
     ini_file.h \
     fileuty.h \
-    app_window.h \
     trim.h \
     var_assign.h \
     os_info.h \
     split.h \
-    test_win.h \
-    collectdcp_win.h \
     plugin_to_store.h \
     ast_loader.h \
     glob_path_pattern.h \
