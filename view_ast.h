@@ -85,8 +85,9 @@ public:
      * @param p
      * @param v
      */
-    void update_value(RANGE::path_t p, bool v);
-    void update_value(RANGE::path_t p, std::string v);
+    bool update_value(RANGE::path_t p, bool v);
+    bool update_value(RANGE::path_t p, std::string v);
+    bool update_value(const RANGE& r, std::string v);
 
 private:
 

@@ -95,13 +95,33 @@ plugins_t::plugins_t(const AST *ast) : ast(ast) {
     });
 }
 
+template <class S>
+inline void store(depth_first &df, S &s, string k, const RANGE &r) {
+    RANGE::path_t path = df;
+    path.push_back(&r);
+    s.emplace(make_pair(k, path));
+}
+template <class S>
+struct indexer : depth_first {
+    indexer(S* store) : store(store) {}
+    void remember(string k, const RANGE &r) {
+        RANGE::path_t path = *this;
+        path.push_back(&r);
+        store->emplace(make_pair(k, path));
+    }
+    S* store;
+};
+
 entries_t::entries_t(const AST *ast) : ast(ast) {
+#if 0
     depth_first df;
+    /*
     auto sto = [df, this](string k, const RANGE &r) {
         RANGE::path_t path = df;
         path.push_back(&r);
         emplace(make_pair(k, path));
     };
+    */
     df.visit(ast->elements, [&](const RANGE &r) {
         switch (r.type) {
         case COMMENT_t: // ??
@@ -109,16 +129,87 @@ entries_t::entries_t(const AST *ast) : ast(ast) {
         case XML_LIKE_t: {
             auto &h = r[HEAD_l][HTAG_l];
             auto tag = unquote(h, ast->text);
-            sto(tag, r);
+            //sto(tag, r);
+            store(df, *this, tag, r);
         } break;
         case KEY_VALUES_t: {
             auto k = unquote(r[KEY_l], ast->text);
-            sto(k, r);
+            //sto(k, r);
+            store(df, *this, k, r);
         } break;
 
         }
         return true;
     });
+#endif
+
+    indexer<entries_t> df(this);
+    /*
+    auto sto = [df, this](string k, const RANGE &r) {
+        RANGE::path_t path = df;
+        path.push_back(&r);
+        emplace(make_pair(k, path));
+    };
+    */
+    df.visit(ast->elements, [&](const RANGE &r) {
+        switch (r.type) {
+        case COMMENT_t: // ??
+            return false;
+        case XML_LIKE_t: {
+            auto &h = r[HEAD_l][HTAG_l];
+            auto tag = unquote(h, ast->text);
+            //sto(tag, r);
+            df.remember(tag, r);
+        } break;
+        case KEY_VALUES_t: {
+            auto k = unquote(r[KEY_l], ast->text);
+            //sto(k, r);
+            df.remember(k, r);
+        } break;
+
+        }
+        return true;
+    });
+}
+
+terminals_t::terminals_t(const AST *ast, RANGE::path_t &root) : ast(ast) {
+    /*
+    depth_first df;
+    df.visit(*root.back(), [&](const RANGE &r) {
+        switch (r.type) {
+        case COMMENT_t: // ??
+            return false;
+        case XML_LIKE_t: {
+            auto &h = r[HEAD_l][HTAG_l];
+            auto tag = unquote(h, ast->text);
+            store(df, *this, tag, r);
+        }   break;
+        case KEY_VALUES_t: {
+            auto k = unquote(r[KEY_l], ast->text);
+            store(df, *this, k, r);
+        }   break;
+        }
+        return true;
+    });
+    */
+    indexer<terminals_t> df(this);
+    df.visit(*root.back(), [&](const RANGE &r) {
+        switch (r.type) {
+        case COMMENT_t: // ??
+            return false;
+        case XML_LIKE_t: {
+            auto &h = r[HEAD_l][HTAG_l];
+            auto tag = unquote(h, ast->text);
+            df.remember(tag, r);
+        }   break;
+        case KEY_VALUES_t: {
+            auto k = unquote(r[KEY_l], ast->text);
+            df.remember(k, r);
+        }   break;
+        }
+        return true;
+    });
+
 }
 
 string entry_symbol() { return "collectd"; }

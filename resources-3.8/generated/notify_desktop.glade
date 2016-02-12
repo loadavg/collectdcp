@@ -21,6 +21,7 @@ http://www.galago-project.org/specs/notification/.
 </property>
   </object>
   <object class="GtkGrid" id="notify_desktop">
+    <property name="name">notify_desktop</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -41,7 +42,7 @@ http://www.galago-project.org/specs/notification/.
 	<property name="name">OkayTimeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for OkayTimeout</property>
+	<property name="tooltip_text" translatable="yes">OkayTimeout: no description available</property>
 	<property name="placeholder_text" translatable="yes">timeout</property>
       </object>
       <packing>
@@ -69,7 +70,7 @@ http://www.galago-project.org/specs/notification/.
 	<property name="name">WarningTimeout</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for WarningTimeout</property>
+	<property name="tooltip_text" translatable="yes">WarningTimeout: no description available</property>
 	<property name="placeholder_text" translatable="yes">timeout</property>
       </object>
       <packing>

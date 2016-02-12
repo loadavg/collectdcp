@@ -33,6 +33,7 @@ which is used by the plugin if no configuration is present.
 </property>
   </object>
   <object class="GtkGrid" id="redis">
+    <property name="name">redis</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

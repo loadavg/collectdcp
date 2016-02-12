@@ -121,6 +121,7 @@ query.
 </property>
   </object>
   <object class="GtkGrid" id="postgresql">
+    <property name="name">postgresql</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -267,7 +268,7 @@ This option is required inside a Result block.
 	<property name="name">InstancePrefix</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for InstancePrefix</property>
+	<property name="tooltip_text" translatable="yes">InstancePrefix: no description available</property>
 	<property name="placeholder_text" translatable="yes">prefix</property>
       </object>
       <packing>
@@ -381,7 +382,7 @@ in the given order.
 	<property name="name">MinVersion</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for MinVersion</property>
+	<property name="tooltip_text" translatable="yes">MinVersion: no description available</property>
 	<property name="placeholder_text" translatable="yes">version</property>
       </object>
       <packing>

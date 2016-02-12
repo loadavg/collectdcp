@@ -14,6 +14,7 @@ bus. Supported sensors are:
 </property>
   </object>
   <object class="GtkGrid" id="barometer">
+    <property name="name">barometer</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -34,7 +35,7 @@ bus. Supported sensors are:
 	<property name="name">MPL115A2</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for MPL115A2</property>
+	<property name="tooltip_text" translatable="yes">MPL115A2: no description available</property>
 	<property name="placeholder_text" translatable="yes">?</property>
       </object>
       <packing>
@@ -62,7 +63,7 @@ bus. Supported sensors are:
 	<property name="name">MPL3115</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for MPL3115</property>
+	<property name="tooltip_text" translatable="yes">MPL3115: no description available</property>
 	<property name="placeholder_text" translatable="yes">?</property>
       </object>
       <packing>
@@ -90,7 +91,7 @@ bus. Supported sensors are:
 	<property name="name">BMP085</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for BMP085</property>
+	<property name="tooltip_text" translatable="yes">BMP085: no description available</property>
 	<property name="placeholder_text" translatable="yes">?</property>
       </object>
       <packing>

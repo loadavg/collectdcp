@@ -18,6 +18,7 @@ The following configuration options are understood:
 </property>
   </object>
   <object class="GtkGrid" id="olsrd">
+    <property name="name">olsrd</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

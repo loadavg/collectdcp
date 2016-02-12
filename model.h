@@ -70,6 +70,15 @@ namespace model
     };
 
     /**
+     * @brief The terminals_t struct
+     *  index terminals by name
+     */
+    struct terminals_t : map<string, RANGE::path_t, iless> {
+        const AST *ast;
+        terminals_t(const AST *ast, RANGE::path_t &root);
+    };
+
+    /**
      * @brief entry_symbol
      * @return
      *  normally, "collectd"

@@ -27,6 +27,7 @@
 
 using namespace attr_helper;
 using namespace std;
+using namespace parse_conf;
 
 view_ast::view_ast(string conf, string path) :
     conf(conf)
@@ -90,25 +91,15 @@ collectdcp_app* view_ast::app_window() {
 }
 
 void view_ast::on_search(string text) {
-    /*
-    g_log("view_ast", G_LOG_LEVEL_DEBUG, "on_search(%s)", text.c_str());
-    RefPtr<Buffer> b = get_source_buffer();
-    GtkSourceSearchContext *sc = gtk_source_search_context_new(b->gobj(), 0);
-    GtkSourceSearchSettings	*ss = gtk_source_search_context_get_settings(sc);
-    gtk_source_search_settings_set_search_text(ss, text.c_str());
-    RefPtr<edit_text_buf::Mark> mark = b->get_insert();
-    edit_text_buf::iterator iter = b->get_iter_at_mark(mark);
-    GtkTextIter I,J;
-    gboolean found = gtk_source_search_context_forward(sc, iter.gobj(), &I, &J);
-    if (found) {
-        g_log("view_ast", G_LOG_LEVEL_DEBUG, "on_search(%s)", text.c_str());
-    }
-    */
     string feedback;
     RefPtr<edit_text_buf> buf = buffer();
     RefPtr<edit_text_buf::Mark> cur = buf->get_insert();
     edit_text_buf::iterator pos = buf->get_iter_at_mark(cur), I,J;
-    if ((++pos).forward_search(text, TEXT_SEARCH_CASE_INSENSITIVE, I,J)) {
+    if (pos == buf->end())
+        pos = buf->begin();
+    else
+        ++pos;
+    if (pos.forward_search(text, TEXT_SEARCH_CASE_INSENSITIVE, I,J)) {
         buf->move_mark(cur, I);
         buf->select_range(I, J);
         scroll_to(cur);
@@ -240,7 +231,7 @@ Label* view_ast::label() {
 void view_ast::set_template(string conf_template) {
     auto text = file2string(ui_structure::get_resource_path(conf_template, "template"));
     try {
-        this->ast_template = new parse_conf::AST(text);
+        this->ast_template = new AST(text);
     } catch (exception &e) {
         message_box(e.what());
     }
@@ -350,13 +341,13 @@ void uncomment_lines(pBuffer Buf, CURSOR X, CURSOR Y) {
 }
 
 inline bool actionable_block(const RANGE* rp) {
-    return rp->type == parse_conf::XML_LIKE_t || rp->type == parse_conf::KEY_VALUES_t;
+    return rp->type == XML_LIKE_t || rp->type == KEY_VALUES_t;
 }
 
 bool view_ast::disable_block(bool perform) {
     if (ast) {
         for (auto rp : model::ast_locate_cursor(*ast, buffer_cursor_offset())) {
-            if (rp->type == parse_conf::COMMENT_t)
+            if (rp->type == COMMENT_t)
                 return false;   // already disabled
             if (actionable_block(rp)) {
                 if (perform) {
@@ -373,7 +364,7 @@ bool view_ast::enable_block(bool perform) {
     if (ast) {
         bool enabled = true;
         for (auto rp : model::ast_locate_cursor(*ast, buffer_cursor_offset())) {
-            if (rp->type == parse_conf::COMMENT_t)
+            if (rp->type == COMMENT_t)
                 enabled = false;   // already disabled
             if (!enabled && actionable_block(rp)) {
                 if (perform) {
@@ -390,7 +381,7 @@ void view_ast::reparse_buffer() {
     auto buf = buffer();
     auto text = buf->get_text();
     try {
-        auto temp = new parse_conf::AST(text, conf);
+        auto temp = new AST(text, conf);
 
         TextIter I, J;
         buf->get_bounds(I, J);
@@ -407,18 +398,24 @@ void view_ast::reparse_buffer() {
     }
 }
 
-void view_ast::update_value(RANGE::path_t p, bool v) {
+bool view_ast::update_value(RANGE::path_t p, bool v) {
     string newvalue = v ? "true" : "false";
-    update_value(p, newvalue);
+    return update_value(p, newvalue);
 }
-void view_ast::update_value(RANGE::path_t p, string newvalue) {
-    auto s = *p.back();
-    if (s.type == parse_conf::KEY_VALUES_t) {
-        auto r = s[parse_conf::VALUES_l].nesting[0];
+bool view_ast::update_value(RANGE::path_t p, string newvalue) {
+    return update_value(*p.back(), newvalue);
+}
+bool view_ast::update_value(const RANGE& s, string newvalue) {
+    bool rc = false;
+    string newtext;
+    if (s.type == KEY_VALUES_t) {
+        auto r = s[VALUES_l].nesting[0];
         auto q = r(ast->text);
-        string newtext = ast->text.substr(0, r.begin) + newvalue + ast->text.substr(r.end);
-        buffer()->set_text(newtext);
-        set_dirty();
-        reparse_buffer();
+        newtext = ast->text.substr(0, r.begin) + newvalue + ast->text.substr(r.end);
+        rc = true;
     }
+    buffer()->set_text(newtext);
+    set_dirty();
+    reparse_buffer();
+    return rc;
 }

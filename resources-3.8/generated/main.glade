@@ -3,6 +3,7 @@
 <interface>
   <requires lib="gtk+" version="3.8"/>
   <object class="GtkGrid" id="grid_main">
+    <property name="name">grid_main</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -530,7 +531,7 @@ five plugins that may take relatively long to write to.
 	<property name="name">WriteQueueLimitHigh</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for WriteQueueLimitHigh</property>
+	<property name="tooltip_text" translatable="yes">WriteQueueLimitHigh: no description available</property>
 	<property name="placeholder_text" translatable="yes">HighNum</property>
       </object>
       <packing>
@@ -673,7 +674,7 @@ is enabled by default.
 	<property name="name">PreCacheChain</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for PreCacheChain</property>
+	<property name="tooltip_text" translatable="yes">PreCacheChain: no description available</property>
 	<property name="placeholder_text" translatable="yes">ChainName</property>
       </object>
       <packing>

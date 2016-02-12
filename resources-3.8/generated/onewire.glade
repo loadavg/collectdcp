@@ -52,6 +52,7 @@ Sensor then the whole addressing (all sensors) is considered to be this way
 </property>
   </object>
   <object class="GtkGrid" id="onewire">
+    <property name="name">onewire</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

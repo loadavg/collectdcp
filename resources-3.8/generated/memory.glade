@@ -13,6 +13,7 @@ The memory plugin provides the following configuration options:
 </property>
   </object>
   <object class="GtkGrid" id="memory">
+    <property name="name">memory</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

@@ -20,6 +20,7 @@ Only Connection is required.
 </property>
   </object>
   <object class="GtkGrid" id="virt">
+    <property name="name">virt</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -108,7 +109,7 @@ option is set to 0, refreshing is disabled completely.
 	<property name="name">Domain</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Domain</property>
+	<property name="tooltip_text" translatable="yes">Domain: no description available</property>
 	<property name="placeholder_text" translatable="yes">name</property>
       </object>
       <packing>
@@ -136,7 +137,7 @@ option is set to 0, refreshing is disabled completely.
 	<property name="name">BlockDevice</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for BlockDevice</property>
+	<property name="tooltip_text" translatable="yes">BlockDevice: no description available</property>
 	<property name="placeholder_text" translatable="yes">name:dev</property>
       </object>
       <packing>
@@ -164,7 +165,7 @@ option is set to 0, refreshing is disabled completely.
 	<property name="name">InterfaceDevice</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for InterfaceDevice</property>
+	<property name="tooltip_text" translatable="yes">InterfaceDevice: no description available</property>
 	<property name="placeholder_text" translatable="yes">name:dev</property>
       </object>
       <packing>

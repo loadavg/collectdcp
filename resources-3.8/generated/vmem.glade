@@ -17,6 +17,7 @@ pages read from swap space.
 </property>
   </object>
   <object class="GtkGrid" id="vmem">
+    <property name="name">vmem</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

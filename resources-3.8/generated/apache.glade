@@ -55,6 +55,7 @@ The following options are accepted within each Instance block:
 </property>
   </object>
   <object class="GtkGrid" id="apache">
+    <property name="name">apache</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

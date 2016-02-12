@@ -10,6 +10,7 @@
 </property>
   </object>
   <object class="GtkGrid" id="unixsock">
+    <property name="name">unixsock</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

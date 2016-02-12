@@ -42,6 +42,7 @@ The following options are valid inside the Plugin mic block:
 </property>
   </object>
   <object class="GtkGrid" id="mic">
+    <property name="name">mic</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

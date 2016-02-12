@@ -14,6 +14,7 @@ messages as JSON events for logstash to parse and input.
 </property>
   </object>
   <object class="GtkGrid" id="log_logstash">
+    <property name="name">log_logstash</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

@@ -61,6 +61,7 @@ values submitted to the daemon. Other than that, that name is not used.
 </property>
   </object>
   <object class="GtkGrid" id="oracle">
+    <property name="name">oracle</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

@@ -44,6 +44,7 @@ options are available:
 </property>
   </object>
   <object class="GtkGrid" id="write_redis">
+    <property name="name">write_redis</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

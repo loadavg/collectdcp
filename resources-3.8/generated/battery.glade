@@ -14,6 +14,7 @@ laptop batteries.
 </property>
   </object>
   <object class="GtkGrid" id="battery">
+    <property name="name">battery</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

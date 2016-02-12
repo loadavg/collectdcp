@@ -15,6 +15,7 @@ cpuacct.stat files in the first cpuacct-mountpoint (typically
 </property>
   </object>
   <object class="GtkGrid" id="cgroups">
+    <property name="name">cgroups</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

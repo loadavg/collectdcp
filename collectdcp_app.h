@@ -152,14 +152,6 @@ protected:
     view_ast *find_view(std::string conf);
 
     /**
-     * @brief file_view_buf
-     *  borrowed from Prolog, where pattern matching was a good deal
-     *  to access structured data, but useless now
-     */
-    typedef std::tuple<std::string, Gtk::TextView*, Glib::RefPtr<Gtk::TextBuffer>> file_view_buf;
-    file_view_buf current_file_view_buf();
-
-    /**
      * @brief conf_editable
      *  name all editable .conf files
      * @return
@@ -209,9 +201,6 @@ protected:
 
     void handle_includes();
     view_ast* add_conf_file(std::string symbol, std::string path);
-
-    typedef std::map<std::string, view_ast *> t_ast_views_sym;
-    t_ast_views_sym views_by_symbol() const;
 
     Glib::RefPtr<Gtk::Application> app;
     model::AST *plugins_defaults = 0;

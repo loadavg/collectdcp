@@ -58,6 +58,7 @@ The following options are valid within Page blocks:
 </property>
   </object>
   <object class="GtkGrid" id="curl">
+    <property name="name">curl</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

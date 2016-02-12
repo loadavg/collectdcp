@@ -19,6 +19,7 @@ The following configuration options are available:
 </property>
   </object>
   <object class="GtkGrid" id="lpar">
+    <property name="name">lpar</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

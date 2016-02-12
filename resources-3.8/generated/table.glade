@@ -46,6 +46,7 @@ The following options are available inside a Table block:
 </property>
   </object>
   <object class="GtkGrid" id="table">
+    <property name="name">table</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

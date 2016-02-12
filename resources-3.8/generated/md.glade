@@ -18,6 +18,7 @@ missing (physically absent) disks.
 </property>
   </object>
   <object class="GtkGrid" id="md">
+    <property name="name">md</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

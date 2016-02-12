@@ -21,6 +21,7 @@ collection only of specific disks.
 </property>
   </object>
   <object class="GtkGrid" id="disk">
+    <property name="name">disk</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

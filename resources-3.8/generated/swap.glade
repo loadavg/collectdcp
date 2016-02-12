@@ -14,6 +14,7 @@ Linux and Solaris, the following options are available:
 </property>
   </object>
   <object class="GtkGrid" id="swap">
+    <property name="name">swap</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

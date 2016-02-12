@@ -17,6 +17,7 @@ fine-tune the ports you are interested in:
 </property>
   </object>
   <object class="GtkGrid" id="tcpconns">
+    <property name="name">tcpconns</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

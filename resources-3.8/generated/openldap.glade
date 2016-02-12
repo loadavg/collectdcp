@@ -40,6 +40,7 @@ The following options are accepted within each Instance block:
 </property>
   </object>
   <object class="GtkGrid" id="openldap">
+    <property name="name">openldap</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

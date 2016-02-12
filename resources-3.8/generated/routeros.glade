@@ -44,6 +44,7 @@ options are understood:
 </property>
   </object>
   <object class="GtkGrid" id="routeros">
+    <property name="name">routeros</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

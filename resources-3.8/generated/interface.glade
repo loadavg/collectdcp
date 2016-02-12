@@ -10,6 +10,7 @@
 </property>
   </object>
   <object class="GtkGrid" id="interface">
+    <property name="name">interface</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

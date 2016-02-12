@@ -17,6 +17,7 @@ Available configuration options:
 </property>
   </object>
   <object class="GtkGrid" id="protocols">
+    <property name="name">protocols</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

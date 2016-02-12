@@ -14,6 +14,7 @@ couple metrics: number of records, and database size on disk.
 </property>
   </object>
   <object class="GtkGrid" id="tokyotyrant">
+    <property name="name">tokyotyrant</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

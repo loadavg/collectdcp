@@ -131,6 +131,7 @@ The netapp plugin accepts the following configuration options:
 </property>
   </object>
   <object class="GtkGrid" id="netapp">
+    <property name="name">netapp</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -329,7 +330,7 @@ Default: 80 for protocol "http", 443 for protocol "https"
 	<property name="name">User</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for User</property>
+	<property name="tooltip_text" translatable="yes">User: no description available</property>
 	<property name="placeholder_text" translatable="yes">User</property>
       </object>
       <packing>

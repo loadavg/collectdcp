@@ -66,6 +66,7 @@ The bind plugin accepts the following configuration options:
 </property>
   </object>
   <object class="GtkGrid" id="bind">
+    <property name="name">bind</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

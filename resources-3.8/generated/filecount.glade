@@ -41,6 +41,7 @@ blocks, the following options are recognized:
 </property>
   </object>
   <object class="GtkGrid" id="filecount">
+    <property name="name">filecount</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

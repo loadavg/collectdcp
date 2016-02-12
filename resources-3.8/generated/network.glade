@@ -45,6 +45,7 @@ signature):
 </property>
   </object>
   <object class="GtkGrid" id="network">
+    <property name="name">network</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

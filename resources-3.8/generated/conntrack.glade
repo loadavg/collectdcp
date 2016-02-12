@@ -13,6 +13,7 @@ This plugin collects IP conntrack statistics.
 </property>
   </object>
   <object class="GtkGrid" id="conntrack">
+    <property name="name">conntrack</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

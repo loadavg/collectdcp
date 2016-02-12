@@ -66,6 +66,7 @@ section "mysql_real_connect()" in the MySQL reference manual.
 </property>
   </object>
   <object class="GtkGrid" id="mysql">
+    <property name="name">mysql</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -340,7 +341,7 @@ Disabled by default.
 	<property name="name">MasterStats</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for MasterStats</property>
+	<property name="tooltip_text" translatable="yes">MasterStats: no description available</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

@@ -33,6 +33,7 @@ options are available:
 </property>
   </object>
   <object class="GtkGrid" id="write_mongodb">
+    <property name="name">write_mongodb</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -175,7 +176,7 @@ number.
 	<property name="name">Database</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Database</property>
+	<property name="tooltip_text" translatable="yes">Database: no description available</property>
 	<property name="placeholder_text" translatable="yes">Database</property>
       </object>
       <packing>
@@ -203,7 +204,7 @@ number.
 	<property name="name">User</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for User</property>
+	<property name="tooltip_text" translatable="yes">User: no description available</property>
 	<property name="placeholder_text" translatable="yes">User</property>
       </object>
       <packing>

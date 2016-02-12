@@ -29,6 +29,7 @@ following options are allowed:
 </property>
   </object>
   <object class="GtkGrid" id="memcached">
+    <property name="name">memcached</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

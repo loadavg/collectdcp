@@ -17,6 +17,7 @@ The fhcount plugin provides the following configuration options:
 </property>
   </object>
   <object class="GtkGrid" id="fhcount">
+    <property name="name">fhcount</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

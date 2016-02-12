@@ -33,6 +33,7 @@ reasonable defaults will be collected.
 </property>
   </object>
   <object class="GtkGrid" id="powerdns">
+    <property name="name">powerdns</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

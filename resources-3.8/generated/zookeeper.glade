@@ -25,6 +25,7 @@ Synopsis:
 </property>
   </object>
   <object class="GtkGrid" id="zookeeper">
+    <property name="name">zookeeper</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

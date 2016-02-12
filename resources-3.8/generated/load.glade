@@ -19,6 +19,7 @@ The following configuration options are available:
 </property>
   </object>
   <object class="GtkGrid" id="load">
+    <property name="name">load</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

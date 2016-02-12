@@ -57,6 +57,7 @@ Inside each &lt;Instance&gt; blocks, the following options are recognized:
 </property>
   </object>
   <object class="GtkGrid" id="varnish">
+    <property name="name">varnish</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

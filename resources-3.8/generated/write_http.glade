@@ -34,6 +34,7 @@ block, the following options are available:
 </property>
   </object>
   <object class="GtkGrid" id="write_http">
+    <property name="name">write_http</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

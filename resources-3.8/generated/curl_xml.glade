@@ -55,6 +55,7 @@ Within the URL block the following options are accepted:
 </property>
   </object>
   <object class="GtkGrid" id="curl_xml">
+    <property name="name">curl_xml</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -177,7 +178,7 @@ Examples:
 	<property name="name">User</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for User</property>
+	<property name="tooltip_text" translatable="yes">User: no description available</property>
 	<property name="placeholder_text" translatable="yes">User</property>
       </object>
       <packing>
@@ -205,7 +206,7 @@ Examples:
 	<property name="name">Password</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Password</property>
+	<property name="tooltip_text" translatable="yes">Password: no description available</property>
 	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
@@ -233,7 +234,7 @@ Examples:
 	<property name="name">Digest</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Digest</property>
+	<property name="tooltip_text" translatable="yes">Digest: no description available</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -260,7 +261,7 @@ Examples:
 	<property name="name">VerifyPeer</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for VerifyPeer</property>
+	<property name="tooltip_text" translatable="yes">VerifyPeer: no description available</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -287,7 +288,7 @@ Examples:
 	<property name="name">VerifyHost</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for VerifyHost</property>
+	<property name="tooltip_text" translatable="yes">VerifyHost: no description available</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -314,7 +315,7 @@ Examples:
 	<property name="name">CACert</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for CACert</property>
+	<property name="tooltip_text" translatable="yes">CACert: no description available</property>
 	<property name="placeholder_text" translatable="yes">CA Cert File</property>
       </object>
       <packing>
@@ -342,7 +343,7 @@ Examples:
 	<property name="name">Header</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Header</property>
+	<property name="tooltip_text" translatable="yes">Header: no description available</property>
 	<property name="placeholder_text" translatable="yes">Header</property>
       </object>
       <packing>
@@ -370,7 +371,7 @@ Examples:
 	<property name="name">Post</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Post</property>
+	<property name="tooltip_text" translatable="yes">Post: no description available</property>
 	<property name="placeholder_text" translatable="yes">Body</property>
       </object>
       <packing>

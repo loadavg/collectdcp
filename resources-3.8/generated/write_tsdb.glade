@@ -35,6 +35,7 @@ blocks. Inside the Node blocks, the following options are recognized:
 </property>
   </object>
   <object class="GtkGrid" id="write_tsdb">
+    <property name="name">write_tsdb</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

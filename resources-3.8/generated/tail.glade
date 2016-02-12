@@ -57,6 +57,7 @@ be performed:
 </property>
   </object>
   <object class="GtkGrid" id="tail">
+    <property name="name">tail</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

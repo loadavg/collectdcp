@@ -10,6 +10,7 @@
 </property>
   </object>
   <object class="GtkGrid" id="logfile">
+    <property name="name">logfile</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

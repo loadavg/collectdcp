@@ -8,6 +8,7 @@
     <property name="label"></property>
   </object>
   <object class="GtkGrid" id="perl">
+    <property name="name">perl</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
   </object>

@@ -81,6 +81,7 @@ The following options are valid within URL blocks:
 </property>
   </object>
   <object class="GtkGrid" id="curl_json">
+    <property name="name">curl_json</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -162,7 +163,7 @@ URL. By default the global Interval setting will be used.
 	<property name="name">User</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for User</property>
+	<property name="tooltip_text" translatable="yes">User: no description available</property>
 	<property name="placeholder_text" translatable="yes">Name</property>
       </object>
       <packing>
@@ -190,7 +191,7 @@ URL. By default the global Interval setting will be used.
 	<property name="name">Password</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Password</property>
+	<property name="tooltip_text" translatable="yes">Password: no description available</property>
 	<property name="placeholder_text" translatable="yes">Password</property>
       </object>
       <packing>
@@ -218,7 +219,7 @@ URL. By default the global Interval setting will be used.
 	<property name="name">Digest</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Digest</property>
+	<property name="tooltip_text" translatable="yes">Digest: no description available</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -245,7 +246,7 @@ URL. By default the global Interval setting will be used.
 	<property name="name">VerifyPeer</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for VerifyPeer</property>
+	<property name="tooltip_text" translatable="yes">VerifyPeer: no description available</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -272,7 +273,7 @@ URL. By default the global Interval setting will be used.
 	<property name="name">VerifyHost</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for VerifyHost</property>
+	<property name="tooltip_text" translatable="yes">VerifyHost: no description available</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -299,7 +300,7 @@ URL. By default the global Interval setting will be used.
 	<property name="name">CACert</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for CACert</property>
+	<property name="tooltip_text" translatable="yes">CACert: no description available</property>
 	<property name="placeholder_text" translatable="yes">file</property>
       </object>
       <packing>
@@ -327,7 +328,7 @@ URL. By default the global Interval setting will be used.
 	<property name="name">Header</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Header</property>
+	<property name="tooltip_text" translatable="yes">Header: no description available</property>
 	<property name="placeholder_text" translatable="yes">Header</property>
       </object>
       <packing>
@@ -355,7 +356,7 @@ URL. By default the global Interval setting will be used.
 	<property name="name">Post</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Post</property>
+	<property name="tooltip_text" translatable="yes">Post: no description available</property>
 	<property name="placeholder_text" translatable="yes">Body</property>
       </object>
       <packing>

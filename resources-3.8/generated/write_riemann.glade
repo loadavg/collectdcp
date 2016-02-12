@@ -36,6 +36,7 @@ The following options are understood by the write_riemann plugin:
 </property>
   </object>
   <object class="GtkGrid" id="write_riemann">
+    <property name="name">write_riemann</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

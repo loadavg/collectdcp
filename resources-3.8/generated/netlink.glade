@@ -14,6 +14,7 @@ statistics of various interface and routing aspects.
 </property>
   </object>
   <object class="GtkGrid" id="netlink">
+    <property name="name">netlink</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -34,7 +35,7 @@ statistics of various interface and routing aspects.
 	<property name="name">Interface</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for Interface</property>
+	<property name="tooltip_text" translatable="yes">Interface: no description available</property>
 	<property name="placeholder_text" translatable="yes">Interface</property>
       </object>
       <packing>
@@ -109,7 +110,7 @@ If Interface is All, all interfaces will be selected.
 	</items>
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="tooltip_text" translatable="yes">no description available for QDisc</property>
+	<property name="tooltip_text" translatable="yes">QDisc: no description available</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>
@@ -140,7 +141,7 @@ If Interface is All, all interfaces will be selected.
 	</items>
 	<property name="visible">True</property>
 	<property name="can_focus">False</property>
-	<property name="tooltip_text" translatable="yes">no description available for Class</property>
+	<property name="tooltip_text" translatable="yes">Class: no description available</property>
       </object>
       <packing>
 	<property name="left_attach">1</property>

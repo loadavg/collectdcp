@@ -20,6 +20,7 @@ http://secure.netroedge.com/~lm78/.
 </property>
   </object>
   <object class="GtkGrid" id="sensors">
+    <property name="name">sensors</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

@@ -66,6 +66,7 @@ Publish blocks in the future.
 </property>
   </object>
   <object class="GtkGrid" id="amqp">
+    <property name="name">amqp</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
@@ -179,7 +180,7 @@ Name of the virtual host on the AMQP broker to use. Defaults to "/".
 	<property name="name">User</property>
 	<property name="visible">True</property>
 	<property name="can_focus">True</property>
-	<property name="tooltip_text" translatable="yes">no description available for User</property>
+	<property name="tooltip_text" translatable="yes">User: no description available</property>
 	<property name="placeholder_text" translatable="yes">User</property>
       </object>
       <packing>

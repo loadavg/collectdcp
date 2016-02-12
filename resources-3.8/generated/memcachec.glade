@@ -42,6 +42,7 @@ The configuration options are:
 </property>
   </object>
   <object class="GtkGrid" id="memcachec">
+    <property name="name">memcachec</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

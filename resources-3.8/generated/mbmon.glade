@@ -24,6 +24,7 @@ will need to ensure that this is the case.
 </property>
   </object>
   <object class="GtkGrid" id="mbmon">
+    <property name="name">mbmon</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

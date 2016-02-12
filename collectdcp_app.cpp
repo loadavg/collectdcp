@@ -64,10 +64,8 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
     setup_system_interface(refBuilder);
 
     if (auto v = find_view(model::entry_symbol()))
-        if (global_options) {
+        if (global_options)
             ast_to_grid(v->get_AST(), dynamic_cast<Grid*>(global_options));
-            accept_changes = true;
-        }
 
     log_message("done setup");
 }
@@ -78,8 +76,6 @@ void collectdcp_app::setup_system_interface(const RefPtr<Builder>& refBuilder) {
 
     password = instance_widget<Entry>(refBuilder, "sudo_password");
 
-    //start->set_sensitive(false);
-    //stop->set_sensitive(false);
     start->signal_clicked().connect(sigc::mem_fun(this, &collectdcp_app::on_start));
     stop->signal_clicked().connect(sigc::mem_fun(this, &collectdcp_app::on_stop));
     schedule_status_check();
@@ -254,6 +250,7 @@ void collectdcp_app::on_cursor_changed() {
             if (auto v = find_view(model::entry_symbol())) {
                 ast_to_grid(v->get_AST(), grid);
                 plugin_options = grid;
+                //plugin_options->set_name(p);
             }
         });
     }
@@ -282,11 +279,6 @@ view_ast* collectdcp_app::add_conf_file(string symbol, string path) {
     auto l = new Label(symbol);
     notebook->append_page(*w, *l);
     return v;
-}
-
-collectdcp_app::t_ast_views_sym collectdcp_app::views_by_symbol() const {
-    t_ast_views_sym m;
-    return m;
 }
 
 ///// from collectdcp_app
@@ -380,12 +372,6 @@ view_ast *collectdcp_app::find_view(string conf) {
                     if (v->conf == conf)
                         return v;
     return 0;
-}
-
-collectdcp_app::file_view_buf collectdcp_app::current_file_view_buf() {
-    auto va = current_view();
-    auto sb = va->buffer();
-    return file_view_buf(va->label()->get_text(), va, sb);
 }
 
 void collectdcp_app::on_file_save() {
@@ -497,6 +483,7 @@ void collectdcp_app::on_search() {
 ///// end from collectdcp_app
 
 void collectdcp_app::ast_to_grid(const AST *ast, Grid *g) {
+    accept_changes = false;
     entries_t entries(ast);
 
     for (int nrows = 0; ; ++nrows) {
@@ -547,6 +534,8 @@ void collectdcp_app::ast_to_grid(const AST *ast, Grid *g) {
             }
         }
     }
+
+    accept_changes = true;
 }
 
 /**
@@ -634,29 +623,49 @@ void collectdcp_app::on_widget_changed(Widget* w) {
     if (!accept_changes)
         return;
 
+    // lookup the container of this widget
+    auto g = find_parent<Grid>(w);
+    if (!g)
+        return;
+
     string name = w->get_name();
     cout << "on_widget_changed " << name << endl;
 
-    // lookup the container of this widget
-    auto g = find_parent<Grid>(w);
-    if (g) {
+    int updated = 0;
+    auto updater = [](view_ast *v, Widget *w, RANGE::path_t path) {
+        int u = 0;
+        if (auto b = is_a<CheckButton>(w))
+            u += v->update_value(path, b->get_active());
+        if (auto c = is_a<ComboBoxText>(w))
+            u += v->update_value(path, c->get_active_text());
+        if (auto e = is_a<Entry>(w))
+            u += v->update_value(path, e->get_text());
+        return u;
+    };
 
-        auto v = find_view(model::entry_symbol());
-        entries_t entries(v->get_AST());
-        for (auto er = entries.equal_range(name); er.first != er.second; ++er.first) {
-            if (auto b = is_a<CheckButton>(w))
-                v->update_value(er.first->second, b->get_active());
-            if (auto c = is_a<ComboBoxText>(w))
-                v->update_value(er.first->second, c->get_active_text());
-            if (auto e = is_a<Entry>(w))
-                v->update_value(er.first->second, e->get_text());
-        }
-
-        // scan the appropriate data model
-        if (g == global_options) {
-        }
-        if (g == plugin_options) {
-
+    if (g == global_options) {
+        if (auto v = find_view(model::entry_symbol())) {
+            entries_t entries(v->get_AST());
+            for (auto er = entries.equal_range(name); er.first != er.second; ++er.first) {
+                updated += updater(v, w, er.first->second);
+            }
         }
     }
+    else for (auto ce : conf_editable()) {
+
+        // scan the appropriate data model
+        g_assert(g == plugin_options);
+        string plugin = plugin_options->get_name();
+        auto v = find_view(ce);
+        plugins_t entries(v->get_AST());
+        for (auto er = entries.equal_range(plugin); er.first != er.second; ++er.first) {
+            auto path = er.first->second;
+            terminals_t terminals(entries.ast, path);
+            for (auto tr = terminals.equal_range(name); tr.first != tr.second; ++tr.first) {
+                updated += updater(v, w, tr.first->second);
+            }
+        }
+    }
+
+    status_message(prints("updated '%s' %d times", name.c_str(), updated));
 }

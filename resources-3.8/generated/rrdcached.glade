@@ -36,6 +36,7 @@ does not result in RRD files being created / expected in the wrong place.
 </property>
   </object>
   <object class="GtkGrid" id="rrdcached">
+    <property name="name">rrdcached</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

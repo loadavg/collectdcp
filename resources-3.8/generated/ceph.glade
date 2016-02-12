@@ -41,6 +41,7 @@ The ceph plugin accepts the following configuration options:
 </property>
   </object>
   <object class="GtkGrid" id="ceph">
+    <property name="name">ceph</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

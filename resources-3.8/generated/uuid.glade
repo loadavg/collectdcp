@@ -39,6 +39,7 @@ If no UUID can be found then the hostname is not modified.
 </property>
   </object>
   <object class="GtkGrid" id="uuid">
+    <property name="name">uuid</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

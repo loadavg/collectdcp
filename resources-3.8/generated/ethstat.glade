@@ -28,6 +28,7 @@ Options:
 </property>
   </object>
   <object class="GtkGrid" id="ethstat">
+    <property name="name">ethstat</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

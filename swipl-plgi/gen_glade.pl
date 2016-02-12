@@ -129,7 +129,8 @@ gen_grid_interface(Ver, Id, Rows, PDesc, E) :-
 	( Ver = '3.8' ; true ),
 	( Id = grid1 ; true ),
 	Obj = object([class='GtkGrid', id=Id],
-		     [property([name=visible], ['True'])
+		     [property([name=name], [Id])
+		     ,property([name=visible], ['True'])
 		     ,property([name=can_focus], ['False'])
 		     |Rows]),
 	(  atom(PDesc)
@@ -139,7 +140,8 @@ gen_grid_interface(Ver, Id, Rows, PDesc, E) :-
         ),
 	xml_ize(interface([],
 			  [requires([lib='gtk+', version=Ver], [])|Interface]
-			 ), E).
+			 ), E),
+	print_message(informational, generated_grid(Id)).
 
 packing(Left_attach, Top_attach, Width, Height, P) :-
 	P = packing([],
@@ -152,7 +154,7 @@ packing(Left_attach, Top_attach, P) :- packing(Left_attach, Top_attach, 1,1, P).
 
 gen_row(Field, Row, E) :-
 	_{name:Name, values:Values} :< Field,
-	( _{desc:Desc} :< Field ; format(atom(Desc), 'no description available for ~w', [Name]) ),
+	( _{desc:Desc} :< Field ; format(atom(Desc), '~w: no description available', [Name]) ),
 
 	packing(0, Row, P1),
 	properties([visible(true)
@@ -162,37 +164,6 @@ gen_row(Field, Row, E) :-
 	Lab = [object([class="GtkLabel", id=Label], Ps1), P1],
 
 	packing(1, Row, P2),
-	/*
-	(   Values = [Placeholder]
-	->  Class = 'GtkEntry',
-	    properties([visible(true)
-		       ,can_focus(true)
-		       ,tooltip_text(Desc, translatable=yes) %,tooltip_markup(Desc, translatable=yes)
-		       ,placeholder_text(Placeholder, translatable=yes)
-		       ], Ps2)
-	;   Values = []
-	->  Class = 'GtkEntry',
-	    properties([visible(true)
-		       ,can_focus(true)
-		       ,tooltip_text(Desc, translatable=yes) %,tooltip_markup(Desc, translatable=yes)
-		       ,placeholder_text(?, translatable=yes)
-		       ], Ps2)
-	;   booleans(Values)
-	->  Class = 'GtkCheckButton',
-	    properties([visible(true)
-		       ,can_focus(true)
-		       ,tooltip_text(Desc, translatable=yes)
-		       ], Ps2)
-	;   items(Values, Items)
-	->  Class = 'GtkComboBoxText',
-	    properties([visible(true)
-		       ,can_focus(false)
-		       ,tooltip_text(Desc, translatable=yes)
-		       ], Ps),
-	    Ps2 = [Items|Ps]
-	;   throw(cannot_generate_field(Name, on, Values))
-	),
-	*/
 	(   entry(Values, Placeholder)
 	->  Class = 'GtkEntry',
 	    properties([visible(true)
@@ -235,8 +206,9 @@ booleans(Vs) :- sort(Vs, [false,true]).
 items(Values, items([], Items)) :-
 	length(Values, NValues),
 	NValues >= 2,
-	maplist(value_item, Values, Items).
-value_item(V, item([translatable=no],[V])).
+	maplist([V, I]>>(I = item([translatable=no], [V])), Values, Items).
+	%maplist(value_item, Values, Items).
+%value_item(V, item([translatable=no], [V])).
 
 name_labelId(Name, Label) :-
 	atomic_list_concat([label,-,Name], Label).
@@ -245,3 +217,5 @@ html_label(ID, HTML, X) :-
 	properties([visible(true), can_focus(false), label(HTML) /*, use_markup(true)*/], Ps),
 	atom_concat(label_, ID, LabelID),
 	xml_ize(object([class="GtkLabel", id=LabelID], Ps), X).
+
+prolog:message(generated_grid(Id)) --> ['generated grid ~w' - [Id]].
