@@ -414,8 +414,10 @@ bool view_ast::update_value(const RANGE& s, string newvalue) {
         newtext = ast->text.substr(0, r.begin) + newvalue + ast->text.substr(r.end);
         rc = true;
     }
-    buffer()->set_text(newtext);
-    set_dirty();
-    reparse_buffer();
+    if (rc) {
+        buffer()->set_text(newtext);
+        set_dirty();
+        reparse_buffer();
+    }
     return rc;
 }

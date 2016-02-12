@@ -628,6 +628,8 @@ void collectdcp_app::on_widget_changed(Widget* w) {
     if (!g)
         return;
 
+    accept_changes = false;
+
     string name = w->get_name();
     cout << "on_widget_changed " << name << endl;
 
@@ -648,6 +650,7 @@ void collectdcp_app::on_widget_changed(Widget* w) {
             entries_t entries(v->get_AST());
             for (auto er = entries.equal_range(name); er.first != er.second; ++er.first) {
                 updated += updater(v, w, er.first->second);
+                break;
             }
         }
     }
@@ -666,6 +669,8 @@ void collectdcp_app::on_widget_changed(Widget* w) {
             }
         }
     }
+
+    accept_changes = true;
 
     status_message(prints("updated '%s' %d times", name.c_str(), updated));
 }
