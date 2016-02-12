@@ -9,13 +9,8 @@
 #include <iostream>
 
 #include "model.h"
-#include "test_win.h"
-#include "collectdcp_app.h"
-#include "app_window.h"
-#include "test_parse.h"
-#include "test_glade.h"
 #include "ui_structure.h"
-#include "editor_window.h"
+#include "collectdcp_app.h"
 
 /**
  * @brief main
