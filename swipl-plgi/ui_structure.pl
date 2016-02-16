@@ -11,6 +11,8 @@
 	  ,cleanup/0
 	  ,get_application_interface/1
 	  ,get_resource/2
+	  ,get_resource_path/3
+	  ,resources_folder/1
 	  ,container_structure/2
 	  ,get_notebook/2
 	  ,get_statusbar/2
@@ -97,18 +99,36 @@ store_action(Builder, Name) :-
 	;   writeln(no_action(Name))
 	).
 
+resources_folder(Folder) :-
+	context_module(M),
+	module_property(M, file(File)),
+	file_directory_name(File, Directory),
+	format(atom(Folder), '~s/../resources-3.8', [Directory]).
+
 %%	get_resource(+What, -Builder)
 %
 %	patch the glade base file name with folder and extension
 %	get the GtkBuilder ready for object retrieval
 %
 get_resource(What, Builder) :-
+	/*
 	context_module(M),
 	module_property(M, file(File)),
 	file_directory_name(File, Directory),
 	format(atom(GladeFile), '~s/../resources-3.10/~s.glade', [Directory, What]),
 	gtk_builder_new(Builder),
 	gtk_builder_add_from_file(Builder, GladeFile, _).
+	*/
+	%resources_folder(Resources_folder),
+	%format(atom(GladeFile), '~s/~w.glade', [Resources_folder, What]),
+	get_resource_path(What, glade, GladeFile),
+	gtk_builder_new(Builder),
+	gtk_builder_add_from_file(Builder, GladeFile, _).
+
+get_resource_path(What, Ext, Path) :-
+	resources_folder(Resources_folder),
+	( var(Ext) -> Ext = glade ; true ),
+	format(atom(Path), '~s/~w.~s', [Resources_folder, What, Ext]).
 
 %%	container_structure(+Widget, -Structure)
 %

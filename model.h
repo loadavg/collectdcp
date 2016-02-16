@@ -66,7 +66,7 @@ namespace model
      */
     struct entries_t : multimap<string, RANGE::path_t, iless> {
         const AST *ast;
-        entries_t(const AST *ast);
+        entries_t(const AST *ast, bool on_comment = true);
     };
 
     /**
@@ -75,7 +75,7 @@ namespace model
      */
     struct terminals_t : map<string, RANGE::path_t, iless> {
         const AST *ast;
-        terminals_t(const AST *ast, RANGE::path_t &root);
+        terminals_t(const AST *ast, RANGE::path_t &root, bool on_comment = true);
     };
 
     /**
