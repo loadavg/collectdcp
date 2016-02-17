@@ -217,4 +217,5 @@ DISTFILES += \
     swipl-plgi/xml_ize.pl \
     license.txt \
     resources-3.8/button.css \
-    resources-3.8/collectdcp_win.glade
+    resources-3.8/collectdcp_win.glade \
+    resources-3.8/loadavglogo2-small.png

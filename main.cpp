@@ -9,7 +9,6 @@
 #include <iostream>
 
 #include "model.h"
-#include "ui_structure.h"
 #include "collectdcp_app.h"
 
 /**
@@ -21,20 +20,18 @@
  * @param argv
  *  standard argv
  * @return
- *  standard application
+ *  standard application outcome
  */
 int main(int argc, char **argv)
 {
     int rc = 1;
     try {
-
         model::check_root(argc, argv);
-        auto app = Gtk::Application::create(argc, argv, "org.loadavg.collectdCP");
-
-        if (auto w = collectdcp_app::setup(app)) {
-            w->show_all();
-            rc = app->run(*w, argc, argv);
-            delete w;
+        auto app = Gtk::Application::create(argc, argv, "org.loadavg.collectdcp");
+        if (auto win = collectdcp_app::setup(app)) {
+            win->show_all();
+            rc = app->run(*win, argc, argv);
+            delete win;
         }
     }
     catch(std::exception &e) {
@@ -43,6 +40,5 @@ int main(int argc, char **argv)
     catch(Glib::Exception &e) {
         std::cerr << e.what() << std::endl;
     }
-
     return rc;
 }

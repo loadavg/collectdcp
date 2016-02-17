@@ -7,6 +7,7 @@
  */
 
 #include "model.h"
+#include "prints.h"
 #include "fileuty.h"
 #include "ast_loader.h"
 #include "file2string.h"
@@ -30,4 +31,6 @@ ast_loader::ast_loader(string conf, string path) {
             message_box(e.what());
         }
     }
+    else
+        message_box(prints("'%s' in '%s': no file found", conf.c_str(), path.c_str()));
 }

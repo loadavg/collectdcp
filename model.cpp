@@ -96,12 +96,6 @@ plugins_t::plugins_t(const AST *ast) : ast(ast) {
 }
 
 template <class S>
-inline void store(depth_first &df, S &s, string k, const RANGE &r) {
-    RANGE::path_t path = df;
-    path.push_back(&r);
-    s.emplace(make_pair(k, path));
-}
-template <class S>
 struct indexer : depth_first {
     indexer(S* store) : store(store) {}
     void remember(string k, const RANGE &r) {
@@ -151,7 +145,6 @@ terminals_t::terminals_t(const AST *ast, RANGE::path_t &root, bool on_comment) :
         }
         return true;
     });
-
 }
 
 string entry_symbol() { return "collectd"; }

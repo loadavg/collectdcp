@@ -67,6 +67,8 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
         if (global_options)
             ast_to_grid(v->get_AST(), dynamic_cast<Grid*>(global_options));
 
+    set_icon_from_file(get_resource_path("loadavglogo2-small", "png"));
+
     log_message("done setup");
 }
 
