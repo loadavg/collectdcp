@@ -149,7 +149,14 @@ protected:
      * @return
      *  @a view_ast containing @param conf, if found
      */
-    view_ast *find_view(std::string conf);
+    view_ast *find_view(std::string conf = std::string());
+
+    /**
+     * @brief all_views
+     * @return
+     *  all editable views
+     */
+    std::vector<view_ast*> all_views();
 
     /**
      * @brief conf_editable

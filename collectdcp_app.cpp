@@ -38,7 +38,7 @@ collectdcp_app* collectdcp_app::setup(RefPtr<Application> app) {
 collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& refBuilder)
     : Window(cobject)
 {
-    //CATCH_SHOW([this] { load_css(); });
+    CATCH_SHOW([this] { load_css(); });
 
     notebook = instance_widget<Notebook>(refBuilder, "notebook1");
 
@@ -63,7 +63,7 @@ collectdcp_app::collectdcp_app(BaseObjectType *cobject, const RefPtr<Builder>& r
     setup_plugins_treeview(refBuilder);
     setup_system_interface(refBuilder);
 
-    if (auto v = find_view(model::entry_symbol()))
+    if (auto v = find_view())
         if (global_options)
             ast_to_grid(v->get_AST(), dynamic_cast<Grid*>(global_options));
 
@@ -107,7 +107,7 @@ void collectdcp_app::log_message(std::string msg) {
 }
 
 void collectdcp_app::setup_plugins_treeview(const RefPtr<Builder>& refBuilder) {
-    if (auto v = find_view(model::entry_symbol())) {
+    if (auto v = find_view()) {
         auto ts = RefPtr<TreeStore>::cast_dynamic(refBuilder->get_object("plugin_treestore"));
         plugins_view = instance_widget<TreeView>(refBuilder, "plugin_treeview");
         plugins_view->signal_cursor_changed().connect(sigc::mem_fun(this, &collectdcp_app::on_cursor_changed));
@@ -249,7 +249,7 @@ void collectdcp_app::on_cursor_changed() {
             auto desc = instance_widget<Label>(builder, "label_" + p);
             plugin_description->get_buffer()->set_text(desc->get_text());
 
-            if (auto v = find_view(model::entry_symbol())) {
+            if (auto v = find_view()) {
                 ast_to_grid(v->get_AST(), grid);
                 plugin_options = grid;
                 //plugin_options->set_name(p);
@@ -304,19 +304,45 @@ bool collectdcp_app::on_delete_event(GdkEventAny *)
  */
 bool collectdcp_app::on_timer()
 {
+    vector<string> edit = {
+        "edit_cut",
+        "edit_copy",
+        "edit_paste",
+        "edit_delete",
+        "edit_undo",
+        "edit_redo"
+    };
+    vector<string> block = {
+        "disable_block",
+        "enable_block",
+        "add_block"
+    };
+
     if (auto w = current_view()) {
+        for (auto a: edit)
+            action_status(a, true);
+
         action_status("enable_block", w->enable_block(false));
         action_status("disable_block", w->disable_block(false));
-        action_status("file_save", w->is_dirty());
+        action_status("add_block", w->ast_template != 0);
+
+        //action_status("file_save", w->is_dirty());
 
 #ifdef USE_SOURCEVIEW
         RefPtr<const Gsv::UndoManager> um = w->get_source_buffer()->get_undo_manager();
         action_status("edit_undo", um->can_undo());
         action_status("edit_redo", um->can_redo());
 #endif
-
-        action_status("add_block", w->ast_template != 0);
     }
+    else {
+        for (auto a: edit) action_status(a, false);
+        for (auto a: block) action_status(a, false);
+    }
+
+    bool dirty = false;
+    for (auto v: all_views())
+        dirty |= v->is_dirty();
+    action_status("file_save", dirty);
 
     return true;
 }
@@ -367,6 +393,9 @@ view_ast *collectdcp_app::current_view() {
 }
 
 view_ast *collectdcp_app::find_view(string conf) {
+    if (conf.empty())
+        conf = model::entry_symbol();
+
     if (auto nb = get_notebook())
         for (int p = 0; p < nb->get_n_pages(); ++p)
             if (auto sc = is_a<Container>(nb->get_nth_page(p)))
@@ -374,6 +403,13 @@ view_ast *collectdcp_app::find_view(string conf) {
                     if (v->conf == conf)
                         return v;
     return 0;
+}
+
+vector<view_ast*> collectdcp_app::all_views() {
+    vector<view_ast*> all;
+    for (auto v : conf_editable())
+        all.push_back(find_view(v));
+    return all;
 }
 
 void collectdcp_app::on_file_save() {
@@ -648,7 +684,7 @@ void collectdcp_app::on_widget_changed(Widget* w) {
     };
 
     if (g == global_options) {
-        if (auto v = find_view(model::entry_symbol())) {
+        if (auto v = find_view()) {
             entries_t entries(v->get_AST());
             for (auto er = entries.equal_range(name); er.first != er.second; ++er.first) {
                 updated += updater(v, w, er.first->second);
