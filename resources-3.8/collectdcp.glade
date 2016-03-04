@@ -535,6 +535,7 @@
                     <child>
                       <object class="GtkButton" id="btn_start">
                         <property name="label" translatable="yes">start</property>
+                        <property name="name">btn_start</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
@@ -570,6 +571,7 @@ It will &lt;b&gt;not&lt;/b&gt; be saved anywhere by this program.</property>
                     <child>
                       <object class="GtkButton" id="btn_stop">
                         <property name="label" translatable="yes">stop</property>
+                        <property name="name">btn_stop</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>

@@ -1,46 +1,55 @@
+/*
+ * project collectd_edit
+ * ing. Carlo Capelli
+ * Brescia 2015
+ * Copyright (c) 2015,2016 Sputnik7
+ * License MIT
+ */
+
 GtkWindow {
-background-color: rgb(220,218,213); /* replicate default background window color  */
+    background-color: rgb(220,218,213); /* replicate default background window color  */
 }
 
 @define-color btn_basecolor rgba(0,0,255,1);
 
 /* Theme button in it's normal state */
-GtkButton {
--GtkWidget-focus-line-width: 0;
-border-radius: 20px;
-border-width: 1px 1px 1px 1px;
-font: Sans 16;
-color: black;
-background-image: -gtk-gradient (linear,
-             left top,
-             left bottom,
-             color-stop(0.0,rgba(34,97,170,1)),
-             color-stop(0.50,rgba(56,145,218,1)),
-             color-stop(0.51,rgba(34,131,216,1)),
-             color-stop(1.00,rgba(134,191,234,1)));
+#btn_start, #btn_stop { /* GtkButton */
+    -GtkWidget-focus-line-width: 0;
+    border-radius: 20px;
+    border-width: 1px 1px 1px 1px;
+    font: Sans 16;
+    color: black;
+    background-image: -gtk-gradient (linear,
+        left top,
+        left bottom,
+        color-stop(0.0,rgba(34,97,170,1)),
+        color-stop(0.50,rgba(56,145,218,1)),
+        color-stop(0.51,rgba(34,131,216,1)),
+        color-stop(1.00,rgba(134,191,234,1)));
 }
 
-/* Theme button when the mouse pointer's on it, both are equivalent */
+/* Theme button when the mouse pointer's on it, both are equivalent
 GtkButton:hover,
 GtkButton:prelight {
-background-image: -gtk-gradient (linear,
-             left top,
-             left bottom,
-             color-stop(0.0,rgba(30,87,153,1)),
-             color-stop(0.50,rgba(41,137,216,1)),
-             color-stop(0.51,rgba(32,124,202,1)),
-             color-stop(1.00,rgba(125,185,232,1)));
-
+    background-image: -gtk-gradient (linear,
+        left top,
+        left bottom,
+        color-stop(0.0,rgba(30,87,153,1)),
+        color-stop(0.50,rgba(41,137,216,1)),
+        color-stop(0.51,rgba(32,124,202,1)),
+        color-stop(1.00,rgba(125,185,232,1)));
 }
-/* Theme button when it's active (pressed) AND has pointer over it.  */
+*/
+/* Theme button when it's active (pressed) AND has pointer over it.
 GtkButton:hover:active {
-color: white;
-border-width: 3px 3px 3px 3px;
-background-image: -gtk-gradient (linear,
-             left top,
-             left bottom,
-             color-stop(0.0,rgba(28,82,144,1)),
-             color-stop(0.50,rgba(37,129,205,1)),
-             color-stop(0.51,rgba(30,115,190,1)),
-             color-stop(1.00,rgba(107,176,229,1)));
+    color: white;
+    border-width: 3px 3px 3px 3px;
+    background-image: -gtk-gradient (linear,
+        left top,
+        left bottom,
+        color-stop(0.0,rgba(28,82,144,1)),
+        color-stop(0.50,rgba(37,129,205,1)),
+        color-stop(0.51,rgba(30,115,190,1)),
+        color-stop(1.00,rgba(107,176,229,1)));
 }
+*/
