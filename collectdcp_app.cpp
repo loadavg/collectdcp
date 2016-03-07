@@ -11,6 +11,7 @@
 #include "ns_all.h"
 #include "os_info.h"
 #include "ast_loader.h"
+#include "equal_range.h"
 #include "process_run.h"
 #include "file2string.h"
 #include "message_box.h"
@@ -183,11 +184,8 @@ void collectdcp_app::handle_includes() {
     auto v = add_conf_file(sym, file);
     entries_t main(v->get_AST());   // find_view not available yet
 
-    for (auto e = main.equal_range("include"); e.first != e.second; ++e.first) {
-        entries_t::const_iterator i = e.first;
-        const RANGE::path_t &p = i->second;
-//for (auto x : p)
-    //cout << (*x)(main.ast->text) << endl;
+    for (auto e = equal_range(main, "include"); e; ++e) {
+        const RANGE::path_t &p = *e;
 
         if (commented(p))
             continue;
@@ -581,45 +579,9 @@ void collectdcp_app::ast_to_grid(const AST *ast, Grid *g) {
  *  check the daemon status
  * @return
  */
-/*
-bool collectdcp_app::service_is_running() const {
-    return start && start->is_sensitive();
-}
-bool collectdcp_app::stop_service() {
-    if (service_is_running()) {
-        start->set_sensitive(true);
-        stop->set_sensitive(false);
-        log_message("service stopped");
-        return true;
-    }
-    return false;
-}
-
-bool collectdcp_app::start_service() {
-    if (!service_is_running()) {
-        start->set_sensitive(false);
-        stop->set_sensitive(true);
-        log_message("service started");
-        return true;
-    }
-    return false;
-}
-*/
-
 void collectdcp_app::on_status_check() {
     g_assert(service_status == unknown);
-    /*
-    switch (service_status) {
-    case unknown: {
-        process_run P(cmd_status);  // no password for check
-        log_message(P.result);
-    }   break;
-    case running:
-    case stopped:
-    case error:
-        break;
-    }
-    */
+
     CATCH_SHOW([this] {
         process_run P(cmd_status);  // no password for check
         log_message(P.result);
@@ -628,12 +590,10 @@ void collectdcp_app::on_status_check() {
         if (rc.find(cmd_status_running) != string::npos){
             start->set_sensitive(false);
             stop->set_sensitive(true);
-            //log_message("collectd is running");
         }
         else {
             start->set_sensitive(true);
             stop->set_sensitive(false);
-            //log_message("collectd is NOT running");
         }
     });
 }
@@ -686,8 +646,8 @@ void collectdcp_app::on_widget_changed(Widget* w) {
     if (g == global_options) {
         if (auto v = find_view()) {
             entries_t entries(v->get_AST());
-            for (auto er = entries.equal_range(name); er.first != er.second; ++er.first) {
-                updated += updater(v, w, er.first->second);
+            for (auto er = equal_range(entries, name); er; ++er) {
+                updated += updater(v, w, *er);  // why was second ?
                 break;
             }
         }
@@ -699,11 +659,12 @@ void collectdcp_app::on_widget_changed(Widget* w) {
         string plugin = plugin_options->get_name();
         auto v = find_view(ce);
         plugins_t entries(v->get_AST());
-        for (auto er = entries.equal_range(plugin); er.first != er.second; ++er.first) {
-            auto path = er.first->second;
+
+        for (auto er = equal_range(entries, plugin); er; ++er) {
+            auto path = *er;
             terminals_t terminals(entries.ast, path);
-            for (auto tr = terminals.equal_range(name); tr.first != tr.second; ++tr.first) {
-                updated += updater(v, w, tr.first->second);
+            for (auto tr = equal_range(terminals, name); tr; ++tr) {
+                updated += updater(v, w, *tr);
             }
         }
     }

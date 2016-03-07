@@ -71,7 +71,8 @@ HEADERS += \
     ast_loader.h \
     glob_path_pattern.h \
     dir_structure.h \
-    collectdcp_app.h
+    collectdcp_app.h \
+    equal_range.h
 
 DISTFILES += \
     Makefile \
