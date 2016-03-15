@@ -17,7 +17,6 @@
 #include "depth_first.h"
 #include "ui_structure.h"
 #include "collectdcp_app.h"
-//#include "editor_window.h"
 
 #include <fstream>
 #include <iostream>

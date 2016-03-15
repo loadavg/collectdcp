@@ -34,3 +34,160 @@ $(TARGET_FOLDER)/collectdcp:\
 	$(TARGET_FOLDER)/ui_structure.o\
 	$(TARGET_FOLDER)/view_ast.o
 	g++ $^ -o $@ `pkg-config --libs gtkmm-3.0`
+
+ast_loader.cpp:\
+    message_box.h\
+    ast_loader.h\
+    file2string.h\
+    fileuty.h\
+    icompare.h\
+    model.h\
+    parse_conf.h\
+    prints.h\
+    range.h
+
+attr_helper.cpp:\
+    attr_helper.h\
+    edittext.h\
+    range.h
+
+collectdcp_app.cpp:\
+    glob_path_pattern.h\
+    ast_loader.h\
+    collectdcp_app.h\
+    dir_structure.h\
+    dlg_commands.h\
+    edittext.h\
+    equal_range.h\
+    file2string.h\
+    fileuty.h\
+    icompare.h\
+    is_a.h\
+    join.h\
+    message_box.h\
+    model.h\
+    ns_all.h\
+    os_info.h\
+    parse_conf.h\
+    plugin_to_store.h\
+    prints.h\
+    process_run.h\
+    range.h\
+    trim.h\
+    ui_structure.h\
+    view_ast.h
+
+dir_structure.cpp:\
+    dir_structure.h\
+    fileuty.h
+
+dlg_commands.cpp:\
+    ui_structure.h\
+    attr_helper.h\
+    dlg_commands.h\
+    edittext.h\
+    icompare.h\
+    is_a.h\
+    message_box.h\
+    model.h\
+    parse_conf.h\
+    prints.h\
+    process_run.h\
+    range.h
+
+glob_path_pattern.cpp:\
+    glob_path_pattern.h\
+    fileuty.h
+
+main.cpp:\
+    collectdcp_app.h\
+    edittext.h\
+    icompare.h\
+    model.h\
+    parse_conf.h\
+    range.h\
+    view_ast.h
+
+message_box.cpp:\
+    message_box.h
+
+model.cpp:\
+    file2string.h\
+    depth_first.h\
+    fileuty.h\
+    icompare.h\
+    model.h\
+    parse_conf.h\
+    range.h
+
+os_info.cpp:\
+    process_run.h\
+    os_info.h\
+    split.h\
+    trim.h\
+    var_assign.h
+
+parse_conf.cpp:\
+    parse_conf.h\
+    icompare.h\
+    join.h\
+    prints.h\
+    range.h\
+    tokenizer.h
+
+plugin_to_store.cpp:\
+    ns_all.h\
+    icompare.h\
+    is_a.h\
+    join.h\
+    message_box.h\
+    model.h\
+    parse_conf.h\
+    plugin_to_store.h\
+    prints.h\
+    range.h\
+    ui_structure.h
+
+process_run.cpp:\
+    process_run.h\
+    os_info.h\
+    prints.h
+
+range.cpp:\
+    join.h\
+    prints.h\
+    range.h
+
+settings.cpp:\
+    ini_file.h\
+    is_a.h\
+    join.h\
+    message_box.h\
+    prints.h\
+    settings.h\
+    ui_structure.h
+
+ui_structure.cpp:\
+    ui_structure.h\
+    is_a.h\
+    message_box.h\
+    prints.h
+
+view_ast.cpp:\
+    collectdcp_app.h\
+    ast_loader.h\
+    attr_helper.h\
+    depth_first.h\
+    edittext.h\
+    file2string.h\
+    fileuty.h\
+    icompare.h\
+    is_a.h\
+    message_box.h\
+    model.h\
+    parse_conf.h\
+    prints.h\
+    process_run.h\
+    range.h\
+    ui_structure.h\
+    view_ast.h
